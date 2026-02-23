@@ -1,0 +1,1239 @@
+/* =============================================
+   AUREA DESCANSO — Ultra Premium Redesign
+   Inspired by apple.com
+   ============================================= */
+
+/* --- Reset --- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --navy:    #1B2D5B;
+  --white:   #FFFFFF;
+  --gray:    #F5F5F7;
+  --text:    #1D1D1F;
+  --text-2:  #6E6E73;
+  --text-3:  #86868B;
+  --border:  #D2D2D7;
+  --serif:   'Playfair Display', Georgia, serif;
+  --sans:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif;
+  --ease:    cubic-bezier(.25,.46,.45,.94);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Ocultar cursor nativo en dispositivos con puntero preciso */
+@media (pointer: fine) {
+  body, a, button, [href], input, select { cursor: none; }
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a   { color: inherit; text-decoration: none; }
+ul  { list-style: none; }
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* --- Fade-in animation --- */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+}
+[data-animate].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* --- Shared section title --- */
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 600;
+  color: var(--navy);
+  text-align: center;
+  letter-spacing: -0.02em;
+  margin-bottom: 64px;
+}
+
+/* --- Buttons --- */
+.btn {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  padding: 14px 30px;
+  border-radius: 980px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s, background 0.3s, color 0.3s;
+  letter-spacing: -0.005em;
+}
+.btn--solid {
+  background: var(--navy);
+  color: var(--white);
+}
+.btn--solid:hover { opacity: 0.82; }
+
+.btn--outline {
+  background: transparent;
+  color: var(--navy);
+  box-shadow: inset 0 0 0 1.5px var(--navy);
+}
+.btn--outline:hover {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.btn--white {
+  background: var(--white);
+  color: var(--navy);
+  font-size: 1rem;
+  padding: 16px 40px;
+}
+.btn--white:hover { opacity: 0.85; }
+
+
+/* ==============================================
+   SCROLL PROGRESS BAR
+   ============================================== */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--navy);
+  z-index: 9999;
+  transition: width 0.08s linear;
+  pointer-events: none;
+}
+
+
+/* ==============================================
+   CUSTOM CURSOR
+   ============================================== */
+.custom-cursor {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--navy);
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.75;
+  transform: translate(-50%, -50%);
+  transition:
+    width    0.28s var(--ease-out),
+    height   0.28s var(--ease-out),
+    opacity  0.28s ease,
+    background 0.28s ease;
+  will-change: left, top;
+}
+.custom-cursor.is-hover {
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 1.5px solid rgba(27, 45, 91, 0.45);
+  opacity: 1;
+}
+/* Ocultar en táctil */
+@media (pointer: coarse) {
+  .custom-cursor { display: none; }
+}
+
+
+/* ==============================================
+   1. HEADER
+   ============================================== */
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: box-shadow 0.4s var(--ease);
+}
+.header.is-scrolled {
+  box-shadow: 0 0.5px 0 0 rgba(0,0,0,0.1);
+}
+
+.header__inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  height: 52px;
+}
+
+.header__logo { flex-shrink: 0; margin-right: auto; }
+.header__logo-img {
+  height: 65px;
+  width: auto;
+  padding: 4px 0;
+}
+
+.header__nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.header__menu {
+  display: flex;
+  gap: 36px;
+}
+.header__link {
+  font-size: 0.8125rem;
+  color: var(--text-2);
+  transition: color 0.25s;
+}
+.header__link:hover { color: var(--text); }
+
+.header__cta {
+  margin-left: auto;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--white);
+  background: var(--navy);
+  padding: 7px 18px;
+  border-radius: 980px;
+  transition: opacity 0.25s;
+}
+.header__cta:hover { opacity: 0.8; }
+
+/* Burger */
+.header__burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: auto;
+  position: relative;
+  z-index: 1002;
+}
+.header__burger span {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background: var(--text);
+  transition: all 0.35s var(--ease);
+  transform-origin: center;
+}
+.header__burger.is-active span:first-child {
+  transform: rotate(45deg) translate(2.5px, 2.5px);
+}
+.header__burger.is-active span:last-child {
+  transform: rotate(-45deg) translate(2.5px, -2.5px);
+}
+
+/* Mobile fullscreen menu */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 1001;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease);
+}
+.mobile-menu.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.mobile-menu__nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+.mobile-menu__link {
+  font-family: var(--serif);
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--navy);
+  transition: opacity 0.25s;
+}
+.mobile-menu__link:hover { opacity: 0.6; }
+.mobile-menu__cta {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--white);
+  background: var(--navy);
+  padding: 12px 36px;
+  border-radius: 980px;
+  margin-top: 8px;
+}
+
+
+/* ==============================================
+   2. HERO — ESCENA 1
+   ============================================== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 140px 24px 80px;
+  background: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Canvas de partículas: capa base detrás del texto */
+.hero__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Contenido del hero: encima del canvas, sujeto a parallax via JS */
+.hero__content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero__title {
+  font-family: var(--serif);
+  font-size: clamp(3.2rem, 8vw, 6.5rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  color: var(--navy);
+  margin-bottom: 24px;
+  min-height: 1.05em; /* evita CLS mientras escribe el typewriter */
+}
+
+/* Cursor parpadeante del typewriter */
+.hero__type-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.75em;
+  background: var(--navy);
+  margin-left: 3px;
+  vertical-align: middle;
+  border-radius: 1px;
+  animation: cursorBlink 0.75s step-end infinite;
+}
+.hero__type-cursor.is-done {
+  opacity: 0;
+  animation: none;
+  transition: opacity 0.4s ease 0.8s;
+}
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Entrada del subtítulo y botones tras el typewriter */
+.hero__entrance {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+}
+.hero__entrance.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.hero__sub {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: var(--text-2);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  margin-bottom: 48px;
+}
+
+.hero__buttons {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero__arrow {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: arrowBounce 2s ease-in-out infinite;
+  opacity: 0.35;
+  z-index: 1;
+}
+@keyframes arrowBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(8px); }
+}
+
+
+/* ==============================================
+   ESCENA 2 — Gradient bridge con texto
+   ============================================== */
+.gradient-bridge {
+  height: 340px;
+  background: linear-gradient(to bottom, var(--white), var(--navy));
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* "Cuando cierras los ojos..." */
+.bridge-text {
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 3.5vw, 2.4rem);
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.92);
+  letter-spacing: -0.02em;
+  text-align: center;
+  padding: 0 32px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1.4s var(--ease-out), transform 1.4s var(--ease-out);
+  text-shadow: 0 4px 32px rgba(0, 0, 0, 0.25);
+}
+.bridge-text.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+
+/* ==============================================
+   3. CONOCE AUREA — ESCENA 3 (noche estrellada)
+   ============================================== */
+.conoce {
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 24px;
+}
+
+/* Estrellas generadas por JS */
+.conoce__stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: #ffffff;
+  animation: starTwinkle ease-in-out infinite;
+}
+@keyframes starTwinkle {
+  0%, 100% { opacity: var(--star-op, 0.4); transform: scale(1); }
+  50%       { opacity: calc(var(--star-op, 0.4) * 0.25); transform: scale(0.6); }
+}
+
+/* Ondas SVG — reaccionan al mouse via JS en el contenedor */
+.conoce__waves {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  will-change: transform;
+  transition: transform 0.6s var(--ease-out);
+}
+.conoce__wave {
+  position: absolute;
+  left: 0;
+  width: 200%;
+  height: 120px;
+}
+.conoce__wave--1 {
+  top: 20%;
+  animation: waveLoop 8s linear infinite;
+}
+.conoce__wave--2 {
+  top: 50%;
+  animation: waveLoop 12s linear infinite reverse;
+}
+.conoce__wave--3 {
+  top: 80%;
+  animation: waveLoop 16s linear infinite;
+}
+
+@keyframes waveLoop {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Content */
+.conoce__content {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+  text-align: center;
+}
+.conoce__title {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 5vw, 3.75rem);
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 28px;
+}
+.conoce__text {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.55);
+  font-weight: 300;
+}
+
+
+/* ==============================================
+   ESCENA 4 — Dawn bridge: noche → amanecer
+   ============================================== */
+.dawn-bridge {
+  height: 120px;
+  background: linear-gradient(to bottom, var(--navy), var(--gray));
+}
+
+
+/* ==============================================
+   4. BENEFICIOS — Scrollytelling
+   ============================================== */
+.beneficios {
+  position: relative;
+  background: #0A1128;
+}
+
+
+/* ==============================================
+   5. PRODUCTOS — ESCENA 5 (tarjetas flotantes 3D)
+   ============================================== */
+.productos {
+  padding: 140px 0;
+  background: var(--white);
+}
+.productos__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+.producto {
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--gray);
+  /* La transición suave se controla por JS también */
+  transition: transform 0.6s var(--ease-out), box-shadow 0.6s var(--ease-out);
+  /* Preparar perspectiva 3D */
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+/* El hover base se deja como fallback si JS no actúa */
+.producto:hover {
+  box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+}
+.producto__img {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: #E8E8ED;
+}
+.producto__img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-out);
+}
+.producto:hover .producto__img img { transform: scale(1.03); }
+
+.producto__body { padding: 24px 24px 28px; }
+.producto__name {
+  font-family: var(--serif);
+  font-size: 1.3125rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+.producto__desc {
+  font-size: 0.875rem;
+  color: var(--text-2);
+  font-weight: 300;
+  line-height: 1.55;
+  margin-bottom: 18px;
+}
+.producto__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.producto__price {
+  font-family: var(--serif);
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+.producto__link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--navy);
+  transition: opacity 0.25s;
+}
+.producto__link:hover { opacity: 0.6; }
+
+
+/* ==============================================
+   6. TESTIMONIOS
+   ============================================== */
+.testimonios {
+  padding: 140px 0;
+  background: var(--gray);
+}
+
+.testimonios__stage {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.testimonios__slides {
+  position: relative;
+  min-height: 200px;
+}
+
+.testimonio {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.6s var(--ease);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  pointer-events: none;
+}
+.testimonio.is-active {
+  opacity: 1;
+  position: relative;
+  pointer-events: auto;
+}
+
+.testimonio__quote {
+  font-family: var(--serif);
+  font-size: clamp(1.25rem, 3vw, 1.875rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+  margin-bottom: 28px;
+}
+
+.testimonio__cite {
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--text-3);
+}
+
+.testimonios__dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 44px;
+}
+.testimonios__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+.testimonios__dot.is-active {
+  background: var(--navy);
+  transform: scale(1.35);
+}
+.testimonios__dot:hover:not(.is-active) { background: var(--text-3); }
+
+
+/* ==============================================
+   7. NÚMEROS
+   ============================================== */
+.numeros {
+  padding: 120px 0;
+  background: var(--white);
+}
+.numeros__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  text-align: center;
+}
+.numero__value {
+  display: block;
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 6vw, 4.25rem);
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 10px;
+}
+.numero__label {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--text-3);
+  letter-spacing: 0.01em;
+}
+
+
+/* ==============================================
+   8. CTA
+   ============================================== */
+.cta {
+  padding: 140px 0;
+  background: var(--navy);
+  text-align: center;
+}
+.cta__title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 36px;
+}
+
+
+/* ==============================================
+   9. FOOTER
+   ============================================== */
+.footer {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+}
+.footer__inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 48px 24px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.footer__logo {
+  height: 32px;
+  width: auto;
+}
+.footer__links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.footer__links a {
+  font-size: 0.8125rem;
+  color: var(--text-3);
+  transition: color 0.25s;
+}
+.footer__links a:hover { color: var(--text); }
+.footer__sep {
+  color: var(--border);
+  font-size: 0.75rem;
+}
+.footer__social {
+  display: flex;
+  gap: 16px;
+}
+.footer__social a {
+  color: var(--text-3);
+  transition: color 0.25s;
+}
+.footer__social a:hover { color: var(--navy); }
+.footer__copy {
+  font-size: 0.75rem;
+  color: var(--text-3);
+}
+
+
+/* ==============================================
+   RESPONSIVE
+   ============================================== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .beneficios__grid { gap: 36px; }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  /* Header */
+  .header__inner { padding: 0 20px; height: 48px; }
+  .header__logo-img { height: 45px; }
+  .header__nav, .header__cta { display: none; }
+  .header__burger { display: flex; }
+
+  /* Hero */
+  .hero { padding: 110px 24px 60px; min-height: 90vh; }
+  .hero__arrow { bottom: 24px; }
+
+  /* Bridge */
+  .gradient-bridge { height: 220px; }
+  .dawn-bridge { height: 80px; }
+
+  /* Conoce */
+  .conoce { padding: 80px 24px; min-height: auto; }
+
+  /* Beneficios: responsive gestionado en bloque extendido */
+
+  /* Productos */
+  .productos { padding: 100px 0; }
+  .section-title { margin-bottom: 48px; }
+  .productos__grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* Testimonios */
+  .testimonios { padding: 100px 0; }
+
+  /* Números */
+  .numeros { padding: 80px 0; }
+  .numeros__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 24px;
+  }
+
+  /* CTA */
+  .cta { padding: 100px 0; }
+
+  /* Footer */
+  .footer__inner { padding: 36px 24px 32px; gap: 16px; }
+}
+
+@media (max-width: 480px) {
+  .hero__buttons { flex-direction: column; width: 100%; max-width: 300px; }
+  .hero__buttons .btn { width: 100%; text-align: center; }
+  .producto__footer { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+
+
+/* ==============================================
+   BENEFICIOS — Scrollytelling
+   ============================================== */
+
+/* Track: 400vh de altura para las 3 escenas en desktop */
+.beneficios__track {
+  position: relative;
+  height: 400vh;
+}
+
+/* Panel sticky: se congela mientras el track ocupa la pantalla */
+.beneficios__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: #0A1128;
+  background-image: radial-gradient(
+    ellipse 80% 55% at 50% 115%,
+    rgba(26, 58, 107, 0.6) 0%,
+    transparent 70%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Marca de agua de fondo */
+.beneficios__watermark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: clamp(110px, 20vw, 260px);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.02);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  z-index: 0;
+}
+
+/* Puntos de progreso laterales */
+.beneficios__progress {
+  position: absolute;
+  right: clamp(16px, 3vw, 36px);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 10;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.beneficios__progress-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.4s ease, transform 0.4s ease;
+  display: block;
+}
+.beneficios__progress-dot.is-active {
+  background: #D4AF37;
+  transform: scale(1.55);
+}
+.beneficios__progress-dot:hover:not(.is-active) {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+/* Actos: apilados en absoluto; JS alterna is-active */
+.beneficios__act {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+  opacity: 0;
+  transform: translateY(44px);
+  transition:
+    opacity   0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 1;
+  will-change: opacity, transform;
+}
+.beneficios__act.is-active {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+/* Salida hacia arriba al avanzar */
+.beneficios__act.is-prev {
+  opacity: 0;
+  transform: translateY(-32px);
+}
+
+/* Layout asimetrico texto / visual */
+.beneficios__act-inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(40px, 6vw, 90px);
+}
+.beneficios__act-visual--left { order: -1; }
+
+/* Numero de paso dorado */
+.beneficios__step-num {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  color: #D4AF37;
+  margin-bottom: 22px;
+  text-transform: uppercase;
+}
+
+/* Titulo dramatico */
+.beneficios__act-title {
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 5.5vw, 4.8rem);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  margin-bottom: 28px;
+}
+
+/* Cuerpo de texto */
+.beneficios__act-body {
+  font-size: clamp(0.9375rem, 1.4vw, 1.05rem);
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 420px;
+  margin-bottom: 34px;
+}
+
+/* Tags */
+.beneficios__act-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.beneficios__tag {
+  display: inline-block;
+  padding: 6px 18px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #D4AF37;
+}
+
+/* Contenedor visual */
+.beneficios__act-visual {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(200px, 28vw, 300px);
+  height: clamp(200px, 28vw, 300px);
+}
+
+/* ---- VISUAL 01: Cubo glassmorphism ---- */
+.beneficios__cube-scene {
+  perspective: 700px;
+  width: 150px;
+  height: 150px;
+}
+.beneficios__cube {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation:
+    cubeFloat  7s  ease-in-out  infinite,
+    cubeRotate 22s linear       infinite;
+}
+.beneficios__cube-face {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 0 24px rgba(26, 58, 107, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.beneficios__cube-face--front  { transform: translateZ(75px); }
+.beneficios__cube-face--back   { transform: rotateY(180deg) translateZ(75px); }
+.beneficios__cube-face--right  { transform: rotateY(90deg)  translateZ(75px); }
+.beneficios__cube-face--left   { transform: rotateY(-90deg) translateZ(75px); }
+.beneficios__cube-face--top    { transform: rotateX(90deg)  translateZ(75px); }
+.beneficios__cube-face--bottom { transform: rotateX(-90deg) translateZ(75px); }
+
+@keyframes cubeFloat {
+  0%, 100% { margin-top: 0; }
+  50%       { margin-top: -20px; }
+}
+@keyframes cubeRotate {
+  from { transform: rotateX(14deg) rotateY(0deg); }
+  to   { transform: rotateX(14deg) rotateY(360deg); }
+}
+
+/* ---- VISUAL 02: Luna con resplandor dorado ---- */
+.beneficios__moon {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.beneficios__moon-glow {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(212, 175, 55, 0.24) 0%,
+    transparent 70%
+  );
+  animation: moonGlow 3.5s ease-in-out infinite;
+}
+.beneficios__moon-body {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 38% 35%,
+    #f5f0e0 0%,
+    #d4af37 52%,
+    #9a6e1a 100%
+  );
+  box-shadow:
+    0 0 50px rgba(212, 175, 55, 0.35),
+    inset -18px -10px 28px rgba(0, 0, 0, 0.35);
+  animation: moonFloat 6s ease-in-out infinite;
+}
+@keyframes moonGlow {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.1); }
+}
+@keyframes moonFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-15px); }
+}
+
+/* ---- VISUAL 03: Aura circular pulsante ---- */
+.beneficios__aura {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.beneficios__aura-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  animation: auraPulse 4s ease-in-out infinite;
+}
+.beneficios__aura-ring--1 { width:  66px; height:  66px; animation-delay: 0s; }
+.beneficios__aura-ring--2 { width: 118px; height: 118px; animation-delay: 0.9s; }
+.beneficios__aura-ring--3 { width: 176px; height: 176px; animation-delay: 1.8s; }
+.beneficios__aura-core {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #d4af37 0%, #9a6e1a 100%);
+  box-shadow:
+    0 0 28px rgba(212, 175, 55, 0.65),
+    0 0 60px rgba(212, 175, 55, 0.2);
+  animation: coreGlow 4s ease-in-out infinite;
+}
+@keyframes auraPulse {
+  0%, 100% { transform: scale(1);    opacity: 0.45; }
+  50%       { transform: scale(1.08); opacity: 1; }
+}
+@keyframes coreGlow {
+  0%, 100% {
+    box-shadow: 0 0 28px rgba(212,175,55,0.65), 0 0 60px rgba(212,175,55,0.2);
+  }
+  50% {
+    box-shadow: 0 0 44px rgba(212,175,55,0.9), 0 0 90px rgba(212,175,55,0.4);
+  }
+}
+
+/* Onda de transicion dentro del sticky */
+.beneficios__wave-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  line-height: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+.beneficios__wave-bottom svg {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+/* MOVIL (max 768px): track height auto, sticky estatico, actos apilados */
+@media (max-width: 768px) {
+  .beneficios__track { height: auto; }
+  .beneficios__sticky {
+    position: relative;
+    height: auto;
+    overflow: visible;
+    padding-bottom: 80px;
+  }
+  .beneficios__act {
+    position: relative;
+    display: flex;
+    opacity: 0;
+    transform: translateY(30px);
+    pointer-events: auto;
+    padding: 80px 0 60px;
+  }
+  .beneficios__act.is-active,
+  .beneficios__act.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  .beneficios__act.is-prev { transform: translateY(30px); }
+  .beneficios__act-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 36px;
+  }
+  .beneficios__act-visual,
+  .beneficios__act-visual--left {
+    order: -1;
+    width: 180px;
+    height: 180px;
+  }
+  .beneficios__act-body  { max-width: 100%; }
+  .beneficios__act-tags  { justify-content: center; }
+  .beneficios__progress  { display: none; }
+  .beneficios__watermark { font-size: clamp(72px, 28vw, 130px); }
+  .beneficios__cube-scene,
+  .beneficios__cube { width: 110px; height: 110px; }
+  .beneficios__cube-face { width: 110px; height: 110px; }
+  .beneficios__cube-face--front  { transform: translateZ(55px); }
+  .beneficios__cube-face--back   { transform: rotateY(180deg) translateZ(55px); }
+  .beneficios__cube-face--right  { transform: rotateY(90deg)  translateZ(55px); }
+  .beneficios__cube-face--left   { transform: rotateY(-90deg) translateZ(55px); }
+  .beneficios__cube-face--top    { transform: rotateX(90deg)  translateZ(55px); }
+  .beneficios__cube-face--bottom { transform: rotateX(-90deg) translateZ(55px); }
+  .beneficios__wave-bottom { position: relative; bottom: auto; }
+}
+
+/* prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .beneficios__act {
+    transition: opacity 0.3s ease !important;
+    transform: none !important;
+  }
+  .beneficios__act.is-prev { transform: none !important; }
+  .beneficios__cube        { animation: none !important; }
+  .beneficios__moon-body,
+  .beneficios__moon-glow   { animation: none !important; }
+  .beneficios__aura-ring,
+  .beneficios__aura-core   { animation: none !important; }
+}
+
+

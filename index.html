@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aurea Descanso | Colchones Premium</title>
+  <meta name="description" content="Colchones premium diseñados para transformar tu descanso. Envío gratuito, 100 noches de prueba y garantía de 10 años.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Barra de progreso de scroll -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- Cursor personalizado -->
+  <div class="custom-cursor" id="customCursor" aria-hidden="true"></div>
+
+  <!-- ========== 1. HEADER ========== -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="#" class="header__logo">
+        <img src="images/aureadescanso.png" alt="Aurea Descanso" class="header__logo-img">
+      </a>
+      <nav class="header__nav" id="nav">
+        <ul class="header__menu">
+          <li><a href="#productos" class="header__link">Colchones</a></li>
+          <li><a href="#conoce" class="header__link">Nuestra historia</a></li>
+          <li><a href="#footer" class="header__link">Contacto</a></li>
+        </ul>
+      </nav>
+      <a href="#productos" class="header__cta">Comprar</a>
+      <button class="header__burger" id="burger" aria-label="Menú">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!-- Mobile fullscreen menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <nav class="mobile-menu__nav">
+        <a href="#productos" class="mobile-menu__link">Colchones</a>
+        <a href="#conoce" class="mobile-menu__link">Nuestra historia</a>
+        <a href="#footer" class="mobile-menu__link">Contacto</a>
+        <a href="#productos" class="mobile-menu__cta">Comprar</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== 2. HERO — ESCENA 1 ========== -->
+  <section class="hero" id="hero">
+    <!-- Canvas de partículas (algodón/plumas flotando) -->
+    <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+
+    <div class="hero__content" id="heroContent">
+      <!-- Typewriter: JS rellena el texto letra a letra -->
+      <h1 class="hero__title">
+        <span id="heroTypeText"></span><span class="hero__type-cursor" aria-hidden="true"></span>
+      </h1>
+      <p class="hero__sub hero__entrance" id="heroSub">Colchones diseñados para transformar tu descanso</p>
+      <div class="hero__buttons hero__entrance" id="heroButtons">
+        <a href="#productos" class="btn btn--solid">Descubre nuestros colchones</a>
+        <a href="#conoce" class="btn btn--outline">Nuestra historia</a>
+      </div>
+    </div>
+
+    <div class="hero__arrow" aria-hidden="true">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B2D5B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- ========== ESCENA 2 — Transición cinematográfica ========== -->
+  <!-- El fondo pasa de blanco a azul marino. Las partículas se convierten en estrellas. -->
+  <div class="gradient-bridge" id="gradientBridge">
+    <p class="bridge-text" id="bridgeText">Cuando cierras los ojos...</p>
+  </div>
+
+  <!-- ========== 3. CONOCE AUREA — ESCENA 3 ========== -->
+  <!-- Cielo nocturno: estrellas + ondas como océano en calma -->
+  <section class="conoce" id="conoce">
+    <!-- Estrellas generadas por JS -->
+    <div class="conoce__stars" id="conoceStars" aria-hidden="true"></div>
+
+    <div class="conoce__waves" id="conoceWaves" aria-hidden="true">
+      <svg class="conoce__wave conoce__wave--1" viewBox="0 0 2880 120" preserveAspectRatio="none">
+        <path d="M0,60 C120,100 240,20 360,60 C480,100 600,20 720,60 C840,100 960,20 1080,60 C1200,100 1320,20 1440,60 C1560,100 1680,20 1800,60 C1920,100 2040,20 2160,60 C2280,100 2400,20 2520,60 C2640,100 2760,20 2880,60" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+      </svg>
+      <svg class="conoce__wave conoce__wave--2" viewBox="0 0 2880 120" preserveAspectRatio="none">
+        <path d="M0,60 C140,20 280,100 420,60 C560,20 700,100 840,60 C980,20 1120,100 1260,60 C1400,20 1540,100 1680,60 C1820,20 1960,100 2100,60 C2240,20 2380,100 2520,60 C2660,20 2800,100 2880,60" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      </svg>
+      <svg class="conoce__wave conoce__wave--3" viewBox="0 0 2880 120" preserveAspectRatio="none">
+        <path d="M0,60 C160,95 320,25 480,60 C640,95 800,25 960,60 C1120,95 1280,25 1440,60 C1600,95 1760,25 1920,60 C2080,95 2240,25 2400,60 C2560,95 2720,25 2880,60" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+      </svg>
+    </div>
+
+    <div class="conoce__content" data-animate>
+      <h2 class="conoce__title">El descanso es un arte</h2>
+      <p class="conoce__text">En Aurea Descanso creemos que dormir bien no es un lujo, es una necesidad. Diseñamos colchones que combinan tecnología avanzada con materiales premium para ofrecerte el mejor descanso de tu vida.</p>
+    </div>
+  </section>
+
+  <!-- ========== ESCENA 4 — Amanecer: transición a blanco ========== -->
+  <div class="dawn-bridge" aria-hidden="true"></div>
+
+  <!-- ========== 4. BENEFICIOS — Scrollytelling ========== -->
+  <section class="beneficios" id="beneficios">
+
+    <!--
+      Estructura sticky-scroll:
+      - .beneficios__track  → 400 vh de altura: da espacio para 3 escenas de scroll
+      - .beneficios__sticky → position:sticky; top:0; height:100vh  (el "cine")
+      - .beneficios__act    → absolutos apilados; JS gestiona cuál es .is-active
+    -->
+    <div class="beneficios__track" id="beneficiosTrack">
+      <div class="beneficios__sticky" id="beneficiosSticky">
+
+        <!-- Marca de agua de fondo -->
+        <div class="beneficios__watermark" aria-hidden="true">AUREA</div>
+
+        <!-- Puntos de progreso (lateral derecho) -->
+        <nav class="beneficios__progress" id="beneficiosProgress" aria-label="Progreso de sección">
+          <button class="beneficios__progress-dot is-active" data-step="0" aria-label="Ir a: Logística Invisible"></button>
+          <button class="beneficios__progress-dot" data-step="1" aria-label="Ir a: Cien Noches de Calma"></button>
+          <button class="beneficios__progress-dot" data-step="2" aria-label="Ir a: Una Década de Paz"></button>
+        </nav>
+
+        <!-- ── ACTO 01 · Envío ── -->
+        <div class="beneficios__act is-active" id="beneficiosAct0" data-act="0">
+          <div class="container beneficios__act-inner">
+
+            <div class="beneficios__act-text">
+              <span class="beneficios__step-num" aria-hidden="true">01</span>
+              <h2 class="beneficios__act-title">Logística<br>Invisible</h2>
+              <p class="beneficios__act-body">
+                Envío gratuito a toda España. Tu colchón llega comprimido al vacío
+                en 3–5 días, listo para expandirse en 24 horas.
+                Sin costes ocultos, sin sorpresas.
+              </p>
+              <div class="beneficios__act-tags">
+                <span class="beneficios__tag">Envío gratuito</span>
+                <span class="beneficios__tag">3–5 días</span>
+              </div>
+            </div>
+
+            <!-- Visual: cubo de cristal esmerilado (glassmorphism) -->
+            <div class="beneficios__act-visual" aria-hidden="true">
+              <div class="beneficios__cube-scene">
+                <div class="beneficios__cube">
+                  <div class="beneficios__cube-face beneficios__cube-face--front"></div>
+                  <div class="beneficios__cube-face beneficios__cube-face--back"></div>
+                  <div class="beneficios__cube-face beneficios__cube-face--right"></div>
+                  <div class="beneficios__cube-face beneficios__cube-face--left"></div>
+                  <div class="beneficios__cube-face beneficios__cube-face--top"></div>
+                  <div class="beneficios__cube-face beneficios__cube-face--bottom"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── ACTO 02 · 100 noches ── -->
+        <div class="beneficios__act" id="beneficiosAct1" data-act="1">
+          <div class="container beneficios__act-inner">
+
+            <!-- Visual izquierda: luna con resplandor dorado -->
+            <div class="beneficios__act-visual beneficios__act-visual--left" aria-hidden="true">
+              <div class="beneficios__moon">
+                <div class="beneficios__moon-glow"></div>
+                <div class="beneficios__moon-body"></div>
+              </div>
+            </div>
+
+            <div class="beneficios__act-text">
+              <span class="beneficios__step-num" aria-hidden="true">02</span>
+              <h2 class="beneficios__act-title">Cien Noches<br>de Calma</h2>
+              <p class="beneficios__act-body">
+                100 días para que tu cuerpo y tu mente decidan.
+                Si no es para ti, lo recogemos gratis y te devolvemos cada euro.
+                Sin preguntas, sin burocracia.
+              </p>
+              <div class="beneficios__act-tags">
+                <span class="beneficios__tag">100 noches</span>
+                <span class="beneficios__tag">Devolución gratuita</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── ACTO 03 · Garantía ── -->
+        <div class="beneficios__act" id="beneficiosAct2" data-act="2">
+          <div class="container beneficios__act-inner">
+
+            <div class="beneficios__act-text">
+              <span class="beneficios__step-num" aria-hidden="true">03</span>
+              <h2 class="beneficios__act-title">Una Década<br>de Paz</h2>
+              <p class="beneficios__act-body">
+                10 años de garantía completa contra cualquier defecto de fabricación,
+                hundimiento o irregularidad. La calidad que se ve,
+                respaldada por la que dura.
+              </p>
+              <div class="beneficios__act-tags">
+                <span class="beneficios__tag">Garantía 10 años</span>
+                <span class="beneficios__tag">Sin letra pequeña</span>
+              </div>
+            </div>
+
+            <!-- Visual: aura circular pulsante -->
+            <div class="beneficios__act-visual" aria-hidden="true">
+              <div class="beneficios__aura">
+                <div class="beneficios__aura-ring beneficios__aura-ring--3"></div>
+                <div class="beneficios__aura-ring beneficios__aura-ring--2"></div>
+                <div class="beneficios__aura-ring beneficios__aura-ring--1"></div>
+                <div class="beneficios__aura-core"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Onda de transición hacia la siguiente sección -->
+        <div class="beneficios__wave-bottom" aria-hidden="true">
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,50 C240,10 480,80 720,40 C960,0 1200,70 1440,50 L1440,80 L0,80 Z" fill="#ffffff"/>
+          </svg>
+        </div>
+
+      </div><!-- /.beneficios__sticky -->
+    </div><!-- /.beneficios__track -->
+
+  </section>
+
+  <!-- ========== 5. PRODUCTOS — ESCENA 5 ========== -->
+  <!-- Tarjetas con efecto tilt 3D al mover el cursor -->
+  <section class="productos" id="productos">
+    <div class="container">
+      <h2 class="section-title" data-animate>Nuestros colchones</h2>
+      <div class="productos__grid">
+        <article class="producto producto--tilt" data-animate>
+          <div class="producto__img">
+            <img src="images/producto1.jpg" alt="Aurea Serenity" loading="lazy">
+          </div>
+          <div class="producto__body">
+            <h3 class="producto__name">Aurea Serenity</h3>
+            <p class="producto__desc">Firmeza media. Viscoelástica de alta densidad con capa de gel refrescante.</p>
+            <div class="producto__footer">
+              <span class="producto__price">499 &euro;</span>
+              <a href="#" class="producto__link">Descubrir &rarr;</a>
+            </div>
+          </div>
+        </article>
+        <article class="producto producto--tilt" data-animate data-delay="120">
+          <div class="producto__img">
+            <img src="images/producto2.jpg" alt="Aurea Celestial" loading="lazy">
+          </div>
+          <div class="producto__body">
+            <h3 class="producto__name">Aurea Celestial</h3>
+            <p class="producto__desc">Firmeza media-alta. Muelles ensacados con doble capa de viscoelástica.</p>
+            <div class="producto__footer">
+              <span class="producto__price">699 &euro;</span>
+              <a href="#" class="producto__link">Descubrir &rarr;</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 6. TESTIMONIOS ========== -->
+  <section class="testimonios" id="testimonios">
+    <div class="container">
+      <h2 class="section-title" data-animate>Lo que dicen nuestros clientes</h2>
+      <div class="testimonios__stage" data-animate data-delay="100">
+        <div class="testimonios__slides" id="testimoniosSlides">
+          <blockquote class="testimonio is-active">
+            <p class="testimonio__quote">&ldquo;Llevaba años con dolor de espalda. Desde que tengo el Aurea Serenity, duermo como nunca. La diferencia se nota desde la primera noche.&rdquo;</p>
+            <cite class="testimonio__cite">María López &mdash; Madrid</cite>
+          </blockquote>
+          <blockquote class="testimonio">
+            <p class="testimonio__quote">&ldquo;El proceso de compra fue sencillísimo. Llegó en 3 días, lo saqué de la caja y en minutos estaba listo. Estamos encantados con la calidad.&rdquo;</p>
+            <cite class="testimonio__cite">Carlos García &mdash; Barcelona</cite>
+          </blockquote>
+          <blockquote class="testimonio">
+            <p class="testimonio__quote">&ldquo;Probé las 100 noches convencida de que lo devolvería. Ocho meses después, sigo durmiendo de maravilla. El soporte lumbar es perfecto.&rdquo;</p>
+            <cite class="testimonio__cite">Ana Ruiz &mdash; Valencia</cite>
+          </blockquote>
+        </div>
+        <div class="testimonios__dots" id="testimoniosDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 7. NÚMEROS ========== -->
+  <section class="numeros" id="numeros">
+    <div class="container">
+      <div class="numeros__grid">
+        <div class="numero" data-animate>
+          <span class="numero__value" data-target="100" data-counter>0</span>
+          <span class="numero__label">noches de prueba</span>
+        </div>
+        <div class="numero" data-animate data-delay="80">
+          <span class="numero__value" data-target="2000" data-prefix="+" data-counter>0</span>
+          <span class="numero__label">clientes satisfechos</span>
+        </div>
+        <div class="numero" data-animate data-delay="160">
+          <span class="numero__value" data-target="10" data-counter>0</span>
+          <span class="numero__label">años de garantía</span>
+        </div>
+        <div class="numero" data-animate data-delay="240">
+          <span class="numero__value" data-target="48" data-decimal data-counter>0</span>
+          <span class="numero__label">valoración media</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 8. CTA ========== -->
+  <section class="cta">
+    <div class="container">
+      <h2 class="cta__title" data-animate>Tu mejor descanso<br>empieza aquí.</h2>
+      <a href="#productos" class="btn btn--white" data-animate data-delay="120">Ver colchones</a>
+    </div>
+  </section>
+
+  <!-- ========== 9. FOOTER ========== -->
+  <footer class="footer" id="footer">
+    <div class="footer__inner">
+      <img src="images/aureadescanso.png" alt="Aurea Descanso" class="footer__logo">
+      <div class="footer__links">
+        <a href="#">Aviso legal</a>
+        <span class="footer__sep">|</span>
+        <a href="#">Política de privacidad</a>
+        <span class="footer__sep">|</span>
+        <a href="#footer">Contacto</a>
+      </div>
+      <div class="footer__social">
+        <a href="https://instagram.com/aureadescanso" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="https://tiktok.com/@aureadescanso" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.48 6.3 6.3 0 001.86-4.49V8.72a8.26 8.26 0 004.84 1.56v-3.45a4.85 4.85 0 01-1.12-.14z"/></svg>
+        </a>
+      </div>
+      <p class="footer__copy">&copy; 2025 Aurea Descanso. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
