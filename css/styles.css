@@ -1171,55 +1171,187 @@ ul  { list-style: none; }
   height: 80px;
 }
 
-/* MOVIL (max 768px): track height auto, sticky estatico, actos apilados */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   MÓVIL (≤ 768px) — Rediseño completo
+   Sin sticky-scroll, 3 actos apilados verticalmente,
+   texto primero, visual decorativo debajo.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 @media (max-width: 768px) {
-  .beneficios__track { height: auto; }
+
+  /* ── Track: altura natural → sin trampa de scroll ── */
+  .beneficios__track {
+    height: auto;
+  }
+
+  /* ── Sticky → flujo normal, sin position:sticky ── */
   .beneficios__sticky {
     position: relative;
     height: auto;
-    overflow: visible;
-    padding-bottom: 80px;
+    overflow: hidden;        /* contiene visuales sin romper layout */
+    display: block;          /* anula el flex del desktop */
+    padding-bottom: 0;
   }
+
+  /* Marca de agua más pequeña */
+  .beneficios__watermark {
+    font-size: clamp(56px, 22vw, 100px);
+    letter-spacing: 0.16em;
+  }
+
+  /* Puntos de navegación: ocultos en móvil */
+  .beneficios__progress {
+    display: none;
+  }
+
+  /* ── Actos: posición relativa, apilados en columna ── */
   .beneficios__act {
     position: relative;
-    display: flex;
+    inset: auto;             /* resetea inset:0 del desktop */
+    display: block;
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(22px);
+    transition:
+      opacity   0.65s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
     pointer-events: auto;
-    padding: 80px 0 60px;
+    padding: 60px 0 52px;
   }
+
+  /* Revelado por is-active (acto 0) o is-visible (IO) */
   .beneficios__act.is-active,
   .beneficios__act.is-visible {
     opacity: 1;
     transform: none;
   }
-  .beneficios__act.is-prev { transform: translateY(30px); }
+
+  /* Anular salida-arriba en móvil */
+  .beneficios__act.is-prev {
+    transform: translateY(22px);
+  }
+
+  /* Separador dorado tenue entre actos */
+  .beneficios__act + .beneficios__act {
+    border-top: 1px solid rgba(212, 175, 55, 0.14);
+  }
+
+  /* ── Layout del acto: columna, texto primero ── */
   .beneficios__act-inner {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 36px;
+    align-items: stretch;    /* hijos ocupan todo el ancho */
+    text-align: left;
+    gap: 0;
   }
+
+  /* Texto siempre primero en todos los actos */
+  .beneficios__act-text {
+    order: 1;
+    width: 100%;
+  }
+
+  /* Visual siempre después del texto */
   .beneficios__act-visual,
   .beneficios__act-visual--left {
-    order: -1;
-    width: 180px;
-    height: 180px;
+    order: 2;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.45;           /* decorativo, no protagonista */
   }
-  .beneficios__act-body  { max-width: 100%; }
-  .beneficios__act-tags  { justify-content: center; }
-  .beneficios__progress  { display: none; }
-  .beneficios__watermark { font-size: clamp(72px, 28vw, 130px); }
-  .beneficios__cube-scene,
-  .beneficios__cube { width: 110px; height: 110px; }
-  .beneficios__cube-face { width: 110px; height: 110px; }
-  .beneficios__cube-face--front  { transform: translateZ(55px); }
-  .beneficios__cube-face--back   { transform: rotateY(180deg) translateZ(55px); }
-  .beneficios__cube-face--right  { transform: rotateY(90deg)  translateZ(55px); }
-  .beneficios__cube-face--left   { transform: rotateY(-90deg) translateZ(55px); }
-  .beneficios__cube-face--top    { transform: rotateX(90deg)  translateZ(55px); }
-  .beneficios__cube-face--bottom { transform: rotateX(-90deg) translateZ(55px); }
-  .beneficios__wave-bottom { position: relative; bottom: auto; }
+
+  /* ── Tipografía: legible sin desborde ── */
+  .beneficios__step-num {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    margin-bottom: 14px;
+  }
+
+  .beneficios__act-title {
+    font-size: clamp(1.9rem, 8vw, 2.5rem);  /* 30-40px: legible sin cortes */
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .beneficios__act-body {
+    font-size: 0.9375rem;
+    line-height: 1.72;
+    max-width: 100%;
+    margin-bottom: 22px;
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  /* Tags: alineados a la izquierda */
+  .beneficios__act-tags {
+    justify-content: flex-start;
+  }
+
+  /* ── Cubo: más pequeño, sin backdrop-filter (rendimiento) ── */
+  .beneficios__cube-scene {
+    perspective: 450px;
+    width: 90px;
+    height: 90px;
+  }
+  .beneficios__cube {
+    width: 90px;
+    height: 90px;
+    animation:
+      cubeFloat  10s ease-in-out infinite,
+      cubeRotate 32s linear     infinite;
+  }
+  .beneficios__cube-face {
+    width: 90px;
+    height: 90px;
+    backdrop-filter: none;      /* evita jank en móvil */
+    -webkit-backdrop-filter: none;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: none;
+  }
+  .beneficios__cube-face--front  { transform: translateZ(45px); }
+  .beneficios__cube-face--back   { transform: rotateY(180deg) translateZ(45px); }
+  .beneficios__cube-face--right  { transform: rotateY(90deg)  translateZ(45px); }
+  .beneficios__cube-face--left   { transform: rotateY(-90deg) translateZ(45px); }
+  .beneficios__cube-face--top    { transform: rotateX(90deg)  translateZ(45px); }
+  .beneficios__cube-face--bottom { transform: rotateX(-90deg) translateZ(45px); }
+
+  /* ── Luna: reducida ── */
+  .beneficios__moon {
+    width: 100px;
+    height: 100px;
+  }
+  .beneficios__moon-glow {
+    width: 150px;
+    height: 150px;
+  }
+  .beneficios__moon-body {
+    width: 64px;
+    height: 64px;
+    box-shadow:
+      0 0 30px rgba(212, 175, 55, 0.3),
+      inset -10px -6px 18px rgba(0, 0, 0, 0.3);
+  }
+
+  /* ── Aura: reducida ── */
+  .beneficios__aura {
+    width: 130px;
+    height: 130px;
+  }
+  .beneficios__aura-ring--1 { width:  46px; height:  46px; }
+  .beneficios__aura-ring--2 { width:  82px; height:  82px; }
+  .beneficios__aura-ring--3 { width: 120px; height: 120px; }
+  .beneficios__aura-core    { width:  26px; height:  26px; }
+
+  /* ── Onda: flujo normal (no absoluta) ── */
+  .beneficios__wave-bottom {
+    position: relative;
+    bottom: auto;
+  }
 }
 
 /* prefers-reduced-motion */

@@ -577,6 +577,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     } else {
       /* ═══ MÓVIL: IntersectionObserver por acto ══════════════ */
+      /* El primer acto es visible de inmediato sin necesidad de scroll */
+      acts[0].classList.add('is-visible');
       if ('IntersectionObserver' in window) {
         var actObs = new IntersectionObserver(function (entries) {
           entries.forEach(function (entry) {
@@ -584,7 +586,7 @@ document.addEventListener('DOMContentLoaded', function () {
               entry.target.classList.add('is-visible');
             }
           });
-        }, { threshold: 0.25 });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
         acts.forEach(function (act) { actObs.observe(act); });
       } else {
         acts.forEach(function (act) { act.classList.add('is-visible'); });
