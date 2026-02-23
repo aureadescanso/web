@@ -868,15 +868,50 @@ ul  { list-style: none; }
   top: 0;
   height: 100vh;
   overflow: hidden;
-  background: #0A1128;
-  background-image: radial-gradient(
-    ellipse 80% 55% at 50% 115%,
-    rgba(26, 58, 107, 0.6) 0%,
-    transparent 70%
-  );
+  /* Fallback sólido para navegadores sin multi-bg */
+  background-color: #0A1128;
+  /* Capas: 1 aurora radial · 2 calor dorado tenue · 3 lineal nocturno→orgánico */
+  background-image:
+    radial-gradient(
+      ellipse 68% 54% at 66% 34%,
+      rgba(30, 62, 118, 0.50) 0%,
+      transparent 62%
+    ),
+    radial-gradient(
+      ellipse 88% 32% at 50% 108%,
+      rgba(212, 175, 55, 0.07) 0%,
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      #0A1128  0%,
+      #0d1b36 20%,
+      #132040 46%,
+      #1B2D5B 72%,
+      #EEF1EE 100%
+    );
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Aurora animada: respiración lenta de luz sobre el panel */
+.beneficios__sticky::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 56% at 36% 60%,
+    rgba(27, 45, 91, 0.30) 0%,
+    transparent 66%
+  );
+  animation: auroraBreath 18s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+@keyframes auroraBreath {
+  from { opacity: 0.5;  transform: scale(1)    translate(0,  0); }
+  to   { opacity: 1;    transform: scale(1.12) translate(-7%, 5%); }
 }
 
 /* Marca de agua de fondo */
@@ -1155,7 +1190,7 @@ ul  { list-style: none; }
   }
 }
 
-/* Onda de transicion dentro del sticky */
+/* Onda separadora: altura fluida + sombra ascendente + relleno orgánico */
 .beneficios__wave-bottom {
   position: absolute;
   bottom: 0;
@@ -1168,7 +1203,14 @@ ul  { list-style: none; }
 .beneficios__wave-bottom svg {
   display: block;
   width: 100%;
-  height: 80px;
+  /* Altura responsiva: mayor curva en escritorio, compacta en móvil */
+  height: clamp(60px, 8vw, 108px);
+  /* Sombra ascendente → la onda parece emerger del degradado */
+  filter: drop-shadow(0 -10px 24px rgba(10, 17, 40, 0.50));
+}
+/* Relleno iguala el extremo inferior del degradado → fusión orgánica */
+.beneficios__wave-bottom path {
+  fill: #EEF1EE;
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -1190,6 +1232,18 @@ ul  { list-style: none; }
     overflow: hidden;        /* contiene visuales sin romper layout */
     display: block;          /* anula el flex del desktop */
     padding-bottom: 0;
+    /* Degradado simplificado en móvil: menos capas, mejor rendimiento */
+    background-image:
+      linear-gradient(
+        180deg,
+        #0A1128  0%,
+        #1B2D5B 70%,
+        #EEF1EE 100%
+      );
+  }
+  /* Sin aurora animada en móvil */
+  .beneficios__sticky::before {
+    display: none;
   }
 
   /* Marca de agua más pequeña */
@@ -1347,10 +1401,14 @@ ul  { list-style: none; }
   .beneficios__aura-ring--3 { width: 120px; height: 120px; }
   .beneficios__aura-core    { width:  26px; height:  26px; }
 
-  /* ── Onda: flujo normal (no absoluta) ── */
+  /* ── Onda: flujo normal + altura compacta, sin drop-shadow ── */
   .beneficios__wave-bottom {
     position: relative;
     bottom: auto;
+  }
+  .beneficios__wave-bottom svg {
+    height: 48px;
+    filter: none;
   }
 }
 
@@ -1366,6 +1424,10 @@ ul  { list-style: none; }
   .beneficios__moon-glow   { animation: none !important; }
   .beneficios__aura-ring,
   .beneficios__aura-core   { animation: none !important; }
+  .beneficios__sticky::before {
+    animation: none !important;
+    opacity: 0.65;
+  }
 }
 
 
