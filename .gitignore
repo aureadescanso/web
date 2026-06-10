@@ -1,0 +1,5 @@
+# Herramientas locales (no son parte de la web)
+.agents/
+.claude/
+carousels/
+skills-lock.json

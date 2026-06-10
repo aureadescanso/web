@@ -56,7 +56,6 @@ document.addEventListener('DOMContentLoaded', function () {
     header.classList.toggle('is-scrolled', y > 10);
     updateScrollProgress();
     heroParallax(y);
-    revealBridgeText(y);
   }
   window.addEventListener('scroll', onScroll, { passive: true });
 
@@ -277,83 +276,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* ══════════════════════════════════════════════
-     ESCENA 2 — BRIDGE TEXT: "Cuando cierras los ojos..."
-     Se revela al hacer scroll hacia la transición
-     ══════════════════════════════════════════════ */
-  var bridgeText = document.getElementById('bridgeText');
-  var bridgeEl   = document.getElementById('gradientBridge');
-
-  function revealBridgeText(scrollY) {
-    if (!bridgeText || !bridgeEl) return;
-    var rect = bridgeEl.getBoundingClientRect();
-    // Aparecer cuando el puente está en la mitad inferior del viewport
-    if (rect.top < window.innerHeight * 0.65) {
-      bridgeText.classList.add('is-visible');
-    }
-  }
-
-  // Llamada inicial por si la página carga scrolleada
-  revealBridgeText(window.pageYOffset);
-
-
-  /* ══════════════════════════════════════════════
-     ESCENA 3 — ESTRELLAS en la sección Conoce Aurea
-     ══════════════════════════════════════════════ */
-  (function () {
-    var starsEl = document.getElementById('conoceStars');
-    if (!starsEl) return;
-
-    var frag = document.createDocumentFragment();
-    var COUNT = 65;
-
-    for (var i = 0; i < COUNT; i++) {
-      var s = document.createElement('span');
-      s.className = 'star';
-      var size    = 1 + Math.random() * 2.5;
-      var opacity = 0.15 + Math.random() * 0.65;
-      var dur     = 2.5 + Math.random() * 5;
-      var delay   = Math.random() * 6;
-
-      s.style.cssText =
-        'left:'                + (Math.random() * 100) + '%;' +
-        'top:'                 + (Math.random() * 100) + '%;' +
-        'width:'               + size + 'px;'  +
-        'height:'              + size + 'px;'  +
-        '--star-op:'           + opacity + ';' +
-        'animation-duration:'  + dur   + 's;'  +
-        'animation-delay:'     + delay + 's;';
-
-      frag.appendChild(s);
-    }
-    starsEl.appendChild(frag);
-  })();
-
-
-  /* ══════════════════════════════════════════════
-     ONDAS REACTIVAS AL MOUSE
-     Las ondas se deforman sutilmente con el cursor
-     ══════════════════════════════════════════════ */
-  (function () {
-    var conoceEl = document.getElementById('conoce');
-    var wavesEl  = document.getElementById('conoceWaves');
-    if (!conoceEl || !wavesEl) return;
-
-    conoceEl.addEventListener('mousemove', function (e) {
-      var rect = this.getBoundingClientRect();
-      var mx   = (e.clientX - rect.left)  / rect.width  - 0.5; // -0.5 a 0.5
-      var my   = (e.clientY - rect.top)   / rect.height - 0.5;
-      // Desplazamiento vertical del contenedor de ondas + leve escala horizontal
-      wavesEl.style.transform =
-        'translateY(' + (my * 20) + 'px) scaleX(' + (1 + mx * 0.018) + ')';
-    });
-
-    conoceEl.addEventListener('mouseleave', function () {
-      wavesEl.style.transform = '';
-    });
-  })();
-
-
-  /* ══════════════════════════════════════════════
      PRODUCTOS — EFECTO TILT 3D
      Las tarjetas se inclinan siguiendo el cursor
      ══════════════════════════════════════════════ */
@@ -394,57 +316,108 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* ══════════════════════════════════════════════
-     TESTIMONIOS — Fade + dots + auto-rotate + swipe
+     TESTIMONIOS — Stagger Cards
      ══════════════════════════════════════════════ */
   (function () {
-    var slidesContainer = document.getElementById('testimoniosSlides');
-    var dotsContainer   = document.getElementById('testimoniosDots');
-    if (!slidesContainer || !dotsContainer) return;
+    var stage = document.getElementById('staggerStage');
+    var prevBtn = document.getElementById('staggerPrev');
+    var nextBtn = document.getElementById('staggerNext');
+    if (!stage) return;
 
-    var slides  = slidesContainer.querySelectorAll('.testimonio');
-    var total   = slides.length;
-    var current = 0;
-    var timer;
+    var testimonials = [
+      { quote: 'Llevaba años con dolor de espalda. Desde que tengo el Aurea Serenity, duermo como nunca. La diferencia se nota desde la primera noche.', cite: 'María López — Madrid', img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=96&h=96&fit=crop&crop=face' },
+      { quote: 'El proceso de compra fue sencillísimo. Llegó en 3 días, lo saqué de la caja y en minutos estaba listo. Estamos encantados.', cite: 'Carlos García — Barcelona', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=96&h=96&fit=crop&crop=face' },
+      { quote: 'Probé las 100 noches convencida de que lo devolvería. Ocho meses después, sigo durmiendo de maravilla.', cite: 'Ana Ruiz — Valencia', img: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=96&h=96&fit=crop&crop=face' },
+      { quote: 'Mi pareja se mueve mucho por la noche. Con el Aurea Celestial, no me entero. La independencia de lechos es real.', cite: 'Javier Moreno — Sevilla', img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=96&h=96&fit=crop&crop=face' },
+      { quote: 'Nos costó decidir, pero la garantía de 10 años nos convenció. Tres años después, está como el primer día.', cite: 'Laura y Pablo — Bilbao', img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=96&h=96&fit=crop&crop=face' },
+      { quote: 'He probado colchones de 1.500 €. Este de 499 € los supera con creces. Eliminar intermediarios se nota.', cite: 'Fernando Díaz — Málaga', img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=96&h=96&fit=crop&crop=face' },
+      { quote: 'Sufro de calor por las noches. La capa de gel del Serenity ha sido un antes y un después para mí.', cite: 'Carmen Vega — Zaragoza', img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=96&h=96&fit=crop&crop=face' },
+      { quote: 'Lo compré para mi madre. Tiene 72 años y dice que no dormía tan bien desde joven. Eso no tiene precio.', cite: 'Roberto Sanz — A Coruña', img: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=96&h=96&fit=crop&crop=face' },
+      { quote: 'Soy fisioterapeuta y lo recomiendo a mis pacientes. La firmeza media es perfecta para la columna.', cite: 'Elena Torres — Murcia', img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=96&h=96&fit=crop&crop=face' },
+      { quote: 'Pedí un sábado, llegó el martes. Desempaquetar fue casi divertido. Calidad brutal por ese precio.', cite: 'Diego Herrera — Valladolid', img: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=96&h=96&fit=crop&crop=face' },
+      { quote: 'Después de comparar 20 marcas online, Aurea fue la que mejor relación calidad-precio ofrecía. Acerté.', cite: 'Sofía Martín — Alicante', img: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=96&h=96&fit=crop&crop=face' },
+      { quote: 'Lo mejor: sin tienda física, sin vendedor presionando. Compras tranquilo y si no te gusta, te lo recogen.', cite: 'Marcos Peña — Granada', img: 'https://images.unsplash.com/photo-1463453091185-61582044d556?w=96&h=96&fit=crop&crop=face' }
+    ];
 
-    // Construir dots
-    for (var i = 0; i < total; i++) {
-      (function (idx) {
-        var dot = document.createElement('button');
-        dot.className = 'testimonios__dot' + (idx === 0 ? ' is-active' : '');
-        dot.setAttribute('aria-label', 'Testimonio ' + (idx + 1));
-        dot.addEventListener('click', function () { goTo(idx); resetTimer(); });
-        dotsContainer.appendChild(dot);
-      })(i);
+    var cardSize = window.matchMedia('(min-width: 640px)').matches ? 340 : 270;
+
+    function handleResize() {
+      cardSize = window.matchMedia('(min-width: 640px)').matches ? 340 : 270;
+      render();
+    }
+    window.addEventListener('resize', handleResize);
+
+    function handleMove(steps) {
+      if (steps > 0) {
+        for (var i = 0; i < steps; i++) {
+          testimonials.push(testimonials.shift());
+        }
+      } else {
+        for (var i = 0; i < Math.abs(steps); i++) {
+          testimonials.unshift(testimonials.pop());
+        }
+      }
+      render();
     }
 
-    function goTo(index) {
-      slides[current].classList.remove('is-active');
-      current = index;
-      slides[current].classList.add('is-active');
-      dotsContainer.querySelectorAll('.testimonios__dot').forEach(function (d, idx) {
-        d.classList.toggle('is-active', idx === current);
+    function render() {
+      stage.innerHTML = '';
+      var half = Math.floor(testimonials.length / 2);
+
+      testimonials.forEach(function (t, index) {
+        var position = index - half;
+        var isCenter = position === 0;
+
+        var card = document.createElement('div');
+        card.className = 'stagger__card' + (isCenter ? ' is-center' : '');
+
+        var offsetX = (cardSize / 1.5) * position;
+        var offsetY = isCenter ? -55 : (position % 2 ? 12 : -12);
+        var rot = isCenter ? 0 : (position % 2 ? 2.5 : -2.5);
+
+        card.style.width = cardSize + 'px';
+        card.style.height = cardSize + 'px';
+        card.style.transform = 'translate(-50%, -50%) translateX(' + offsetX + 'px) translateY(' + offsetY + 'px) rotate(' + rot + 'deg)';
+
+        if (isCenter) {
+          card.style.boxShadow = '0px 8px 0px 4px var(--border)';
+        }
+
+        card.innerHTML =
+          '<img class="stagger__avatar" src="' + t.img + '" alt="' + t.cite.split('—')[0].trim() + '" loading="lazy">' +
+          '<p class="stagger__quote">&ldquo;' + t.quote + '&rdquo;</p>' +
+          '<cite class="stagger__cite">— ' + t.cite + '</cite>';
+
+        (function (pos) {
+          card.addEventListener('click', function () { handleMove(pos); });
+        })(position);
+
+        stage.appendChild(card);
       });
     }
 
-    function resetTimer() {
-      clearInterval(timer);
-      timer = setInterval(function () {
-        if (!document.hidden) goTo((current + 1) % total);
-      }, 6000);
-    }
-    resetTimer();
+    render();
 
-    // Swipe táctil
-    var startX = 0;
-    slidesContainer.addEventListener('touchstart', function (e) {
-      startX = e.changedTouches[0].screenX;
+    if (prevBtn) prevBtn.addEventListener('click', function () { handleMove(-1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { handleMove(1); });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function (e) {
+      var rect = stage.getBoundingClientRect();
+      if (rect.top > window.innerHeight || rect.bottom < 0) return;
+      if (e.key === 'ArrowRight') handleMove(1);
+      if (e.key === 'ArrowLeft') handleMove(-1);
+    });
+
+    // Touch swipe on stage
+    var touchStartX = 0;
+    stage.addEventListener('touchstart', function (e) {
+      touchStartX = e.changedTouches[0].screenX;
     }, { passive: true });
-    slidesContainer.addEventListener('touchend', function (e) {
-      var diff = startX - e.changedTouches[0].screenX;
-      if (Math.abs(diff) > 50) {
-        if (diff > 0 && current < total - 1) { goTo(current + 1); resetTimer(); }
-        else if (diff < 0 && current > 0)    { goTo(current - 1); resetTimer(); }
-      }
+    stage.addEventListener('touchend', function (e) {
+      var diff = touchStartX - e.changedTouches[0].screenX;
+      if (diff > 50) handleMove(1);
+      if (diff < -50) handleMove(-1);
     }, { passive: true });
   })();
 
@@ -500,420 +473,200 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* ══════════════════════════════════════════════
-     BENEFICIOS — Scrollytelling
-     Sticky scroll 3 actos en desktop.
-     IntersectionObserver por acto en móvil.
+     REVEAL TEXT — "AUREA" letter animation
      ══════════════════════════════════════════════ */
   (function () {
-    var track    = document.getElementById('beneficiosTrack');
-    var acts     = document.querySelectorAll('.beneficios__act');
-    var dots     = document.querySelectorAll('.beneficios__progress-dot');
-    if (!track || !acts.length) return;
+    var container = document.getElementById('revealText');
+    if (!container) return;
 
-    var reduced  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var isMobile = window.matchMedia('(max-width: 768px)').matches;
-    var activeIdx = 0; /* acto 0 ya tiene is-active en HTML */
+    var letters = container.querySelectorAll('.reveal-letter');
+    var LETTER_DELAY = 100;    // ms between each letter entrance
+    var SPRING_SETTLE = 700;   // ms for spring animation to complete
+    var SWEEP_DELAY = 60;      // ms between each gold flash
+    var hasRevealed = false;
 
-    /* ─── Cambia el acto visible con animación direccional ─── */
-    function setAct(idx) {
-      if (idx === activeIdx) return;
-      var prevIdx  = activeIdx;
-      var goingFwd = idx > prevIdx;
-      activeIdx = idx;
-
-      acts.forEach(function (act, i) {
-        act.classList.remove('is-active', 'is-prev');
-        if (i === idx) {
-          act.classList.add('is-active');
-        } else if (i === prevIdx && goingFwd) {
-          /* El acto que sale sube cuando avanzamos */
-          act.classList.add('is-prev');
-        }
-        /* Al retroceder el acto saliente baja (estado por defecto translateY(44px)) */
-      });
-
-      dots.forEach(function (dot, i) {
-        dot.classList.toggle('is-active', i === idx);
-      });
-    }
-
-    /* ═══ DESKTOP: scroll dentro del track ══════════════════ */
-    if (!isMobile) {
-
-      function onScrollDesktop() {
-        var rect        = track.getBoundingClientRect();
-        var scrollRange = track.offsetHeight - window.innerHeight;
-        if (scrollRange <= 0) { setAct(0); return; }
-        var scrolled  = -rect.top;
-        var progress  = Math.max(0, Math.min(1, scrolled / scrollRange));
-        /* 3 actos iguales: 0-33%, 33-66%, 66-100% */
-        setAct(Math.min(2, Math.floor(progress * 3)));
-      }
-
-      /* Activar el primer acto cuando el track entra en pantalla */
-      if ('IntersectionObserver' in window) {
-        var entryObs = new IntersectionObserver(function (entries) {
-          if (entries[0].isIntersecting) {
-            entryObs.disconnect();
-            onScrollDesktop();
-          }
-        }, { threshold: 0.05 });
-        entryObs.observe(track);
-      }
-
-      window.addEventListener('scroll', onScrollDesktop, { passive: true });
-      onScrollDesktop(); /* estado inicial */
-
-      /* Click en puntos de progreso: scroll al acto correspondiente */
-      dots.forEach(function (dot) {
-        dot.addEventListener('click', function () {
-          var step        = parseInt(this.getAttribute('data-step'), 10);
-          var trackTop    = track.getBoundingClientRect().top + window.pageYOffset;
-          var scrollRange = track.offsetHeight - window.innerHeight;
-          var target      = trackTop + (step / 3) * scrollRange;
-          window.scrollTo({ top: target, behavior: reduced ? 'auto' : 'smooth' });
+    // Set hover background images from data-img
+    letters.forEach(function (el) {
+      var imgUrl = el.getAttribute('data-img');
+      if (imgUrl) {
+        el.addEventListener('mouseenter', function () {
+          el.style.backgroundImage = 'url(' + imgUrl + ')';
         });
+        el.addEventListener('mouseleave', function () {
+          el.style.backgroundImage = '';
+          el.style.webkitTextFillColor = '';
+          el.style.backgroundPosition = '';
+        });
+      }
+    });
+
+    function revealSequence() {
+      if (hasRevealed) return;
+      hasRevealed = true;
+
+      // Phase 1: Spring entrance for each letter
+      letters.forEach(function (el, i) {
+        setTimeout(function () {
+          el.classList.add('is-revealed');
+        }, i * LETTER_DELAY);
       });
 
-    } else {
-      /* ═══ MÓVIL: IntersectionObserver por acto ══════════════ */
-      /* El primer acto es visible de inmediato sin necesidad de scroll */
-      acts[0].classList.add('is-visible');
-      if ('IntersectionObserver' in window) {
-        var actObs = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-            }
-          });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-        acts.forEach(function (act) { actObs.observe(act); });
-      } else {
-        acts.forEach(function (act) { act.classList.add('is-visible'); });
-      }
+      // Phase 2: Gold color flash on each letter after all have settled
+      var lastDelay = (letters.length - 1) * LETTER_DELAY;
+      var sweepStart = lastDelay + SPRING_SETTLE;
+
+      letters.forEach(function (el, i) {
+        setTimeout(function () {
+          el.classList.add('is-sweeping');
+        }, sweepStart + (i * SWEEP_DELAY));
+      });
     }
 
+    // Trigger on scroll into view
+    if ('IntersectionObserver' in window) {
+      var rio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            revealSequence();
+            rio.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      rio.observe(container);
+    } else {
+      // Fallback: reveal immediately
+      revealSequence();
+    }
   })();
 
-  /* ── fin BENEFICIOS ── fin ── */
-  void (function () {
-    /* bloque eliminado — lógica en scrollytelling IIFE arriba */
-    if (true) return; /* early exit inmediato */
 
-    /* ─── 1. CINEMÁTICA DE ENTRADA ─────────────────── */
-    var cinemaOverlay = document.getElementById('beneficiosCinemaOverlay');
-    var titleEl       = document.getElementById('beneficiosTitle');
-    var cursorEl      = document.getElementById('beneficiosCursor');
-    var underlinePath = section.querySelector('.beneficios__underline-path');
-    var subtitleEl    = document.getElementById('beneficiosSubtitle');
-    var TEXT          = '¿Por qué Aurea?';
-    var entryDone     = false;
+  /* ══════════════════════════════════════════════
+     BLOG — Animated Card Stack
+     ══════════════════════════════════════════════ */
+  (function () {
+    var stage = document.getElementById('cardStackStage');
+    var nextBtn = document.getElementById('cardStackNext');
+    if (!stage) return;
 
-    function startCinematicEntry() {
-      if (entryDone) return;
-      entryDone = true;
-
-      if (reduced) {
-        if (cinemaOverlay) cinemaOverlay.classList.add('is-revealed');
-        if (titleEl) { titleEl.textContent = TEXT; titleEl.classList.add('is-typing', 'is-morphed'); }
-        if (cursorEl) cursorEl.style.display = 'none';
-        if (underlinePath) underlinePath.classList.add('is-drawn');
-        if (subtitleEl) subtitleEl.classList.add('is-focused');
-        return;
+    var articles = [
+      {
+        href: 'blog/mejores-colchones-calidad-precio.html',
+        img: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80',
+        time: '9 min',
+        tag: 'Guía de compra',
+        title: 'Mejores colchones calidad-precio 2025',
+        desc: 'Guía definitiva'
+      },
+      {
+        href: 'blog/colchones-gama-media.html',
+        img: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&q=80',
+        time: '8 min',
+        tag: 'Colchones',
+        title: 'Colchones de gama media',
+        desc: 'El equilibrio perfecto'
+      },
+      {
+        href: 'blog/elegir-colchon-sin-gastar-de-mas.html',
+        img: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=600&q=80',
+        time: '7 min',
+        tag: 'Consejos',
+        title: 'Elegir colchón sin gastar de más',
+        desc: 'Claves para acertar'
+      },
+      {
+        href: 'blog/errores-que-arruinan-tu-sueno.html',
+        img: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600&q=80',
+        time: '6 min',
+        tag: 'Errores comunes',
+        title: '7 errores al comprar colchón',
+        desc: 'Evita estos fallos'
       }
+    ];
 
-      /* Fase 1: fade del overlay negro */
-      setTimeout(function () {
-        if (cinemaOverlay) cinemaOverlay.classList.add('is-revealed');
-      }, 250);
+    // Position presets: [scale, yOffset from bottom]
+    var positions = [
+      { scale: 1,    y: 12  },  // front
+      { scale: 0.95, y: -16 },  // middle
+      { scale: 0.90, y: -44 }   // back
+    ];
 
-      /* Fase 2: aparece cursor parpadeante */
-      setTimeout(function () {
-        if (cursorEl) cursorEl.classList.add('is-active');
-        if (titleEl)  { titleEl.textContent = ''; titleEl.classList.add('is-typing'); }
-      }, 1000);
+    var order = articles.map(function (_, i) { return i; });
 
-      /* Fase 3: typewriter letra a letra */
-      var typeStart = 1380;
-      for (var i = 0; i < TEXT.length; i++) {
-        (function (idx, delay) {
-          setTimeout(function () {
-            if (titleEl) titleEl.textContent = TEXT.slice(0, idx + 1);
-          }, delay);
-        })(i, typeStart + i * 62);
-      }
-
-      /* Fase 4: morph a serif + ocultar cursor + dibujar línea */
-      var morphAt = typeStart + TEXT.length * 62 + 320;
-      setTimeout(function () {
-        if (cursorEl) cursorEl.classList.remove('is-active');
-        if (titleEl)  titleEl.classList.add('is-morphed');
-        setTimeout(function () {
-          if (underlinePath) underlinePath.classList.add('is-drawn');
-        }, 180);
-      }, morphAt);
-
-      /* Fase 5: subtítulo blur-to-focus */
-      setTimeout(function () {
-        if (subtitleEl) subtitleEl.classList.add('is-focused');
-      }, morphAt + 650);
+    function buildCard(article) {
+      return '<a href="' + article.href + '">' +
+        '<div class="stack-card__img">' +
+          '<img class="stack-card__photo" src="' + article.img + '" alt="' + article.title + '" loading="lazy">' +
+          '<div class="stack-card__img-overlay"></div>' +
+          '<span class="stack-card__tag">' + article.tag + '</span>' +
+          '<span class="stack-card__time">' + article.time + '</span>' +
+        '</div>' +
+        '<div class="stack-card__body">' +
+          '<div class="stack-card__text">' +
+            '<div class="stack-card__title">' + article.title + '</div>' +
+            '<div class="stack-card__desc">' + article.desc + '</div>' +
+          '</div>' +
+          '<span class="stack-card__read">Leer <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"><path d="M9.5 18L15.5 12L9.5 6"/></svg></span>' +
+        '</div>' +
+      '</a>';
     }
 
-    if ('IntersectionObserver' in window) {
-      var entryObs = new IntersectionObserver(function (entries) {
-        if (!entries[0].isIntersecting) return;
-        entryObs.disconnect();
-        startCinematicEntry();
-      }, { threshold: 0.15 });
-      entryObs.observe(section);
-    } else {
-      startCinematicEntry();
+    function render() {
+      stage.innerHTML = '';
+      // Show only the first 3 from order
+      var visible = order.slice(0, 3);
+
+      visible.forEach(function (articleIdx, stackPos) {
+        var pos = positions[stackPos] || positions[2];
+        var card = document.createElement('div');
+        card.className = 'stack-card';
+        card.innerHTML = buildCard(articles[articleIdx]);
+        card.style.zIndex = 3 - stackPos;
+        card.style.transform = 'translate(-50%, 0) translateY(' + pos.y + 'px) scale(' + pos.scale + ')';
+        stage.appendChild(card);
+      });
     }
 
-    /* ─── 2. CANVAS ONDAS SINUSOIDALES + HALO ─────── */
-    (function () {
-      var canvas = document.getElementById('beneficiosCanvas');
-      var halo   = document.getElementById('beneficiosCursorHalo');
-      if (!canvas || reduced) return;
-
-      var ctx = canvas.getContext('2d');
-      var W = 0, H = 0, RAF = null;
-      var targetMX = 0.5, targetMY = 0.5;
-      var currentMX = 0.5, currentMY = 0.5;
-      var t = 0;
-
-      var WAVES = [
-        { amp: 18, freq: 0.009, speed: 0.013, op: 0.07, r: 26, g: 58, b: 107 },
-        { amp: 12, freq: 0.013, speed: 0.019, op: 0.05, r: 13, g: 27, b: 62  },
-        { amp: 22, freq: 0.006, speed: 0.009, op: 0.04, r: 26, g: 58, b: 107 }
-      ];
-
-      function resize() {
-        W = canvas.width  = canvas.offsetWidth;
-        H = canvas.height = canvas.offsetHeight;
-      }
-      resize();
-      window.addEventListener('resize', resize, { passive: true });
-
-      function onMouseMove(e) {
-        var rect = section.getBoundingClientRect();
-        targetMX = (e.clientX - rect.left) / rect.width;
-        targetMY = (e.clientY - rect.top)  / rect.height;
-        if (halo) {
-          halo.style.opacity = '1';
-          halo.style.left    = (e.clientX - rect.left) + 'px';
-          halo.style.top     = (e.clientY - rect.top)  + 'px';
-        }
-      }
-      function onMouseLeave() {
-        targetMX = 0.5; targetMY = 0.5;
-        if (halo) halo.style.opacity = '0';
-      }
-
-      if (isFine) {
-        section.addEventListener('mousemove',  onMouseMove,  { passive: true });
-        section.addEventListener('mouseleave', onMouseLeave);
-      }
-
-      function drawFrame() {
-        if (!W || !H) { RAF = requestAnimationFrame(drawFrame); return; }
-
-        currentMX += (targetMX - currentMX) * 0.04;
-        currentMY += (targetMY - currentMY) * 0.04;
-
-        ctx.clearRect(0, 0, W, H);
-
-        for (var w = 0; w < WAVES.length; w++) {
-          var wv = WAVES[w];
-          var distort = (currentMX - 0.5) * 28;
-          ctx.beginPath();
-          for (var x = 0; x <= W; x += 2) {
-            var nx = x / W;
-            var mouseInfluence = Math.exp(-Math.pow(nx - currentMX, 2) / 0.08) * currentMY * 18;
-            var y = H * 0.5
-                  + Math.sin(x * wv.freq + t * wv.speed) * wv.amp
-                  + Math.cos(x * wv.freq * 0.7 + t * wv.speed * 1.3) * (wv.amp * 0.4)
-                  + mouseInfluence
-                  + distort * Math.sin(x * wv.freq * 2);
-            if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-          }
-          ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
-          ctx.fillStyle = 'rgba(' + wv.r + ',' + wv.g + ',' + wv.b + ',' + wv.op + ')';
-          ctx.fill();
-        }
-        t++;
-        RAF = requestAnimationFrame(drawFrame);
-      }
-
-      new IntersectionObserver(function (entries) {
-        if (entries[0].isIntersecting) {
-          if (!W || !H) resize();
-          if (!RAF) drawFrame();
-        } else {
-          cancelAnimationFrame(RAF); RAF = null;
-        }
-      }, { threshold: 0 }).observe(section);
-    })();
-
-    /* ─── 3. STAGGER DE TARJETAS ────────────────────── */
-    (function () {
-      var cards = document.querySelectorAll('#beneficiosGrid .beneficio');
+    function animateNext() {
+      var cards = stage.querySelectorAll('.stack-card');
       if (!cards.length) return;
 
-      if ('IntersectionObserver' in window) {
-        var cardObs = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (!entry.isIntersecting) return;
-            var idx   = parseInt(entry.target.getAttribute('data-card-idx') || '0', 10);
-            var delay = (reduced || !isDesktop) ? 0 : idx * 200;
-            setTimeout(function () { entry.target.classList.add('is-visible'); }, delay);
-            cardObs.unobserve(entry.target);
-          });
-        }, { threshold: 0.15 });
-        cards.forEach(function (card, i) {
-          card.setAttribute('data-card-idx', i);
-          cardObs.observe(card);
-        });
-      } else {
-        cards.forEach(function (c) { c.classList.add('is-visible'); });
-      }
-    })();
+      // Exit first card
+      cards[0].classList.add('is-exiting');
 
-    /* ─── 4. TILT 3D EN TARJETAS ────────────────────── */
-    (function () {
-      if (!isFine || reduced) return;
-      var cards = document.querySelectorAll('#beneficiosGrid .beneficio');
+      // After exit animation, cycle order and re-render
+      setTimeout(function () {
+        order.push(order.shift());
+        render();
+      }, 500);
+    }
 
-      cards.forEach(function (card) {
-        function onMove(e) {
-          var rect = card.getBoundingClientRect();
-          var mx = (e.clientX - rect.left) / rect.width  - 0.5;
-          var my = (e.clientY - rect.top)  / rect.height - 0.5;
-          card.style.transition = 'transform 0.1s ease, box-shadow 0.1s ease';
-          card.style.transform  = 'perspective(800px) rotateX(' + (-my * 14) + 'deg) rotateY(' + (mx * 14) + 'deg) translateZ(12px)';
-          card.style.boxShadow  = (-mx * 20) + 'px ' + (-my * 20 + 8) + 'px 40px rgba(13,27,62,0.15)';
-        }
-        function onLeave() {
-          card.style.transition = 'transform 0.6s cubic-bezier(0.16,1,0.3,1), box-shadow 0.6s cubic-bezier(0.16,1,0.3,1)';
-          card.style.transform  = '';
-          card.style.boxShadow  = '';
-        }
-        card.addEventListener('mousemove',  onMove);
-        card.addEventListener('mouseleave', onLeave);
-      });
-    })();
+    render();
 
-    /* ─── 5. CONTADORES CINEMATOGRÁFICOS ──────────────── */
-    (function () {
-      var counters = document.querySelectorAll('#beneficiosGrid .beneficio__counter');
-      if (!counters.length) return;
+    if (nextBtn) {
+      nextBtn.addEventListener('click', animateNext);
+    }
 
-      function animateCounter(el) {
-        var target   = parseInt(el.getAttribute('data-target'), 10);
-        var duration = 1800;
-        var startTs  = null;
-        function ease(t) { return 1 - Math.pow(1 - t, 3); }
-        function step(ts) {
-          if (!startTs) startTs = ts;
-          var progress = Math.min((ts - startTs) / duration, 1);
-          el.textContent = Math.round(ease(progress) * target);
-          if (progress < 1) {
-            requestAnimationFrame(step);
-          } else {
-            el.textContent = target;
-            el.style.transition = 'color 0.15s, text-shadow 0.15s';
-            el.style.color = '#1a3a6b';
-            el.style.textShadow = '0 0 14px rgba(26,58,107,0.45)';
-            setTimeout(function () { el.style.textShadow = ''; }, 420);
-          }
-        }
-        if (reduced) { el.textContent = target; return; }
-        requestAnimationFrame(step);
-      }
+    // Touch swipe on stage
+    var swipeStartX = 0;
+    stage.addEventListener('touchstart', function (e) {
+      swipeStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    stage.addEventListener('touchend', function (e) {
+      var diff = swipeStartX - e.changedTouches[0].screenX;
+      if (diff > 50) animateNext();
+    }, { passive: true });
+  })();
 
-      if ('IntersectionObserver' in window) {
-        var cntObs = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (!entry.isIntersecting) return;
-            animateCounter(entry.target);
-            cntObs.unobserve(entry.target);
-          });
-        }, { threshold: 0.35 });
-        counters.forEach(function (el) { cntObs.observe(el); });
-      } else {
-        counters.forEach(animateCounter);
-      }
-    })();
 
-    /* ─── 6. RIPPLE + ACORDEÓN AL CLICK ──────────────── */
-    (function () {
-      var cards = document.querySelectorAll('#beneficiosGrid .beneficio');
-
-      cards.forEach(function (card) {
-        function activate(e) {
-          var isOpen = card.classList.contains('is-expanded');
-
-          /* Ripple (solo click con ratón) */
-          if (e.type === 'click' && e.clientX && !reduced) {
-            var rect   = card.getBoundingClientRect();
-            var ripple = document.createElement('span');
-            ripple.className  = 'beneficio__ripple';
-            ripple.style.left = (e.clientX - rect.left) + 'px';
-            ripple.style.top  = (e.clientY - rect.top)  + 'px';
-            card.appendChild(ripple);
-            setTimeout(function () { if (ripple.parentNode) ripple.parentNode.removeChild(ripple); }, 800);
-          }
-
-          /* Colapsar todas las demás */
-          cards.forEach(function (c) {
-            if (c !== card) {
-              c.classList.remove('is-expanded');
-              c.setAttribute('aria-expanded', 'false');
-              var exp = c.querySelector('.beneficio__expanded');
-              if (exp) exp.setAttribute('aria-hidden', 'true');
-            }
-          });
-
-          /* Toggle este */
-          if (isOpen) {
-            card.classList.remove('is-expanded');
-            card.setAttribute('aria-expanded', 'false');
-            var exp = card.querySelector('.beneficio__expanded');
-            if (exp) exp.setAttribute('aria-hidden', 'true');
-          } else {
-            card.classList.add('is-expanded');
-            card.setAttribute('aria-expanded', 'true');
-            var exp = card.querySelector('.beneficio__expanded');
-            if (exp) exp.setAttribute('aria-hidden', 'false');
-          }
-        }
-
-        card.addEventListener('click', activate);
-        card.addEventListener('keydown', function (e) {
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(e); }
-        });
-      });
-    })();
-
-    /* ─── 7. BARRA DE PROGRESO DE SCROLL ────────────── */
-    (function () {
-      var bar = document.getElementById('beneficiosScrollProgress');
-      if (!bar) return;
-
-      function update() {
-        var rect    = section.getBoundingClientRect();
-        var sectionH = section.offsetHeight;
-        var viewH    = window.innerHeight;
-        var scrolled = -rect.top;
-        var total    = sectionH - viewH;
-        var pct      = Math.max(0, Math.min(1, total > 0 ? scrolled / total : 0));
-        bar.style.height = (pct * 100) + '%';
-      }
-
-      window.addEventListener('scroll', update, { passive: true });
-      update();
-    })();
-
+  /* ══════════════════════════════════════════════
+     LOGO CLOUD — Duplicate items for seamless loop
+     ══════════════════════════════════════════════ */
+  (function () {
+    var track = document.getElementById('logoCloudTrack');
+    if (!track) return;
+    // Clone all items once to create the seamless loop
+    var items = track.innerHTML;
+    track.innerHTML = items + items;
   })();
 
 });

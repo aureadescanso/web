@@ -397,143 +397,26 @@ ul  { list-style: none; }
 }
 
 
-/* ==============================================
-   ESCENA 2 — Gradient bridge con texto
-   ============================================== */
-.gradient-bridge {
-  height: 340px;
-  background: linear-gradient(to bottom, var(--white), var(--navy));
-  position: relative;
+
+/* Mini-franja de confianza del hero */
+.hero__trust {
+  width: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  margin-top: 26px;
 }
-
-/* "Cuando cierras los ojos..." */
-.bridge-text {
-  font-family: var(--serif);
-  font-size: clamp(1.4rem, 3.5vw, 2.4rem);
-  font-weight: 400;
-  font-style: italic;
-  color: rgba(255, 255, 255, 0.92);
-  letter-spacing: -0.02em;
-  text-align: center;
-  padding: 0 32px;
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 1.4s var(--ease-out), transform 1.4s var(--ease-out);
-  text-shadow: 0 4px 32px rgba(0, 0, 0, 0.25);
-}
-.bridge-text.is-visible {
-  opacity: 1;
-  transform: none;
-}
-
-
-/* ==============================================
-   3. CONOCE AUREA — ESCENA 3 (noche estrellada)
-   ============================================== */
-.conoce {
-  background: var(--navy);
-  position: relative;
-  overflow: hidden;
-  min-height: 80vh;
-  display: flex;
+.hero__trust span {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 120px 24px;
-}
-
-/* Estrellas generadas por JS */
-.conoce__stars {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-.star {
-  position: absolute;
-  border-radius: 50%;
-  background: #ffffff;
-  animation: starTwinkle ease-in-out infinite;
-}
-@keyframes starTwinkle {
-  0%, 100% { opacity: var(--star-op, 0.4); transform: scale(1); }
-  50%       { opacity: calc(var(--star-op, 0.4) * 0.25); transform: scale(0.6); }
-}
-
-/* Ondas SVG — reaccionan al mouse via JS en el contenedor */
-.conoce__waves {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  will-change: transform;
-  transition: transform 0.6s var(--ease-out);
-}
-.conoce__wave {
-  position: absolute;
-  left: 0;
-  width: 200%;
-  height: 120px;
-}
-.conoce__wave--1 {
-  top: 20%;
-  animation: waveLoop 8s linear infinite;
-}
-.conoce__wave--2 {
-  top: 50%;
-  animation: waveLoop 12s linear infinite reverse;
-}
-.conoce__wave--3 {
-  top: 80%;
-  animation: waveLoop 16s linear infinite;
-}
-
-@keyframes waveLoop {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-/* Content */
-.conoce__content {
-  position: relative;
-  z-index: 1;
-  max-width: 620px;
-  text-align: center;
-}
-.conoce__title {
-  font-family: var(--serif);
-  font-size: clamp(2.2rem, 5vw, 3.75rem);
+  gap: 8px;
+  font-size: 0.8125rem;
   font-weight: 500;
-  color: var(--white);
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-  margin-bottom: 28px;
+  color: var(--text-3);
 }
-.conoce__text {
-  font-size: 1.0625rem;
-  line-height: 1.75;
-  color: rgba(255,255,255,0.55);
-  font-weight: 300;
-}
+.hero__trust svg { color: #C49A2C; flex-shrink: 0; }
 
-
-/* ==============================================
-   ESCENA 4 — Dawn bridge: noche → amanecer
-   ============================================== */
-.dawn-bridge {
-  height: 120px;
-  background: linear-gradient(to bottom, var(--navy), var(--gray));
-}
-
-
-/* ==============================================
-   4. BENEFICIOS — Scrollytelling
-   ============================================== */
-.beneficios {
-  position: relative;
-  background: #0A1128;
-}
 
 
 /* ==============================================
@@ -563,6 +446,7 @@ ul  { list-style: none; }
   box-shadow: 0 16px 48px rgba(0,0,0,0.08);
 }
 .producto__img {
+  display: block;
   aspect-ratio: 4/3;
   overflow: hidden;
   background: #E8E8ED;
@@ -611,80 +495,163 @@ ul  { list-style: none; }
 
 
 /* ==============================================
-   6. TESTIMONIOS
+   6. TESTIMONIOS — Stagger Cards
    ============================================== */
 .testimonios {
-  padding: 140px 0;
+  padding: 140px 0 80px;
   background: var(--gray);
 }
 
-.testimonios__stage {
-  max-width: 740px;
-  margin: 0 auto;
-}
-
-.testimonios__slides {
+.stagger {
   position: relative;
-  min-height: 200px;
+  width: 100%;
+  overflow: hidden;
+  height: 520px;
 }
 
-.testimonio {
+.stagger__stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* --- Card --- */
+.stagger__card {
   position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 0.6s var(--ease);
-  text-align: center;
+  left: 50%;
+  top: 50%;
+  width: 340px;
+  height: 340px;
+  padding: 32px;
+  background: var(--white);
+  border: 2px solid var(--border);
+  cursor: pointer;
+  transition: all 0.5s var(--ease-out);
+  clip-path: polygon(40px 0%, calc(100% - 40px) 0%, 100% 40px, 100% 100%, calc(100% - 40px) 100%, 40px 100%, 0 100%, 0 0);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  pointer-events: none;
-}
-.testimonio.is-active {
-  opacity: 1;
-  position: relative;
-  pointer-events: auto;
+  justify-content: space-between;
 }
 
-.testimonio__quote {
+.stagger__card.is-center {
+  z-index: 10;
+  background: var(--navy);
+  border-color: var(--navy);
+  box-shadow: 0px 8px 0px 4px var(--border);
+}
+.stagger__card:not(.is-center) {
+  z-index: 1;
+}
+.stagger__card:not(.is-center):hover {
+  border-color: rgba(27, 45, 91, 0.4);
+}
+
+/* Corner notch line */
+.stagger__card::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: 38px;
+  width: 56.57px; /* sqrt(40^2 + 40^2) */
+  height: 2px;
+  background: var(--border);
+  transform-origin: top right;
+  transform: rotate(45deg);
+}
+.stagger__card.is-center::after {
+  background: rgba(255,255,255,0.2);
+}
+
+/* Avatar */
+.stagger__avatar {
+  width: 48px;
+  height: 40px;
+  object-fit: cover;
+  object-position: top;
+  background: var(--gray);
+  box-shadow: 3px 3px 0px var(--gray);
+  flex-shrink: 0;
+  margin-bottom: 16px;
+}
+.stagger__card.is-center .stagger__avatar {
+  box-shadow: 3px 3px 0px rgba(255,255,255,0.15);
+}
+
+/* Quote */
+.stagger__quote {
   font-family: var(--serif);
-  font-size: clamp(1.25rem, 3vw, 1.875rem);
+  font-size: 1.05rem;
   font-weight: 400;
   font-style: italic;
   line-height: 1.5;
-  color: var(--navy);
-  letter-spacing: -0.01em;
-  margin-bottom: 28px;
+  color: var(--text);
+  flex: 1;
+}
+.stagger__card.is-center .stagger__quote {
+  color: var(--white);
 }
 
-.testimonio__cite {
+/* Cite */
+.stagger__cite {
   font-family: var(--sans);
   font-style: normal;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 400;
   color: var(--text-3);
+  margin-top: auto;
+}
+.stagger__card.is-center .stagger__cite {
+  color: rgba(255,255,255,0.7);
 }
 
-.testimonios__dots {
+/* --- Navigation --- */
+.stagger__nav {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
+  gap: 8px;
+  z-index: 20;
+}
+
+.stagger__btn {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-top: 44px;
-}
-.testimonios__dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--border);
-  border: none;
-  padding: 0;
+  background: var(--white);
+  border: 2px solid var(--border);
+  color: var(--navy);
   cursor: pointer;
-  transition: background 0.3s, transform 0.3s;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
 }
-.testimonios__dot.is-active {
+.stagger__btn:hover {
   background: var(--navy);
-  transform: scale(1.35);
+  color: var(--white);
+  border-color: var(--navy);
 }
-.testimonios__dot:hover:not(.is-active) { background: var(--text-3); }
+.stagger__btn:focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: 2px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .stagger { height: 480px; }
+  .stagger__card {
+    width: 270px;
+    height: 270px;
+    padding: 24px;
+    clip-path: polygon(30px 0%, calc(100% - 30px) 0%, 100% 30px, 100% 100%, calc(100% - 30px) 100%, 30px 100%, 0 100%, 0 0);
+  }
+  .stagger__card::after {
+    top: 28px;
+    width: 42.43px;
+  }
+  .stagger__quote { font-size: 0.9375rem; }
+}
 
 
 /* ==============================================
@@ -719,12 +686,13 @@ ul  { list-style: none; }
 
 
 /* ==============================================
-   8. CTA
+   8. CTA + REVEAL TEXT
    ============================================== */
 .cta {
-  padding: 140px 0;
+  padding: 100px 0 140px;
   background: var(--navy);
   text-align: center;
+  overflow: hidden;
 }
 .cta__title {
   font-family: var(--serif);
@@ -734,6 +702,171 @@ ul  { list-style: none; }
   line-height: 1.1;
   letter-spacing: -0.025em;
   margin-bottom: 36px;
+}
+
+/* --- Reveal Text --- */
+.reveal-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 48px;
+  gap: 0;
+}
+
+.reveal-letter {
+  display: inline-block;
+  font-family: var(--serif);
+  font-size: clamp(4rem, 15vw, 12rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+  transform: scale(0);
+  opacity: 0;
+  transition: none;
+  cursor: pointer;
+  -webkit-text-fill-color: var(--white);
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  user-select: none;
+}
+
+/* Spring entrance animation */
+.reveal-letter.is-revealed {
+  animation: revealSpring 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes revealSpring {
+  0%   { transform: scale(0); opacity: 0; }
+  60%  { transform: scale(1.12); opacity: 1; }
+  80%  { transform: scale(0.95); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Gold flash sweep — combined with spring so it doesn't override visibility */
+.reveal-letter.is-sweeping {
+  animation: revealSpring 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+             goldFlash 0.4s ease-in-out forwards;
+}
+@keyframes goldFlash {
+  0%   { -webkit-text-fill-color: var(--white); }
+  10%  { -webkit-text-fill-color: #D4AF37; }
+  70%  { -webkit-text-fill-color: #D4AF37; }
+  100% { -webkit-text-fill-color: var(--white); }
+}
+
+/* Hover: image-filled text */
+.reveal-letter.is-revealed:hover {
+  -webkit-text-fill-color: transparent;
+  background-size: cover;
+  background-position: center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: background-position 3s ease-in-out;
+  background-position: 10% center;
+}
+
+
+/* ==============================================
+   LOGO CLOUD — Infinite Slider
+   ============================================== */
+.logo-cloud {
+  padding: 72px 0;
+  background: var(--white);
+  text-align: center;
+}
+
+.logo-cloud__heading {
+  font-family: var(--sans);
+  font-size: clamp(1.1rem, 2.5vw, 1.375rem);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+  padding: 0 24px;
+}
+
+.logo-cloud__muted {
+  color: var(--text-3);
+  font-weight: 400;
+}
+
+.logo-cloud__bold {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.logo-cloud__divider {
+  height: 1px;
+  max-width: 480px;
+  margin: 0 auto;
+  background: var(--border);
+  mask-image: linear-gradient(to right, transparent, black, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black, transparent);
+}
+
+.logo-cloud__mask {
+  overflow: hidden;
+  padding: 32px 0;
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+.logo-cloud__track {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  width: max-content;
+  animation: logoScroll 30s linear infinite;
+}
+
+.logo-cloud__track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes logoScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.logo-cloud__logo {
+  flex-shrink: 0;
+  font-family: var(--sans);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-3);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+  text-transform: lowercase;
+}
+
+.logo-cloud__logo--serif {
+  font-family: var(--serif);
+  font-weight: 600;
+  text-transform: none;
+  color: var(--navy);
+  font-size: 1.35rem;
+}
+
+.logo-cloud__logo--accent {
+  text-transform: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--text-2);
+  border: 1.5px solid var(--border);
+  border-radius: 980px;
+  padding: 6px 20px;
+}
+
+@media (max-width: 768px) {
+  .logo-cloud { padding: 48px 0; }
+  .logo-cloud__logo { font-size: 1rem; }
+  .logo-cloud__logo--serif { font-size: 1.1rem; }
+  .logo-cloud__logo--accent { font-size: 0.9rem; padding: 5px 16px; }
+  .logo-cloud__track { gap: 32px; }
 }
 
 
@@ -793,11 +926,6 @@ ul  { list-style: none; }
    RESPONSIVE
    ============================================== */
 
-/* Tablet */
-@media (max-width: 1024px) {
-  .beneficios__grid { gap: 36px; }
-}
-
 /* Mobile */
 @media (max-width: 768px) {
   /* Header */
@@ -810,15 +938,6 @@ ul  { list-style: none; }
   .hero { padding: 110px 24px 60px; min-height: 90vh; }
   .hero__arrow { bottom: 24px; }
 
-  /* Bridge */
-  .gradient-bridge { height: 220px; }
-  .dawn-bridge { height: 80px; }
-
-  /* Conoce */
-  .conoce { padding: 80px 24px; min-height: auto; }
-
-  /* Beneficios: responsive gestionado en bloque extendido */
-
   /* Productos */
   .productos { padding: 100px 0; }
   .section-title { margin-bottom: 48px; }
@@ -829,7 +948,7 @@ ul  { list-style: none; }
   }
 
   /* Testimonios */
-  .testimonios { padding: 100px 0; }
+  .testimonios { padding: 100px 0 60px; }
 
   /* Números */
   .numeros { padding: 80px 0; }
@@ -853,581 +972,154 @@ ul  { list-style: none; }
 
 
 /* ==============================================
-   BENEFICIOS — Scrollytelling
+   COMPROMISO — Banda compacta (inicio)
+   Envío 3–5 días · 100 noches · 10 años
    ============================================== */
-
-/* Track: 400vh de altura para las 3 escenas en desktop */
-.beneficios__track {
+.promesa {
   position: relative;
-  height: 400vh;
-}
-
-/* Panel sticky: se congela mientras el track ocupa la pantalla */
-.beneficios__sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
+  background:
+    radial-gradient(120% 90% at 50% -20%, #1c2f5d 0%, rgba(28,47,93,0) 60%),
+    linear-gradient(180deg, #0A1128 0%, #101d3d 100%);
+  padding: 110px 0 120px;
   overflow: hidden;
-  /* Fallback sólido para navegadores sin multi-bg */
-  background-color: #0A1128;
-  /* Capas: 1 aurora radial · 2 calor dorado tenue · 3 lineal nocturno→orgánico */
-  background-image:
-    radial-gradient(
-      ellipse 68% 54% at 66% 34%,
-      rgba(30, 62, 118, 0.50) 0%,
-      transparent 62%
-    ),
-    radial-gradient(
-      ellipse 88% 32% at 50% 108%,
-      rgba(212, 175, 55, 0.07) 0%,
-      transparent 60%
-    ),
-    linear-gradient(
-      180deg,
-      #0A1128  0%,
-      #0d1b36 20%,
-      #132040 46%,
-      #1B2D5B 72%,
-      #EEF1EE 100%
-    );
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
-
-/* Aurora animada: respiración lenta de luz sobre el panel */
-.beneficios__sticky::before {
+/* Hilo dorado decorativo superior */
+.promesa::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 80% 56% at 36% 60%,
-    rgba(27, 45, 91, 0.30) 0%,
-    transparent 66%
-  );
-  animation: auroraBreath 18s ease-in-out infinite alternate;
-  pointer-events: none;
-  z-index: 0;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: min(720px, 80vw);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,0.55), transparent);
 }
-@keyframes auroraBreath {
-  from { opacity: 0.5;  transform: scale(1)    translate(0,  0); }
-  to   { opacity: 1;    transform: scale(1.12) translate(-7%, 5%); }
+.promesa__head {
+  text-align: center;
+  margin-bottom: 72px;
 }
-
-/* Marca de agua de fondo */
-.beneficios__watermark {
-  position: absolute;
-  inset: 0;
-  display: flex;
+.promesa__eyebrow {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  font-family: var(--serif);
-  font-size: clamp(110px, 20vw, 260px);
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  color: rgba(255, 255, 255, 0.02);
-  pointer-events: none;
-  user-select: none;
-  white-space: nowrap;
-  z-index: 0;
-}
-
-/* Puntos de progreso laterales */
-.beneficios__progress {
-  position: absolute;
-  right: clamp(16px, 3vw, 36px);
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  z-index: 10;
-  background: none;
-  border: none;
-  padding: 0;
-}
-.beneficios__progress-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.25);
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  transition: background 0.4s ease, transform 0.4s ease;
-  display: block;
-}
-.beneficios__progress-dot.is-active {
-  background: #D4AF37;
-  transform: scale(1.55);
-}
-.beneficios__progress-dot:hover:not(.is-active) {
-  background: rgba(255, 255, 255, 0.55);
-}
-
-/* Actos: apilados en absoluto; JS alterna is-active */
-.beneficios__act {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 24px;
-  opacity: 0;
-  transform: translateY(44px);
-  transition:
-    opacity   0.75s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-  pointer-events: none;
-  z-index: 1;
-  will-change: opacity, transform;
-}
-.beneficios__act.is-active {
-  opacity: 1;
-  transform: none;
-  pointer-events: auto;
-}
-/* Salida hacia arriba al avanzar */
-.beneficios__act.is-prev {
-  opacity: 0;
-  transform: translateY(-32px);
-}
-
-/* Layout asimetrico texto / visual */
-.beneficios__act-inner {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: clamp(40px, 6vw, 90px);
-}
-.beneficios__act-visual--left { order: -1; }
-
-/* Numero de paso dorado */
-.beneficios__step-num {
-  display: block;
-  font-family: var(--sans);
-  font-size: 0.7rem;
+  gap: 10px;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(212,175,55,0.85);
+  margin-bottom: 18px;
+}
+.promesa__eyebrow::before,
+.promesa__eyebrow::after {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: rgba(212,175,55,0.4);
+}
+.promesa__title {
+  font-family: var(--serif);
+  font-size: clamp(1.9rem, 4.2vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.promesa__title em {
+  font-style: italic;
+  color: #D4AF37;
+}
+.promesa__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.promesa__item {
+  position: relative;
+  text-align: center;
+  padding: 12px 36px;
+}
+.promesa__item + .promesa__item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 50%;
+  transform: translateY(-50%);
+  height: 72%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(255,255,255,0.14), transparent);
+}
+.promesa__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  border: 1px solid rgba(212,175,55,0.35);
   color: #D4AF37;
   margin-bottom: 22px;
-  text-transform: uppercase;
+  transition: border-color 0.4s, box-shadow 0.4s, transform 0.4s;
 }
-
-/* Titulo dramatico */
-.beneficios__act-title {
-  font-family: var(--serif);
-  font-size: clamp(2.6rem, 5.5vw, 4.8rem);
-  font-weight: 700;
-  line-height: 1.04;
-  letter-spacing: -0.025em;
-  color: #ffffff;
-  margin-bottom: 28px;
+.promesa__item:hover .promesa__icon {
+  border-color: rgba(212,175,55,0.8);
+  box-shadow: 0 0 28px rgba(212,175,55,0.22);
+  transform: translateY(-3px);
 }
-
-/* Cuerpo de texto */
-.beneficios__act-body {
-  font-size: clamp(0.9375rem, 1.4vw, 1.05rem);
-  font-weight: 300;
-  line-height: 1.75;
-  color: rgba(255, 255, 255, 0.6);
-  max-width: 420px;
-  margin-bottom: 34px;
-}
-
-/* Tags */
-.beneficios__act-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.beneficios__tag {
-  display: inline-block;
-  padding: 6px 18px;
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  border-radius: 100px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  color: #D4AF37;
-}
-
-/* Contenedor visual */
-.beneficios__act-visual {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: clamp(200px, 28vw, 300px);
-  height: clamp(200px, 28vw, 300px);
-}
-
-/* ---- VISUAL 01: Cubo glassmorphism ---- */
-.beneficios__cube-scene {
-  perspective: 700px;
-  width: 150px;
-  height: 150px;
-}
-.beneficios__cube {
-  width: 150px;
-  height: 150px;
-  position: relative;
-  transform-style: preserve-3d;
-  animation:
-    cubeFloat  7s  ease-in-out  infinite,
-    cubeRotate 22s linear       infinite;
-}
-.beneficios__cube-face {
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: inset 0 0 24px rgba(26, 58, 107, 0.35);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-}
-.beneficios__cube-face--front  { transform: translateZ(75px); }
-.beneficios__cube-face--back   { transform: rotateY(180deg) translateZ(75px); }
-.beneficios__cube-face--right  { transform: rotateY(90deg)  translateZ(75px); }
-.beneficios__cube-face--left   { transform: rotateY(-90deg) translateZ(75px); }
-.beneficios__cube-face--top    { transform: rotateX(90deg)  translateZ(75px); }
-.beneficios__cube-face--bottom { transform: rotateX(-90deg) translateZ(75px); }
-
-@keyframes cubeFloat {
-  0%, 100% { margin-top: 0; }
-  50%       { margin-top: -20px; }
-}
-@keyframes cubeRotate {
-  from { transform: rotateX(14deg) rotateY(0deg); }
-  to   { transform: rotateX(14deg) rotateY(360deg); }
-}
-
-/* ---- VISUAL 02: Luna con resplandor dorado ---- */
-.beneficios__moon {
-  position: relative;
-  width: 150px;
-  height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.beneficios__moon-glow {
-  position: absolute;
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(212, 175, 55, 0.24) 0%,
-    transparent 70%
-  );
-  animation: moonGlow 3.5s ease-in-out infinite;
-}
-.beneficios__moon-body {
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle at 38% 35%,
-    #f5f0e0 0%,
-    #d4af37 52%,
-    #9a6e1a 100%
-  );
-  box-shadow:
-    0 0 50px rgba(212, 175, 55, 0.35),
-    inset -18px -10px 28px rgba(0, 0, 0, 0.35);
-  animation: moonFloat 6s ease-in-out infinite;
-}
-@keyframes moonGlow {
-  0%, 100% { opacity: 0.7; transform: scale(1); }
-  50%       { opacity: 1;   transform: scale(1.1); }
-}
-@keyframes moonFloat {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-15px); }
-}
-
-/* ---- VISUAL 03: Aura circular pulsante ---- */
-.beneficios__aura {
-  position: relative;
-  width: 190px;
-  height: 190px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.beneficios__aura-ring {
-  position: absolute;
-  border-radius: 50%;
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  animation: auraPulse 4s ease-in-out infinite;
-}
-.beneficios__aura-ring--1 { width:  66px; height:  66px; animation-delay: 0s; }
-.beneficios__aura-ring--2 { width: 118px; height: 118px; animation-delay: 0.9s; }
-.beneficios__aura-ring--3 { width: 176px; height: 176px; animation-delay: 1.8s; }
-.beneficios__aura-core {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #d4af37 0%, #9a6e1a 100%);
-  box-shadow:
-    0 0 28px rgba(212, 175, 55, 0.65),
-    0 0 60px rgba(212, 175, 55, 0.2);
-  animation: coreGlow 4s ease-in-out infinite;
-}
-@keyframes auraPulse {
-  0%, 100% { transform: scale(1);    opacity: 0.45; }
-  50%       { transform: scale(1.08); opacity: 1; }
-}
-@keyframes coreGlow {
-  0%, 100% {
-    box-shadow: 0 0 28px rgba(212,175,55,0.65), 0 0 60px rgba(212,175,55,0.2);
-  }
-  50% {
-    box-shadow: 0 0 44px rgba(212,175,55,0.9), 0 0 90px rgba(212,175,55,0.4);
-  }
-}
-
-/* Onda separadora: altura fluida + sombra ascendente + relleno orgánico */
-.beneficios__wave-bottom {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  line-height: 0;
-  pointer-events: none;
-  z-index: 5;
-}
-.beneficios__wave-bottom svg {
+.promesa__value {
   display: block;
-  width: 100%;
-  /* Altura responsiva: mayor curva en escritorio, compacta en móvil */
-  height: clamp(60px, 8vw, 108px);
-  /* Sombra ascendente → la onda parece emerger del degradado */
-  filter: drop-shadow(0 -10px 24px rgba(10, 17, 40, 0.50));
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 4.4vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  letter-spacing: -0.02em;
 }
-/* Relleno iguala el extremo inferior del degradado → fusión orgánica */
-.beneficios__wave-bottom path {
-  fill: #EEF1EE;
+.promesa__value small {
+  font-size: 0.42em;
+  font-weight: 600;
+  color: #D4AF37;
+  letter-spacing: 0.06em;
+  margin-left: 4px;
+}
+.promesa__label {
+  display: block;
+  margin-top: 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+.promesa__note {
+  display: block;
+  margin-top: 14px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.45);
+  max-width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.promesa__cta {
+  text-align: center;
+  margin-top: 64px;
+}
+.promesa__cta .btn--outline {
+  color: #D4AF37;
+  box-shadow: inset 0 0 0 1.5px rgba(212,175,55,0.5);
+}
+.promesa__cta .btn--outline:hover {
+  background: #D4AF37;
+  color: #0A1128;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   MÓVIL (≤ 768px) — Rediseño completo
-   Sin sticky-scroll, 3 actos apilados verticalmente,
-   texto primero, visual decorativo debajo.
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 @media (max-width: 768px) {
-
-  /* ── Track: altura natural → sin trampa de scroll ── */
-  .beneficios__track {
-    height: auto;
+  .promesa { padding: 72px 0 80px; }
+  .promesa__head { margin-bottom: 44px; }
+  .promesa__grid { grid-template-columns: 1fr; gap: 40px; }
+  .promesa__item + .promesa__item::before {
+    left: 50%; top: -20px;
+    transform: translateX(-50%);
+    width: 72%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent);
   }
-
-  /* ── Sticky → flujo normal, sin position:sticky ── */
-  .beneficios__sticky {
-    position: relative;
-    height: auto;
-    overflow: hidden;        /* contiene visuales sin romper layout */
-    display: block;          /* anula el flex del desktop */
-    padding-bottom: 0;
-    /* Degradado simplificado en móvil: menos capas, mejor rendimiento */
-    background-image:
-      linear-gradient(
-        180deg,
-        #0A1128  0%,
-        #1B2D5B 70%,
-        #EEF1EE 100%
-      );
-  }
-  /* Sin aurora animada en móvil */
-  .beneficios__sticky::before {
-    display: none;
-  }
-
-  /* Marca de agua más pequeña */
-  .beneficios__watermark {
-    font-size: clamp(56px, 22vw, 100px);
-    letter-spacing: 0.16em;
-  }
-
-  /* Puntos de navegación: ocultos en móvil */
-  .beneficios__progress {
-    display: none;
-  }
-
-  /* ── Actos: posición relativa, apilados en columna ── */
-  .beneficios__act {
-    position: relative;
-    inset: auto;             /* resetea inset:0 del desktop */
-    display: block;
-    opacity: 0;
-    transform: translateY(22px);
-    transition:
-      opacity   0.65s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-    pointer-events: auto;
-    padding: 60px 0 52px;
-  }
-
-  /* Revelado por is-active (acto 0) o is-visible (IO) */
-  .beneficios__act.is-active,
-  .beneficios__act.is-visible {
-    opacity: 1;
-    transform: none;
-  }
-
-  /* Anular salida-arriba en móvil */
-  .beneficios__act.is-prev {
-    transform: translateY(22px);
-  }
-
-  /* Separador dorado tenue entre actos */
-  .beneficios__act + .beneficios__act {
-    border-top: 1px solid rgba(212, 175, 55, 0.14);
-  }
-
-  /* ── Layout del acto: columna, texto primero ── */
-  .beneficios__act-inner {
-    flex-direction: column;
-    align-items: stretch;    /* hijos ocupan todo el ancho */
-    text-align: left;
-    gap: 0;
-  }
-
-  /* Texto siempre primero en todos los actos */
-  .beneficios__act-text {
-    order: 1;
-    width: 100%;
-  }
-
-  /* Visual siempre después del texto */
-  .beneficios__act-visual,
-  .beneficios__act-visual--left {
-    order: 2;
-    width: 100%;
-    height: auto;
-    min-height: 0;
-    margin-top: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0.45;           /* decorativo, no protagonista */
-  }
-
-  /* ── Tipografía: legible sin desborde ── */
-  .beneficios__step-num {
-    font-size: 0.65rem;
-    letter-spacing: 0.3em;
-    margin-bottom: 14px;
-  }
-
-  .beneficios__act-title {
-    font-size: clamp(1.9rem, 8vw, 2.5rem);  /* 30-40px: legible sin cortes */
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    margin-bottom: 16px;
-    overflow-wrap: break-word;
-    word-break: break-word;
-  }
-
-  .beneficios__act-body {
-    font-size: 0.9375rem;
-    line-height: 1.72;
-    max-width: 100%;
-    margin-bottom: 22px;
-    color: rgba(255, 255, 255, 0.65);
-  }
-
-  /* Tags: alineados a la izquierda */
-  .beneficios__act-tags {
-    justify-content: flex-start;
-  }
-
-  /* ── Cubo: más pequeño, sin backdrop-filter (rendimiento) ── */
-  .beneficios__cube-scene {
-    perspective: 450px;
-    width: 90px;
-    height: 90px;
-  }
-  .beneficios__cube {
-    width: 90px;
-    height: 90px;
-    animation:
-      cubeFloat  10s ease-in-out infinite,
-      cubeRotate 32s linear     infinite;
-  }
-  .beneficios__cube-face {
-    width: 90px;
-    height: 90px;
-    backdrop-filter: none;      /* evita jank en móvil */
-    -webkit-backdrop-filter: none;
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: none;
-  }
-  .beneficios__cube-face--front  { transform: translateZ(45px); }
-  .beneficios__cube-face--back   { transform: rotateY(180deg) translateZ(45px); }
-  .beneficios__cube-face--right  { transform: rotateY(90deg)  translateZ(45px); }
-  .beneficios__cube-face--left   { transform: rotateY(-90deg) translateZ(45px); }
-  .beneficios__cube-face--top    { transform: rotateX(90deg)  translateZ(45px); }
-  .beneficios__cube-face--bottom { transform: rotateX(-90deg) translateZ(45px); }
-
-  /* ── Luna: reducida ── */
-  .beneficios__moon {
-    width: 100px;
-    height: 100px;
-  }
-  .beneficios__moon-glow {
-    width: 150px;
-    height: 150px;
-  }
-  .beneficios__moon-body {
-    width: 64px;
-    height: 64px;
-    box-shadow:
-      0 0 30px rgba(212, 175, 55, 0.3),
-      inset -10px -6px 18px rgba(0, 0, 0, 0.3);
-  }
-
-  /* ── Aura: reducida ── */
-  .beneficios__aura {
-    width: 130px;
-    height: 130px;
-  }
-  .beneficios__aura-ring--1 { width:  46px; height:  46px; }
-  .beneficios__aura-ring--2 { width:  82px; height:  82px; }
-  .beneficios__aura-ring--3 { width: 120px; height: 120px; }
-  .beneficios__aura-core    { width:  26px; height:  26px; }
-
-  /* ── Onda: flujo normal + altura compacta, sin drop-shadow ── */
-  .beneficios__wave-bottom {
-    position: relative;
-    bottom: auto;
-  }
-  .beneficios__wave-bottom svg {
-    height: 48px;
-    filter: none;
-  }
+  .promesa__cta { margin-top: 48px; }
 }
-
-/* prefers-reduced-motion */
-@media (prefers-reduced-motion: reduce) {
-  .beneficios__act {
-    transition: opacity 0.3s ease !important;
-    transform: none !important;
-  }
-  .beneficios__act.is-prev { transform: none !important; }
-  .beneficios__cube        { animation: none !important; }
-  .beneficios__moon-body,
-  .beneficios__moon-glow   { animation: none !important; }
-  .beneficios__aura-ring,
-  .beneficios__aura-core   { animation: none !important; }
-  .beneficios__sticky::before {
-    animation: none !important;
-    opacity: 0.65;
-  }
-}
-
-
