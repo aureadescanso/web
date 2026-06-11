@@ -990,7 +990,7 @@
   .journey__track { grid-template-columns: 1fr; gap: 30px; }
   .journey__track::before {
     top: 8%; bottom: 8%;
-    left: 50%; right: auto;
+    left: 27px; right: auto;
     width: 1px; height: auto;
     background: linear-gradient(180deg,
       rgba(212,175,55,0.1),
