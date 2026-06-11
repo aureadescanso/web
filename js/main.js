@@ -550,36 +550,36 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var articles = [
       {
-        href: 'blog/mejores-colchones-calidad-precio.html',
+        href: 'blog/viscoelastico-o-muelles.html',
         img: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80',
         time: '9 min',
         tag: 'Guía de compra',
-        title: 'Mejores colchones calidad-precio 2025',
-        desc: 'Guía definitiva'
+        title: '¿Viscoelástico o muelles ensacados?',
+        desc: 'La comparativa honesta'
       },
       {
-        href: 'blog/colchones-gama-media.html',
-        img: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&q=80',
-        time: '8 min',
+        href: 'blog/colchon-doble-cara-invierno-verano.html',
+        img: 'images/producto1.jpg',
+        time: '6 min',
         tag: 'Colchones',
-        title: 'Colchones de gama media',
-        desc: 'El equilibrio perfecto'
+        title: 'Doble cara invierno-verano',
+        desc: 'Dos colchones en uno'
       },
       {
-        href: 'blog/elegir-colchon-sin-gastar-de-mas.html',
+        href: 'blog/cada-cuanto-cambiar-colchon.html',
         img: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=600&q=80',
         time: '7 min',
         tag: 'Consejos',
-        title: 'Elegir colchón sin gastar de más',
-        desc: 'Claves para acertar'
+        title: '¿Cada cuánto se cambia el colchón?',
+        desc: 'Las 7 señales claras'
       },
       {
-        href: 'blog/errores-que-arruinan-tu-sueno.html',
-        img: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600&q=80',
-        time: '6 min',
-        tag: 'Errores comunes',
-        title: '7 errores al comprar colchón',
-        desc: 'Evita estos fallos'
+        href: 'blog/como-elegir-canape-abatible.html',
+        img: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&q=80',
+        time: '8 min',
+        tag: 'Canapés',
+        title: 'Cómo elegir un canapé abatible',
+        desc: 'La guía sin errores'
       }
     ];
 

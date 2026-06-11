@@ -34,14 +34,14 @@ document.addEventListener('DOMContentLoaded', function () {
         sub: 'Ocho capas reales y dos caras según la estación: gira el colchón y tendrás un colchón mullido para el invierno y otro fresco para el verano.',
         chips: ['Altura total: 30 cm aprox.', 'Acolchado tapa a tapa', 'Platabanda en tejido stretch', '4 asas verticales'],
         layers: [
-          { group: 'Cara de invierno', name: 'Tejido stretch',      spec: '300 g/m², suave y elástico',            t: 12, color: '#F3EDDC' },
-          { group: 'Cara de invierno', name: 'Viscoelástica',       spec: '2 cm que se adaptan a tu cuerpo',       t: 20, color: '#E5CFA0' },
-          { group: 'Cara de invierno', name: 'Fibra hueca',         spec: 'Acolchado mullido y aislante',          t: 13, color: '#FBFAF6' },
-          { group: 'Cara de invierno', name: 'Espuma HR',           spec: '1,3 cm de transición progresiva',       t: 15, color: '#D6E0F0' },
-          { group: 'Núcleo',           name: 'Núcleo HR 28 kg/m³',  spec: '25 cm de soporte de alta densidad',     t: 95, color: '#AABFE3' },
-          { group: 'Cara de verano',   name: 'Espuma HR',           spec: '0,5 cm de acogida ligera',              t: 11, color: '#D6E0F0' },
-          { group: 'Cara de verano',   name: 'Fibra transpirable',  spec: 'Regula la humedad durante la noche',    t: 13, color: '#FBFAF6' },
-          { group: 'Cara de verano',   name: 'Tejido 3D',           spec: 'Máxima ventilación en noches cálidas',  t: 12, color: '#C2CBD8' }
+          { group: 'Cara de invierno', name: 'Tejido stretch',      spec: '300 g/m², suave y elástico',            t: 12, color: '#F2E7CE', tex: 'quilt' },
+          { group: 'Cara de invierno', name: 'Viscoelástica',       spec: '2 cm que se adaptan a tu cuerpo',       t: 20, color: '#E2C181', tex: 'visco' },
+          { group: 'Cara de invierno', name: 'Fibra hueca',         spec: 'Acolchado mullido y aislante',          t: 13, color: '#FDFCF8', tex: 'fiber' },
+          { group: 'Cara de invierno', name: 'Espuma HR',           spec: '1,3 cm de transición progresiva',       t: 15, color: '#CBD9F1', tex: 'hr' },
+          { group: 'Núcleo',           name: 'Núcleo HR 28 kg/m³',  spec: '25 cm de soporte de alta densidad',     t: 95, color: '#8CA7DA', tex: 'core' },
+          { group: 'Cara de verano',   name: 'Espuma HR',           spec: '0,5 cm de acogida ligera',              t: 11, color: '#CBD9F1', tex: 'hr' },
+          { group: 'Cara de verano',   name: 'Fibra transpirable',  spec: 'Regula la humedad durante la noche',    t: 13, color: '#FDFCF8', tex: 'fiber' },
+          { group: 'Cara de verano',   name: 'Tejido 3D',           spec: 'Máxima ventilación en noches cálidas',  t: 12, color: '#A9B6CA', tex: 'mesh' }
         ]
       },
       details: [
@@ -216,6 +216,56 @@ document.addEventListener('DOMContentLoaded', function () {
           '</ul>'
         }
       ]
+    },
+
+    'mouth-tape': {
+      type: 'accesorio',
+      typeLabel: 'Accesorio de descanso',
+      name: 'Mouth Tape Aurea',
+      desc: '30 tiras adhesivas de tejido transpirable que mantienen la boca cerrada mientras duermes y fomentan la respiración nasal: menos ronquidos, menos boca seca y un despertar con más energía. Sin medicamentos ni ingredientes activos.',
+      rating: '4,7',
+      reviews: 86,
+      images: ['images/mouth-tape.jpg'],
+      sizes: [
+        { label: 'Caja · 30 tiras', price: 10 }
+      ],
+      defaultSize: 0,
+      details: [
+        {
+          title: 'Qué es y cómo funciona',
+          html: '<ul>' +
+            '<li>Tiras adhesivas que mantienen la boca cerrada durante la noche y fomentan la respiración nasal, la forma natural de respirar al dormir.</li>' +
+            '<li>Tejido transpirable, cómodo y suave con la piel.</li>' +
+            '<li>Adhesivo seguro, apto para el uso nocturno y fácil de retirar.</li>' +
+            '<li>Sin medicamentos ni ingredientes activos. Uso externo.</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Modo de empleo',
+          html: '<ul>' +
+            '<li>1. Asegúrate de que la piel esté limpia y seca.</li>' +
+            '<li>2. Retira el protector de la tira.</li>' +
+            '<li>3. Colócala sobre el centro de los labios.</li>' +
+            '<li>4. Presiona suavemente.</li>' +
+            '<li>5. Retira al despertar.</li>' +
+            '<li><strong>Importante:</strong> no usar con congestión nasal, dificultad para respirar por la nariz, ni en niños. Si tienes apnea del sueño diagnosticada, consulta antes con tu médico.</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Envío y devoluciones',
+          html: '<ul>' +
+            '<li>Envío a toda España peninsular en 3–5 días laborables.</li>' +
+            '<li>Devolución gratuita durante los primeros 30 días si la caja está sin abrir.</li>' +
+          '</ul>'
+        },
+        {
+          title: 'De regalo con tu colchón',
+          html: '<ul>' +
+            '<li>Con la compra de cualquier colchón Aurea, una caja de Mouth Tape (30 tiras) va <strong>de regalo</strong> en tu pedido, sin hacer nada.</li>' +
+            '<li><a href="colchones.html">Ver colchones</a></li>' +
+          '</ul>'
+        }
+      ]
     }
   };
 
@@ -246,6 +296,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var catalogPage  = product.type === 'canape' ? 'canapes.html' : 'colchones.html';
     var catalogLabel = product.type === 'canape' ? 'Canapés' : 'Colchones';
+    if (product.type === 'accesorio') {
+      catalogPage = 'colchones.html#regalo';
+      catalogLabel = 'Accesorios';
+    }
     var selectedSize = product.defaultSize || 0;
 
     document.title = product.name + ' | Aurea Descanso';
@@ -290,7 +344,24 @@ document.addEventListener('DOMContentLoaded', function () {
     var sizesEl = document.getElementById('pdpSizes');
 
     function renderPrice() {
-      priceEl.textContent = formatPrice(product.sizes[selectedSize].price);
+      var price = product.sizes[selectedSize].price;
+      priceEl.textContent = formatPrice(price);
+
+      /* Coste por noche durante la garantía: reencuadra el precio */
+      var perEl = document.getElementById('pdpPerNight');
+      if (perEl) {
+        if (product.type === 'accesorio') {
+          perEl.innerHTML = '<strong>Gratis</strong> con la compra de cualquier colchón';
+        } else {
+          var years = product.type === 'canape' ? 5 : 10;
+          var perNight = (price / (years * 365)).toFixed(2).replace('.', ',');
+          perEl.innerHTML = 'Sale a <strong>' + perNight + ' € por noche</strong> durante los ' +
+            years + ' años de garantía';
+        }
+      }
+
+      var bbPrice = document.getElementById('buyBarPrice');
+      if (bbPrice) bbPrice.textContent = formatPrice(price);
     }
 
     product.sizes.forEach(function (s, i) {
@@ -308,10 +379,52 @@ document.addEventListener('DOMContentLoaded', function () {
     renderPrice();
 
     /* — Comprar → checkout — */
-    document.getElementById('pdpBuy').addEventListener('click', function () {
+    function goCheckout() {
       window.location.href =
         'checkout.html?m=' + encodeURIComponent(id) + '&size=' + selectedSize;
-    });
+    }
+    document.getElementById('pdpBuy').addEventListener('click', goCheckout);
+
+    /* — Barra de compra fija (móvil): aparece al perder de vista el botón — */
+    var buyBar = document.getElementById('buyBar');
+    if (buyBar) {
+      document.getElementById('buyBarName').textContent = product.name;
+      document.getElementById('buyBarBtn').addEventListener('click', goCheckout);
+      if ('IntersectionObserver' in window) {
+        var bbIo = new IntersectionObserver(function (entries) {
+          var e = entries[0];
+          var pastIt = e.boundingClientRect.top < 0;
+          buyBar.classList.toggle('is-visible', !e.isIntersecting && pastIt);
+        }, { threshold: 0 });
+        bbIo.observe(document.getElementById('pdpBuy'));
+      }
+    }
+
+    /* — Solo colchones: regalo Mouth Tape + enlace al comparador — */
+    if (product.type === 'colchon') {
+      var buyWrap = document.querySelector('.pdp__buy');
+      if (buyWrap) {
+        var gift = document.createElement('div');
+        gift.className = 'pdp__gift';
+        gift.innerHTML =
+          '<svg class="pdp__gift-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' +
+            '<rect x="3" y="8" width="18" height="4"/><rect x="5" y="12" width="14" height="9"/>' +
+            '<path d="M12 8v13M12 8c0-2.2-1.8-4-4-4-1.5 0-2.5 1-2.5 2C5.5 7.2 7.5 8 12 8zm0 0c0-2.2 1.8-4 4-4 1.5 0 2.5 1 2.5 2 0 1.2-2 2-6.5 2z"/>' +
+          '</svg>' +
+          '<span class="pdp__gift-text"><strong>De regalo con tu colchón:</strong> ' +
+          '<a href="producto.html?m=mouth-tape">Mouth Tape Aurea</a> (30 tiras), valorado en 10 €. ' +
+          'Respira por la nariz, ronca menos. Se añade solo a tu pedido.</span>';
+        buyWrap.parentNode.insertBefore(gift, buyWrap.nextSibling);
+      }
+      var trustEl = document.querySelector('.pdp__trust');
+      if (trustEl) {
+        var vsLink = document.createElement('a');
+        vsLink.className = 'pdp__vs-link';
+        vsLink.href = 'colchones.html#comparador';
+        vsLink.innerHTML = '¿Dudas entre Serenity y Celestial? Compáralos cara a cara &rarr;';
+        trustEl.parentNode.insertBefore(vsLink, trustEl.nextSibling);
+      }
+    }
 
     /* — Journey: tiempos según tipo de producto — */
     if (product.type === 'canape') {
@@ -336,6 +449,32 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       var t3 = document.getElementById('trustYears');
       if (t3) t3.querySelector('strong').textContent = '5 años';
+    }
+
+    /* — Adaptación para accesorios (Mouth Tape) — */
+    if (product.type === 'accesorio') {
+      var aj3 = document.getElementById('journeyStep3');
+      if (aj3) {
+        aj3.querySelector('.journey__when').textContent = 'Primeros 30 días';
+        aj3.querySelector('.journey__what').textContent = 'Devolución gratuita';
+        aj3.querySelector('.journey__how').textContent  = 'Si no es para ti y la caja está sin abrir, te devolvemos el importe.';
+      }
+      var aj4 = document.getElementById('journeyStep4');
+      if (aj4) {
+        aj4.querySelector('.journey__when').textContent = 'Cada noche';
+        aj4.querySelector('.journey__what').textContent = 'Respiración nasal';
+        aj4.querySelector('.journey__how').textContent  = 'Tejido transpirable y adhesivo apto para uso nocturno. Sin medicamentos.';
+      }
+      var at2 = document.getElementById('trustNights');
+      if (at2) {
+        at2.querySelector('strong').textContent = '30 días';
+        at2.querySelector('span').textContent = 'devolución';
+      }
+      var at3 = document.getElementById('trustYears');
+      if (at3) {
+        at3.querySelector('strong').textContent = 'Sin';
+        at3.querySelector('span').textContent = 'medicamentos';
+      }
     }
 
     /* — Acordeón de detalles — */
@@ -442,6 +581,32 @@ document.addEventListener('DOMContentLoaded', function () {
       svg.setAttribute('role', 'img');
       svg.setAttribute('aria-label', 'Capas del ' + product.name);
 
+      /* Texturas por material: pespunte, visco, fibra, espuma HR, núcleo y malla 3D */
+      var defs = document.createElementNS(NS, 'defs');
+      defs.innerHTML =
+        '<pattern id="cwp-quilt" width="30" height="14" patternUnits="userSpaceOnUse">' +
+          '<path d="M0 11 Q 7.5 3 15 11 T 30 11" fill="none" stroke="rgba(140,110,40,0.32)" stroke-width="1.1"/>' +
+        '</pattern>' +
+        '<pattern id="cwp-visco" width="16" height="14" patternUnits="userSpaceOnUse">' +
+          '<circle cx="4" cy="4" r="1.4" fill="rgba(120,90,20,0.22)"/>' +
+          '<circle cx="12" cy="10" r="1.4" fill="rgba(120,90,20,0.22)"/>' +
+        '</pattern>' +
+        '<pattern id="cwp-fiber" width="22" height="12" patternUnits="userSpaceOnUse">' +
+          '<ellipse cx="5" cy="4" rx="3.6" ry="1.7" fill="rgba(27,45,91,0.09)"/>' +
+          '<ellipse cx="16" cy="9" rx="3.6" ry="1.7" fill="rgba(27,45,91,0.09)"/>' +
+        '</pattern>' +
+        '<pattern id="cwp-hr" width="10" height="10" patternUnits="userSpaceOnUse">' +
+          '<path d="M-2 12 L12 -2" stroke="rgba(27,45,91,0.18)" stroke-width="1"/>' +
+        '</pattern>' +
+        '<pattern id="cwp-core" width="20" height="22" patternUnits="userSpaceOnUse">' +
+          '<path d="M5 0 q5 5.5 0 11 q-5 5.5 0 11" fill="none" stroke="rgba(255,255,255,0.42)" stroke-width="1.4"/>' +
+          '<path d="M15 0 q5 5.5 0 11 q-5 5.5 0 11" fill="none" stroke="rgba(255,255,255,0.26)" stroke-width="1.4"/>' +
+        '</pattern>' +
+        '<pattern id="cwp-mesh" width="7" height="7" patternUnits="userSpaceOnUse">' +
+          '<path d="M0 0H7M0 0V7" stroke="rgba(20,30,60,0.24)" stroke-width="0.8"/>' +
+        '</pattern>';
+      svg.appendChild(defs);
+
       var stageEl  = document.getElementById('cutawayStage');
       var labelsEl = document.getElementById('cutawayLabels');
       var slabs = [], labels = [];
@@ -467,7 +632,18 @@ document.addEventListener('DOMContentLoaded', function () {
         front.setAttribute('width', W);
         front.setAttribute('height', l.t);
         front.setAttribute('fill', l.color);
+        front.setAttribute('stroke', 'rgba(10,17,40,0.12)');
+        front.setAttribute('stroke-width', '0.6');
         slab.appendChild(front);
+        if (l.tex) {
+          var texRect = document.createElementNS(NS, 'rect');
+          texRect.setAttribute('x', x);
+          texRect.setAttribute('y', y);
+          texRect.setAttribute('width', W);
+          texRect.setAttribute('height', l.t);
+          texRect.setAttribute('fill', 'url(#cwp-' + l.tex + ')');
+          slab.appendChild(texRect);
+        }
         poly([[x + W, y], [x + W + DX, y - DY], [x + W + DX, y + l.t - DY], [x + W, y + l.t]], shade(l.color, -0.22));
 
         svg.appendChild(slab);
@@ -559,6 +735,21 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('chkPrice').textContent    = formatPrice(size.price);
     document.getElementById('chkSubtotal').textContent = formatPrice(size.price);
     document.getElementById('chkTotal').textContent    = formatPrice(total);
+
+    /* — Regalo con cada colchón: Mouth Tape — */
+    if (product.type === 'colchon' && CATALOG['mouth-tape']) {
+      var giftItem = document.createElement('div');
+      giftItem.className = 'chk-item chk-item--gift';
+      giftItem.innerHTML =
+        '<div class="chk-item__img"><img src="' + CATALOG['mouth-tape'].images[0] + '" alt="Mouth Tape Aurea"></div>' +
+        '<div>' +
+          '<div class="chk-item__name">Mouth Tape Aurea · 30 tiras</div>' +
+          '<div class="chk-item__meta">Regalo por tu colchón · Valorado en 10 €</div>' +
+        '</div>' +
+        '<span class="chk-gift-price">GRATIS</span>';
+      var firstItem = document.querySelector('.chk-item');
+      firstItem.parentNode.insertBefore(giftItem, firstItem.nextSibling);
+    }
 
     /* — Tabs de método de pago — */
     var tabs    = document.querySelectorAll('.pay-tab');
