@@ -36,10 +36,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Ocultar cursor nativo en dispositivos con puntero preciso */
-@media (pointer: fine) {
-  body, a, button, [href], input, select { cursor: none; }
-}
+/* Puntero nativo del sistema (cursor personalizado desactivado) */
 
 img { max-width: 100%; height: auto; display: block; }
 a   { color: inherit; text-decoration: none; }
@@ -129,34 +126,7 @@ ul  { list-style: none; }
 /* ==============================================
    CUSTOM CURSOR
    ============================================== */
-.custom-cursor {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--navy);
-  pointer-events: none;
-  z-index: 9998;
-  opacity: 0.75;
-  transform: translate(-50%, -50%);
-  transition:
-    width    0.28s var(--ease-out),
-    height   0.28s var(--ease-out),
-    opacity  0.28s ease,
-    background 0.28s ease;
-  will-change: left, top;
-}
-.custom-cursor.is-hover {
-  width: 44px;
-  height: 44px;
-  background: transparent;
-  border: 1.5px solid rgba(27, 45, 91, 0.45);
-  opacity: 1;
-}
-/* Ocultar en táctil */
-@media (pointer: coarse) {
-  .custom-cursor { display: none; }
-}
+.custom-cursor { display: none; }
 
 
 /* ==============================================
@@ -1123,3 +1093,34 @@ ul  { list-style: none; }
   }
   .promesa__cta { margin-top: 48px; }
 }
+
+
+/* ==============================================
+   PAGO SEGURO — badges de métodos de pago
+   ============================================== */
+.footer__pay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.footer__pay-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: var(--text-3);
+  margin-right: 6px;
+}
+.paybadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 30px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--white);
+}
+.paybadge svg { display: block; }

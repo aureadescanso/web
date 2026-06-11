@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', function () {
   var CATALOG = {
     'serenity': {
       type: 'colchon',
-      typeLabel: 'Colchón viscoelástico',
+      typeLabel: 'Colchón viscoelástico · doble cara',
       name: 'Aurea Serenity',
-      desc: 'Firmeza media con viscoelástica de alta densidad y capa de gel refrescante. Adaptabilidad progresiva que abraza el cuerpo sin hundirlo, ideal para quienes duermen de lado o boca arriba.',
+      desc: 'Doble cara invierno-verano con núcleo HR de 28 kg/m³ de densidad. La cara de invierno acoge con 2 cm de viscoelástica y acolchado tapa a tapa; la de verano, con tejido 3D transpirable, mantiene el frescor las noches de calor.',
       rating: '4,8',
       reviews: 412,
       images: [
@@ -30,14 +30,29 @@ document.addEventListener('DOMContentLoaded', function () {
         { label: '180 × 200 cm', price: 699 }
       ],
       defaultSize: 2,
+      cutaway: {
+        sub: 'Ocho capas reales y dos caras según la estación: gira el colchón y tendrás un colchón mullido para el invierno y otro fresco para el verano.',
+        chips: ['Altura total: 30 cm aprox.', 'Acolchado tapa a tapa', 'Platabanda en tejido stretch', '4 asas verticales'],
+        layers: [
+          { group: 'Cara de invierno', name: 'Tejido stretch',      spec: '300 g/m², suave y elástico',            t: 12, color: '#F3EDDC' },
+          { group: 'Cara de invierno', name: 'Viscoelástica',       spec: '2 cm que se adaptan a tu cuerpo',       t: 20, color: '#E5CFA0' },
+          { group: 'Cara de invierno', name: 'Fibra hueca',         spec: 'Acolchado mullido y aislante',          t: 13, color: '#FBFAF6' },
+          { group: 'Cara de invierno', name: 'Espuma HR',           spec: '1,3 cm de transición progresiva',       t: 15, color: '#D6E0F0' },
+          { group: 'Núcleo',           name: 'Núcleo HR 28 kg/m³',  spec: '25 cm de soporte de alta densidad',     t: 95, color: '#AABFE3' },
+          { group: 'Cara de verano',   name: 'Espuma HR',           spec: '0,5 cm de acogida ligera',              t: 11, color: '#D6E0F0' },
+          { group: 'Cara de verano',   name: 'Fibra transpirable',  spec: 'Regula la humedad durante la noche',    t: 13, color: '#FBFAF6' },
+          { group: 'Cara de verano',   name: 'Tejido 3D',           spec: 'Máxima ventilación en noches cálidas',  t: 12, color: '#C2CBD8' }
+        ]
+      },
       details: [
         {
           title: 'Composición y tecnología',
           html: '<ul>' +
-            '<li>Núcleo HR de alta resiliencia de 18 cm: soporte firme y duradero.</li>' +
-            '<li>Capa de viscoelástica de 5 cm con partículas de gel refrescante.</li>' +
-            '<li>Tejido Strech Premium con tratamiento antiácaros e hipoalergénico.</li>' +
-            '<li>Altura total: 25 cm. Firmeza: media (6/10). Independencia de lechos alta.</li>' +
+            '<li>Núcleo de espuma HR de 28 kg/m³ de densidad y 25 cm de grosor: soporte consistente y duradero.</li>' +
+            '<li><strong>Cara de invierno:</strong> tejido stretch de 300 g/m², 2 cm de viscoelástica, fibra y 1,3 cm de espuma HR, con acolchado tapa a tapa.</li>' +
+            '<li><strong>Cara de verano:</strong> tejido 3D transpirable, fibra y 0,5 cm de espuma HR para dormir fresco en las noches de calor.</li>' +
+            '<li>Platabanda en tejido stretch con 4 asas verticales para girar y voltear el colchón con facilidad.</li>' +
+            '<li>Altura total del colchón terminado: 30 cm aprox. Firmeza: media.</li>' +
           '</ul>'
         },
         {
@@ -354,6 +369,167 @@ document.addEventListener('DOMContentLoaded', function () {
         setPanelHeight(item);
       });
     });
+
+    /* — JSON-LD de producto (precio y estrellas en Google) — */
+    (function () {
+      var prices = product.sizes.map(function (s) { return s.price; });
+      var img = product.images[0];
+      if (img.indexOf('http') !== 0) img = 'https://aureadescanso.com/' + img;
+      var ld = {
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        'name': product.name,
+        'description': product.desc,
+        'image': img,
+        'brand': { '@type': 'Brand', 'name': 'Aurea Descanso' },
+        'aggregateRating': {
+          '@type': 'AggregateRating',
+          'ratingValue': product.rating.replace(',', '.'),
+          'reviewCount': String(product.reviews)
+        },
+        'offers': {
+          '@type': 'AggregateOffer',
+          'priceCurrency': 'EUR',
+          'lowPrice': String(Math.min.apply(null, prices)),
+          'highPrice': String(Math.max.apply(null, prices)),
+          'availability': 'https://schema.org/InStock',
+          'url': 'https://aureadescanso.com/producto.html?m=' + id
+        }
+      };
+      var tag = document.createElement('script');
+      tag.type = 'application/ld+json';
+      tag.textContent = JSON.stringify(ld);
+      document.head.appendChild(tag);
+    })();
+
+    /* — Corte por capas (solo productos con cutaway) — */
+    (function () {
+      var cw = product.cutaway;
+      var section = document.getElementById('pdpCutaway');
+      if (!section || !cw) return;
+      section.hidden = false;
+      document.getElementById('cutawaySub').textContent = cw.sub;
+
+      var chipsEl = document.getElementById('cutawayChips');
+      cw.chips.forEach(function (c) {
+        var s = document.createElement('span');
+        s.className = 'cutaway__chip';
+        s.innerHTML =
+          '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>' + c;
+        chipsEl.appendChild(s);
+      });
+
+      /* Proyección oblicua: cara superior + frente + lateral por capa */
+      var W = 300, DX = 78, DY = 38, GAP = 17, PAD = 10;
+      var sumT = 0;
+      cw.layers.forEach(function (l) { sumT += l.t; });
+      var vbW = W + DX + PAD * 2;
+      var vbH = DY + sumT + GAP * (cw.layers.length - 1) + PAD * 2;
+
+      function shade(hex, f) {
+        var n = parseInt(hex.slice(1), 16);
+        var r = (n >> 16) & 255, gr = (n >> 8) & 255, b = n & 255;
+        function c(v) {
+          v = f > 0 ? v + (255 - v) * f : v * (1 + f);
+          return Math.round(Math.min(255, Math.max(0, v)));
+        }
+        return 'rgb(' + c(r) + ',' + c(gr) + ',' + c(b) + ')';
+      }
+
+      var NS = 'http://www.w3.org/2000/svg';
+      var svg = document.createElementNS(NS, 'svg');
+      svg.setAttribute('viewBox', '0 0 ' + vbW + ' ' + vbH);
+      svg.setAttribute('role', 'img');
+      svg.setAttribute('aria-label', 'Capas del ' + product.name);
+
+      var stageEl  = document.getElementById('cutawayStage');
+      var labelsEl = document.getElementById('cutawayLabels');
+      var slabs = [], labels = [];
+      var y = PAD + DY;
+      var lastGroup = null;
+
+      cw.layers.forEach(function (l, i) {
+        var slab = document.createElementNS(NS, 'g');
+        slab.setAttribute('class', 'cutaway-slab');
+        slab.setAttribute('data-i', i);
+        var x = PAD;
+
+        function poly(points, fill) {
+          var p = document.createElementNS(NS, 'polygon');
+          p.setAttribute('points', points.map(function (pt) { return pt.join(','); }).join(' '));
+          p.setAttribute('fill', fill);
+          slab.appendChild(p);
+        }
+        poly([[x, y], [x + DX, y - DY], [x + DX + W, y - DY], [x + W, y]], shade(l.color, 0.28));
+        var front = document.createElementNS(NS, 'rect');
+        front.setAttribute('x', x);
+        front.setAttribute('y', y);
+        front.setAttribute('width', W);
+        front.setAttribute('height', l.t);
+        front.setAttribute('fill', l.color);
+        slab.appendChild(front);
+        poly([[x + W, y], [x + W + DX, y - DY], [x + W + DX, y + l.t - DY], [x + W, y + l.t]], shade(l.color, -0.22));
+
+        svg.appendChild(slab);
+        slabs.push(slab);
+        y += l.t;
+
+        if (l.group !== lastGroup) {
+          var gh = document.createElement('li');
+          gh.className = 'cutaway__group';
+          gh.textContent = l.group;
+          labelsEl.appendChild(gh);
+          lastGroup = l.group;
+        }
+        var li = document.createElement('li');
+        li.className = 'cutaway__label';
+        li.setAttribute('data-i', i);
+        li.innerHTML =
+          '<span class="cutaway__num">' + (i + 1) + '</span>' +
+          '<span class="cutaway__lname">' + l.name + '</span>' +
+          '<span class="cutaway__lspec">' + l.spec + '</span>';
+        labelsEl.appendChild(li);
+        labels.push(li);
+      });
+
+      stageEl.appendChild(svg);
+
+      /* Las capas se separan al entrar la sección en pantalla */
+      function setExploded(on) {
+        slabs.forEach(function (slab, i) {
+          slab.style.transitionDelay = (i * 60) + 'ms';
+          slab.style.transform = on ? 'translateY(' + (i * GAP) + 'px)' : 'translateY(0)';
+        });
+      }
+      setExploded(false);
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { setExploded(true); io.disconnect(); }
+          });
+        }, { threshold: 0.3 });
+        io.observe(section);
+      } else {
+        setExploded(true);
+      }
+
+      /* Hover sincronizado capa ↔ etiqueta */
+      function setActive(i, on) {
+        stageEl.classList.toggle('has-active', on);
+        slabs.forEach(function (s) { s.classList.remove('is-active'); });
+        labels.forEach(function (l) { l.classList.remove('is-active'); });
+        if (on && i >= 0) {
+          slabs[i].classList.add('is-active');
+          labels[i].classList.add('is-active');
+        }
+      }
+      slabs.concat(labels).forEach(function (el) {
+        el.addEventListener('mouseenter', function () {
+          setActive(parseInt(el.getAttribute('data-i'), 10), true);
+        });
+        el.addEventListener('mouseleave', function () { setActive(-1, false); });
+      });
+    })();
   })();
 
   /* ══════════════════════════════════════════════
@@ -417,6 +593,15 @@ document.addEventListener('DOMContentLoaded', function () {
       this.value = this.value.replace(/\D/g, '').slice(0, 4);
     });
 
+    /* — Consentimiento legal (obligatorio) — */
+    var consentBox   = document.getElementById('chkLegal');
+    var consentLabel = document.getElementById('chkConsent');
+    if (consentBox) {
+      consentBox.addEventListener('change', function () {
+        if (consentBox.checked) consentLabel.classList.remove('has-error');
+      });
+    }
+
     /* — Validación — */
     function luhn(num) {
       var sum = 0, dbl = false;
@@ -468,6 +653,11 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!expOk) ok = setError(cardExp, true) && ok;
 
         if (cardCvc.value.length < 3) ok = setError(cardCvc, true) && ok;
+      }
+
+      if (consentBox && !consentBox.checked) {
+        consentLabel.classList.add('has-error');
+        ok = false;
       }
 
       return ok;
