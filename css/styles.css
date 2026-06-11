@@ -224,7 +224,8 @@ ul  { list-style: none; }
 .mobile-menu {
   position: fixed;
   inset: 0;
-  z-index: 1001;
+  /* Bajo el header (1000): el logo y la X del burger quedan visibles encima */
+  z-index: 999;
   background: var(--white);
   display: flex;
   align-items: center;
@@ -937,7 +938,13 @@ ul  { list-style: none; }
 }
 
 @media (max-width: 480px) {
-  .hero__buttons { flex-direction: column; width: 100%; max-width: 300px; }
+  .hero__buttons {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
   .hero__buttons .btn { width: 100%; text-align: center; }
   .producto__footer { flex-direction: column; align-items: flex-start; gap: 12px; }
 }
