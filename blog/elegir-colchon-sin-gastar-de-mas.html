@@ -33,6 +33,7 @@
   }
   </script>
   <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/premium.css">
   <link rel="stylesheet" href="../css/blog.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,6 +55,10 @@
         </ul>
       </nav>
       <a href="../colchones.html" class="header__cta">Comprar</a>
+      <button class="cartbtn" id="cartBtn" type="button" aria-label="Abrir cesta">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.4"/><circle cx="18" cy="21" r="1.4"/><path d="M1 1h4l2.6 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+        <span class="cartbtn__badge" id="cartBadge" hidden>0</span>
+      </button>
       <button class="header__burger" id="burger" aria-label="Menú">
         <span></span>
         <span></span>
@@ -269,5 +274,7 @@
   </footer>
 
   <script src="../js/main.js"></script>
+  <script src="../js/premium.js"></script>
+  <script src="../js/cart.js"></script>
 </body>
 </html>

@@ -32,7 +32,6 @@
           "image": "https://aureadescanso.com/images/producto1.jpg",
           "description": "Colchón viscoelástico de doble cara invierno-verano con núcleo HR de 28 kg/m³ y 30 cm de altura.",
           "brand": { "@type": "Brand", "name": "Aurea Descanso" },
-          "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "412" },
           "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "499", "highPrice": "699", "availability": "https://schema.org/InStock" }
         }
       },
@@ -46,7 +45,6 @@
           "image": "https://aureadescanso.com/images/producto2.jpg",
           "description": "Colchón híbrido de muelles ensacados con doble capa viscoelástica y 30 cm de altura.",
           "brand": { "@type": "Brand", "name": "Aurea Descanso" },
-          "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "287" },
           "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "699", "highPrice": "899", "availability": "https://schema.org/InStock" }
         }
       }
@@ -54,6 +52,7 @@
   }
   </script>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/premium.css">
   <link rel="stylesheet" href="css/shop.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -79,6 +78,10 @@
         </ul>
       </nav>
       <a href="colchones.html" class="header__cta">Comprar</a>
+      <button class="cartbtn" id="cartBtn" type="button" aria-label="Abrir cesta">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.4"/><circle cx="18" cy="21" r="1.4"/><path d="M1 1h4l2.6 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+        <span class="cartbtn__badge" id="cartBadge" hidden>0</span>
+      </button>
       <button class="header__burger" id="burger" aria-label="Menú">
         <span></span>
         <span></span>
@@ -139,7 +142,7 @@
           <span class="pcard__badge">Más vendido</span>
         </a>
         <div class="pcard__body">
-          <h2 class="pcard__name">Aurea Serenity</h2>
+          <h2 class="pcard__name"><a href="producto.html?m=serenity">Aurea Serenity</a></h2>
           <p class="pcard__desc">Doble cara invierno-verano con núcleo HR de 28 kg/m³ y viscoelástica con acolchado tapa a tapa. La acogida que abraza sin hundir.</p>
           <div class="pcard__chips">
             <span class="pcard__chip">Firmeza media</span>
@@ -163,7 +166,7 @@
           <span class="pcard__badge pcard__badge--gold">Premium</span>
         </a>
         <div class="pcard__body">
-          <h2 class="pcard__name">Aurea Celestial</h2>
+          <h2 class="pcard__name"><a href="producto.html?m=celestial">Aurea Celestial</a></h2>
           <p class="pcard__desc">Muelles ensacados con doble capa viscoelástica. Independencia de lechos y transpirabilidad máxima.</p>
           <div class="pcard__chips">
             <span class="pcard__chip">Firmeza media-alta</span>
@@ -347,6 +350,8 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/premium.js"></script>
+  <script src="js/cart.js"></script>
   <script src="js/shop.js"></script>
 </body>
 </html>

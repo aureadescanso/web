@@ -234,9 +234,9 @@ document.addEventListener('DOMContentLoaded', function () {
     typeTextEl.textContent += FULL_TEXT[typeIdx];
     typeIdx++;
     if (typeIdx < FULL_TEXT.length) {
-      // Velocidad irregular para efecto más humano
-      var delay = typeIdx < 7 ? 90 + Math.random() * 60
-                              : 55 + Math.random() * 50;
+      // Velocidad irregular para efecto más humano (ágil: el hero no debe hacerse esperar)
+      var delay = typeIdx < 7 ? 55 + Math.random() * 35
+                              : 32 + Math.random() * 28;
       setTimeout(typeNext, delay);
     } else {
       // Texto completo → esconder cursor → revelar subtítulo y botones
@@ -247,14 +247,14 @@ document.addEventListener('DOMContentLoaded', function () {
           heroSub.classList.add('is-visible');
         }
         if (heroButtons) {
-          heroButtons.style.transitionDelay = '0.22s';
+          heroButtons.style.transitionDelay = '0.12s';
           heroButtons.classList.add('is-visible');
         }
-      }, 500);
+      }, 180);
     }
   }
-  // Arrancar el typewriter 500ms después de que carga la página
-  setTimeout(typeNext, 500);
+  // Arrancar el typewriter 300ms después de que carga la página
+  setTimeout(typeNext, 300);
 
 
   /* ══════════════════════════════════════════════

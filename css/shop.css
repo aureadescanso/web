@@ -1715,3 +1715,92 @@
   letter-spacing: 0.04em;
   color: #2d8a4e;
 }
+
+
+/* ==============================================
+   PULIDO PREMIUM — catálogo y cutaway
+   ============================================== */
+
+/* Barrido de luz + halo dorado en tarjetas de catálogo y blog */
+.pcard__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.30) 50%, transparent 60%);
+  transform: translateX(-130%);
+  pointer-events: none;
+}
+.pcard:hover .pcard__media::after {
+  transform: translateX(130%);
+  transition: transform 0.9s var(--ease-out);
+}
+.pcard:hover {
+  box-shadow: 0 24px 60px rgba(13, 27, 62, 0.14), 0 0 0 1.5px rgba(212, 175, 55, 0.40);
+}
+.bcard:hover {
+  box-shadow: 0 24px 48px -18px rgba(27, 45, 91, 0.22), 0 0 0 1.5px rgba(212, 175, 55, 0.35);
+}
+
+/* Cutaway: selector de estación invierno / verano */
+.cutaway__seasons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+.cutaway__season {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 100px;
+  padding: 8px 18px;
+  cursor: pointer;
+  transition: border-color 0.3s, color 0.3s, background 0.3s;
+}
+.cutaway__season:hover { border-color: rgba(212, 175, 55, 0.65); color: #fff; }
+.cutaway__season.is-active {
+  background: #D4AF37;
+  border-color: #D4AF37;
+  color: #0A1128;
+  font-weight: 600;
+}
+.cutaway__season svg { flex-shrink: 0; }
+
+
+/* Botón secundario "Añadir a la cesta" en la ficha */
+.pdp__cart-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--navy);
+  background: #fff;
+  border: 1.5px solid var(--navy);
+  border-radius: 100px;
+  padding: 15px 24px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.25s, color 0.25s, transform 0.3s var(--ease-out);
+}
+.pdp__cart-btn:hover {
+  background: rgba(27, 45, 91, 0.06);
+  transform: translateY(-2px);
+}
+@media (max-width: 520px) {
+  .pdp__buy { flex-direction: column; }
+}
+
+/* Capa activa del cutaway: halo dorado */
+.cutaway-slab.is-active {
+  filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.35));
+}

@@ -273,6 +273,22 @@ document.addEventListener('DOMContentLoaded', function () {
     return n.toLocaleString('es-ES') + ' €';
   }
 
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Cuenta suave entre dos números (para el precio al cambiar de medida) */
+  function tweenNumber(from, to, dur, onStep) {
+    if (prefersReduced || from === to) { onStep(to); return; }
+    var start = null;
+    function frame(t) {
+      if (start === null) start = t;
+      var p = Math.min((t - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3); /* easeOutCubic */
+      onStep(Math.round(from + (to - from) * eased));
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
   function getParam(name) {
     var m = new RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
     return m ? decodeURIComponent(m[1].replace(/\+/g, ' ')) : null;
@@ -336,16 +352,22 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('pdpType').textContent = product.typeLabel;
     document.getElementById('pdpName').textContent = product.name;
     document.getElementById('pdpDesc').textContent = product.desc;
-    document.getElementById('pdpRatingNote').textContent =
-      product.rating + ' · ' + product.reviews + ' valoraciones verificadas';
 
     /* — Medidas + precio — */
     var priceEl = document.getElementById('pdpPrice');
     var sizesEl = document.getElementById('pdpSizes');
 
-    function renderPrice() {
+    var shownPrice = product.sizes[selectedSize].price;
+    function renderPrice(animate) {
       var price = product.sizes[selectedSize].price;
-      priceEl.textContent = formatPrice(price);
+      if (animate) {
+        tweenNumber(shownPrice, price, 420, function (v) {
+          priceEl.textContent = formatPrice(v);
+        });
+      } else {
+        priceEl.textContent = formatPrice(price);
+      }
+      shownPrice = price;
 
       /* Coste por noche durante la garantía: reencuadra el precio */
       var perEl = document.getElementById('pdpPerNight');
@@ -372,18 +394,38 @@ document.addEventListener('DOMContentLoaded', function () {
         selectedSize = i;
         sizesEl.querySelectorAll('.size-pill').forEach(function (p) { p.classList.remove('is-active'); });
         b.classList.add('is-active');
-        renderPrice();
+        /* "Pop" de la pastilla elegida */
+        b.classList.remove('is-pop');
+        void b.offsetWidth; /* reinicia la animación */
+        b.classList.add('is-pop');
+        renderPrice(true);
       });
       sizesEl.appendChild(b);
     });
     renderPrice();
 
-    /* — Comprar → checkout — */
+    /* — Comprar ahora → checkout directo — */
     function goCheckout() {
       window.location.href =
         'checkout.html?m=' + encodeURIComponent(id) + '&size=' + selectedSize;
     }
     document.getElementById('pdpBuy').addEventListener('click', goCheckout);
+
+    /* — Añadir a la cesta — */
+    var addBtn = document.getElementById('pdpAddCart');
+    if (addBtn && window.AureaCart) {
+      addBtn.addEventListener('click', function () {
+        window.AureaCart.add({
+          id: id,
+          name: product.name,
+          type: product.type,
+          sizeIdx: selectedSize,
+          sizeLabel: product.sizes[selectedSize].label,
+          price: product.sizes[selectedSize].price,
+          img: product.images[0]
+        });
+      });
+    }
 
     /* — Barra de compra fija (móvil): aparece al perder de vista el botón — */
     var buyBar = document.getElementById('buyBar');
@@ -521,11 +563,6 @@ document.addEventListener('DOMContentLoaded', function () {
         'description': product.desc,
         'image': img,
         'brand': { '@type': 'Brand', 'name': 'Aurea Descanso' },
-        'aggregateRating': {
-          '@type': 'AggregateRating',
-          'ratingValue': product.rating.replace(',', '.'),
-          'reviewCount': String(product.reviews)
-        },
         'offers': {
           '@type': 'AggregateOffer',
           'priceCurrency': 'EUR',
@@ -558,12 +595,19 @@ document.addEventListener('DOMContentLoaded', function () {
         chipsEl.appendChild(s);
       });
 
-      /* Proyección oblicua: cara superior + frente + lateral por capa */
-      var W = 300, DX = 78, DY = 38, GAP = 17, PAD = 10;
+      /* Proyección oblicua: cara superior + frente + lateral por capa.
+         Menos profundidad = proporción de colchón real, no de tablero. */
+      var W = 340, DX = 54, DY = 26, PAD = 12;
       var sumT = 0;
       cw.layers.forEach(function (l) { sumT += l.t; });
+      /* Al explotar: hueco normal entre capas, hueco grande entre grupos */
+      var offsets = [], acc = 0;
+      cw.layers.forEach(function (l, i) {
+        if (i > 0) acc += (l.group !== cw.layers[i - 1].group) ? 30 : 13;
+        offsets.push(acc);
+      });
       var vbW = W + DX + PAD * 2;
-      var vbH = DY + sumT + GAP * (cw.layers.length - 1) + PAD * 2;
+      var vbH = DY + sumT + acc + PAD * 2 + 16;
 
       function shade(hex, f) {
         var n = parseInt(hex.slice(1), 16);
@@ -603,9 +647,26 @@ document.addEventListener('DOMContentLoaded', function () {
           '<path d="M15 0 q5 5.5 0 11 q-5 5.5 0 11" fill="none" stroke="rgba(255,255,255,0.26)" stroke-width="1.4"/>' +
         '</pattern>' +
         '<pattern id="cwp-mesh" width="7" height="7" patternUnits="userSpaceOnUse">' +
-          '<path d="M0 0H7M0 0V7" stroke="rgba(20,30,60,0.24)" stroke-width="0.8"/>' +
-        '</pattern>';
+          '<path d="M0 0H7M0 0V7" stroke="rgba(20,30,60,0.28)" stroke-width="0.8"/>' +
+        '</pattern>' +
+        '<linearGradient id="cw-sheen" x1="0" y1="0" x2="0" y2="1">' +
+          '<stop offset="0" stop-color="rgba(255,255,255,0.28)"/>' +
+          '<stop offset="0.65" stop-color="rgba(255,255,255,0)"/>' +
+        '</linearGradient>' +
+        '<filter id="cw-blur" x="-50%" y="-50%" width="200%" height="200%">' +
+          '<feGaussianBlur stdDeviation="6"/>' +
+        '</filter>';
       svg.appendChild(defs);
+
+      /* Sombra de apoyo bajo la pila */
+      var shadow = document.createElementNS(NS, 'ellipse');
+      shadow.setAttribute('cx', PAD + (W + DX) / 2);
+      shadow.setAttribute('cy', vbH - 10);
+      shadow.setAttribute('rx', (W + DX) / 2.1);
+      shadow.setAttribute('ry', 8);
+      shadow.setAttribute('fill', 'rgba(0,0,0,0.32)');
+      shadow.setAttribute('filter', 'url(#cw-blur)');
+      svg.appendChild(shadow);
 
       var stageEl  = document.getElementById('cutawayStage');
       var labelsEl = document.getElementById('cutawayLabels');
@@ -625,22 +686,37 @@ document.addEventListener('DOMContentLoaded', function () {
           p.setAttribute('fill', fill);
           slab.appendChild(p);
         }
-        poly([[x, y], [x + DX, y - DY], [x + DX + W, y - DY], [x + W, y]], shade(l.color, 0.28));
+        var topPts = [[x, y], [x + DX, y - DY], [x + DX + W, y - DY], [x + W, y]];
+        poly(topPts, shade(l.color, 0.28));
+        if (l.tex) poly(topPts, 'url(#cwp-' + l.tex + ')'); /* la textura también en la cara visible */
+
         var front = document.createElementNS(NS, 'rect');
         front.setAttribute('x', x);
         front.setAttribute('y', y);
         front.setAttribute('width', W);
         front.setAttribute('height', l.t);
+        front.setAttribute('rx', '2.5');
         front.setAttribute('fill', l.color);
-        front.setAttribute('stroke', 'rgba(10,17,40,0.12)');
+        front.setAttribute('stroke', 'rgba(10,17,40,0.14)');
         front.setAttribute('stroke-width', '0.6');
         slab.appendChild(front);
+
+        var sheen = document.createElementNS(NS, 'rect');
+        sheen.setAttribute('x', x);
+        sheen.setAttribute('y', y);
+        sheen.setAttribute('width', W);
+        sheen.setAttribute('height', l.t);
+        sheen.setAttribute('rx', '2.5');
+        sheen.setAttribute('fill', 'url(#cw-sheen)');
+        slab.appendChild(sheen);
+
         if (l.tex) {
           var texRect = document.createElementNS(NS, 'rect');
           texRect.setAttribute('x', x);
           texRect.setAttribute('y', y);
           texRect.setAttribute('width', W);
           texRect.setAttribute('height', l.t);
+          texRect.setAttribute('rx', '2.5');
           texRect.setAttribute('fill', 'url(#cwp-' + l.tex + ')');
           slab.appendChild(texRect);
         }
@@ -673,8 +749,8 @@ document.addEventListener('DOMContentLoaded', function () {
       /* Las capas se separan al entrar la sección en pantalla */
       function setExploded(on) {
         slabs.forEach(function (slab, i) {
-          slab.style.transitionDelay = (i * 60) + 'ms';
-          slab.style.transform = on ? 'translateY(' + (i * GAP) + 'px)' : 'translateY(0)';
+          slab.style.transitionDelay = (i * 55) + 'ms';
+          slab.style.transform = on ? 'translateY(' + offsets[i] + 'px)' : 'translateY(0)';
         });
       }
       setExploded(false);
@@ -689,15 +765,31 @@ document.addEventListener('DOMContentLoaded', function () {
         setExploded(true);
       }
 
-      /* Hover sincronizado capa ↔ etiqueta */
+      /* Hover sincronizado capa ↔ etiqueta, con estación seleccionable */
+      var currentSeason = null;
+
+      function applySeason() {
+        if (!currentSeason) {
+          stageEl.classList.remove('has-active');
+          slabs.forEach(function (s) { s.classList.remove('is-active'); });
+          labels.forEach(function (l) { l.classList.remove('is-active'); });
+          return;
+        }
+        stageEl.classList.add('has-active');
+        cw.layers.forEach(function (l, i) {
+          var on = l.group === currentSeason;
+          slabs[i].classList.toggle('is-active', on);
+          labels[i].classList.toggle('is-active', on);
+        });
+      }
+
       function setActive(i, on) {
-        stageEl.classList.toggle('has-active', on);
+        if (!on) { applySeason(); return; }
+        stageEl.classList.add('has-active');
         slabs.forEach(function (s) { s.classList.remove('is-active'); });
         labels.forEach(function (l) { l.classList.remove('is-active'); });
-        if (on && i >= 0) {
-          slabs[i].classList.add('is-active');
-          labels[i].classList.add('is-active');
-        }
+        slabs[i].classList.add('is-active');
+        labels[i].classList.add('is-active');
       }
       slabs.concat(labels).forEach(function (el) {
         el.addEventListener('mouseenter', function () {
@@ -705,6 +797,30 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         el.addEventListener('mouseleave', function () { setActive(-1, false); });
       });
+
+      /* Botones invierno/verano: iluminan las capas de esa cara */
+      var seasonsBox = document.createElement('div');
+      seasonsBox.className = 'cutaway__seasons';
+      [
+        { val: null, label: 'Todo el año', icon: '' },
+        { val: 'Cara de invierno', label: 'Invierno', icon: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2v20M4 6l16 12M20 6L4 18"/></svg>' },
+        { val: 'Cara de verano', label: 'Verano', icon: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>' }
+      ].forEach(function (s) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'cutaway__season' + (s.val === null ? ' is-active' : '');
+        b.innerHTML = s.icon + s.label;
+        b.addEventListener('click', function () {
+          currentSeason = s.val;
+          seasonsBox.querySelectorAll('.cutaway__season').forEach(function (x) {
+            x.classList.remove('is-active');
+          });
+          b.classList.add('is-active');
+          applySeason();
+        });
+        seasonsBox.appendChild(b);
+      });
+      section.querySelector('.cutaway__head').appendChild(seasonsBox);
     })();
   })();
 
@@ -715,41 +831,68 @@ document.addEventListener('DOMContentLoaded', function () {
     var form = document.getElementById('chkForm');
     if (!form) return;
 
-    var id = getParam('m');
-    var product = CATALOG[id];
-    if (!product) {
+    /* — Construir las líneas del pedido —
+       Modo compra directa: checkout.html?m=<id>&size=<i>
+       Modo cesta: sin parámetros → lee de AureaCart */
+    var lines = [];
+    var fromCart = false;
+    var directId = getParam('m');
+
+    if (directId && CATALOG[directId]) {
+      var p = CATALOG[directId];
+      var sIdx = parseInt(getParam('size') || String(p.defaultSize || 0), 10);
+      if (isNaN(sIdx) || sIdx < 0 || sIdx >= p.sizes.length) sIdx = 0;
+      lines.push({
+        id: directId, name: p.name, type: p.type,
+        sizeLabel: p.sizes[sIdx].label, price: p.sizes[sIdx].price,
+        img: p.images[0], qty: 1
+      });
+    } else if (window.AureaCart && window.AureaCart.items.length) {
+      fromCart = true;
+      lines = window.AureaCart.items.map(function (it) {
+        return {
+          id: it.id, name: it.name, type: it.type,
+          sizeLabel: it.sizeLabel, price: it.price, img: it.img, qty: it.qty
+        };
+      });
+    } else {
       window.location.replace('colchones.html');
       return;
     }
 
-    var sizeIdx = parseInt(getParam('size') || '0', 10);
-    if (isNaN(sizeIdx) || sizeIdx < 0 || sizeIdx >= product.sizes.length) sizeIdx = 0;
-    var size  = product.sizes[sizeIdx];
-    var total = size.price;
+    var hasColchon = lines.some(function (l) { return l.type === 'colchon'; });
+    var subtotal = lines.reduce(function (a, l) { return a + l.price * l.qty; }, 0);
 
     /* — Pintar resumen — */
-    document.getElementById('chkImg').src = product.images[0];
-    document.getElementById('chkImg').alt = product.name;
-    document.getElementById('chkName').textContent = product.name;
-    document.getElementById('chkMeta').textContent = size.label + ' · 1 unidad';
-    document.getElementById('chkPrice').textContent    = formatPrice(size.price);
-    document.getElementById('chkSubtotal').textContent = formatPrice(size.price);
-    document.getElementById('chkTotal').textContent    = formatPrice(total);
-
-    /* — Regalo con cada colchón: Mouth Tape — */
-    if (product.type === 'colchon' && CATALOG['mouth-tape']) {
-      var giftItem = document.createElement('div');
-      giftItem.className = 'chk-item chk-item--gift';
-      giftItem.innerHTML =
-        '<div class="chk-item__img"><img src="' + CATALOG['mouth-tape'].images[0] + '" alt="Mouth Tape Aurea"></div>' +
-        '<div>' +
-          '<div class="chk-item__name">Mouth Tape Aurea · 30 tiras</div>' +
-          '<div class="chk-item__meta">Regalo por tu colchón · Valorado en 10 €</div>' +
-        '</div>' +
-        '<span class="chk-gift-price">GRATIS</span>';
-      var firstItem = document.querySelector('.chk-item');
-      firstItem.parentNode.insertBefore(giftItem, firstItem.nextSibling);
+    var itemsBox = document.getElementById('chkItems');
+    var itemsHtml = '';
+    lines.forEach(function (l) {
+      itemsHtml +=
+        '<div class="chk-item">' +
+          '<div class="chk-item__img"><img src="' + l.img + '" alt=""></div>' +
+          '<div>' +
+            '<div class="chk-item__name">' + l.name + '</div>' +
+            '<div class="chk-item__meta">' + l.sizeLabel +
+              (l.qty > 1 ? ' · ' + l.qty + ' uds.' : '') + '</div>' +
+          '</div>' +
+          '<span class="chk-item__price">' + formatPrice(l.price * l.qty) + '</span>' +
+        '</div>';
+    });
+    if (hasColchon && CATALOG['mouth-tape']) {
+      itemsHtml +=
+        '<div class="chk-item chk-item--gift">' +
+          '<div class="chk-item__img"><img src="' + CATALOG['mouth-tape'].images[0] + '" alt="Mouth Tape Aurea"></div>' +
+          '<div>' +
+            '<div class="chk-item__name">Mouth Tape Aurea · 30 tiras</div>' +
+            '<div class="chk-item__meta">Regalo por tu colchón · Valorado en 10 €</div>' +
+          '</div>' +
+          '<span class="chk-gift-price">GRATIS</span>' +
+        '</div>';
     }
+    itemsBox.innerHTML = itemsHtml;
+
+    document.getElementById('chkSubtotal').textContent = formatPrice(subtotal);
+    document.getElementById('chkTotal').textContent    = formatPrice(subtotal);
 
     /* — Tabs de método de pago — */
     var tabs    = document.querySelectorAll('.pay-tab');
@@ -884,6 +1027,9 @@ document.addEventListener('DOMContentLoaded', function () {
         var ref = 'AUR-' + new Date().getFullYear() + '-' +
           Math.floor(10000 + Math.random() * 89999);
         document.getElementById('chkRef').textContent = 'Pedido ' + ref;
+
+        /* Vaciar la cesta si el pedido venía de ella */
+        if (fromCart && window.AureaCart) window.AureaCart.clear();
 
         document.getElementById('chkMain').style.display = 'none';
         var success = document.getElementById('chkSuccess');

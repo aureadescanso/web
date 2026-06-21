@@ -44,6 +44,7 @@
   }
   </script>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/premium.css">
   <link rel="stylesheet" href="css/shop.css">
   <link rel="stylesheet" href="css/blog.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -73,6 +74,10 @@
         </ul>
       </nav>
       <a href="colchones.html" class="header__cta">Comprar</a>
+      <button class="cartbtn" id="cartBtn" type="button" aria-label="Abrir cesta">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.4"/><circle cx="18" cy="21" r="1.4"/><path d="M1 1h4l2.6 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+        <span class="cartbtn__badge" id="cartBadge" hidden>0</span>
+      </button>
       <button class="header__burger" id="burger" aria-label="Menú">
         <span></span>
         <span></span>
@@ -138,7 +143,7 @@
             <img src="images/producto1.jpg" alt="Aurea Serenity" loading="lazy">
           </a>
           <div class="producto__body">
-            <h3 class="producto__name">Aurea Serenity</h3>
+            <h3 class="producto__name"><a href="producto.html?m=serenity">Aurea Serenity</a></h3>
             <p class="producto__desc">Firmeza media. Doble cara invierno-verano con núcleo HR de 28 kg/m³ y viscoelástica adaptable.</p>
             <div class="producto__footer">
               <span class="producto__price">Desde 499 &euro;</span>
@@ -151,7 +156,7 @@
             <img src="images/producto2.jpg" alt="Aurea Celestial" loading="lazy">
           </a>
           <div class="producto__body">
-            <h3 class="producto__name">Aurea Celestial</h3>
+            <h3 class="producto__name"><a href="producto.html?m=celestial">Aurea Celestial</a></h3>
             <p class="producto__desc">Firmeza media-alta. Muelles ensacados con doble capa de viscoelástica.</p>
             <div class="producto__footer">
               <span class="producto__price">Desde 699 &euro;</span>
@@ -172,6 +177,44 @@
           <p class="crossband__sub">Almacenaje oculto y la base perfecta para tu colchón. Desde 399 €.</p>
         </div>
         <a href="canapes.html" class="crossband__btn">Descubrir canapés &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== HECHO EN NUESTRA FÁBRICA ========== -->
+  <section class="fabrica" id="fabrica">
+    <div class="fabrica__inner">
+      <div class="fabrica__media" data-animate>
+        <div class="fabrica__frame">
+          <video class="fabrica__video" autoplay muted loop playsinline preload="metadata"
+                 poster="images/hero-fabrica-poster.jpg" aria-label="Colchón Aurea fabricándose en nuestra fábrica">
+            <source src="videos/aurea-fabrica.mp4" type="video/mp4">
+          </video>
+          <span class="fabrica__badge">
+            <span class="fabrica__dot" aria-hidden="true"></span>
+            En directo desde la fábrica
+          </span>
+        </div>
+      </div>
+      <div class="fabrica__text" data-animate data-delay="120">
+        <span class="fabrica__eyebrow">Hecho en España</span>
+        <h2 class="fabrica__title">Lo fabricamos <em>nosotros</em>, sin intermediarios</h2>
+        <p class="fabrica__lead">Cada colchón Aurea sale de nuestra propia línea de producción: el mismo núcleo, el mismo acolchado tapa a tapa y la misma marca que recibes en casa. Sin marcas blancas, sin distribuidores que inflen el precio.</p>
+        <ul class="fabrica__points">
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Producción propia en España, de principio a fin
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Materiales certificados y tejidos OEKO-TEX
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Directo de fábrica a tu casa: pagas el colchón, no la cadena
+          </li>
+        </ul>
+        <a href="colchones.html" class="btn btn--solid">Descubre nuestros colchones</a>
       </div>
     </div>
   </section>
@@ -217,68 +260,42 @@
     </div>
   </section>
 
-  <!-- ========== 6. TESTIMONIOS — Stagger Cards ========== -->
-  <section class="testimonios" id="testimonios">
-    <div class="container">
-      <h2 class="section-title" data-animate>Lo que dicen nuestros clientes</h2>
-    </div>
-    <div class="stagger" id="staggerTestimonials">
-      <div class="stagger__stage" id="staggerStage"></div>
-      <div class="stagger__nav">
-        <button class="stagger__btn" id="staggerPrev" aria-label="Reseña anterior">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <button class="stagger__btn" id="staggerNext" aria-label="Siguiente reseña">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-      </div>
-    </div>
-  </section>
+  <!-- Sección de testimonios eliminada: marca nueva, sin reseñas inventadas -->
+  <!-- Franja de números eliminada: sus datos se repetían en los sellos de confianza -->
 
-  <!-- ========== 7. NÚMEROS ========== -->
-  <section class="numeros" id="numeros">
-    <div class="container">
-      <div class="numeros__grid">
-        <div class="numero" data-animate>
-          <span class="numero__value" data-target="100" data-counter>0</span>
-          <span class="numero__label">noches de prueba</span>
-        </div>
-        <div class="numero" data-animate data-delay="80">
-          <span class="numero__value" data-target="2000" data-prefix="+" data-counter>0</span>
-          <span class="numero__label">clientes satisfechos</span>
-        </div>
-        <div class="numero" data-animate data-delay="160">
-          <span class="numero__value" data-target="10" data-counter>0</span>
-          <span class="numero__label">años de garantía</span>
-        </div>
-        <div class="numero" data-animate data-delay="240">
-          <span class="numero__value" data-target="48" data-decimal data-counter>0</span>
-          <span class="numero__label">valoración media</span>
-        </div>
+  <!-- ========== SELLOS DE CONFIANZA (banda puente) ========== -->
+  <section class="seals" data-animate aria-label="Garantías de marca">
+    <span class="seals__eyebrow">La promesa Aurea</span>
+    <div class="seals__grid">
+      <div class="seal">
+        <span class="seal__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </span>
+        <span class="seal__title">Fabricado en España</span>
+        <span class="seal__sub">Producción propia, sin intermediarios</span>
+      </div>
+      <div class="seal">
+        <span class="seal__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </span>
+        <span class="seal__title">Tejidos OEKO-TEX</span>
+        <span class="seal__sub">Libres de sustancias nocivas</span>
+      </div>
+      <div class="seal">
+        <span class="seal__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+        </span>
+        <span class="seal__title">100 noches de prueba</span>
+        <span class="seal__sub">Devolución gratuita si no convence</span>
+      </div>
+      <div class="seal">
+        <span class="seal__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </span>
+        <span class="seal__title">10 años de garantía</span>
+        <span class="seal__sub">Atención directa de fábrica</span>
       </div>
     </div>
-  </section>
-
-  <!-- ========== LOGO CLOUD — Dónde comprarnos ========== -->
-  <section class="logo-cloud" data-animate>
-    <p class="logo-cloud__heading">
-      <span class="logo-cloud__muted">Encuéntranos donde prefieras.</span><br>
-      <span class="logo-cloud__bold">Disponible en más de 10 puntos de venta.</span>
-    </p>
-    <div class="logo-cloud__divider"></div>
-    <div class="logo-cloud__mask">
-      <div class="logo-cloud__track" id="logoCloudTrack">
-        <span class="logo-cloud__logo">amazon</span>
-        <span class="logo-cloud__logo">wallapop</span>
-        <span class="logo-cloud__logo logo-cloud__logo--serif">Aurea Descanso</span>
-        <span class="logo-cloud__logo">El Corte Inglés</span>
-        <span class="logo-cloud__logo">Carrefour</span>
-        <span class="logo-cloud__logo logo-cloud__logo--accent">+ 10 tiendas físicas</span>
-        <span class="logo-cloud__logo">Conforama</span>
-        <span class="logo-cloud__logo">Milanuncios</span>
-      </div>
-    </div>
-    <div class="logo-cloud__divider"></div>
   </section>
 
   <!-- ========== 8. CTA con Reveal Text ========== -->
@@ -354,5 +371,7 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/premium.js"></script>
+  <script src="js/cart.js"></script>
 </body>
 </html>

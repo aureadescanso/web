@@ -32,7 +32,6 @@
           "image": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1200&q=80",
           "description": "Canapé abatible con tapa de madera de roble, apertura asistida por pistones de gas y hasta 1.000 litros de almacenaje.",
           "brand": { "@type": "Brand", "name": "Aurea Descanso" },
-          "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.7", "reviewCount": "156" },
           "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "399", "highPrice": "549", "availability": "https://schema.org/InStock" }
         }
       },
@@ -46,7 +45,6 @@
           "image": "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=1200&q=80",
           "description": "Canapé abatible tapizado en tejido antimanchas con almacenaje XXL de 35 cm de profundidad útil.",
           "brand": { "@type": "Brand", "name": "Aurea Descanso" },
-          "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "98" },
           "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "519", "highPrice": "659", "availability": "https://schema.org/InStock" }
         }
       }
@@ -54,6 +52,7 @@
   }
   </script>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/premium.css">
   <link rel="stylesheet" href="css/shop.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -79,6 +78,10 @@
         </ul>
       </nav>
       <a href="colchones.html" class="header__cta">Comprar</a>
+      <button class="cartbtn" id="cartBtn" type="button" aria-label="Abrir cesta">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.4"/><circle cx="18" cy="21" r="1.4"/><path d="M1 1h4l2.6 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+        <span class="cartbtn__badge" id="cartBadge" hidden>0</span>
+      </button>
       <button class="header__burger" id="burger" aria-label="Menú">
         <span></span>
         <span></span>
@@ -139,7 +142,7 @@
           <span class="pcard__badge">Madera de roble</span>
         </a>
         <div class="pcard__body">
-          <h2 class="pcard__name">Canapé Atlas</h2>
+          <h2 class="pcard__name"><a href="producto.html?m=canape-atlas">Canapé Atlas</a></h2>
           <p class="pcard__desc">Tapa de madera de roble transpirable y apertura asistida con pistones reforzados. Robustez que se nota.</p>
           <div class="pcard__chips">
             <span class="pcard__chip">1.000 L de almacenaje</span>
@@ -163,7 +166,7 @@
           <span class="pcard__badge pcard__badge--gold">Nuevo</span>
         </a>
         <div class="pcard__body">
-          <h2 class="pcard__name">Canapé Éter</h2>
+          <h2 class="pcard__name"><a href="producto.html?m=canape-eter">Canapé Éter</a></h2>
           <p class="pcard__desc">Tapizado antimanchas en 4 colores con almacenaje XXL y apertura de gran ángulo. Minimalismo cálido.</p>
           <div class="pcard__chips">
             <span class="pcard__chip">Almacenaje XXL</span>
@@ -231,6 +234,8 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/premium.js"></script>
+  <script src="js/cart.js"></script>
   <script src="js/shop.js"></script>
 </body>
 </html>
