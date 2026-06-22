@@ -903,7 +903,9 @@ ul  { list-style: none; }
   .header__inner { padding: 0 20px; height: 48px; }
   .header__logo-img { height: 45px; }
   .header__nav, .header__cta { display: none; }
-  .header__burger { display: flex; }
+  .header__burger { display: flex; margin-left: 16px; }
+  /* La cesta se agrupa con el burger a la derecha (antes quedaba centrada) */
+  .cartbtn { margin-left: auto; }
 
   /* Hero */
   .hero { padding: 110px 24px 60px; min-height: 90vh; }
