@@ -2,6 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aurea Descanso | Colchones Premium</title>
   <meta name="description" content="Colchones premium diseñados para transformar tu descanso. Envío gratuito, 100 noches de prueba y garantía de 10 años.">
@@ -15,7 +17,7 @@
   <meta property="og:title" content="Aurea Descanso | Colchones Premium">
   <meta property="og:description" content="Colchones premium diseñados para transformar tu descanso. Envío gratuito, 100 noches de prueba y garantía de 10 años.">
   <meta property="og:url" content="https://aureadescanso.com/">
-  <meta property="og:image" content="https://aureadescanso.com/images/producto1.jpg">
+  <meta property="og:image" content="https://aureadescanso.com/images/serenity-frontal.png">
   <meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">
   {
@@ -60,6 +62,23 @@
   <div class="custom-cursor" id="customCursor" aria-hidden="true"></div>
 
   <!-- ========== 1. HEADER ========== -->
+    <!-- Banda superior de anuncios -->
+  <div class="announce" aria-label="Ofertas">
+    <div class="announce__track">
+      <span class="announce__item" data-i18n="ann.1">−10 % en tu primera compra con el código AUREA10</span>
+      <span class="announce__sep" aria-hidden="true">✦</span>
+      <span class="announce__item" data-i18n="ann.2">Envío gratuito siempre, sin pedido mínimo</span>
+      <span class="announce__sep" aria-hidden="true">✦</span>
+      <span class="announce__item" data-i18n="ann.3">Mouth Tape de regalo con cada colchón</span>
+      <span class="announce__sep" aria-hidden="true">✦</span>
+      <span class="announce__item" data-i18n="ann.1">−10 % en tu primera compra con el código AUREA10</span>
+      <span class="announce__sep" aria-hidden="true">✦</span>
+      <span class="announce__item" data-i18n="ann.2">Envío gratuito siempre, sin pedido mínimo</span>
+      <span class="announce__sep" aria-hidden="true">✦</span>
+      <span class="announce__item" data-i18n="ann.3">Mouth Tape de regalo con cada colchón</span>
+      <span class="announce__sep" aria-hidden="true">✦</span>
+    </div>
+  </div>
   <header class="header" id="header">
     <div class="header__inner">
       <a href="index.html" class="header__logo">
@@ -67,17 +86,19 @@
       </a>
       <nav class="header__nav" id="nav">
         <ul class="header__menu">
-          <li><a href="colchones.html" class="header__link">Colchones</a></li>
-          <li><a href="canapes.html" class="header__link">Canapés</a></li>
-          <li><a href="blog.html" class="header__link">Blog</a></li>
-          <li><a href="#footer" class="header__link">Contacto</a></li>
+          <li><a href="colchones.html" class="header__link" data-i18n="nav.colchones">Colchones</a></li>
+          <li><a href="canapes.html" class="header__link" data-i18n="nav.canapes">Canapés</a></li>
+          <li><a href="complementos.html" class="header__link" data-i18n="nav.complementos">Complementos</a></li>
+          <li><a href="blog.html" class="header__link" data-i18n="nav.blog">Blog</a></li>
+          <li><a href="#footer" class="header__link" data-i18n="nav.contacto">Contacto</a></li>
         </ul>
       </nav>
-      <a href="colchones.html" class="header__cta">Comprar</a>
+      <a href="colchones.html" class="header__cta" data-i18n="nav.comprar">Comprar</a>
       <button class="cartbtn" id="cartBtn" type="button" aria-label="Abrir cesta">
         <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.4"/><circle cx="18" cy="21" r="1.4"/><path d="M1 1h4l2.6 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
         <span class="cartbtn__badge" id="cartBadge" hidden>0</span>
       </button>
+      <div class="langpick langpick--header" data-langpick></div>
       <button class="header__burger" id="burger" aria-label="Menú">
         <span></span>
         <span></span>
@@ -88,11 +109,13 @@
 
   <div class="mobile-menu" id="mobileMenu">
       <nav class="mobile-menu__nav">
-        <a href="colchones.html" class="mobile-menu__link">Colchones</a>
-        <a href="canapes.html" class="mobile-menu__link">Canapés</a>
-        <a href="blog.html" class="mobile-menu__link">Blog</a>
-        <a href="#footer" class="mobile-menu__link">Contacto</a>
-        <a href="colchones.html" class="mobile-menu__cta">Comprar</a>
+        <a href="colchones.html" class="mobile-menu__link" data-i18n="nav.colchones">Colchones</a>
+        <a href="canapes.html" class="mobile-menu__link" data-i18n="nav.canapes">Canapés</a>
+        <a href="complementos.html" class="mobile-menu__link" data-i18n="nav.complementos">Complementos</a>
+        <a href="blog.html" class="mobile-menu__link" data-i18n="nav.blog">Blog</a>
+        <a href="#footer" class="mobile-menu__link" data-i18n="nav.contacto">Contacto</a>
+        <a href="colchones.html" class="mobile-menu__cta" data-i18n="nav.comprar">Comprar</a>
+        <div class="langpick langpick--mobile" data-langpick></div>
       </nav>
     </div>
 
@@ -106,22 +129,22 @@
       <h1 class="hero__title">
         <span id="heroTypeText"></span><span class="hero__type-cursor" aria-hidden="true"></span>
       </h1>
-      <p class="hero__sub hero__entrance" id="heroSub">Colchones diseñados para transformar tu descanso</p>
+      <p class="hero__sub hero__entrance" id="heroSub" data-i18n="hero.sub">Colchones diseñados para transformar tu descanso</p>
       <div class="hero__buttons hero__entrance" id="heroButtons">
-        <a href="colchones.html" class="btn btn--solid">Descubre nuestros colchones</a>
-        <a href="canapes.html" class="btn btn--outline">Ver canapés</a>
+        <a href="colchones.html" class="btn btn--solid" data-i18n="hero.cta1">Descubre nuestros colchones</a>
+        <a href="canapes.html" class="btn btn--outline" data-i18n="hero.cta2">Ver canapés</a>
         <div class="hero__trust" aria-label="Garantías de compra">
           <span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 8h14v9H1zM15 11h4l3 3v3h-7"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg>
-            Envío gratis 3–5 días
+            <span data-i18n="hero.t1">Envío gratis 3–5 días</span>
           </span>
           <span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
-            100 noches de prueba
+            <span data-i18n="hero.t2">100 noches de prueba</span>
           </span>
           <span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
-            10 años de garantía
+            <span data-i18n="hero.t3">10 años de garantía</span>
           </span>
         </div>
       </div>
@@ -136,47 +159,58 @@
   <!-- Tarjetas con efecto tilt 3D al mover el cursor -->
   <section class="productos" id="productos">
     <div class="container">
-      <h2 class="section-title" data-animate>Nuestros colchones</h2>
+      <h2 class="section-title" data-animate data-i18n="home.products">Nuestros colchones</h2>
       <div class="productos__grid">
         <article class="producto producto--tilt" data-animate>
           <a href="producto.html?m=serenity" class="producto__img">
-            <img src="images/producto1.jpg" alt="Aurea Serenity" loading="lazy">
+            <img src="images/serenity-frontal.png" alt="Aurea Serenity" loading="lazy">
           </a>
           <div class="producto__body">
             <h3 class="producto__name"><a href="producto.html?m=serenity">Aurea Serenity</a></h3>
-            <p class="producto__desc">Firmeza media. Doble cara invierno-verano con núcleo HR de 28 kg/m³ y viscoelástica adaptable.</p>
+            <p class="producto__desc" data-i18n="home.serenity_desc">Firmeza media. Doble cara invierno-verano con núcleo HR de 28 kg/m³ y viscoelástica adaptable.</p>
             <div class="producto__footer">
               <span class="producto__price">Desde 499 &euro;</span>
-              <a href="producto.html?m=serenity" class="producto__link">Descubrir &rarr;</a>
+              <a href="producto.html?m=serenity" class="producto__link" data-i18n="home.discover">Descubrir &rarr;</a>
             </div>
           </div>
         </article>
-        <article class="producto producto--tilt" data-animate data-delay="120">
-          <a href="producto.html?m=celestial" class="producto__img">
-            <img src="images/producto2.jpg" alt="Aurea Celestial" loading="lazy">
+        <article class="producto producto--tilt producto--soon" data-animate data-delay="120">
+          <a href="producto.html?m=celestial" class="producto__img soon-media">
+            <img src="images/producto2.jpg" alt="Aurea Celestial — Próximamente" loading="lazy">
+            <div class="soon-veil"></div>
+            <div class="tape tape--1"><div class="tape__track">
+              <span>Próximamente</span><span class="soon-dot">✦</span><span>Aurea Celestial</span><span class="soon-dot">✦</span><span>Próximamente</span><span class="soon-dot">✦</span><span>Aurea Celestial</span><span class="soon-dot">✦</span><span>Próximamente</span><span class="soon-dot">✦</span><span>Aurea Celestial</span><span class="soon-dot">✦</span><span>Próximamente</span><span class="soon-dot">✦</span><span>Aurea Celestial</span><span class="soon-dot">✦</span>
+            </div></div>
+            <div class="tape tape--2"><div class="tape__track">
+              <span>Coming soon</span><span class="soon-dot">✦</span><span>Aurea Celestial</span><span class="soon-dot">✦</span><span>Coming soon</span><span class="soon-dot">✦</span><span>Aurea Celestial</span><span class="soon-dot">✦</span><span>Coming soon</span><span class="soon-dot">✦</span><span>Aurea Celestial</span><span class="soon-dot">✦</span><span>Coming soon</span><span class="soon-dot">✦</span><span>Aurea Celestial</span><span class="soon-dot">✦</span>
+            </div></div>
+            <span class="soon-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+              <span data-i18n="soon.badge">Próximamente</span>
+            </span>
           </a>
           <div class="producto__body">
             <h3 class="producto__name"><a href="producto.html?m=celestial">Aurea Celestial</a></h3>
-            <p class="producto__desc">Firmeza media-alta. Muelles ensacados con doble capa de viscoelástica.</p>
+            <p class="producto__desc" data-i18n="soon.teaser">El próximo capítulo del descanso Aurea. Estamos afinando cada detalle. Muy pronto.</p>
             <div class="producto__footer">
-              <span class="producto__price">Desde 699 &euro;</span>
-              <a href="producto.html?m=celestial" class="producto__link">Descubrir &rarr;</a>
+              <span class="producto__price" data-i18n="soon.price">Precio por desvelar</span>
+              <a href="producto.html?m=celestial" class="producto__link producto__link--gold" data-i18n="soon.notify">Avísame del lanzamiento</a>
             </div>
           </div>
         </article>
       </div>
       <p style="text-align:center; margin-top:48px;" data-animate>
-        <a href="colchones.html" class="btn btn--outline">Ver todos los detalles y medidas</a>
+        <a href="colchones.html" class="btn btn--outline" data-i18n="home.allsizes">Ver todos los detalles y medidas</a>
       </p>
     </div>
 
     <div class="crossband" data-animate>
       <div class="crossband__inner">
         <div>
-          <h2 class="crossband__title">¿Necesitas también <em>canapé</em>?</h2>
-          <p class="crossband__sub">Almacenaje oculto y la base perfecta para tu colchón. Desde 399 €.</p>
+          <h2 class="crossband__title" data-i18n-html="home.cross_t">¿Necesitas también <em>canapé</em>?</h2>
+          <p class="crossband__sub" data-i18n="home.cross_sub">Almacenaje oculto y la base perfecta para tu colchón. Desde 399 €.</p>
         </div>
-        <a href="canapes.html" class="crossband__btn">Descubrir canapés &rarr;</a>
+        <a href="canapes.html" class="crossband__btn" data-i18n="home.cross_btn">Descubrir canapés &rarr;</a>
       </div>
     </div>
   </section>
@@ -192,29 +226,29 @@
           </video>
           <span class="fabrica__badge">
             <span class="fabrica__dot" aria-hidden="true"></span>
-            En directo desde la fábrica
+            <span data-i18n="fab.badge">En directo desde la fábrica</span>
           </span>
         </div>
       </div>
       <div class="fabrica__text" data-animate data-delay="120">
-        <span class="fabrica__eyebrow">Hecho en España</span>
-        <h2 class="fabrica__title">Lo fabricamos <em>nosotros</em>, sin intermediarios</h2>
-        <p class="fabrica__lead">Cada colchón Aurea sale de nuestra propia línea de producción: el mismo núcleo, el mismo acolchado tapa a tapa y la misma marca que recibes en casa. Sin marcas blancas, sin distribuidores que inflen el precio.</p>
+        <span class="fabrica__eyebrow" data-i18n="fab.eyebrow">Hecho en España</span>
+        <h2 class="fabrica__title" data-i18n-html="fab.title">Lo fabricamos <em>nosotros</em>, sin intermediarios</h2>
+        <p class="fabrica__lead" data-i18n="fab.lead">Cada colchón Aurea sale de nuestra propia línea de producción: el mismo núcleo, el mismo acolchado tapa a tapa y la misma marca que recibes en casa. Sin marcas blancas, sin distribuidores que inflen el precio.</p>
         <ul class="fabrica__points">
           <li>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-            Producción propia en España, de principio a fin
+            <span data-i18n="fab.p1">Producción propia en España, de principio a fin</span>
           </li>
           <li>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-            Materiales certificados y tejidos OEKO-TEX
+            <span data-i18n="fab.p2">Materiales certificados y tejidos OEKO-TEX</span>
           </li>
           <li>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-            Directo de fábrica a tu casa: pagas el colchón, no la cadena
+            <span data-i18n="fab.p3">Directo de fábrica a tu casa: pagas el colchón, no la cadena</span>
           </li>
         </ul>
-        <a href="colchones.html" class="btn btn--solid">Descubre nuestros colchones</a>
+        <a href="colchones.html" class="btn btn--solid" data-i18n="hero.cta1">Descubre nuestros colchones</a>
       </div>
     </div>
   </section>
@@ -222,8 +256,8 @@
   <!-- ========== 4. COMPROMISO — banda compacta ========== -->
   <section class="promesa" id="compromiso">
     <div class="promesa__head" data-animate>
-      <span class="promesa__eyebrow">Nuestro compromiso</span>
-      <h2 class="promesa__title">Comprar bien es <em>dormir tranquilo</em></h2>
+      <span class="promesa__eyebrow" data-i18n="prom.eyebrow">Nuestro compromiso</span>
+      <h2 class="promesa__title" data-i18n-html="prom.title">Comprar bien es <em>dormir tranquilo</em></h2>
     </div>
 
     <div class="promesa__grid">
@@ -231,32 +265,32 @@
         <span class="promesa__icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1 8h14v9H1zM15 11h4l3 3v3h-7"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg>
         </span>
-        <span class="promesa__value">3–5 <small>días</small></span>
-        <span class="promesa__label">Envío gratuito</span>
-        <span class="promesa__note">Directo de fábrica a tu casa, comprimido al vacío y con seguimiento.</span>
+        <span class="promesa__value">3–5 <small data-i18n="u.days">días</small></span>
+        <span class="promesa__label" data-i18n="prom.l1">Envío gratuito</span>
+        <span class="promesa__note" data-i18n="prom.n1">Directo de fábrica a tu casa, comprimido al vacío y con seguimiento.</span>
       </div>
 
       <div class="promesa__item" data-animate data-delay="120">
         <span class="promesa__icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
         </span>
-        <span class="promesa__value">100 <small>noches</small></span>
-        <span class="promesa__label">De prueba en casa</span>
-        <span class="promesa__note">Si no te convence, lo recogemos gratis y te devolvemos cada euro.</span>
+        <span class="promesa__value">100 <small data-i18n="u.nights">noches</small></span>
+        <span class="promesa__label" data-i18n="prom.l2">De prueba en casa</span>
+        <span class="promesa__note" data-i18n="prom.n2">Si no te convence, lo recogemos gratis y te devolvemos cada euro.</span>
       </div>
 
       <div class="promesa__item" data-animate data-delay="240">
         <span class="promesa__icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
         </span>
-        <span class="promesa__value">10 <small>años</small></span>
-        <span class="promesa__label">De garantía total</span>
-        <span class="promesa__note">Defectos, hundimientos e irregularidades cubiertos. Sin letra pequeña.</span>
+        <span class="promesa__value">10 <small data-i18n="u.years">años</small></span>
+        <span class="promesa__label" data-i18n="prom.l3">De garantía total</span>
+        <span class="promesa__note" data-i18n="prom.n3">Defectos, hundimientos e irregularidades cubiertos. Sin letra pequeña.</span>
       </div>
     </div>
 
     <div class="promesa__cta" data-animate data-delay="160">
-      <a href="colchones.html" class="btn btn--outline">Elige tu colchón</a>
+      <a href="colchones.html" class="btn btn--outline" data-i18n="prom.cta">Elige tu colchón</a>
     </div>
   </section>
 
@@ -265,35 +299,35 @@
 
   <!-- ========== SELLOS DE CONFIANZA (banda puente) ========== -->
   <section class="seals" data-animate aria-label="Garantías de marca">
-    <span class="seals__eyebrow">La promesa Aurea</span>
+    <span class="seals__eyebrow" data-i18n="seals.eyebrow">La promesa Aurea</span>
     <div class="seals__grid">
       <div class="seal">
         <span class="seal__icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
         </span>
-        <span class="seal__title">Fabricado en España</span>
-        <span class="seal__sub">Producción propia, sin intermediarios</span>
+        <span class="seal__title" data-i18n="seals.s1t">Fabricado en España</span>
+        <span class="seal__sub" data-i18n="seals.s1d">Producción propia, sin intermediarios</span>
       </div>
       <div class="seal">
         <span class="seal__icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><polyline points="9 12 11 14 15 10"/></svg>
         </span>
-        <span class="seal__title">Tejidos OEKO-TEX</span>
-        <span class="seal__sub">Libres de sustancias nocivas</span>
+        <span class="seal__title" data-i18n="seals.s2t">Tejidos OEKO-TEX</span>
+        <span class="seal__sub" data-i18n="seals.s2d">Libres de sustancias nocivas</span>
       </div>
       <div class="seal">
         <span class="seal__icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
         </span>
-        <span class="seal__title">100 noches de prueba</span>
-        <span class="seal__sub">Devolución gratuita si no convence</span>
+        <span class="seal__title" data-i18n="seals.s3t">100 noches de prueba</span>
+        <span class="seal__sub" data-i18n="seals.s3d">Devolución gratuita si no convence</span>
       </div>
       <div class="seal">
         <span class="seal__icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
         </span>
-        <span class="seal__title">10 años de garantía</span>
-        <span class="seal__sub">Atención directa de fábrica</span>
+        <span class="seal__title" data-i18n="seals.s4t">10 años de garantía</span>
+        <span class="seal__sub" data-i18n="seals.s4d">Atención directa de fábrica</span>
       </div>
     </div>
   </section>
@@ -308,8 +342,8 @@
         <span class="reveal-letter" data-index="3" data-img="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80">E</span>
         <span class="reveal-letter" data-index="4" data-img="https://images.unsplash.com/photo-1586105251261-72a756497a11?w=800&q=80">A</span>
       </div>
-      <h2 class="cta__title" data-animate>Tu mejor descanso<br>empieza aquí.</h2>
-      <a href="colchones.html" class="btn btn--white" data-animate data-delay="120">Ver colchones</a>
+      <h2 class="cta__title" data-animate data-i18n-html="cta.title">Tu mejor descanso<br>empieza aquí.</h2>
+      <a href="colchones.html" class="btn btn--white" data-animate data-delay="120" data-i18n="cta.btn">Ver colchones</a>
     </div>
   </section>
 
@@ -317,9 +351,9 @@
   <section class="blog" id="blog">
     <div class="container">
       <div class="blog__header" data-animate>
-        <span class="blog__label">Blog de descanso</span>
-        <h2 class="section-title blog__title">Aprende a dormir mejor</h2>
-        <p class="blog__intro">Guías expertas sobre colchones, descanso y bienestar. Todo lo que necesitas para elegir bien y dormir mejor.</p>
+        <span class="blog__label" data-i18n="bh.label">Blog de descanso</span>
+        <h2 class="section-title blog__title" data-i18n="bh.title">Aprende a dormir mejor</h2>
+        <p class="blog__intro" data-i18n="bh.intro">Guías expertas sobre colchones, descanso y bienestar. Todo lo que necesitas para elegir bien y dormir mejor.</p>
       </div>
     </div>
 
@@ -339,15 +373,15 @@
     <div class="footer__inner">
       <img src="images/aureadescanso.png" alt="Aurea Descanso" class="footer__logo">
       <div class="footer__links">
-        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="aviso-legal.html" data-i18n="footer.legal">Aviso legal</a>
         <span class="footer__sep">|</span>
-        <a href="privacidad.html">Privacidad</a>
+        <a href="privacidad.html" data-i18n="footer.privacy">Privacidad</a>
         <span class="footer__sep">|</span>
-        <a href="cookies.html">Cookies</a>
+        <a href="cookies.html" data-i18n="footer.cookies">Cookies</a>
         <span class="footer__sep">|</span>
-        <a href="condiciones-venta.html">Condiciones de venta</a>
+        <a href="condiciones-venta.html" data-i18n="footer.terms">Condiciones de venta</a>
         <span class="footer__sep">|</span>
-        <a href="mailto:aureadescanso@gmail.com">Contacto</a>
+        <a href="mailto:aureadescanso@gmail.com" data-i18n="footer.contact">Contacto</a>
       </div>
       <div class="footer__social">
         <a href="https://instagram.com/aureadescanso" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
@@ -360,16 +394,17 @@
       <div class="footer__pay" aria-label="Pago seguro">
         <span class="footer__pay-note">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-          Pago cifrado SSL
+          <span data-i18n="footer.ssl">Pago cifrado SSL</span>
         </span>
         <span class="paybadge" title="Visa"><svg width="34" height="12" viewBox="0 0 34 12" aria-label="Visa" role="img"><text x="17" y="10.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" font-style="italic" fill="#1A1F71">VISA</text></svg></span>
         <span class="paybadge" title="Mastercard"><svg width="30" height="19" viewBox="0 0 30 19" aria-label="Mastercard" role="img"><circle cx="11" cy="9.5" r="8.6" fill="#EB001B"/><circle cx="19" cy="9.5" r="8.6" fill="#F79E1B"/><path d="M15 2.6a8.6 8.6 0 0 1 0 13.8 8.6 8.6 0 0 1 0-13.8z" fill="#FF5F00"/></svg></span>
         <span class="paybadge" title="Bizum"><svg width="36" height="12" viewBox="0 0 36 12" aria-label="Bizum" role="img"><text x="18" y="10.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10.5" font-weight="700" fill="#11C5C5">bizum</text></svg></span>
       </div>
-      <p class="footer__copy">&copy; 2026 Aurea Descanso. Todos los derechos reservados.</p>
+      <p class="footer__copy">&copy; 2026 Aurea Descanso. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
     </div>
   </footer>
 
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
   <script src="js/premium.js"></script>
   <script src="js/cart.js"></script>

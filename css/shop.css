@@ -1804,3 +1804,279 @@
 .cutaway-slab.is-active {
   filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.35));
 }
+
+
+/* Cupón de descuento en el checkout */
+.chk-coupon { margin: 4px 0 18px; }
+.chk-coupon__q {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-2);
+  margin-bottom: 8px;
+}
+.chk-coupon__row { display: flex; gap: 8px; }
+.chk-coupon__row input {
+  flex: 1;
+  min-width: 0;
+  padding: 11px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.chk-coupon__row input:disabled { background: var(--gray); color: var(--text-2); }
+.chk-coupon__row button {
+  flex-shrink: 0;
+  padding: 11px 18px;
+  border: none;
+  border-radius: 10px;
+  background: var(--navy);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.chk-coupon__row button:hover { opacity: 0.9; }
+.chk-coupon__row button:disabled { opacity: 0.5; cursor: default; }
+.chk-coupon__msg { font-size: 0.78rem; margin-top: 7px; min-height: 1em; }
+.chk-coupon__msg.is-ok { color: #2d8a4e; }
+.chk-coupon__msg.is-bad { color: #C0392B; }
+.chk-row--discount span:last-child { color: #2d8a4e; font-weight: 600; }
+
+
+/* ==============================================
+   PRÓXIMAMENTE — cintas en movimiento + teaser
+   ============================================== */
+.soon-media img { filter: blur(7px) brightness(0.55) saturate(0.85); transform: scale(1.08); }
+.soon-veil {
+  position: absolute; inset: 0; z-index: 1;
+  background: radial-gradient(circle at 50% 38%, rgba(10,17,40,0.18), rgba(10,17,40,0.55));
+}
+.soon-badge {
+  position: absolute; top: 14px; left: 14px; z-index: 4;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.66rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: #0A1128; background: linear-gradient(120deg, #B8922C, #D4AF37);
+  padding: 6px 13px; border-radius: 100px;
+}
+.soon-badge svg { width: 12px; height: 12px; }
+
+/* Cinta diagonal aislante con texto desplazándose */
+.tape {
+  position: absolute; left: -14%; width: 128%; z-index: 3;
+  background: #1B2D5B; color: #D4AF37; overflow: hidden;
+  border-top: 1px solid rgba(212,175,55,0.5);
+  border-bottom: 1px solid rgba(212,175,55,0.5);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+.tape--1 { top: 50%; transform: translateY(-50%) rotate(-13deg); }
+.tape--2 { top: 50%; transform: translateY(-50%) rotate(13deg); background: #0A1128; }
+.tape__track { display: inline-flex; white-space: nowrap; animation: tapeScroll 16s linear infinite; }
+.tape--2 .tape__track { animation-direction: reverse; }
+.tape__track span {
+  padding: 5px 13px; font-family: var(--sans);
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+}
+.tape__track .soon-dot { color: rgba(212,175,55,0.55); padding: 5px 2px; }
+@keyframes tapeScroll { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .tape__track { animation: none; } }
+
+/* Botón dorado de aviso en las tarjetas */
+.pcard__btn--gold, .producto__link--gold {
+  background: linear-gradient(120deg, #B8922C, #D4AF37);
+  color: #0A1128 !important;
+}
+
+/* Ficha "Próximamente" — teaser inmersivo */
+.pdp--soon { padding: 96px 24px 40px; }
+.soonx {
+  position: relative;
+  min-height: 76vh;
+  display: flex;
+  align-items: center;
+  max-width: 1180px;
+  margin: 0 auto;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #0A1128;
+  box-shadow: 0 40px 90px -40px rgba(0,0,0,0.7);
+}
+.soonx__bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  filter: blur(18px) brightness(0.42) saturate(0.7);
+  transform: scale(1.18);
+}
+.soonx__veil {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(75% 75% at 50% 38%, rgba(10,17,40,0.25), rgba(10,17,40,0.82)),
+    linear-gradient(180deg, rgba(10,17,40,0.35), rgba(10,17,40,0.72));
+}
+.soonx .tape { z-index: 1; }
+.soonx .tape--1 { top: 40%; background: #14224A; color: #D4AF37; }
+.soonx .tape--2 { top: 40%; background: linear-gradient(120deg, #B8922C, #D4AF37); color: #0A1128; }
+.soonx__content {
+  position: relative; z-index: 2;
+  max-width: 600px; margin: 0 auto;
+  padding: 78px 32px; text-align: center; color: #fff;
+}
+.soonx__eyebrow {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: var(--sans); font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.24em; text-transform: uppercase; color: #D4AF37;
+  margin-bottom: 22px;
+}
+.soonx__dot { width: 7px; height: 7px; border-radius: 50%; background: #D4AF37; animation: heroLive 2s infinite; }
+.soonx__title {
+  font-family: var(--serif); font-size: clamp(2.6rem, 7vw, 5rem);
+  font-weight: 600; line-height: 1.02; letter-spacing: -0.01em;
+}
+.soonx__price {
+  font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(255,255,255,0.55); margin: 16px 0 22px;
+}
+.soonx__lead {
+  font-size: 1.02rem; line-height: 1.75;
+  color: rgba(255,255,255,0.72); max-width: 48ch; margin: 0 auto 32px;
+}
+.soonx__form { display: flex; gap: 10px; max-width: 460px; margin: 0 auto; }
+.soonx__form input {
+  flex: 1; min-width: 0; padding: 15px 20px; border-radius: 100px;
+  border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.06);
+  color: #fff; font-family: var(--sans); font-size: 0.95rem;
+}
+.soonx__form input::placeholder { color: rgba(255,255,255,0.45); }
+.soonx__form input:focus { outline: none; border-color: #C49A2C; background: rgba(255,255,255,0.1); }
+.soonx__form button {
+  flex-shrink: 0; padding: 15px 26px; border: none; border-radius: 100px;
+  background: linear-gradient(120deg, #B8922C, #D4AF37); color: #0A1128;
+  font-family: var(--sans); font-weight: 600; font-size: 0.92rem; cursor: pointer;
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s;
+}
+.soonx__form button:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -8px rgba(212,175,55,0.5); }
+.soonx__note { font-size: 0.78rem; color: rgba(255,255,255,0.45); margin-top: 14px; }
+.soonx__ok { font-size: 1rem; color: #4ade80; font-weight: 500; margin-top: 8px; }
+.soonx__back {
+  display: inline-block; margin-top: 26px; font-size: 0.85rem;
+  color: rgba(255,255,255,0.55); text-decoration: underline; text-underline-offset: 3px;
+}
+.soonx__back::before { content: '\2190  '; }
+@media (max-width: 600px) {
+  .soonx__content { padding: 60px 24px; }
+  .soonx__form { flex-direction: column; }
+  .soonx__form button { width: 100%; }
+}
+
+
+/* ==============================================
+   MOUTH TAPE — caja 3D giratoria (CSS puro)
+   ============================================== */
+.pdp__main--3d {
+  background: none;
+  aspect-ratio: 1 / 1;   /* contenedor cuadrado: la caja vertical nunca se recorta al girar */
+}
+.mt3d {
+  container-type: size;            /* unidad cqmin → la caja escala con el contenedor */
+  --mtw: 31cqmin;     /* ancho cara frontal  */
+  --mth: 56.6cqmin;   /* alto cara frontal — proporción exacta de las fotos (0,5476) */
+  --mtd: 12cqmin;     /* profundidad (canto) */
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  background: #FFFFFF;
+  perspective: 250cqmin;
+  perspective-origin: 50% 48%;
+  overflow: hidden;
+}
+.mt3d__stage {
+  position: relative;
+  transform-style: preserve-3d;
+  animation: mt3d-float 6.5s ease-in-out infinite;
+}
+/* Sombra de apoyo, fija bajo la caja */
+.mt3d__stage::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -8cqmin;
+  width: 38cqmin;
+  height: 6cqmin;
+  transform: translateX(-50%);
+  background: radial-gradient(50% 50% at 50% 50%, rgba(18,28,55,0.34), rgba(18,28,55,0) 72%);
+  filter: blur(2px);
+  animation: mt3d-shadow 6.5s ease-in-out infinite;
+}
+.mt3d__box {
+  position: relative;
+  width: var(--mtw);
+  height: var(--mth);
+  transform-style: preserve-3d;
+  animation: mt3d-spin 17s linear infinite;
+  will-change: transform;
+}
+.mt3d__face {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(8,15,35,0.22);
+  border-radius: 3px;
+}
+.mt3d__face--front,
+.mt3d__face--back  { width: var(--mtw); height: var(--mth); }
+.mt3d__face--left,
+.mt3d__face--right { width: var(--mtd); height: var(--mth); }
+.mt3d__face--top,
+.mt3d__face--bottom{ width: var(--mtw); height: var(--mtd); }
+
+.mt3d__face--front  { background-image: url('../images/mt-face-front.png');
+  transform: translate(-50%,-50%) translateZ(calc(var(--mtd) / 2)); }
+.mt3d__face--back   { background-image: url('../images/mt-face-back.png?v=2');
+  transform: translate(-50%,-50%) rotateY(180deg) translateZ(calc(var(--mtd) / 2)); }
+.mt3d__face--right  { background-image: url('../images/mt-face-right.png');
+  transform: translate(-50%,-50%) rotateY(90deg)  translateZ(calc(var(--mtw) / 2)); }
+.mt3d__face--left   { background-image: url('../images/mt-face-left.png');
+  transform: translate(-50%,-50%) rotateY(-90deg) translateZ(calc(var(--mtw) / 2)); }
+.mt3d__face--top    { background: linear-gradient(135deg, #2a3d66, #1a2a4d);
+  transform: translate(-50%,-50%) rotateX(90deg)  translateZ(calc(var(--mth) / 2)); }
+.mt3d__face--bottom { background: linear-gradient(135deg, #1a2a4d, #11203c);
+  transform: translate(-50%,-50%) rotateX(-90deg) translateZ(calc(var(--mth) / 2)); }
+
+/* Brillo sutil sobre cantos (tapa/base) */
+.mt3d__face--top::after,
+.mt3d__face--bottom::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, rgba(255,255,255,0.16), rgba(255,255,255,0) 55%);
+}
+
+@keyframes mt3d-spin {
+  from { transform: rotateX(-13deg) rotateY(0deg); }
+  to   { transform: rotateX(-13deg) rotateY(360deg); }
+}
+@keyframes mt3d-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-9px); }
+}
+@keyframes mt3d-shadow {
+  0%, 100% { opacity: 0.85; transform: translateX(-50%) scale(1); }
+  50%      { opacity: 0.55; transform: translateX(-50%) scale(0.9); }
+}
+
+/* Pista de interacción: pausa al pasar el ratón */
+.mt3d:hover .mt3d__box { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .mt3d__box   { animation: none; transform: rotateX(-13deg) rotateY(-26deg); }
+  .mt3d__stage { animation: none; }
+  .mt3d__stage::after { animation: none; }
+}

@@ -339,3 +339,141 @@
   100% { transform: scale(1); }
 }
 .size-pill.is-pop { animation: pillPop 0.34s var(--ease-out); }
+
+
+/* ==============================================
+   SELECTOR DE IDIOMA — círculo compacto + desplegable
+   ============================================== */
+.flag {
+  display: block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+}
+.flag--es { background: linear-gradient(#c60b1e 0 25%, #ffc400 25% 75%, #c60b1e 75%); }
+.flag--it { background: linear-gradient(90deg, #008C45 0 33.34%, #fff 33.34% 66.67%, #cd212a 66.67%); }
+.flag--fr { background: linear-gradient(90deg, #0055A4 0 33.34%, #fff 33.34% 66.67%, #EF4135 66.67%); }
+.flag--de { background: linear-gradient(#000 0 33.34%, #DD0000 33.34% 66.67%, #FFCE00 66.67%); }
+.flag--en {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30'%3E%3Crect width='60' height='30' fill='%23012169'/%3E%3Cpath d='M0,0 60,30 M60,0 0,30' stroke='%23fff' stroke-width='6'/%3E%3Cpath d='M0,0 60,30' stroke='%23C8102E' stroke-width='4'/%3E%3Cpath d='M60,0 0,30' stroke='%23C8102E' stroke-width='4'/%3E%3Crect x='25' width='10' height='30' fill='%23fff'/%3E%3Crect y='10' width='60' height='10' fill='%23fff'/%3E%3Crect x='27' width='6' height='30' fill='%23C8102E'/%3E%3Crect y='12' width='60' height='6' fill='%23C8102E'/%3E%3C/svg%3E") center / cover;
+}
+
+.langpick { position: relative; margin-left: 14px; }
+.langpick__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 5px 3px 3px;
+  background: none;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  color: var(--text-2);
+  transition: background 0.2s ease;
+}
+.langpick__btn:hover { background: rgba(27, 45, 91, 0.06); }
+.langpick__chev { transition: transform 0.25s var(--ease-out); }
+.langpick.is-open .langpick__chev { transform: rotate(180deg); }
+
+.langpick__menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 168px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 18px 40px -14px rgba(13, 27, 62, 0.28);
+  padding: 6px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.22s ease, transform 0.22s var(--ease-out), visibility 0.22s;
+  z-index: 1003;
+}
+.langpick.is-open .langpick__menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.langpick__opt {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  padding: 9px 12px;
+  background: none;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  color: var(--text);
+  text-align: left;
+  transition: background 0.18s ease;
+}
+.langpick__opt:hover { background: var(--gray); }
+.langpick__opt.is-active { font-weight: 600; color: var(--navy); }
+.langpick__opt.is-active .flag { box-shadow: 0 0 0 2px #C49A2C; }
+
+/* En móvil el selector vive dentro del menú desplegable, centrado */
+.langpick--mobile { margin: 30px auto 0; }
+.langpick--mobile .langpick__btn { padding: 6px 10px 6px 6px; }
+.langpick--mobile .langpick__menu { left: 50%; right: auto; transform: translate(-50%, -6px); }
+.langpick--mobile.is-open .langpick__menu { transform: translate(-50%, 0); }
+@media (max-width: 768px) {
+  .langpick--header { display: none; }
+}
+
+
+/* ==============================================
+   BANDA SUPERIOR — marquesina de anuncios
+   ============================================== */
+.announce {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1001;
+  height: 36px;
+  background: linear-gradient(90deg, #14224A, #1B2D5B 50%, #14224A);
+  color: #fff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.announce__track {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  will-change: transform;
+  animation: announceScroll 34s linear infinite;
+}
+.announce:hover .announce__track { animation-play-state: paused; }
+.announce__item {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0 20px;
+}
+.announce__sep {
+  color: #D4AF37;
+  font-size: 0.7rem;
+  padding: 0 2px;
+}
+@keyframes announceScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .announce__track { animation: none; }
+}
+
+/* El header y la barra de progreso bajan bajo la banda */
+.header { top: 36px; }
+.scroll-progress { top: 36px; }

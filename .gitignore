@@ -3,3 +3,16 @@
 .claude/
 carousels/
 skills-lock.json
+
+# Entornos y secretos (no subir nunca claves reales)
+.env
+.env.*
+!.env.example
+
+# Dependencias y artefactos del sistema
+node_modules/
+.DS_Store
+Thumbs.db
+
+# Temporales de edición de imágenes
+images/_*/

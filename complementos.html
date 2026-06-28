@@ -5,12 +5,20 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Política de cookies | Aurea Descanso</title>
-  <meta name="description" content="Política de cookies del sitio web de Aurea Descanso.">
-  <link rel="canonical" href="https://aureadescanso.com/cookies.html">
+  <title>Complementos | Aurea Descanso</title>
+  <meta name="description" content="Complementos de descanso Aurea: Mouth Tape para respirar por la nariz y dormir mejor. Envío rápido y devolución gratuita.">
+  <link rel="canonical" href="https://aureadescanso.com/complementos.html">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Aurea Descanso">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:title" content="Complementos | Aurea Descanso">
+  <meta property="og:description" content="Mouth Tape y complementos para dormir mejor. De regalo con cada colchón.">
+  <meta property="og:url" content="https://aureadescanso.com/complementos.html">
+  <meta property="og:image" content="https://aureadescanso.com/images/mouth-tape.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/premium.css">
   <link rel="stylesheet" href="css/shop.css">
@@ -49,7 +57,7 @@
         <ul class="header__menu">
           <li><a href="colchones.html" class="header__link" data-i18n="nav.colchones">Colchones</a></li>
           <li><a href="canapes.html" class="header__link" data-i18n="nav.canapes">Canapés</a></li>
-          <li><a href="complementos.html" class="header__link" data-i18n="nav.complementos">Complementos</a></li>
+          <li><a href="complementos.html" class="header__link is-active" data-i18n="nav.complementos">Complementos</a></li>
           <li><a href="blog.html" class="header__link" data-i18n="nav.blog">Blog</a></li>
           <li><a href="#footer" class="header__link" data-i18n="nav.contacto">Contacto</a></li>
         </ul>
@@ -83,47 +91,75 @@
   <!-- ========== PAGE HERO ========== -->
   <section class="page-hero">
     <nav class="page-hero__crumb" aria-label="Migas de pan">
-      <a href="index.html">Inicio</a>
+      <a href="index.html" data-i18n="nav.inicio">Inicio</a>
       <span>/</span>
-      Política de cookies
+      <span data-i18n="nav.complementos">Complementos</span>
     </nav>
-    <h1 class="page-hero__title">Política de <em>cookies</em></h1>
+    <h1 class="page-hero__title">Pequeños detalles, <em>gran descanso</em></h1>
+    <p class="page-hero__sub">Complementos pensados para llevar tu descanso un paso más allá. Empezamos con el Mouth Tape, y vienen más.</p>
   </section>
 
-  <!-- ========== CONTENIDO ========== -->
-  <main class="legal">
-    <p class="legal-updated">Última actualización: 11 de junio de 2026</p>
+  <!-- Banda de confianza -->
+  <div class="trust-strip">
+    <span class="trust-strip__item">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 8h14v9H1zM15 11h4l3 3v3h-7"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg>
+      Envío en 3–5 días
+    </span>
+    <span class="trust-strip__item">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 4v5h5"/></svg>
+      30 días de devolución
+    </span>
+    <span class="trust-strip__item">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4a5 5 0 0 0 0 10h2a5 5 0 0 0 0-10z"/><path d="M2 9h2M20 9h2"/></svg>
+      Sin medicamentos
+    </span>
+    <span class="trust-strip__item">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>
+      Pago 100% seguro
+    </span>
+  </div>
 
-    <div class="legal-summary">
-      <p><strong>En resumen:</strong> este sitio web <strong>no utiliza cookies de publicidad ni de seguimiento</strong>. Por eso no te mostramos el típico banner de cookies: no hay nada que aceptar.</p>
+  <!-- ========== CATÁLOGO ========== -->
+  <section class="catalog">
+    <div class="catalog__grid">
+
+      <!-- Mouth Tape -->
+      <article class="pcard" data-animate>
+        <a href="producto.html?m=mouth-tape" class="pcard__media">
+          <img src="images/mouth-tape.jpg" alt="Mouth Tape Aurea, 30 tiras adhesivas" loading="lazy">
+          <span class="pcard__badge pcard__badge--gold">De regalo con tu colchón</span>
+        </a>
+        <div class="pcard__body">
+          <h2 class="pcard__name"><a href="producto.html?m=mouth-tape">Mouth Tape Aurea</a></h2>
+          <p class="pcard__desc">30 tiras de tejido transpirable que mantienen la boca cerrada al dormir: menos ronquidos, menos boca seca y despertar con más energía.</p>
+          <div class="pcard__chips">
+            <span class="pcard__chip">30 tiras</span>
+            <span class="pcard__chip">Respiración nasal</span>
+            <span class="pcard__chip">Sin medicamentos</span>
+          </div>
+          <div class="pcard__footer">
+            <span class="pcard__price">
+              <span class="pcard__price-from">Desde</span>
+              <span class="pcard__price-val">10 €</span>
+            </span>
+            <a href="producto.html?m=mouth-tape" class="pcard__btn">Ver producto &rarr;</a>
+          </div>
+        </div>
+      </article>
+
     </div>
 
-    <h2>1. Qué son las cookies</h2>
-    <p>Las cookies son pequeños archivos de texto que los sitios web almacenan en tu navegador para recordar información sobre tu visita, como tus preferencias o tu sesión.</p>
-
-    <h2>2. Cookies que utiliza este sitio</h2>
-    <p>Aurea Descanso <strong>no instala cookies propias</strong> de ningún tipo: ni de análisis, ni de publicidad, ni de personalización. La navegación, el catálogo y el proceso de compra funcionan sin necesidad de almacenar cookies en tu dispositivo.</p>
-
-    <h2>3. Recursos de terceros</h2>
-    <p>Para su funcionamiento, el sitio carga algunos recursos desde servidores de terceros que podrían registrar datos técnicos (como tu dirección IP) al servirlos:</p>
-    <ul>
-      <li><strong>Google Fonts</strong> (fonts.googleapis.com / fonts.gstatic.com): descarga de las tipografías del sitio. Google declara que este servicio no utiliza cookies.</li>
-      <li><strong>Proveedores de imágenes</strong> (p. ej. Unsplash): carga de algunas fotografías del catálogo y del blog.</li>
-    </ul>
-    <p>Puedes consultar más detalles en nuestra <a href="privacidad.html">política de privacidad</a>.</p>
-
-    <h2>4. Si añadimos cookies en el futuro</h2>
-    <p>Si en algún momento incorporamos cookies de análisis o de otro tipo que lo requieran, actualizaremos esta política y te pediremos el consentimiento previo mediante un aviso visible, conforme a la normativa vigente.</p>
-
-    <h2>5. Cómo gestionar las cookies en tu navegador</h2>
-    <p>Puedes configurar tu navegador para bloquear o eliminar cookies en cualquier momento:</p>
-    <ul>
-      <li><strong>Chrome:</strong> Configuración → Privacidad y seguridad → Cookies.</li>
-      <li><strong>Safari:</strong> Preferencias → Privacidad.</li>
-      <li><strong>Firefox:</strong> Ajustes → Privacidad y seguridad.</li>
-      <li><strong>Edge:</strong> Configuración → Cookies y permisos del sitio.</li>
-    </ul>
-  </main>
+    <!-- Cross-sell colchones -->
+    <div class="crossband" data-animate>
+      <div class="crossband__inner">
+        <div>
+          <h2 class="crossband__title">El Mouth Tape va <em>de regalo</em></h2>
+          <p class="crossband__sub">Con la compra de cualquier colchón Aurea, una caja entra gratis en tu pedido.</p>
+        </div>
+        <a href="colchones.html" class="crossband__btn">Ver colchones &rarr;</a>
+      </div>
+    </div>
+  </section>
 
   <!-- ========== FOOTER ========== -->
   <footer class="footer" id="footer">

@@ -2,6 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Colchones | Aurea Descanso</title>
   <meta name="description" content="Colchones premium con envío gratuito, 100 noches de prueba y 10 años de garantía. Descubre Aurea Serenity y Aurea Celestial.">
@@ -15,7 +17,7 @@
   <meta property="og:title" content="Colchones | Aurea Descanso">
   <meta property="og:description" content="Colchones premium con envío gratuito, 100 noches de prueba y 10 años de garantía.">
   <meta property="og:url" content="https://aureadescanso.com/colchones.html">
-  <meta property="og:image" content="https://aureadescanso.com/images/producto1.jpg">
+  <meta property="og:image" content="https://aureadescanso.com/images/serenity-frontal.png">
   <meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">
   {
@@ -29,7 +31,7 @@
           "@type": "Product",
           "name": "Aurea Serenity",
           "url": "https://aureadescanso.com/producto.html?m=serenity",
-          "image": "https://aureadescanso.com/images/producto1.jpg",
+          "image": "https://aureadescanso.com/images/serenity-frontal.png",
           "description": "Colchón viscoelástico de doble cara invierno-verano con núcleo HR de 28 kg/m³ y 30 cm de altura.",
           "brand": { "@type": "Brand", "name": "Aurea Descanso" },
           "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "499", "highPrice": "699", "availability": "https://schema.org/InStock" }
@@ -43,9 +45,9 @@
           "name": "Aurea Celestial",
           "url": "https://aureadescanso.com/producto.html?m=celestial",
           "image": "https://aureadescanso.com/images/producto2.jpg",
-          "description": "Colchón híbrido de muelles ensacados con doble capa viscoelástica y 30 cm de altura.",
+          "description": "Próximamente. El nuevo colchón premium de Aurea Descanso.",
           "brand": { "@type": "Brand", "name": "Aurea Descanso" },
-          "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "699", "highPrice": "899", "availability": "https://schema.org/InStock" }
+          "offers": { "@type": "Offer", "availability": "https://schema.org/PreOrder" }
         }
       }
     ]
@@ -64,6 +66,23 @@
   <div class="custom-cursor" id="customCursor" aria-hidden="true"></div>
 
   <!-- ========== HEADER ========== -->
+    <!-- Banda superior de anuncios -->
+  <div class="announce" aria-label="Ofertas">
+    <div class="announce__track">
+      <span class="announce__item" data-i18n="ann.1">−10 % en tu primera compra con el código AUREA10</span>
+      <span class="announce__sep" aria-hidden="true">✦</span>
+      <span class="announce__item" data-i18n="ann.2">Envío gratuito siempre, sin pedido mínimo</span>
+      <span class="announce__sep" aria-hidden="true">✦</span>
+      <span class="announce__item" data-i18n="ann.3">Mouth Tape de regalo con cada colchón</span>
+      <span class="announce__sep" aria-hidden="true">✦</span>
+      <span class="announce__item" data-i18n="ann.1">−10 % en tu primera compra con el código AUREA10</span>
+      <span class="announce__sep" aria-hidden="true">✦</span>
+      <span class="announce__item" data-i18n="ann.2">Envío gratuito siempre, sin pedido mínimo</span>
+      <span class="announce__sep" aria-hidden="true">✦</span>
+      <span class="announce__item" data-i18n="ann.3">Mouth Tape de regalo con cada colchón</span>
+      <span class="announce__sep" aria-hidden="true">✦</span>
+    </div>
+  </div>
   <header class="header" id="header">
     <div class="header__inner">
       <a href="index.html" class="header__logo">
@@ -71,17 +90,19 @@
       </a>
       <nav class="header__nav" id="nav">
         <ul class="header__menu">
-          <li><a href="colchones.html" class="header__link is-active">Colchones</a></li>
-          <li><a href="canapes.html" class="header__link">Canapés</a></li>
-          <li><a href="blog.html" class="header__link">Blog</a></li>
-          <li><a href="#footer" class="header__link">Contacto</a></li>
+          <li><a href="colchones.html" class="header__link is-active" data-i18n="nav.colchones">Colchones</a></li>
+          <li><a href="canapes.html" class="header__link" data-i18n="nav.canapes">Canapés</a></li>
+          <li><a href="complementos.html" class="header__link" data-i18n="nav.complementos">Complementos</a></li>
+          <li><a href="blog.html" class="header__link" data-i18n="nav.blog">Blog</a></li>
+          <li><a href="#footer" class="header__link" data-i18n="nav.contacto">Contacto</a></li>
         </ul>
       </nav>
-      <a href="colchones.html" class="header__cta">Comprar</a>
+      <a href="colchones.html" class="header__cta" data-i18n="nav.comprar">Comprar</a>
       <button class="cartbtn" id="cartBtn" type="button" aria-label="Abrir cesta">
         <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.4"/><circle cx="18" cy="21" r="1.4"/><path d="M1 1h4l2.6 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
         <span class="cartbtn__badge" id="cartBadge" hidden>0</span>
       </button>
+      <div class="langpick langpick--header" data-langpick></div>
       <button class="header__burger" id="burger" aria-label="Menú">
         <span></span>
         <span></span>
@@ -91,12 +112,14 @@
 
   <div class="mobile-menu" id="mobileMenu">
       <nav class="mobile-menu__nav">
-        <a href="index.html" class="mobile-menu__link">Inicio</a>
-        <a href="colchones.html" class="mobile-menu__link">Colchones</a>
-        <a href="canapes.html" class="mobile-menu__link">Canapés</a>
-        <a href="blog.html" class="mobile-menu__link">Blog</a>
-        <a href="#footer" class="mobile-menu__link">Contacto</a>
-        <a href="colchones.html" class="mobile-menu__cta">Comprar</a>
+        <a href="index.html" class="mobile-menu__link" data-i18n="nav.inicio">Inicio</a>
+        <a href="colchones.html" class="mobile-menu__link" data-i18n="nav.colchones">Colchones</a>
+        <a href="canapes.html" class="mobile-menu__link" data-i18n="nav.canapes">Canapés</a>
+        <a href="complementos.html" class="mobile-menu__link" data-i18n="nav.complementos">Complementos</a>
+        <a href="blog.html" class="mobile-menu__link" data-i18n="nav.blog">Blog</a>
+        <a href="#footer" class="mobile-menu__link" data-i18n="nav.contacto">Contacto</a>
+        <a href="colchones.html" class="mobile-menu__cta" data-i18n="nav.comprar">Comprar</a>
+        <div class="langpick langpick--mobile" data-langpick></div>
       </nav>
     </div>
 
@@ -138,7 +161,7 @@
       <!-- Aurea Serenity -->
       <article class="pcard" data-animate>
         <a href="producto.html?m=serenity" class="pcard__media">
-          <img src="images/producto1.jpg" alt="Colchón Aurea Serenity" loading="lazy">
+          <img src="images/serenity-frontal.png" alt="Colchón Aurea Serenity" loading="lazy">
           <span class="pcard__badge">Más vendido</span>
         </a>
         <div class="pcard__body">
@@ -159,125 +182,35 @@
         </div>
       </article>
 
-      <!-- Aurea Celestial -->
-      <article class="pcard" data-animate data-delay="120">
-        <a href="producto.html?m=celestial" class="pcard__media">
-          <img src="images/producto2.jpg" alt="Colchón Aurea Celestial" loading="lazy">
-          <span class="pcard__badge pcard__badge--gold">Premium</span>
+      <!-- Aurea Celestial — Próximamente -->
+      <article class="pcard pcard--soon" data-animate data-delay="120">
+        <a href="producto.html?m=celestial" class="pcard__media soon-media">
+          <img src="images/producto2.jpg" alt="Aurea Celestial — Próximamente" loading="lazy">
+          <div class="soon-veil"></div>
+          <div class="tape tape--1"><div class="tape__track">
+            <span>Próximamente</span><span class="soon-dot">✦</span><span>Aurea Celestial</span><span class="soon-dot">✦</span><span>Próximamente</span><span class="soon-dot">✦</span><span>Aurea Celestial</span><span class="soon-dot">✦</span><span>Próximamente</span><span class="soon-dot">✦</span><span>Aurea Celestial</span><span class="soon-dot">✦</span><span>Próximamente</span><span class="soon-dot">✦</span><span>Aurea Celestial</span><span class="soon-dot">✦</span>
+          </div></div>
+          <div class="tape tape--2"><div class="tape__track">
+            <span>Coming soon</span><span class="soon-dot">✦</span><span>Aurea Celestial</span><span class="soon-dot">✦</span><span>Coming soon</span><span class="soon-dot">✦</span><span>Aurea Celestial</span><span class="soon-dot">✦</span><span>Coming soon</span><span class="soon-dot">✦</span><span>Aurea Celestial</span><span class="soon-dot">✦</span><span>Coming soon</span><span class="soon-dot">✦</span><span>Aurea Celestial</span><span class="soon-dot">✦</span>
+          </div></div>
+          <span class="soon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            <span data-i18n="soon.badge">Próximamente</span>
+          </span>
         </a>
         <div class="pcard__body">
           <h2 class="pcard__name"><a href="producto.html?m=celestial">Aurea Celestial</a></h2>
-          <p class="pcard__desc">Muelles ensacados con doble capa viscoelástica. Independencia de lechos y transpirabilidad máxima.</p>
-          <div class="pcard__chips">
-            <span class="pcard__chip">Firmeza media-alta</span>
-            <span class="pcard__chip">30 cm de altura</span>
-            <span class="pcard__chip">600+ muelles</span>
-          </div>
+          <p class="pcard__desc" data-i18n="soon.teaser">El próximo capítulo del descanso Aurea. Estamos afinando cada detalle. Muy pronto.</p>
           <div class="pcard__footer">
             <span class="pcard__price">
-              <span class="pcard__price-from">Desde</span>
-              <span class="pcard__price-val">699 €</span>
+              <span class="pcard__price-from" data-i18n="soon.price">Precio por desvelar</span>
             </span>
-            <a href="producto.html?m=celestial" class="pcard__btn">Ver colchón &rarr;</a>
+            <a href="mailto:aureadescanso@gmail.com?subject=Lista%20de%20espera%20%E2%80%94%20Aurea%20Celestial&body=Hola%2C%20quiero%20que%20me%20avis%C3%A9is%20cuando%20salga%20el%20Aurea%20Celestial.%20%C2%A1Gracias!" class="pcard__btn pcard__btn--gold" data-i18n="soon.notify">Avísame del lanzamiento</a>
           </div>
         </div>
       </article>
 
     </div>
-
-    <!-- ── Comparador Serenity vs Celestial ── -->
-    <section class="vs" id="comparador" aria-label="Comparativa entre Aurea Serenity y Aurea Celestial">
-      <div class="vs__head">
-        <span class="vs__eyebrow">¿Cuál es el tuyo?</span>
-        <h2 class="vs__title">Serenity o Celestial, <em>cara a cara</em></h2>
-      </div>
-      <div class="vs__grid">
-
-        <!-- Serenity -->
-        <div class="vs__card" data-animate>
-          <span class="vs__flag">Más vendido</span>
-          <h3 class="vs__name">Aurea Serenity</h3>
-          <p class="vs__type">Viscoelástico · doble cara invierno-verano · 30 cm</p>
-
-          <div class="vs__bar">
-            <div class="vs__bar-top"><span>Firmeza</span><span>Media</span></div>
-            <div class="vs__bar-track"><div class="vs__bar-fill" style="--w: 60%"></div></div>
-          </div>
-          <div class="vs__bar">
-            <div class="vs__bar-top"><span>Frescor</span><span>Alto, con cara de verano 3D</span></div>
-            <div class="vs__bar-track"><div class="vs__bar-fill" style="--w: 72%"></div></div>
-          </div>
-          <div class="vs__bar">
-            <div class="vs__bar-top"><span>Adaptabilidad</span><span>Excelente</span></div>
-            <div class="vs__bar-track"><div class="vs__bar-fill" style="--w: 92%"></div></div>
-          </div>
-          <div class="vs__bar">
-            <div class="vs__bar-top"><span>Independencia de lechos</span><span>Alta</span></div>
-            <div class="vs__bar-track"><div class="vs__bar-fill" style="--w: 80%"></div></div>
-          </div>
-
-          <ul class="vs__who">
-            <li class="vs__who-title">Es para ti si...</li>
-            <li>Duermes de lado o boca arriba</li>
-            <li>Te gusta la acogida que abraza sin hundir</li>
-            <li>Quieres invierno y verano resueltos con un giro</li>
-            <li>Buscas la mejor relación calidad-precio</li>
-          </ul>
-
-          <div class="vs__foot">
-            <span class="vs__price">
-              <span class="vs__price-from">Desde</span>
-              <span class="vs__price-val">499 €</span>
-            </span>
-            <a href="producto.html?m=serenity" class="vs__btn">Elegir Serenity &rarr;</a>
-          </div>
-        </div>
-
-        <!-- Celestial -->
-        <div class="vs__card vs__card--gold" data-animate data-delay="120">
-          <span class="vs__flag vs__flag--gold">Premium</span>
-          <h3 class="vs__name">Aurea Celestial</h3>
-          <p class="vs__type">Híbrido · 600+ muelles ensacados · 30 cm</p>
-
-          <div class="vs__bar">
-            <div class="vs__bar-top"><span>Firmeza</span><span>Media-alta</span></div>
-            <div class="vs__bar-track"><div class="vs__bar-fill" style="--w: 76%"></div></div>
-          </div>
-          <div class="vs__bar">
-            <div class="vs__bar-top"><span>Frescor</span><span>Máximo: ventilación interior</span></div>
-            <div class="vs__bar-track"><div class="vs__bar-fill" style="--w: 96%"></div></div>
-          </div>
-          <div class="vs__bar">
-            <div class="vs__bar-top"><span>Adaptabilidad</span><span>Alta, doble capa visco</span></div>
-            <div class="vs__bar-track"><div class="vs__bar-fill" style="--w: 82%"></div></div>
-          </div>
-          <div class="vs__bar">
-            <div class="vs__bar-top"><span>Independencia de lechos</span><span>Máxima</span></div>
-            <div class="vs__bar-track"><div class="vs__bar-fill" style="--w: 97%"></div></div>
-          </div>
-
-          <ul class="vs__who">
-            <li class="vs__who-title">Es para ti si...</li>
-            <li>Dormís en pareja y os movéis</li>
-            <li>Pasas calor durmiendo, incluso en invierno</li>
-            <li>Prefieres firmeza con respuesta rápida</li>
-            <li>Quieres lo mejor de la gama</li>
-          </ul>
-
-          <div class="vs__foot">
-            <span class="vs__price">
-              <span class="vs__price-from">Desde</span>
-              <span class="vs__price-val">699 €</span>
-            </span>
-            <a href="producto.html?m=celestial" class="vs__btn">Elegir Celestial &rarr;</a>
-          </div>
-        </div>
-
-      </div>
-      <p style="text-align:center; margin-top: 26px; font-size: 0.85rem; color: var(--text-3);" data-animate>
-        ¿Sigues con dudas? Con 100 noches de prueba puedes cambiar de opinión sin perder un euro.
-      </p>
-    </section>
 
     <!-- ── Regalo: Mouth Tape con cada colchón ── -->
     <section class="giftband" id="regalo" data-animate aria-label="Regalo con tu colchón">
@@ -318,15 +251,15 @@
     <div class="footer__inner">
       <img src="images/aureadescanso.png" alt="Aurea Descanso" class="footer__logo">
       <div class="footer__links">
-        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="aviso-legal.html" data-i18n="footer.legal">Aviso legal</a>
         <span class="footer__sep">|</span>
-        <a href="privacidad.html">Privacidad</a>
+        <a href="privacidad.html" data-i18n="footer.privacy">Privacidad</a>
         <span class="footer__sep">|</span>
-        <a href="cookies.html">Cookies</a>
+        <a href="cookies.html" data-i18n="footer.cookies">Cookies</a>
         <span class="footer__sep">|</span>
-        <a href="condiciones-venta.html">Condiciones de venta</a>
+        <a href="condiciones-venta.html" data-i18n="footer.terms">Condiciones de venta</a>
         <span class="footer__sep">|</span>
-        <a href="mailto:aureadescanso@gmail.com">Contacto</a>
+        <a href="mailto:aureadescanso@gmail.com" data-i18n="footer.contact">Contacto</a>
       </div>
       <div class="footer__social">
         <a href="https://instagram.com/aureadescanso" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
@@ -349,6 +282,7 @@
     </div>
   </footer>
 
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
   <script src="js/premium.js"></script>
   <script src="js/cart.js"></script>

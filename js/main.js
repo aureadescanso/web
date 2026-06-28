@@ -226,8 +226,23 @@ document.addEventListener('DOMContentLoaded', function () {
   var typeCursor  = document.querySelector('.hero__type-cursor');
   var heroSub     = document.getElementById('heroSub');
   var heroButtons = document.getElementById('heroButtons');
-  var FULL_TEXT   = 'Duerme como nunca.';
+  function heroTitle() {
+    return (window.AureaI18n && window.AureaI18n.t('hero.title')) || 'Duerme como nunca.';
+  }
+  var FULL_TEXT   = heroTitle();
   var typeIdx     = 0;
+
+  /* Al cambiar de idioma, el título se actualiza al instante (sin re-teclear) */
+  window.addEventListener('aurea:lang', function () {
+    if (!typeTextEl) return;
+    if (typeIdx >= FULL_TEXT.length) {
+      FULL_TEXT = heroTitle();
+      typeIdx = FULL_TEXT.length;
+      typeTextEl.textContent = FULL_TEXT;
+    } else {
+      FULL_TEXT = heroTitle();
+    }
+  });
 
   function typeNext() {
     if (!typeTextEl) return;
@@ -559,7 +574,7 @@ document.addEventListener('DOMContentLoaded', function () {
       },
       {
         href: 'blog/colchon-doble-cara-invierno-verano.html',
-        img: 'images/producto1.jpg',
+        img: 'images/serenity-frontal.png',
         time: '6 min',
         tag: 'Colchones',
         title: 'Doble cara invierno-verano',

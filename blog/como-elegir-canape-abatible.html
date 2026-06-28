@@ -2,6 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cómo elegir un canapé abatible: medidas, tapa y apertura | Aurea Descanso</title>
   <meta name="description" content="Guía completa para elegir canapé abatible: madera o tapizado, qué tapa transpira mejor, pistones de gas, medidas y errores a evitar antes de comprar.">
@@ -79,6 +81,23 @@
 <body class="article-page">
 
   <!-- Header -->
+    <!-- Banda superior de anuncios -->
+  <div class="announce" aria-label="Ofertas">
+    <div class="announce__track">
+      <span class="announce__item" data-i18n="ann.1">−10 % en tu primera compra con el código AUREA10</span>
+      <span class="announce__sep" aria-hidden="true">✦</span>
+      <span class="announce__item" data-i18n="ann.2">Envío gratuito siempre, sin pedido mínimo</span>
+      <span class="announce__sep" aria-hidden="true">✦</span>
+      <span class="announce__item" data-i18n="ann.3">Mouth Tape de regalo con cada colchón</span>
+      <span class="announce__sep" aria-hidden="true">✦</span>
+      <span class="announce__item" data-i18n="ann.1">−10 % en tu primera compra con el código AUREA10</span>
+      <span class="announce__sep" aria-hidden="true">✦</span>
+      <span class="announce__item" data-i18n="ann.2">Envío gratuito siempre, sin pedido mínimo</span>
+      <span class="announce__sep" aria-hidden="true">✦</span>
+      <span class="announce__item" data-i18n="ann.3">Mouth Tape de regalo con cada colchón</span>
+      <span class="announce__sep" aria-hidden="true">✦</span>
+    </div>
+  </div>
   <header class="header is-scrolled">
     <div class="header__inner">
       <a href="../index.html" class="header__logo">
@@ -86,17 +105,19 @@
       </a>
       <nav class="header__nav" id="nav">
         <ul class="header__menu">
-          <li><a href="../colchones.html" class="header__link">Colchones</a></li>
-          <li><a href="../canapes.html" class="header__link">Canapés</a></li>
-          <li><a href="../blog.html" class="header__link is-active">Blog</a></li>
-          <li><a href="#footer" class="header__link">Contacto</a></li>
+          <li><a href="../colchones.html" class="header__link" data-i18n="nav.colchones">Colchones</a></li>
+          <li><a href="../canapes.html" class="header__link" data-i18n="nav.canapes">Canapés</a></li>
+          <li><a href="../complementos.html" class="header__link" data-i18n="nav.complementos">Complementos</a></li>
+          <li><a href="../blog.html" class="header__link is-active" data-i18n="nav.blog">Blog</a></li>
+          <li><a href="#footer" class="header__link" data-i18n="nav.contacto">Contacto</a></li>
         </ul>
       </nav>
-      <a href="../colchones.html" class="header__cta">Comprar</a>
+      <a href="../colchones.html" class="header__cta" data-i18n="nav.comprar">Comprar</a>
       <button class="cartbtn" id="cartBtn" type="button" aria-label="Abrir cesta">
         <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.4"/><circle cx="18" cy="21" r="1.4"/><path d="M1 1h4l2.6 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
         <span class="cartbtn__badge" id="cartBadge" hidden>0</span>
       </button>
+      <div class="langpick langpick--header" data-langpick></div>
       <button class="header__burger" id="burger" aria-label="Menú">
         <span></span>
         <span></span>
@@ -106,12 +127,14 @@
 
   <div class="mobile-menu" id="mobileMenu">
     <nav class="mobile-menu__nav">
-      <a href="../index.html" class="mobile-menu__link">Inicio</a>
-      <a href="../colchones.html" class="mobile-menu__link">Colchones</a>
-      <a href="../canapes.html" class="mobile-menu__link">Canapés</a>
-      <a href="../blog.html" class="mobile-menu__link">Blog</a>
-      <a href="#footer" class="mobile-menu__link">Contacto</a>
-      <a href="../colchones.html" class="mobile-menu__cta">Comprar</a>
+      <a href="../index.html" class="mobile-menu__link" data-i18n="nav.inicio">Inicio</a>
+      <a href="../colchones.html" class="mobile-menu__link" data-i18n="nav.colchones">Colchones</a>
+      <a href="../canapes.html" class="mobile-menu__link" data-i18n="nav.canapes">Canapés</a>
+        <a href="../complementos.html" class="mobile-menu__link" data-i18n="nav.complementos">Complementos</a>
+      <a href="../blog.html" class="mobile-menu__link" data-i18n="nav.blog">Blog</a>
+      <a href="#footer" class="mobile-menu__link" data-i18n="nav.contacto">Contacto</a>
+      <a href="../colchones.html" class="mobile-menu__cta" data-i18n="nav.comprar">Comprar</a>
+        <div class="langpick langpick--mobile" data-langpick></div>
     </nav>
   </div>
 
@@ -255,15 +278,15 @@
     <div class="footer__inner">
       <img src="../images/aureadescanso.png" alt="Aurea Descanso" class="footer__logo">
       <div class="footer__links">
-        <a href="../aviso-legal.html">Aviso legal</a>
+        <a href="../aviso-legal.html" data-i18n="footer.legal">Aviso legal</a>
         <span class="footer__sep">|</span>
-        <a href="../privacidad.html">Privacidad</a>
+        <a href="../privacidad.html" data-i18n="footer.privacy">Privacidad</a>
         <span class="footer__sep">|</span>
-        <a href="../cookies.html">Cookies</a>
+        <a href="../cookies.html" data-i18n="footer.cookies">Cookies</a>
         <span class="footer__sep">|</span>
-        <a href="../condiciones-venta.html">Condiciones de venta</a>
+        <a href="../condiciones-venta.html" data-i18n="footer.terms">Condiciones de venta</a>
         <span class="footer__sep">|</span>
-        <a href="mailto:aureadescanso@gmail.com">Contacto</a>
+        <a href="mailto:aureadescanso@gmail.com" data-i18n="footer.contact">Contacto</a>
       </div>
       <div class="footer__pay" aria-label="Pago seguro">
         <span class="footer__pay-note">
@@ -278,6 +301,7 @@
     </div>
   </footer>
 
+  <script src="../js/i18n.js"></script>
   <script src="../js/main.js"></script>
   <script src="../js/premium.js"></script>
   <script src="../js/cart.js"></script>

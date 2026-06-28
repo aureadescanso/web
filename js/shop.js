@@ -17,10 +17,11 @@ document.addEventListener('DOMContentLoaded', function () {
       rating: '4,8',
       reviews: 412,
       images: [
-        'images/producto1.jpg',
-        'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80',
-        'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1200&q=80',
-        'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=1200&q=80'
+        'images/serenity-frontal.png',
+        'images/serenity-perspectiva.png',
+        'images/serenity-lateral.png',
+        'images/serenity-asas.png',
+        'images/serenity-capas.png'
       ],
       sizes: [
         { label: '90 × 190 cm',  price: 499 },
@@ -76,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     'celestial': {
       type: 'colchon',
+      comingSoon: true,
       typeLabel: 'Colchón híbrido de muelles ensacados',
       name: 'Aurea Celestial',
       desc: 'Firmeza media-alta con muelles ensacados individualmente y doble capa de viscoelástica. Máxima transpirabilidad e independencia de lechos: el colchón para parejas exigentes.',
@@ -225,7 +227,8 @@ document.addEventListener('DOMContentLoaded', function () {
       desc: '30 tiras adhesivas de tejido transpirable que mantienen la boca cerrada mientras duermes y fomentan la respiración nasal: menos ronquidos, menos boca seca y un despertar con más energía. Sin medicamentos ni ingredientes activos.',
       rating: '4,7',
       reviews: 86,
-      images: ['images/mouth-tape.jpg'],
+      images: ['images/mt-face-front.png'],
+      box3d: true,
       sizes: [
         { label: 'Caja · 30 tiras', price: 10 }
       ],
@@ -273,6 +276,13 @@ document.addEventListener('DOMContentLoaded', function () {
     return n.toLocaleString('es-ES') + ' €';
   }
 
+  /* Escapa texto antes de insertarlo como HTML (defensa frente a datos manipulados en localStorage) */
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
   var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* Cuenta suave entre dos números (para el precio al cambiar de medida) */
@@ -310,11 +320,61 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
+    /* Producto "Próximamente": teaser inmersivo en vez de la ficha normal */
+    if (product.comingSoon) {
+      document.title = product.name + ' · Próximamente | Aurea Descanso';
+      var t = function (k, fb) { return (window.AureaI18n && window.AureaI18n.t(k)) || fb; };
+      var tape = '';
+      for (var ti = 0; ti < 10; ti++) {
+        tape += '<span>Próximamente</span><span class="soon-dot">✦</span><span>' + product.name +
+                '</span><span class="soon-dot">✦</span><span>Coming soon</span><span class="soon-dot">✦</span>';
+      }
+      root.classList.add('pdp--soon');
+      root.innerHTML =
+        '<section class="soonx">' +
+          '<div class="soonx__bg" style="background-image:url(\'' + product.images[0] + '\')"></div>' +
+          '<div class="soonx__veil"></div>' +
+          '<div class="tape tape--1"><div class="tape__track">' + tape + '</div></div>' +
+          '<div class="tape tape--2"><div class="tape__track">' + tape + '</div></div>' +
+          '<div class="soonx__content">' +
+            '<span class="soonx__eyebrow"><span class="soonx__dot" aria-hidden="true"></span>' +
+              '<span data-i18n="soon.badge">Próximamente</span></span>' +
+            '<h1 class="soonx__title">' + product.name + '</h1>' +
+            '<p class="soonx__price" data-i18n="soon.price">Precio por desvelar</p>' +
+            '<p class="soonx__lead" data-i18n="soon.lead">' + t('soon.lead', '') + '</p>' +
+            '<form class="soonx__form" id="soonForm" novalidate>' +
+              '<input type="email" id="soonEmail" required autocomplete="email" placeholder="Tu correo" data-i18n-ph="soon.email_ph">' +
+              '<button type="submit" data-i18n="soon.notify">Avísame del lanzamiento</button>' +
+            '</form>' +
+            '<p class="soonx__note" data-i18n="soon.note">Sé el primero en saberlo. Sin spam, solo el aviso de lanzamiento.</p>' +
+            '<p class="soonx__ok" id="soonOk" hidden data-i18n="soon.ok">¡Estás en la lista! Te avisaremos el día del lanzamiento.</p>' +
+            '<a class="soonx__back" href="colchones.html" data-i18n="nav.colchones">Colchones</a>' +
+          '</div>' +
+        '</section>';
+
+      var soonForm = document.getElementById('soonForm');
+      soonForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var emailEl = document.getElementById('soonEmail');
+        var email = emailEl.value.trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { emailEl.focus(); return; }
+        /* Registrar el interés enviándonos un email con su dirección */
+        window.location.href = 'mailto:aureadescanso@gmail.com?subject=' +
+          encodeURIComponent('Lista de espera — ' + product.name) +
+          '&body=' + encodeURIComponent('Avisadme del lanzamiento del ' + product.name + ' en: ' + email);
+        soonForm.hidden = true;
+        document.getElementById('soonOk').hidden = false;
+      });
+
+      if (window.AureaI18n) window.AureaI18n.set(window.AureaI18n.lang());
+      return;
+    }
+
     var catalogPage  = product.type === 'canape' ? 'canapes.html' : 'colchones.html';
     var catalogLabel = product.type === 'canape' ? 'Canapés' : 'Colchones';
     if (product.type === 'accesorio') {
-      catalogPage = 'colchones.html#regalo';
-      catalogLabel = 'Accesorios';
+      catalogPage = 'complementos.html';
+      catalogLabel = 'Complementos';
     }
     var selectedSize = product.defaultSize || 0;
 
@@ -347,6 +407,26 @@ document.addEventListener('DOMContentLoaded', function () {
       });
       thumbsEl.appendChild(b);
     });
+
+    /* — Mouth Tape: caja 3D giratoria en lugar de la imagen plana — */
+    if (product.box3d) {
+      var mainBox = document.querySelector('.pdp__main');
+      if (mainBox) {
+        mainBox.classList.add('pdp__main--3d');
+        mainBox.innerHTML =
+          '<div class="mt3d" role="img" aria-label="Caja de Mouth Tape Aurea girando en 3D">' +
+            '<div class="mt3d__stage"><div class="mt3d__box">' +
+              '<div class="mt3d__face mt3d__face--front"></div>' +
+              '<div class="mt3d__face mt3d__face--back"></div>' +
+              '<div class="mt3d__face mt3d__face--right"></div>' +
+              '<div class="mt3d__face mt3d__face--left"></div>' +
+              '<div class="mt3d__face mt3d__face--top"></div>' +
+              '<div class="mt3d__face mt3d__face--bottom"></div>' +
+            '</div></div>' +
+          '</div>';
+      }
+      if (thumbsEl) thumbsEl.style.display = 'none';
+    }
 
     /* — Info — */
     document.getElementById('pdpType').textContent = product.typeLabel;
@@ -457,14 +537,6 @@ document.addEventListener('DOMContentLoaded', function () {
           '<a href="producto.html?m=mouth-tape">Mouth Tape Aurea</a> (30 tiras), valorado en 10 €. ' +
           'Respira por la nariz, ronca menos. Se añade solo a tu pedido.</span>';
         buyWrap.parentNode.insertBefore(gift, buyWrap.nextSibling);
-      }
-      var trustEl = document.querySelector('.pdp__trust');
-      if (trustEl) {
-        var vsLink = document.createElement('a');
-        vsLink.className = 'pdp__vs-link';
-        vsLink.href = 'colchones.html#comparador';
-        vsLink.innerHTML = '¿Dudas entre Serenity y Celestial? Compáralos cara a cara &rarr;';
-        trustEl.parentNode.insertBefore(vsLink, trustEl.nextSibling);
       }
     }
 
@@ -869,10 +941,10 @@ document.addEventListener('DOMContentLoaded', function () {
     lines.forEach(function (l) {
       itemsHtml +=
         '<div class="chk-item">' +
-          '<div class="chk-item__img"><img src="' + l.img + '" alt=""></div>' +
+          '<div class="chk-item__img"><img src="' + esc(l.img) + '" alt=""></div>' +
           '<div>' +
-            '<div class="chk-item__name">' + l.name + '</div>' +
-            '<div class="chk-item__meta">' + l.sizeLabel +
+            '<div class="chk-item__name">' + esc(l.name) + '</div>' +
+            '<div class="chk-item__meta">' + esc(l.sizeLabel) +
               (l.qty > 1 ? ' · ' + l.qty + ' uds.' : '') + '</div>' +
           '</div>' +
           '<span class="chk-item__price">' + formatPrice(l.price * l.qty) + '</span>' +
@@ -891,8 +963,45 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     itemsBox.innerHTML = itemsHtml;
 
-    document.getElementById('chkSubtotal').textContent = formatPrice(subtotal);
-    document.getElementById('chkTotal').textContent    = formatPrice(subtotal);
+    /* — Cupón de descuento (AUREA10 = −10 %) — */
+    var couponApplied = false;
+    function tt(k, fb) { return (window.AureaI18n && window.AureaI18n.t(k)) || fb; }
+    function renderTotals() {
+      var discount = couponApplied ? Math.round(subtotal * 0.10) : 0;
+      var total = subtotal - discount;
+      document.getElementById('chkSubtotal').textContent = formatPrice(subtotal);
+      var dRow = document.getElementById('chkDiscountRow');
+      if (dRow) {
+        dRow.hidden = !couponApplied;
+        if (couponApplied) document.getElementById('chkDiscount').textContent = '−' + formatPrice(discount);
+      }
+      document.getElementById('chkTotal').textContent = formatPrice(total);
+    }
+    renderTotals();
+
+    var couponBtn = document.getElementById('chkCouponBtn');
+    var couponInput = document.getElementById('chkCoupon');
+    var couponMsg = document.getElementById('chkCouponMsg');
+    if (couponBtn && couponInput) {
+      couponBtn.addEventListener('click', function () {
+        var code = couponInput.value.trim().toUpperCase();
+        if (code === 'AUREA10') {
+          couponApplied = true;
+          couponMsg.textContent = tt('chk.coupon_ok', 'Código AUREA10 aplicado: −10 %');
+          couponMsg.className = 'chk-coupon__msg is-ok';
+          couponInput.disabled = true;
+          couponBtn.disabled = true;
+        } else {
+          couponApplied = false;
+          couponMsg.textContent = tt('chk.coupon_bad', 'Código no válido');
+          couponMsg.className = 'chk-coupon__msg is-bad';
+        }
+        renderTotals();
+      });
+      couponInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') { e.preventDefault(); couponBtn.click(); }
+      });
+    }
 
     /* — Tabs de método de pago — */
     var tabs    = document.querySelectorAll('.pay-tab');
