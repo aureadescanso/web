@@ -45,6 +45,44 @@ document.addEventListener('DOMContentLoaded', function () {
           { group: 'Cara de verano',   name: 'Tejido 3D',           spec: 'Máxima ventilación en noches cálidas',  t: 12, color: '#A9B6CA', tex: 'mesh' }
         ]
       },
+      experience: {
+        scenes: [
+          {
+            img: 'images/serenity-frontal.png',
+            alt: 'Colchón Aurea Serenity de frente en un dormitorio cálido',
+            kicker: 'Experiencia Serenity',
+            title: 'Diseñado para presidir tu dormitorio',
+            text: 'Tejido stretch de 300 g/m² con acolchado tapa a tapa y platabanda firmada. Sigue bajando y tócalo con los ojos.',
+            hotspots: [
+              { x: 68, y: 66, title: 'Platabanda acolchada', text: 'El lateral en tejido stretch acolchado mantiene la forma del colchón año tras año y remata el diseño con la firma Aurea.' },
+              { x: 45, y: 50, title: 'Tejido stretch 300 g/m²', text: 'Suave, elástico y cosido tapa a tapa: el acolchado no se desplaza con el uso. Esta es la cara de invierno.' }
+            ]
+          },
+          {
+            img: 'images/serenity-perspectiva.png',
+            alt: 'Colchón Aurea Serenity en perspectiva mostrando su altura',
+            kicker: 'Presencia real',
+            title: '30 centímetros que <em>se notan</em>',
+            text: 'Bajo la superficie, un núcleo HR de 28 kg/m³ y 25 cm de grosor: soporte de alta densidad que no se rinde.',
+            hotspots: [
+              { x: 58, y: 62, title: 'Núcleo HR 28 kg/m³', text: '25 cm de espuma de alta resiliencia. La densidad es lo que separa un colchón que dura 10 años de uno que dura 5.' },
+              { x: 36, y: 42, title: 'Doble cara invierno-verano', text: 'Gíralo con la estación: cara mullida con viscoelástica para el frío, cara con tejido 3D para el calor.' }
+            ]
+          },
+          {
+            img: 'images/serenity-asas.png',
+            alt: 'Detalle de las asas verticales del colchón Aurea Serenity',
+            kicker: 'Los detalles',
+            title: 'Lo que otras marcas <em>no enseñan</em>',
+            text: 'Cuatro asas verticales cosidas a la platabanda para girarlo sin esfuerzo. Pruébalo 100 noches: si no te enamora, lo recogemos gratis.',
+            cta: 'Añadir a la cesta',
+            hotspots: [
+              { x: 53, y: 46, title: '4 asas verticales', text: 'Girarlo y voltearlo con cada estación deja de ser un castigo: dos personas lo hacen en menos de un minuto.' },
+              { x: 15, y: 52, title: 'Acolchado tapa a tapa', text: 'Cada capa va cosida al tejido, no suelta. Por eso la superficie sigue uniforme tras miles de noches.' }
+            ]
+          }
+        ]
+      },
       details: [
         {
           title: 'Composición y tecnología',
@@ -492,19 +530,21 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('pdpBuy').addEventListener('click', goCheckout);
 
     /* — Añadir a la cesta — */
+    function addCurrentToCart() {
+      if (!window.AureaCart) return;
+      window.AureaCart.add({
+        id: id,
+        name: product.name,
+        type: product.type,
+        sizeIdx: selectedSize,
+        sizeLabel: product.sizes[selectedSize].label,
+        price: product.sizes[selectedSize].price,
+        img: product.images[0]
+      });
+    }
     var addBtn = document.getElementById('pdpAddCart');
     if (addBtn && window.AureaCart) {
-      addBtn.addEventListener('click', function () {
-        window.AureaCart.add({
-          id: id,
-          name: product.name,
-          type: product.type,
-          sizeIdx: selectedSize,
-          sizeLabel: product.sizes[selectedSize].label,
-          price: product.sizes[selectedSize].price,
-          img: product.images[0]
-        });
-      });
+      addBtn.addEventListener('click', addCurrentToCart);
     }
 
     /* — Barra de compra fija (móvil): aparece al perder de vista el botón — */
@@ -893,6 +933,142 @@ document.addEventListener('DOMContentLoaded', function () {
         seasonsBox.appendChild(b);
       });
       section.querySelector('.cutaway__head').appendChild(seasonsBox);
+    })();
+
+    /* — Experiencia inmersiva: cine de scroll con hotspots — */
+    (function () {
+      var xp = product.experience;
+      var section = document.getElementById('pdpXp');
+      if (!section || !xp) return;
+      section.hidden = false;
+
+      var n = xp.scenes.length;
+      var html = '<div class="xp__sticky"><div class="xp__stage">';
+      xp.scenes.forEach(function (sc, i) {
+        html += '<figure class="xp__scene" data-i="' + i + '">' +
+          '<img src="' + sc.img + '" alt="' + sc.alt + '"' + (i > 0 ? ' loading="lazy"' : '') + '>';
+        sc.hotspots.forEach(function (h, j) {
+          html += '<button type="button" class="xp__spot" style="left:' + h.x + '%;top:' + h.y + '%" ' +
+            'data-s="' + i + '" data-h="' + j + '" aria-label="' + h.title + '"><span></span></button>';
+        });
+        html += '</figure>';
+      });
+      html += '</div>' +
+        '<div class="xp__caption" id="xpCaption">' +
+          '<span class="xp__kicker"></span>' +
+          '<h2 class="xp__title"></h2>' +
+          '<p class="xp__text"></p>' +
+          '<button type="button" class="xp__cta" id="xpCta"></button>' +
+        '</div>' +
+        '<div class="xp__rail">' +
+          xp.scenes.map(function (_, i) { return '<span class="xp__dot" data-i="' + i + '"></span>'; }).join('') +
+        '</div>' +
+        '<div class="xp__hint" id="xpHint">Sigue bajando' +
+          '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>' +
+        '</div>' +
+        '<div class="xp__card" id="xpCard" hidden>' +
+          '<button class="xp__card-close" type="button" aria-label="Cerrar">&#10005;</button>' +
+          '<h3></h3><p></p>' +
+        '</div>';
+      section.innerHTML = html;
+
+      var scenes  = section.querySelectorAll('.xp__scene');
+      var imgs    = section.querySelectorAll('.xp__scene img');
+      var dots    = section.querySelectorAll('.xp__dot');
+      var caption = document.getElementById('xpCaption');
+      var hint    = document.getElementById('xpHint');
+      var card    = document.getElementById('xpCard');
+      var stage   = section.querySelector('.xp__stage');
+      var current = -1;
+
+      function setCaption(i) {
+        var sc = xp.scenes[i];
+        caption.classList.remove('is-swap');
+        void caption.offsetWidth; /* reinicia la animación */
+        caption.querySelector('.xp__kicker').textContent = sc.kicker;
+        caption.querySelector('.xp__title').innerHTML = sc.title;
+        caption.querySelector('.xp__text').textContent = sc.text;
+        var cta = document.getElementById('xpCta');
+        if (sc.cta) { cta.textContent = sc.cta; caption.classList.add('has-cta'); }
+        else caption.classList.remove('has-cta');
+        caption.classList.add('is-swap');
+        dots.forEach(function (d, k) { d.classList.toggle('is-active', k === i); });
+        card.hidden = true;
+      }
+
+      document.getElementById('xpCta').addEventListener('click', addCurrentToCart);
+
+      function clamp(v, a, b) { return v < a ? a : (v > b ? b : v); }
+
+      function update() {
+        var rect = section.getBoundingClientRect();
+        var vh = window.innerHeight;
+        var total = rect.height - vh;
+        var prog = clamp(-rect.top / total, 0, 1);
+        if (hint) hint.classList.toggle('is-gone', prog > 0.02);
+
+        var seg = 1 / n;
+        scenes.forEach(function (scene, i) {
+          var start = i * seg, end = start + seg;
+          var op;
+          if (i === 0 && prog <= start) op = 1;
+          else if (i === n - 1 && prog >= end) op = 1;
+          else {
+            var fadeIn  = clamp((prog - (start - 0.07)) / 0.07, 0, 1);
+            var fadeOut = clamp(((end + 0.07) - prog) / 0.07, 0, 1);
+            op = Math.min(fadeIn, fadeOut);
+          }
+          scene.style.opacity = op;
+          scene.style.zIndex = op > 0.5 ? 2 : 1;
+          /* Ken Burns: zoom lento dentro de su tramo */
+          var local = clamp((prog - start) / seg, 0, 1);
+          imgs[i].style.transform = 'scale(' + (1.12 - 0.12 * local) + ')';
+        });
+
+        var idx = clamp(Math.floor(prog * n), 0, n - 1);
+        if (idx !== current) { current = idx; setCaption(idx); }
+      }
+
+      var ticking = false;
+      function onScroll() {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(function () { update(); ticking = false; });
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      update();
+
+      /* Parallax sutil con el ratón */
+      if (window.matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)').matches) {
+        section.addEventListener('mousemove', function (e) {
+          var r = section.getBoundingClientRect();
+          var mx = (e.clientX / window.innerWidth - 0.5) * 14;
+          var my = (e.clientY / window.innerHeight - 0.5) * 8;
+          stage.style.transform = 'translate(' + (-mx) + 'px,' + (-my) + 'px) scale(1.02)';
+        });
+        section.addEventListener('mouseleave', function () {
+          stage.style.transform = '';
+        });
+      }
+
+      /* Hotspots → tarjeta de especificación */
+      section.querySelectorAll('.xp__spot').forEach(function (spot) {
+        spot.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var h = xp.scenes[+spot.getAttribute('data-s')].hotspots[+spot.getAttribute('data-h')];
+          card.querySelector('h3').textContent = h.title;
+          card.querySelector('p').textContent = h.text;
+          card.hidden = false;
+        });
+      });
+      card.querySelector('.xp__card-close').addEventListener('click', function () {
+        card.hidden = true;
+      });
+      section.addEventListener('click', function (e) {
+        if (!card.hidden && !card.contains(e.target)) card.hidden = true;
+      });
     })();
   })();
 

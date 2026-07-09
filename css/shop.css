@@ -2080,3 +2080,226 @@
   .mt3d__stage { animation: none; }
   .mt3d__stage::after { animation: none; }
 }
+
+
+/* ==============================================
+   XP — EXPERIENCIA INMERSIVA (scroll-cinema)
+   ============================================== */
+.xp { position: relative; height: 340vh; margin-top: 90px; }
+.xp__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: #0A1128;
+}
+.xp__stage { position: absolute; inset: 0; will-change: transform; }
+.xp__scene { position: absolute; inset: 0; margin: 0; opacity: 0; }
+.xp__scene img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+/* Viñeteado cinematográfico para legibilidad del texto */
+.xp__scene::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(10, 17, 40, 0.38) 0%,
+    rgba(10, 17, 40, 0) 30%,
+    rgba(10, 17, 40, 0) 52%,
+    rgba(10, 17, 40, 0.78) 100%);
+}
+
+/* Rótulos de escena */
+.xp__caption {
+  position: absolute;
+  left: clamp(24px, 6vw, 84px);
+  bottom: clamp(28px, 8vh, 84px);
+  max-width: 500px;
+  color: #fff;
+  z-index: 3;
+}
+.xp__kicker {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #D4AF37;
+  margin-bottom: 12px;
+}
+.xp__title {
+  font-family: var(--serif);
+  font-size: clamp(1.7rem, 3.8vw, 2.7rem);
+  font-weight: 600;
+  line-height: 1.12;
+  margin-bottom: 12px;
+}
+.xp__title em { font-style: italic; color: #D4AF37; }
+.xp__text {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 420px;
+}
+.xp__cta {
+  display: none;
+  margin-top: 20px;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0A1128;
+  background: #D4AF37;
+  border: none;
+  border-radius: 100px;
+  padding: 13px 28px;
+  cursor: pointer;
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s;
+}
+.xp__cta:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(212, 175, 55, 0.4); }
+.xp__caption.has-cta .xp__cta { display: inline-flex; }
+.xp__caption.is-swap .xp__kicker { animation: xpUp 0.55s var(--ease-out) both; }
+.xp__caption.is-swap .xp__title  { animation: xpUp 0.55s var(--ease-out) 0.08s both; }
+.xp__caption.is-swap .xp__text   { animation: xpUp 0.55s var(--ease-out) 0.16s both; }
+.xp__caption.is-swap .xp__cta    { animation: xpUp 0.55s var(--ease-out) 0.24s both; }
+@keyframes xpUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Raíl de progreso */
+.xp__rail {
+  position: absolute;
+  right: clamp(18px, 3vw, 36px);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 3;
+}
+.xp__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.35);
+  transition: height 0.4s var(--ease-out), background 0.3s;
+}
+.xp__dot.is-active { height: 26px; background: #D4AF37; }
+
+/* Pista de scroll */
+.xp__hint {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  z-index: 3;
+  transition: opacity 0.5s;
+}
+.xp__hint svg { animation: xpBounce 1.6s ease-in-out infinite; }
+@keyframes xpBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+.xp__hint.is-gone { opacity: 0; }
+
+/* Hotspots */
+.xp__spot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(212, 175, 55, 0.95);
+  background: rgba(10, 17, 40, 0.35);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+  z-index: 4;
+  padding: 0;
+  transition: transform 0.3s var(--ease-out), background 0.3s;
+}
+.xp__spot:hover { transform: translate(-50%, -50%) scale(1.15); background: rgba(212, 175, 55, 0.25); }
+.xp__spot span {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #D4AF37;
+  transform: translate(-50%, -50%);
+}
+.xp__spot::before {
+  content: '';
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  animation: xpPulse 2.4s ease-out infinite;
+}
+@keyframes xpPulse {
+  0%   { transform: scale(0.7); opacity: 0.9; }
+  70%  { transform: scale(1.3); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* Tarjeta de especificación */
+.xp__card {
+  position: absolute;
+  right: clamp(24px, 5vw, 80px);
+  bottom: clamp(28px, 8vh, 84px);
+  width: min(330px, 84vw);
+  background: rgba(255, 255, 255, 0.97);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 22px 26px;
+  z-index: 6;
+  box-shadow: 0 24px 60px rgba(5, 10, 25, 0.45);
+  animation: xpUp 0.4s var(--ease-out) both;
+}
+.xp__card h3 {
+  font-family: var(--serif);
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 0 34px 8px 0;
+}
+.xp__card p {
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--text-2);
+  margin: 0;
+}
+.xp__card-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  color: var(--text-3);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 4px;
+}
+.xp__card-close:hover { color: var(--text); }
+
+@media (max-width: 720px) {
+  .xp { height: 300vh; }
+  .xp__caption { left: 22px; right: 60px; bottom: 34px; }
+  .xp__card { left: 50%; right: auto; transform: translateX(-50%); bottom: 120px; }
+  .xp__card.is-swap { animation: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .xp__spot::before, .xp__hint svg { animation: none; }
+}

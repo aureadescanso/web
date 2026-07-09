@@ -49,6 +49,24 @@
       });
     }
 
+    /* ── Foco de luz que recorre las bandas navy ── */
+    if (!reduce && window.matchMedia('(hover: hover)').matches) {
+      ['.promesa', '.crossband__inner', '.giftband__inner'].forEach(function (sel) {
+        document.querySelectorAll(sel).forEach(function (host) {
+          host.classList.add('spot-host');
+          var g = document.createElement('div');
+          g.className = 'spot-glow';
+          g.setAttribute('aria-hidden', 'true');
+          host.appendChild(g);
+          host.addEventListener('mousemove', function (e) {
+            var r = host.getBoundingClientRect();
+            g.style.transform = 'translate(' + (e.clientX - r.left - 230) + 'px,' +
+              (e.clientY - r.top - 230) + 'px)';
+          });
+        });
+      });
+    }
+
     /* ── 7. Sellos: dibujan su icono al entrar en pantalla ── */
     /* Helper genérico: dibuja los iconos de un grupo al entrar en pantalla */
     function drawOnScroll(nodes, prepClass, stagger) {
