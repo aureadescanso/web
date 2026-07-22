@@ -279,7 +279,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     'mouth-tape': {
       type: 'accesorio',
-      comingSoon: true,
       typeLabel: 'Accesorio de descanso',
       name: 'Mouth Tape Nuvora',
       desc: '30 tiras adhesivas de tejido transpirable que mantienen la boca cerrada mientras duermes y fomentan la respiración nasal: menos ronquidos, menos boca seca y un despertar con más energía. Sin medicamentos ni ingredientes activos.',
@@ -333,7 +332,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     'tiras-nasales': {
       type: 'accesorio',
-      comingSoon: true,
       typeLabel: 'Accesorio de descanso',
       name: 'Tiras Nasales Nuvora',
       desc: '30 tiras nasales flexibles que abren suavemente las fosas nasales desde fuera: más flujo de aire, menos ronquidos y una respiración más fácil durante toda la noche. Sin medicamentos, aptas para el uso diario.',
