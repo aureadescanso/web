@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Colchones de gama media">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17284f"/><stop offset="1" stop-color="#0c1730"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="44%" r="52%">
+      <stop offset="0" stop-color="#D4AF37" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#D4AF37" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/><feColorMatrix type="saturate" values="0"/></filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <ellipse cx="600" cy="290" rx="480" ry="300" fill="url(#glow)"/>
+  <rect width="1200" height="630" filter="url(#grain)" opacity="0.05"/>
+
+  <!-- Tres gamas: baja / media (destacada) / alta -->
+  <g stroke="#F2E7CE" stroke-opacity="0.28" stroke-width="2.4" fill="none" stroke-linejoin="round">
+    <rect x="250" y="382" width="180" height="96" rx="10"/>
+    <path d="M272 412 h136 M272 442 h136"/>
+  </g>
+  <g stroke="#F2E7CE" stroke-opacity="0.28" stroke-width="2.4" fill="none" stroke-linejoin="round">
+    <rect x="770" y="292" width="180" height="186" rx="10"/>
+    <path d="M792 322 h136 M792 352 h136 M792 382 h136 M792 412 h136 M792 442 h136"/>
+  </g>
+  <!-- Gama media, destacada -->
+  <g stroke="#E9C766" stroke-width="3.2" fill="none" stroke-linejoin="round">
+    <rect x="510" y="334" width="180" height="144" rx="10" stroke-opacity="0.98"/>
+    <path d="M532 364 h136 M532 396 h136 M532 428 h136" stroke-opacity="0.75"/>
+  </g>
+  <rect x="510" y="334" width="180" height="144" rx="10" fill="#D4AF37" fill-opacity="0.07"/>
+
+  <!-- Corona / marca de acierto sobre la media -->
+  <g transform="translate(600 262)">
+    <circle r="30" fill="#D4AF37" fill-opacity="0.92"/>
+    <path d="M-12 2 l8 9 l16 -19" fill="none" stroke="#16264d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Base y etiquetas -->
+  <line x1="220" y1="510" x2="980" y2="510" stroke="#D4AF37" stroke-opacity="0.3" stroke-width="1.5"/>
+  <g fill="#F2E7CE" fill-opacity="0.4" font-family="Georgia, serif" font-size="24" text-anchor="middle">
+    <text x="340" y="552">€</text><text x="600" y="552">€€</text><text x="860" y="552">€€€</text>
+  </g>
+
+  <g transform="translate(1010 528) scale(0.13)" fill="#D4AF37" fill-opacity="0.5">
+    <path d="M 120,118 C 260,40 420,40 560,92 C 680,135 800,130 915,82 C 800,158 668,163 552,118 C 420,68 268,68 120,118 Z"/>
+    <path d="M 60,175 C 200,208 340,205 480,150 C 620,100 780,104 945,152 C 785,118 635,130 490,180 C 350,228 200,228 60,175 Z"/>
+  </g>
+</svg>

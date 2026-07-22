@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Por qué un buen colchón mejora tu salud">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17284f"/><stop offset="1" stop-color="#0c1730"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="42%" r="58%">
+      <stop offset="0" stop-color="#D4AF37" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#D4AF37" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/><feColorMatrix type="saturate" values="0"/></filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <ellipse cx="600" cy="270" rx="540" ry="310" fill="url(#glow)"/>
+  <rect width="1200" height="630" filter="url(#grain)" opacity="0.05"/>
+
+  <!-- Superficie del colchón -->
+  <g stroke="#E9C766" fill="none" stroke-width="2.6" stroke-linecap="round">
+    <path d="M190 452 h820" stroke-opacity="0.9"/>
+    <path d="M190 490 h820" stroke-opacity="0.45"/>
+    <path d="M190 452 v38 M1010 452 v38" stroke-opacity="0.6"/>
+  </g>
+
+  <!-- Columna alineada durmiendo de lado -->
+  <g fill="none" stroke="#D4AF37" stroke-width="3.4" stroke-linecap="round">
+    <path d="M300 400 C 400 384, 520 382, 640 392 C 720 398, 790 402, 860 400" stroke-opacity="0.95"/>
+  </g>
+  <g fill="#D4AF37" fill-opacity="0.9">
+    <circle cx="300" cy="400" r="9"/><circle cx="380" cy="389" r="7"/><circle cx="460" cy="384" r="7"/>
+    <circle cx="545" cy="386" r="7"/><circle cx="628" cy="391" r="7"/><circle cx="710" cy="397" r="7"/>
+    <circle cx="790" cy="400" r="7"/><circle cx="860" cy="400" r="9"/>
+  </g>
+  <!-- Cabeza -->
+  <circle cx="252" cy="384" r="30" fill="none" stroke="#E9C766" stroke-width="2.8" stroke-opacity="0.9"/>
+
+  <!-- Línea de pulso / descanso reparador -->
+  <g fill="none" stroke="#F2E7CE" stroke-opacity="0.5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M250 220 h130 l26 -52 l34 104 l28 -52 h150"/>
+  </g>
+  <!-- Corazón -->
+  <g transform="translate(700 200)">
+    <path d="M0 26 C -34 2, -46 -14, -46 -32 A 24 24 0 0 1 0 -42 A 24 24 0 0 1 46 -32 C 46 -14, 34 2, 0 26 Z"
+          fill="none" stroke="#D4AF37" stroke-width="3" stroke-opacity="0.92" stroke-linejoin="round"/>
+  </g>
+
+  <g transform="translate(1010 528) scale(0.13)" fill="#D4AF37" fill-opacity="0.5">
+    <path d="M 120,118 C 260,40 420,40 560,92 C 680,135 800,130 915,82 C 800,158 668,163 552,118 C 420,68 268,68 120,118 Z"/>
+    <path d="M 60,175 C 200,208 340,205 480,150 C 620,100 780,104 945,152 C 785,118 635,130 490,180 C 350,228 200,228 60,175 Z"/>
+  </g>
+</svg>

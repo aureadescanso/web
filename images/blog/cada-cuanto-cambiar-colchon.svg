@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Cada cuánto se cambia el colchón">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17284f"/><stop offset="1" stop-color="#0c1730"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="42%" r="58%">
+      <stop offset="0" stop-color="#D4AF37" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#D4AF37" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/><feColorMatrix type="saturate" values="0"/></filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <ellipse cx="600" cy="270" rx="540" ry="310" fill="url(#glow)"/>
+  <rect width="1200" height="630" filter="url(#grain)" opacity="0.05"/>
+
+  <!-- Línea de tiempo con hitos -->
+  <line x1="150" y1="500" x2="1050" y2="500" stroke="#D4AF37" stroke-opacity="0.35" stroke-width="1.6"/>
+  <g fill="#D4AF37" fill-opacity="0.85">
+    <circle cx="260" cy="500" r="6"/><circle cx="470" cy="500" r="6"/>
+    <circle cx="680" cy="500" r="6"/><circle cx="890" cy="500" r="9"/>
+  </g>
+  <g fill="#F2E7CE" fill-opacity="0.45" font-family="Georgia, serif" font-size="26" text-anchor="middle">
+    <text x="260" y="548">2</text><text x="470" y="548">5</text>
+    <text x="680" y="548">8</text><text x="890" y="548">10</text>
+  </g>
+
+  <!-- Perfil del colchón degradándose: de recto a hundido -->
+  <g fill="none" stroke="#E9C766" stroke-linecap="round">
+    <path d="M180 300 h180" stroke-width="3" stroke-opacity="0.95"/>
+    <path d="M180 336 h180" stroke-width="2" stroke-opacity="0.4"/>
+    <path d="M390 300 C 440 300, 450 318, 500 318 C 550 318, 560 300, 610 300" stroke-width="3" stroke-opacity="0.8"/>
+    <path d="M390 336 h220" stroke-width="2" stroke-opacity="0.35"/>
+    <path d="M640 300 C 700 300, 710 344, 780 344 C 850 344, 860 300, 920 300" stroke-width="3" stroke-opacity="0.65"/>
+    <path d="M640 336 h280" stroke-width="2" stroke-opacity="0.3"/>
+  </g>
+
+  <!-- Reloj de arena -->
+  <g transform="translate(600 150)" fill="none" stroke="#E9C766" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-42 -60 h84 M-42 60 h84"/>
+    <path d="M-34 -60 C -34 -18, 0 -6, 0 0 C 0 -6, 34 -18, 34 -60"/>
+    <path d="M-34 60 C -34 18, 0 6, 0 0 C 0 6, 34 18, 34 60"/>
+  </g>
+  <path d="M600 150 l0 34" stroke="#D4AF37" stroke-width="3" stroke-linecap="round" stroke-opacity="0.9"/>
+  <path d="M578 200 C 578 182, 622 182, 622 200 Z" fill="#D4AF37" fill-opacity="0.75"/>
+
+  <g transform="translate(1010 528) scale(0.13)" fill="#D4AF37" fill-opacity="0.5">
+    <path d="M 120,118 C 260,40 420,40 560,92 C 680,135 800,130 915,82 C 800,158 668,163 552,118 C 420,68 268,68 120,118 Z"/>
+    <path d="M 60,175 C 200,208 340,205 480,150 C 620,100 780,104 945,152 C 785,118 635,130 490,180 C 350,228 200,228 60,175 Z"/>
+  </g>
+</svg>

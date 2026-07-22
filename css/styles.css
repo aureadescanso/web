@@ -1,5 +1,5 @@
 /* =============================================
-   AUREA DESCANSO — Ultra Premium Redesign
+   NUVORA DESCANSO — Ultra Premium Redesign
    Inspired by apple.com
    ============================================= */
 
@@ -687,7 +687,7 @@ ul  { list-style: none; }
 .reveal-letter {
   display: inline-block;
   font-family: var(--serif);
-  font-size: clamp(4rem, 15vw, 12rem);
+  font-size: clamp(3.5rem, 13vw, 11rem); /* 6 letras: NUVORA */
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.03em;

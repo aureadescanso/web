@@ -1,5 +1,5 @@
 /* =============================================
-   AUREA DESCANSO — Cinematic Experience JS
+   NUVORA DESCANSO — Cinematic Experience JS
    ============================================= */
 document.addEventListener('DOMContentLoaded', function () {
   'use strict';
@@ -227,13 +227,13 @@ document.addEventListener('DOMContentLoaded', function () {
   var heroSub     = document.getElementById('heroSub');
   var heroButtons = document.getElementById('heroButtons');
   function heroTitle() {
-    return (window.AureaI18n && window.AureaI18n.t('hero.title')) || 'Duerme como nunca.';
+    return (window.NuvoraI18n && window.NuvoraI18n.t('hero.title')) || 'Duerme como nunca.';
   }
   var FULL_TEXT   = heroTitle();
   var typeIdx     = 0;
 
   /* Al cambiar de idioma, el título se actualiza al instante (sin re-teclear) */
-  window.addEventListener('aurea:lang', function () {
+  window.addEventListener('nuvora:lang', function () {
     if (!typeTextEl) return;
     if (typeIdx >= FULL_TEXT.length) {
       FULL_TEXT = heroTitle();
@@ -340,17 +340,17 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!stage) return;
 
     var testimonials = [
-      { quote: 'Llevaba años con dolor de espalda. Desde que tengo el Aurea Serenity, duermo como nunca. La diferencia se nota desde la primera noche.', cite: 'María López — Madrid', img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=96&h=96&fit=crop&crop=face' },
+      { quote: 'Llevaba años con dolor de espalda. Desde que tengo el Nuvora Aurea, duermo como nunca. La diferencia se nota desde la primera noche.', cite: 'María López — Madrid', img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=96&h=96&fit=crop&crop=face' },
       { quote: 'El proceso de compra fue sencillísimo. Llegó en 3 días, lo saqué de la caja y en minutos estaba listo. Estamos encantados.', cite: 'Carlos García — Barcelona', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=96&h=96&fit=crop&crop=face' },
       { quote: 'Probé las 100 noches convencida de que lo devolvería. Ocho meses después, sigo durmiendo de maravilla.', cite: 'Ana Ruiz — Valencia', img: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=96&h=96&fit=crop&crop=face' },
-      { quote: 'Mi pareja se mueve mucho por la noche. Con el Aurea Celestial, no me entero. La independencia de lechos es real.', cite: 'Javier Moreno — Sevilla', img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=96&h=96&fit=crop&crop=face' },
-      { quote: 'Nos costó decidir, pero la garantía de 10 años nos convenció. Tres años después, está como el primer día.', cite: 'Laura y Pablo — Bilbao', img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=96&h=96&fit=crop&crop=face' },
+      { quote: 'Mi pareja se mueve mucho por la noche. Con el Nuvora Serenity, no me entero. La independencia de lechos es real.', cite: 'Javier Moreno — Sevilla', img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=96&h=96&fit=crop&crop=face' },
+      { quote: 'Nos costó decidir, pero la garantía de 5 años nos convenció. Tres años después, está como el primer día.', cite: 'Laura y Pablo — Bilbao', img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=96&h=96&fit=crop&crop=face' },
       { quote: 'He probado colchones de 1.500 €. Este de 499 € los supera con creces. Eliminar intermediarios se nota.', cite: 'Fernando Díaz — Málaga', img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=96&h=96&fit=crop&crop=face' },
-      { quote: 'Sufro de calor por las noches. La cara de verano del Serenity, con su tejido 3D, ha sido un antes y un después para mí.', cite: 'Carmen Vega — Zaragoza', img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=96&h=96&fit=crop&crop=face' },
+      { quote: 'Sufro de calor por las noches y este colchón transpira de verdad: no acumula calor y por fin duermo del tirón hasta la mañana.', cite: 'Carmen Vega — Zaragoza', img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=96&h=96&fit=crop&crop=face' },
       { quote: 'Lo compré para mi madre. Tiene 72 años y dice que no dormía tan bien desde joven. Eso no tiene precio.', cite: 'Roberto Sanz — A Coruña', img: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=96&h=96&fit=crop&crop=face' },
       { quote: 'Soy fisioterapeuta y lo recomiendo a mis pacientes. La firmeza media es perfecta para la columna.', cite: 'Elena Torres — Murcia', img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=96&h=96&fit=crop&crop=face' },
       { quote: 'Pedí un sábado, llegó el martes. Desempaquetar fue casi divertido. Calidad brutal por ese precio.', cite: 'Diego Herrera — Valladolid', img: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=96&h=96&fit=crop&crop=face' },
-      { quote: 'Después de comparar 20 marcas online, Aurea fue la que mejor relación calidad-precio ofrecía. Acerté.', cite: 'Sofía Martín — Alicante', img: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=96&h=96&fit=crop&crop=face' },
+      { quote: 'Después de comparar 20 marcas online, Nuvora fue la que mejor relación calidad-precio ofrecía. Acerté.', cite: 'Sofía Martín — Alicante', img: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=96&h=96&fit=crop&crop=face' },
       { quote: 'Lo mejor: sin tienda física, sin vendedor presionando. Compras tranquilo y si no te gusta, te lo recogen.', cite: 'Marcos Peña — Granada', img: 'https://images.unsplash.com/photo-1463453091185-61582044d556?w=96&h=96&fit=crop&crop=face' }
     ];
 
@@ -488,7 +488,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* ══════════════════════════════════════════════
-     REVEAL TEXT — "AUREA" letter animation
+     REVEAL TEXT — "NUVORA" letter animation
      ══════════════════════════════════════════════ */
   (function () {
     var container = document.getElementById('revealText');
@@ -566,23 +566,23 @@ document.addEventListener('DOMContentLoaded', function () {
     var articles = [
       {
         href: 'blog/viscoelastico-o-muelles.html',
-        img: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80',
+        img: 'images/blog/viscoelastico-o-muelles.svg',
         time: '9 min',
         tag: 'Guía de compra',
         title: '¿Viscoelástico o muelles ensacados?',
         desc: 'La comparativa honesta'
       },
       {
-        href: 'blog/colchon-doble-cara-invierno-verano.html',
-        img: 'images/serenity-frontal.png',
-        time: '6 min',
+        href: 'blog/mejores-colchones-calidad-precio.html',
+        img: 'images/blog/mejores-colchones-calidad-precio.svg',
+        time: '9 min',
         tag: 'Colchones',
-        title: 'Doble cara invierno-verano',
-        desc: 'Dos colchones en uno'
+        title: 'Mejores colchones calidad-precio',
+        desc: 'Guía para no pagar de más'
       },
       {
         href: 'blog/cada-cuanto-cambiar-colchon.html',
-        img: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=600&q=80',
+        img: 'images/blog/cada-cuanto-cambiar-colchon.svg',
         time: '7 min',
         tag: 'Consejos',
         title: '¿Cada cuánto se cambia el colchón?',
@@ -590,7 +590,7 @@ document.addEventListener('DOMContentLoaded', function () {
       },
       {
         href: 'blog/como-elegir-canape-abatible.html',
-        img: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&q=80',
+        img: 'images/blog/como-elegir-canape-abatible.svg',
         time: '8 min',
         tag: 'Canapés',
         title: 'Cómo elegir un canapé abatible',

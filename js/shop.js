@@ -1,5 +1,5 @@
 /* =============================================
-   AUREA DESCANSO — Shop JS
+   NUVORA DESCANSO — Shop JS
    Catálogo · Ficha de producto · Checkout
    ============================================= */
 document.addEventListener('DOMContentLoaded', function () {
@@ -9,75 +9,92 @@ document.addEventListener('DOMContentLoaded', function () {
      CATÁLOGO
      ══════════════════════════════════════════════ */
   var CATALOG = {
-    'serenity': {
+    'aurea': {
       type: 'colchon',
-      typeLabel: 'Colchón viscoelástico · doble cara',
-      name: 'Aurea Serenity',
-      desc: 'Doble cara invierno-verano con núcleo HR de 28 kg/m³ de densidad. La cara de invierno acoge con 2 cm de viscoelástica y acolchado tapa a tapa; la de verano, con tejido 3D transpirable, mantiene el frescor las noches de calor.',
+      typeLabel: 'Colchón viscoelástico',
+      name: 'Nuvora Aurea',
+      desc: 'Colchón viscoelástico de gama alta: 2 cm de viscoelástica que se adaptan a tu cuerpo y alivian los puntos de presión, sobre un núcleo HR de 28 kg/m³ que sujeta sin hundir. Acolchado tapa a tapa, 30 cm de altura y tejido transpirable para dormir fresco.',
       rating: '4,8',
       reviews: 412,
       images: [
-        'images/serenity-frontal.png',
-        'images/serenity-perspectiva.png',
-        'images/serenity-lateral.png',
-        'images/serenity-asas.png',
-        'images/serenity-capas.png'
+        'images/aurea-frontal.png',
+        'images/aurea-perspectiva.png',
+        'images/aurea-lateral.png',
+        'images/aurea-asas.png',
+        'images/aurea-capas.png'
       ],
       sizes: [
-        { label: '90 × 190 cm',  price: 499 },
-        { label: '135 × 190 cm', price: 549 },
-        { label: '150 × 190 cm', price: 599 },
-        { label: '160 × 200 cm', price: 649 },
-        { label: '180 × 200 cm', price: 699 }
+        { label: '75 × 190 cm',  price: 228.78 },
+        { label: '75 × 200 cm',  price: 240.22 },
+        { label: '80 × 190 cm',  price: 240.83 },
+        { label: '80 × 200 cm',  price: 252.88 },
+        { label: '90 × 190 cm',  price: 253.52 },
+        { label: '90 × 200 cm',  price: 266.20 },
+        { label: '105 × 190 cm', price: 288.57 },
+        { label: '105 × 200 cm', price: 303.01 },
+        { label: '110 × 190 cm', price: 303.01 },
+        { label: '110 × 200 cm', price: 318.15 },
+        { label: '120 × 190 cm', price: 333.30 },
+        { label: '120 × 200 cm', price: 349.96 },
+        { label: '135 × 190 cm', price: 356.15 },
+        { label: '135 × 200 cm', price: 373.96 },
+        { label: '140 × 190 cm', price: 373.96 },
+        { label: '140 × 200 cm', price: 392.65 },
+        { label: '150 × 190 cm', price: 389.43 },
+        { label: '150 × 200 cm', price: 408.91 },
+        { label: '160 × 190 cm', price: 428.52 },
+        { label: '160 × 200 cm', price: 449.96 },
+        { label: '180 × 190 cm', price: 477.99 },
+        { label: '180 × 200 cm', price: 492.78 },
+        { label: '200 × 190 cm', price: 524.87 },
+        { label: '200 × 200 cm', price: 541.10 }
       ],
-      defaultSize: 2,
+      defaultSize: 16,
       cutaway: {
-        sub: 'Ocho capas reales y dos caras según la estación: gira el colchón y tendrás un colchón mullido para el invierno y otro fresco para el verano.',
+        sub: 'Seis capas reales sobre un núcleo HR de alta densidad: la viscoelástica te acoge y el núcleo te sujeta, sin hundirte.',
         chips: ['Altura total: 30 cm aprox.', 'Acolchado tapa a tapa', 'Platabanda en tejido stretch', '4 asas verticales'],
         layers: [
-          { group: 'Cara de invierno', name: 'Tejido stretch',      spec: '300 g/m², suave y elástico',            t: 12, color: '#F2E7CE', tex: 'quilt' },
-          { group: 'Cara de invierno', name: 'Viscoelástica',       spec: '2 cm que se adaptan a tu cuerpo',       t: 20, color: '#E2C181', tex: 'visco' },
-          { group: 'Cara de invierno', name: 'Fibra hueca',         spec: 'Acolchado mullido y aislante',          t: 13, color: '#FDFCF8', tex: 'fiber' },
-          { group: 'Cara de invierno', name: 'Espuma HR',           spec: '1,3 cm de transición progresiva',       t: 15, color: '#CBD9F1', tex: 'hr' },
-          { group: 'Núcleo',           name: 'Núcleo HR 28 kg/m³',  spec: '25 cm de soporte de alta densidad',     t: 95, color: '#8CA7DA', tex: 'core' },
-          { group: 'Cara de verano',   name: 'Espuma HR',           spec: '0,5 cm de acogida ligera',              t: 11, color: '#CBD9F1', tex: 'hr' },
-          { group: 'Cara de verano',   name: 'Fibra transpirable',  spec: 'Regula la humedad durante la noche',    t: 13, color: '#FDFCF8', tex: 'fiber' },
-          { group: 'Cara de verano',   name: 'Tejido 3D',           spec: 'Máxima ventilación en noches cálidas',  t: 12, color: '#A9B6CA', tex: 'mesh' }
+          { group: 'Acolchado', name: 'Tejido stretch',     spec: '300 g/m², suave y elástico',        t: 12, color: '#F2E7CE', tex: 'quilt' },
+          { group: 'Acolchado', name: 'Viscoelástica',      spec: '2 cm que se adaptan a tu cuerpo',    t: 22, color: '#E2C181', tex: 'visco' },
+          { group: 'Acolchado', name: 'Fibra hueca',        spec: 'Acolchado mullido y transpirable',  t: 14, color: '#FDFCF8', tex: 'fiber' },
+          { group: 'Acolchado', name: 'Espuma HR',          spec: '1,3 cm de transición progresiva',   t: 15, color: '#CBD9F1', tex: 'hr' },
+          { group: 'Núcleo',    name: 'Núcleo HR 28 kg/m³', spec: '25 cm de soporte de alta densidad', t: 95, color: '#8CA7DA', tex: 'core' },
+          { group: 'Base',      name: 'Base reforzada',     spec: 'Tejido inferior antideslizante',    t: 9,  color: '#C7B79A', tex: 'quilt' }
         ]
       },
       experience: {
         scenes: [
           {
-            img: 'images/serenity-frontal.png',
-            alt: 'Colchón Aurea Serenity de frente en un dormitorio cálido',
-            kicker: 'Experiencia Serenity',
+            img: 'images/aurea-frontal.png',
+            alt: 'Colchón Nuvora Aurea de frente en un dormitorio cálido',
+            kicker: 'Experiencia Aurea',
             title: 'Diseñado para presidir tu dormitorio',
             text: 'Tejido stretch de 300 g/m² con acolchado tapa a tapa y platabanda firmada. Sigue bajando y tócalo con los ojos.',
             hotspots: [
-              { x: 68, y: 66, title: 'Platabanda acolchada', text: 'El lateral en tejido stretch acolchado mantiene la forma del colchón año tras año y remata el diseño con la firma Aurea.' },
-              { x: 45, y: 50, title: 'Tejido stretch 300 g/m²', text: 'Suave, elástico y cosido tapa a tapa: el acolchado no se desplaza con el uso. Esta es la cara de invierno.' }
+              { x: 68, y: 66, title: 'Platabanda acolchada', text: 'El lateral en tejido stretch acolchado mantiene la forma del colchón año tras año y remata el diseño con la firma Nuvora.' },
+              { x: 45, y: 50, title: 'Tejido stretch 300 g/m²', text: 'Suave, elástico y cosido tapa a tapa: el acolchado no se desplaza con el uso, año tras año.' }
             ]
           },
           {
-            img: 'images/serenity-perspectiva.png',
-            alt: 'Colchón Aurea Serenity en perspectiva mostrando su altura',
+            img: 'images/aurea-perspectiva.png',
+            alt: 'Colchón Nuvora Aurea en perspectiva mostrando su altura',
             kicker: 'Presencia real',
             title: '30 centímetros que <em>se notan</em>',
             text: 'Bajo la superficie, un núcleo HR de 28 kg/m³ y 25 cm de grosor: soporte de alta densidad que no se rinde.',
             hotspots: [
               { x: 58, y: 62, title: 'Núcleo HR 28 kg/m³', text: '25 cm de espuma de alta resiliencia. La densidad es lo que separa un colchón que dura 10 años de uno que dura 5.' },
-              { x: 36, y: 42, title: 'Doble cara invierno-verano', text: 'Gíralo con la estación: cara mullida con viscoelástica para el frío, cara con tejido 3D para el calor.' }
+              { x: 36, y: 42, title: 'Viscoelástica de 2 cm', text: 'Se amolda a tu cuerpo y libera los puntos de presión de espalda, caderas y hombros mientras duermes.' }
             ]
           },
           {
-            img: 'images/serenity-asas.png',
-            alt: 'Detalle de las asas verticales del colchón Aurea Serenity',
+            img: 'images/aurea-asas.png',
+            alt: 'Detalle de las asas verticales del colchón Nuvora Aurea',
             kicker: 'Los detalles',
             title: 'Lo que otras marcas <em>no enseñan</em>',
             text: 'Cuatro asas verticales cosidas a la platabanda para girarlo sin esfuerzo. Pruébalo 100 noches: si no te enamora, lo recogemos gratis.',
             cta: 'Añadir a la cesta',
             hotspots: [
-              { x: 53, y: 46, title: '4 asas verticales', text: 'Girarlo y voltearlo con cada estación deja de ser un castigo: dos personas lo hacen en menos de un minuto.' },
+              { x: 53, y: 46, title: '4 asas verticales', text: 'Girarlo 180° cada pocos meses para repartir el desgaste deja de ser un castigo: dos personas lo hacen en menos de un minuto.' },
               { x: 15, y: 52, title: 'Acolchado tapa a tapa', text: 'Cada capa va cosida al tejido, no suelta. Por eso la superficie sigue uniforme tras miles de noches.' }
             ]
           }
@@ -88,9 +105,9 @@ document.addEventListener('DOMContentLoaded', function () {
           title: 'Composición y tecnología',
           html: '<ul>' +
             '<li>Núcleo de espuma HR de 28 kg/m³ de densidad y 25 cm de grosor: soporte consistente y duradero.</li>' +
-            '<li><strong>Cara de invierno:</strong> tejido stretch de 300 g/m², 2 cm de viscoelástica, fibra y 1,3 cm de espuma HR, con acolchado tapa a tapa.</li>' +
-            '<li><strong>Cara de verano:</strong> tejido 3D transpirable, fibra y 0,5 cm de espuma HR para dormir fresco en las noches de calor.</li>' +
-            '<li>Platabanda en tejido stretch con 4 asas verticales para girar y voltear el colchón con facilidad.</li>' +
+            '<li><strong>Capa de confort:</strong> tejido stretch de 300 g/m², 2 cm de viscoelástica y fibra hueca, cosidos tapa a tapa para que el acolchado no se desplace.</li>' +
+            '<li>Tejido transpirable que regula la humedad y ayuda a disipar el calor corporal durante la noche.</li>' +
+            '<li>Platabanda en tejido stretch con 4 asas verticales para mover y girar el colchón con facilidad.</li>' +
             '<li>Altura total del colchón terminado: 30 cm aprox. Firmeza: media.</li>' +
           '</ul>'
         },
@@ -105,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {
           title: 'Garantía',
           html: '<ul>' +
-            '<li>10 años de garantía completa contra defectos de fabricación.</li>' +
+            '<li>5 años de garantía completa contra defectos de fabricación.</li>' +
             '<li>Cubre hundimientos superiores a 2,5 cm e irregularidades del núcleo.</li>' +
             '<li>Sin letra pequeña: gestión directa con nosotros, sin intermediarios.</li>' +
           '</ul>'
@@ -113,11 +130,11 @@ document.addEventListener('DOMContentLoaded', function () {
       ]
     },
 
-    'celestial': {
+    'serenity': {
       type: 'colchon',
       comingSoon: true,
       typeLabel: 'Colchón híbrido de muelles ensacados',
-      name: 'Aurea Celestial',
+      name: 'Nuvora Serenity',
       desc: 'Firmeza media-alta con muelles ensacados individualmente y doble capa de viscoelástica. Máxima transpirabilidad e independencia de lechos: el colchón para parejas exigentes.',
       rating: '4,9',
       reviews: 287,
@@ -156,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {
           title: 'Garantía',
           html: '<ul>' +
-            '<li>10 años de garantía completa contra defectos de fabricación.</li>' +
+            '<li>5 años de garantía completa contra defectos de fabricación.</li>' +
             '<li>Cubre muelles, núcleo, hundimientos e irregularidades.</li>' +
             '<li>Atención directa de fábrica, respuesta en menos de 48 h.</li>' +
           '</ul>'
@@ -166,6 +183,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     'canape-atlas': {
       type: 'canape',
+      comingSoon: true,
       typeLabel: 'Canapé abatible de madera',
       name: 'Canapé Atlas',
       desc: 'Canapé abatible con tapa de madera de roble y gran capacidad de almacenaje. Apertura asistida por pistones de gas de doble refuerzo y base transpirable para cuidar tu colchón.',
@@ -213,6 +231,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     'canape-eter': {
       type: 'canape',
+      comingSoon: true,
       typeLabel: 'Canapé abatible tapizado',
       name: 'Canapé Éter',
       desc: 'Canapé abatible tapizado en tejido antimanchas con cabecero a juego opcional. Diseño minimalista de líneas suaves que eleva cualquier dormitorio, con almacenaje XXL.',
@@ -260,13 +279,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     'mouth-tape': {
       type: 'accesorio',
+      comingSoon: true,
       typeLabel: 'Accesorio de descanso',
-      name: 'Mouth Tape Aurea',
+      name: 'Mouth Tape Nuvora',
       desc: '30 tiras adhesivas de tejido transpirable que mantienen la boca cerrada mientras duermes y fomentan la respiración nasal: menos ronquidos, menos boca seca y un despertar con más energía. Sin medicamentos ni ingredientes activos.',
       rating: '4,7',
       reviews: 86,
-      images: ['images/mt-face-front.png'],
+      images: ['images/mouth-tape.webp'],
       box3d: true,
+      cutImg: 'images/mouth-tape-cut.png',
+      gift: true,
       sizes: [
         { label: 'Caja · 30 tiras', price: 10 }
       ],
@@ -302,8 +324,60 @@ document.addEventListener('DOMContentLoaded', function () {
         {
           title: 'De regalo con tu colchón',
           html: '<ul>' +
-            '<li>Con la compra de cualquier colchón Aurea, una caja de Mouth Tape (30 tiras) va <strong>de regalo</strong> en tu pedido, sin hacer nada.</li>' +
+            '<li>Con la compra de cualquier colchón Nuvora, una caja de Mouth Tape (30 tiras) va <strong>de regalo</strong> en tu pedido, sin hacer nada.</li>' +
             '<li><a href="colchones.html">Ver colchones</a></li>' +
+          '</ul>'
+        }
+      ]
+    },
+
+    'tiras-nasales': {
+      type: 'accesorio',
+      comingSoon: true,
+      typeLabel: 'Accesorio de descanso',
+      name: 'Tiras Nasales Nuvora',
+      desc: '30 tiras nasales flexibles que abren suavemente las fosas nasales desde fuera: más flujo de aire, menos ronquidos y una respiración más fácil durante toda la noche. Sin medicamentos, aptas para el uso diario.',
+      rating: '4,6',
+      reviews: 54,
+      images: ['images/tiras-nasales.webp'],
+      box3d: true,
+      cutImg: 'images/tiras-nasales-cut.png',
+      sizes: [
+        { label: 'Caja · 30 tiras', price: 10 }
+      ],
+      defaultSize: 0,
+      details: [
+        {
+          title: 'Qué son y cómo funcionan',
+          html: '<ul>' +
+            '<li>Tiras flexibles que se adhieren sobre el puente de la nariz y abren las fosas nasales desde fuera, de forma mecánica.</li>' +
+            '<li>Más flujo de aire al instante: respiración más fácil y menos ronquidos.</li>' +
+            '<li>Adhesivo suave con la piel, cómodo durante toda la noche.</li>' +
+            '<li>Sin medicamentos ni ingredientes activos. Uso externo.</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Modo de empleo',
+          html: '<ul>' +
+            '<li>1. Lava y seca bien la piel de la nariz.</li>' +
+            '<li>2. Retira el protector de la tira.</li>' +
+            '<li>3. Céntrala sobre el puente de la nariz, justo encima de las aletas.</li>' +
+            '<li>4. Presiona unos segundos para fijarla.</li>' +
+            '<li>5. Retírala por la mañana, mejor con agua tibia.</li>' +
+            '<li><strong>Importante:</strong> no usar sobre piel irritada o con heridas, ni en niños pequeños.</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Envío y devoluciones',
+          html: '<ul>' +
+            '<li>Envío a toda España peninsular en 3–5 días laborables.</li>' +
+            '<li>Devolución gratuita durante los primeros 30 días si la caja está sin abrir.</li>' +
+          '</ul>'
+        },
+        {
+          title: 'El dúo de la respiración nasal',
+          html: '<ul>' +
+            '<li>Combínalas con el <a href="producto.html?m=mouth-tape">Mouth Tape Nuvora</a>: las tiras abren la nariz y el tape mantiene la boca cerrada. Respiración nasal completa toda la noche.</li>' +
           '</ul>'
         }
       ]
@@ -311,7 +385,14 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   function formatPrice(n) {
-    return n.toLocaleString('es-ES') + ' €';
+    return n.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+  }
+
+  /* Precio de referencia en tienda física: nuestro precio es un 35 % menor.
+     REQUISITO LEGAL: debe poder justificarse como PVP real de tienda física. */
+  var STORE_DISCOUNT = 0.40;
+  function storePrice(n) {
+    return n / (1 - STORE_DISCOUNT);
   }
 
   /* Escapa texto antes de insertarlo como HTML (defensa frente a datos manipulados en localStorage) */
@@ -360,8 +441,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* Producto "Próximamente": teaser inmersivo en vez de la ficha normal */
     if (product.comingSoon) {
-      document.title = product.name + ' · Próximamente | Aurea Descanso';
-      var t = function (k, fb) { return (window.AureaI18n && window.AureaI18n.t(k)) || fb; };
+      document.title = product.name + ' · Próximamente | Nuvora Descanso';
+      var t = function (k, fb) { return (window.NuvoraI18n && window.NuvoraI18n.t(k)) || fb; };
       var tape = '';
       for (var ti = 0; ti < 10; ti++) {
         tape += '<span>Próximamente</span><span class="soon-dot">✦</span><span>' + product.name +
@@ -397,14 +478,14 @@ document.addEventListener('DOMContentLoaded', function () {
         var email = emailEl.value.trim();
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { emailEl.focus(); return; }
         /* Registrar el interés enviándonos un email con su dirección */
-        window.location.href = 'mailto:aureadescanso@gmail.com?subject=' +
+        window.location.href = 'mailto:nuvoradescanso@gmail.com?subject=' +
           encodeURIComponent('Lista de espera — ' + product.name) +
           '&body=' + encodeURIComponent('Avisadme del lanzamiento del ' + product.name + ' en: ' + email);
         soonForm.hidden = true;
         document.getElementById('soonOk').hidden = false;
       });
 
-      if (window.AureaI18n) window.AureaI18n.set(window.AureaI18n.lang());
+      if (window.NuvoraI18n) window.NuvoraI18n.set(window.NuvoraI18n.lang());
       return;
     }
 
@@ -416,7 +497,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     var selectedSize = product.defaultSize || 0;
 
-    document.title = product.name + ' | Aurea Descanso';
+    document.title = product.name + ' | Nuvora Descanso';
 
     /* — Migas — */
     document.getElementById('pdpCrumbCat').setAttribute('href', catalogPage);
@@ -446,21 +527,24 @@ document.addEventListener('DOMContentLoaded', function () {
       thumbsEl.appendChild(b);
     });
 
-    /* — Mouth Tape: caja 3D giratoria en lugar de la imagen plana — */
+    /* — Mouth Tape: bolsa 3D flotante en lugar de la imagen plana — */
     if (product.box3d) {
       var mainBox = document.querySelector('.pdp__main');
       if (mainBox) {
+        var cutSrc = product.cutImg || product.images[0];
+        var bagLayers = '';
+        for (var bl = 0; bl < 7; bl++) {
+          bagLayers += '<img class="mtbag__layer" src="' + cutSrc + '" alt="" draggable="false">';
+        }
         mainBox.classList.add('pdp__main--3d');
         mainBox.innerHTML =
-          '<div class="mt3d" role="img" aria-label="Caja de Mouth Tape Aurea girando en 3D">' +
-            '<div class="mt3d__stage"><div class="mt3d__box">' +
-              '<div class="mt3d__face mt3d__face--front"></div>' +
-              '<div class="mt3d__face mt3d__face--back"></div>' +
-              '<div class="mt3d__face mt3d__face--right"></div>' +
-              '<div class="mt3d__face mt3d__face--left"></div>' +
-              '<div class="mt3d__face mt3d__face--top"></div>' +
-              '<div class="mt3d__face mt3d__face--bottom"></div>' +
-            '</div></div>' +
+          '<div class="mtbag" role="img" aria-label="Bolsa de Mouth Tape Nuvora flotando en 3D">' +
+            '<div class="mtbag__stage">' +
+              '<div class="mtbag__sway">' +
+                bagLayers +
+                '<div class="mtbag__sheen" style="-webkit-mask-image:url(' + cutSrc + ');mask-image:url(' + cutSrc + ')"></div>' +
+              '</div>' +
+            '</div>' +
           '</div>';
       }
       if (thumbsEl) thumbsEl.style.display = 'none';
@@ -487,13 +571,30 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       shownPrice = price;
 
+      /* Comparativa con el precio de tienda física (−35 %) */
+      var wasEl = document.getElementById('pdpWas');
+      var offEl = document.getElementById('pdpOff');
+      var cmpEl = document.getElementById('pdpCompareNote');
+      var showCompare = product.compare !== false && !product.comingSoon;
+      if (wasEl && offEl) {
+        wasEl.hidden = !showCompare;
+        offEl.hidden = !showCompare;
+        if (showCompare) {
+          wasEl.textContent = formatPrice(storePrice(price));
+          offEl.textContent = '−' + Math.round(STORE_DISCOUNT * 100) + ' %';
+        }
+      }
+      if (cmpEl) cmpEl.hidden = !showCompare;
+
       /* Coste por noche durante la garantía: reencuadra el precio */
       var perEl = document.getElementById('pdpPerNight');
       if (perEl) {
-        if (product.type === 'accesorio') {
+        if (product.gift) {
           perEl.innerHTML = '<strong>Gratis</strong> con la compra de cualquier colchón';
+        } else if (product.type === 'accesorio') {
+          perEl.innerHTML = 'El dúo perfecto con el <strong>Mouth Tape</strong>: nariz abierta, boca cerrada';
         } else {
-          var years = product.type === 'canape' ? 5 : 10;
+          var years = 5;
           var perNight = (price / (years * 365)).toFixed(2).replace('.', ',');
           perEl.innerHTML = 'Sale a <strong>' + perNight + ' € por noche</strong> durante los ' +
             years + ' años de garantía';
@@ -531,8 +632,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* — Añadir a la cesta — */
     function addCurrentToCart() {
-      if (!window.AureaCart) return;
-      window.AureaCart.add({
+      if (!window.NuvoraCart) return;
+      window.NuvoraCart.add({
         id: id,
         name: product.name,
         type: product.type,
@@ -543,7 +644,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
     var addBtn = document.getElementById('pdpAddCart');
-    if (addBtn && window.AureaCart) {
+    if (addBtn && window.NuvoraCart) {
       addBtn.addEventListener('click', addCurrentToCart);
     }
 
@@ -574,7 +675,7 @@ document.addEventListener('DOMContentLoaded', function () {
             '<path d="M12 8v13M12 8c0-2.2-1.8-4-4-4-1.5 0-2.5 1-2.5 2C5.5 7.2 7.5 8 12 8zm0 0c0-2.2 1.8-4 4-4 1.5 0 2.5 1 2.5 2 0 1.2-2 2-6.5 2z"/>' +
           '</svg>' +
           '<span class="pdp__gift-text"><strong>De regalo con tu colchón:</strong> ' +
-          '<a href="producto.html?m=mouth-tape">Mouth Tape Aurea</a> (30 tiras), valorado en 10 €. ' +
+          '<a href="producto.html?m=mouth-tape">Mouth Tape Nuvora</a> (30 tiras), valorado en 10 €. ' +
           'Respira por la nariz, ronca menos. Se añade solo a tu pedido.</span>';
         buyWrap.parentNode.insertBefore(gift, buyWrap.nextSibling);
       }
@@ -667,21 +768,21 @@ document.addEventListener('DOMContentLoaded', function () {
     (function () {
       var prices = product.sizes.map(function (s) { return s.price; });
       var img = product.images[0];
-      if (img.indexOf('http') !== 0) img = 'https://aureadescanso.com/' + img;
+      if (img.indexOf('http') !== 0) img = 'https://nuvoradescanso.com/' + img;
       var ld = {
         '@context': 'https://schema.org',
         '@type': 'Product',
         'name': product.name,
         'description': product.desc,
         'image': img,
-        'brand': { '@type': 'Brand', 'name': 'Aurea Descanso' },
+        'brand': { '@type': 'Brand', 'name': 'Nuvora Descanso' },
         'offers': {
           '@type': 'AggregateOffer',
           'priceCurrency': 'EUR',
           'lowPrice': String(Math.min.apply(null, prices)),
           'highPrice': String(Math.max.apply(null, prices)),
           'availability': 'https://schema.org/InStock',
-          'url': 'https://aureadescanso.com/producto.html?m=' + id
+          'url': 'https://nuvoradescanso.com/producto.html?m=' + id
         }
       };
       var tag = document.createElement('script');
@@ -910,29 +1011,7 @@ document.addEventListener('DOMContentLoaded', function () {
         el.addEventListener('mouseleave', function () { setActive(-1, false); });
       });
 
-      /* Botones invierno/verano: iluminan las capas de esa cara */
-      var seasonsBox = document.createElement('div');
-      seasonsBox.className = 'cutaway__seasons';
-      [
-        { val: null, label: 'Todo el año', icon: '' },
-        { val: 'Cara de invierno', label: 'Invierno', icon: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2v20M4 6l16 12M20 6L4 18"/></svg>' },
-        { val: 'Cara de verano', label: 'Verano', icon: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>' }
-      ].forEach(function (s) {
-        var b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'cutaway__season' + (s.val === null ? ' is-active' : '');
-        b.innerHTML = s.icon + s.label;
-        b.addEventListener('click', function () {
-          currentSeason = s.val;
-          seasonsBox.querySelectorAll('.cutaway__season').forEach(function (x) {
-            x.classList.remove('is-active');
-          });
-          b.classList.add('is-active');
-          applySeason();
-        });
-        seasonsBox.appendChild(b);
-      });
-      section.querySelector('.cutaway__head').appendChild(seasonsBox);
+      /* Colchón de una sola cara: sin selector de estación */
     })();
 
     /* — Experiencia inmersiva: cine de scroll con hotspots — */
@@ -1081,7 +1160,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* — Construir las líneas del pedido —
        Modo compra directa: checkout.html?m=<id>&size=<i>
-       Modo cesta: sin parámetros → lee de AureaCart */
+       Modo cesta: sin parámetros → lee de NuvoraCart */
     var lines = [];
     var fromCart = false;
     var directId = getParam('m');
@@ -1095,9 +1174,9 @@ document.addEventListener('DOMContentLoaded', function () {
         sizeLabel: p.sizes[sIdx].label, price: p.sizes[sIdx].price,
         img: p.images[0], qty: 1
       });
-    } else if (window.AureaCart && window.AureaCart.items.length) {
+    } else if (window.NuvoraCart && window.NuvoraCart.items.length) {
       fromCart = true;
-      lines = window.AureaCart.items.map(function (it) {
+      lines = window.NuvoraCart.items.map(function (it) {
         return {
           id: it.id, name: it.name, type: it.type,
           sizeLabel: it.sizeLabel, price: it.price, img: it.img, qty: it.qty
@@ -1129,9 +1208,9 @@ document.addEventListener('DOMContentLoaded', function () {
     if (hasColchon && CATALOG['mouth-tape']) {
       itemsHtml +=
         '<div class="chk-item chk-item--gift">' +
-          '<div class="chk-item__img"><img src="' + CATALOG['mouth-tape'].images[0] + '" alt="Mouth Tape Aurea"></div>' +
+          '<div class="chk-item__img"><img src="' + CATALOG['mouth-tape'].images[0] + '" alt="Mouth Tape Nuvora"></div>' +
           '<div>' +
-            '<div class="chk-item__name">Mouth Tape Aurea · 30 tiras</div>' +
+            '<div class="chk-item__name">Mouth Tape Nuvora · 30 tiras</div>' +
             '<div class="chk-item__meta">Regalo por tu colchón · Valorado en 10 €</div>' +
           '</div>' +
           '<span class="chk-gift-price">GRATIS</span>' +
@@ -1139,9 +1218,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     itemsBox.innerHTML = itemsHtml;
 
-    /* — Cupón de descuento (AUREA10 = −10 %) — */
+    /* — Cupón de descuento (NUVORA10 = −10 %) — */
     var couponApplied = false;
-    function tt(k, fb) { return (window.AureaI18n && window.AureaI18n.t(k)) || fb; }
+    function tt(k, fb) { return (window.NuvoraI18n && window.NuvoraI18n.t(k)) || fb; }
     function renderTotals() {
       var discount = couponApplied ? Math.round(subtotal * 0.10) : 0;
       var total = subtotal - discount;
@@ -1161,9 +1240,9 @@ document.addEventListener('DOMContentLoaded', function () {
     if (couponBtn && couponInput) {
       couponBtn.addEventListener('click', function () {
         var code = couponInput.value.trim().toUpperCase();
-        if (code === 'AUREA10') {
+        if (code === 'NUVORA10') {
           couponApplied = true;
-          couponMsg.textContent = tt('chk.coupon_ok', 'Código AUREA10 aplicado: −10 %');
+          couponMsg.textContent = tt('chk.coupon_ok', 'Código NUVORA10 aplicado: −10 %');
           couponMsg.className = 'chk-coupon__msg is-ok';
           couponInput.disabled = true;
           couponBtn.disabled = true;
@@ -1314,7 +1393,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('chkRef').textContent = 'Pedido ' + ref;
 
         /* Vaciar la cesta si el pedido venía de ella */
-        if (fromCart && window.AureaCart) window.AureaCart.clear();
+        if (fromCart && window.NuvoraCart) window.NuvoraCart.clear();
 
         document.getElementById('chkMain').style.display = 'none';
         var success = document.getElementById('chkSuccess');

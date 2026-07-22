@@ -1,10 +1,10 @@
 /* =============================================
-   AUREA DESCANSO — Cesta de la compra
+   NUVORA DESCANSO — Cesta de la compra
    localStorage + panel lateral, sin dependencias
    ============================================= */
 (function () {
   'use strict';
-  var KEY = 'aurea_cart_v1';
+  var KEY = 'nuvora_cart_v1';
   /* Prefijo para que los enlaces e imágenes funcionen también desde /blog/ */
   var BASE = /\/blog\//.test(window.location.pathname) ? '../' : '';
   function rel(src) {
@@ -12,7 +12,7 @@
   }
   /* Traducción con texto de respaldo en español */
   function T(key, fb) {
-    return (window.AureaI18n && window.AureaI18n.t(key)) || fb;
+    return (window.NuvoraI18n && window.NuvoraI18n.t(key)) || fb;
   }
 
   function load() {
@@ -64,7 +64,7 @@
       refresh();
     }
   };
-  window.AureaCart = Cart;
+  window.NuvoraCart = Cart;
 
   /* ── Panel lateral ── */
   var drawer = null, overlay = null;
@@ -129,9 +129,9 @@
     if (Cart.hasColchon()) {
       html +=
         '<div class="cart__item cart__item--gift">' +
-          '<img class="cart__img" src="' + rel('images/mouth-tape.jpg') + '" alt="Mouth Tape Aurea">' +
+          '<img class="cart__img" src="' + rel('images/mouth-tape.webp') + '" alt="Mouth Tape Nuvora">' +
           '<div class="cart__info">' +
-            '<span class="cart__name">Mouth Tape Aurea · 30 tiras</span>' +
+            '<span class="cart__name">Mouth Tape Nuvora · 30 tiras</span>' +
             '<span class="cart__meta">' + T('cart.gift', 'Regalo por tu colchón · Valorado en 10 €') + '</span>' +
           '</div>' +
           '<span class="cart__price cart__price--gift">GRATIS</span>' +
@@ -172,5 +172,5 @@
     refresh();
   });
 
-  window.AureaCartOpen = open;
+  window.NuvoraCartOpen = open;
 })();

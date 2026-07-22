@@ -1,5 +1,5 @@
 /* =============================================
-   AUREA DESCANSO — Blog & Articles
+   NUVORA DESCANSO — Blog & Articles
    Rediseño completo: conversion + SEO + UX
    ============================================= */
 
@@ -925,3 +925,124 @@
   padding: 6px 0 18px;
 }
 .article-faq__item h3 { margin-top: 18px; }
+
+
+/* ==============================================
+   ARTICULO — portada, progreso, indice lateral, compartir
+   ============================================== */
+/* --- Artículo: portada ilustrada en la cabecera --- */
+.article-hero__cover {
+  max-width: 860px;
+  margin: 34px auto 0;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 22px 60px rgba(16, 28, 60, 0.18);
+  animation: coverIn 0.9s var(--ease-out) both;
+}
+.article-hero__cover img { display: block; width: 100%; height: auto; }
+@keyframes coverIn {
+  from { opacity: 0; transform: translateY(22px) scale(0.985); }
+  to   { opacity: 1; transform: none; }
+}
+@media (max-width: 760px) {
+  .article-hero__cover { margin-top: 24px; border-radius: 14px; }
+}
+
+/* --- Artículo: barra de progreso de lectura --- */
+.readbar {
+  position: fixed;
+  top: 36px;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, #C9A227, #F0D585);
+  z-index: 60;
+  transition: width 0.1s linear;
+}
+/* --- Artículo: índice lateral fijo --- */
+.tocrail {
+  position: fixed;
+  top: 50%;
+  right: 26px;
+  transform: translateY(-50%);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 30px rgba(16, 28, 60, 0.09);
+  max-width: 210px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+.tocrail.is-on { opacity: 1; pointer-events: auto; }
+.tocrail__item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.76rem;
+  line-height: 1.3;
+  color: var(--text-3);
+  text-decoration: none;
+  transition: color 0.25s;
+}
+.tocrail__item::before {
+  content: '';
+  flex: 0 0 auto;
+  width: 16px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  opacity: 0.45;
+  transition: width 0.3s, opacity 0.3s;
+}
+.tocrail__item:hover { color: var(--navy); }
+.tocrail__item.is-current { color: #B08D2B; font-weight: 600; }
+.tocrail__item.is-current::before { width: 26px; opacity: 1; }
+@media (max-width: 1180px) { .tocrail { display: none; } }
+
+/* --- Artículo: compartir --- */
+.artshare {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 46px 0 6px;
+  padding-top: 26px;
+  border-top: 1px solid var(--border);
+}
+.artshare__label {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-right: 4px;
+}
+.artshare__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font: inherit;
+  font-size: 0.82rem;
+  color: var(--navy);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 8px 15px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.25s, transform 0.25s, background 0.25s;
+}
+.artshare__btn:hover { border-color: #C9B27A; transform: translateY(-1px); background: #FCFAF4; }
+.artshare__btn svg { flex: 0 0 auto; }
+.artshare__btn.is-done { border-color: #C9A227; color: #B08D2B; }
+
+@media (prefers-reduced-motion: reduce) {
+  .article-hero__cover { animation: none; }
+  .readbar { transition: none; }
+}

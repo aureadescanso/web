@@ -1,5 +1,5 @@
 /* =============================================
-   AUREA DESCANSO — Shop (subpáginas)
+   NUVORA DESCANSO — Shop (subpáginas)
    Colchones · Canapés · Ficha producto · Checkout
    ============================================= */
 
@@ -330,8 +330,37 @@
 .pdp__price-row {
   display: flex;
   align-items: baseline;
+  flex-wrap: wrap;
   gap: 12px;
-  margin-bottom: 26px;
+  margin-bottom: 6px;
+}
+/* Precio de referencia en tienda física, tachado */
+.pdp__was {
+  font-size: 1.15rem;
+  color: var(--text-3);
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+  text-decoration-color: rgba(120, 130, 150, 0.7);
+}
+.pdp__was[hidden], .pdp__off[hidden], .pdp__compare-note[hidden] { display: none; }
+/* Insignia del descuento */
+.pdp__off {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #1B2D5B;
+  color: #F5E6B8;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  transform: translateY(-2px);
+}
+.pdp__compare-note {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-3);
+  margin-bottom: 20px;
 }
 .pdp__price {
   font-family: var(--serif);
@@ -1349,8 +1378,65 @@
 }
 
 
+/* --- Blog: filtros por categoría --- */
+.blogfilter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 auto 38px;
+}
+.blogfilter__chip {
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-2);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 9px 18px;
+  cursor: pointer;
+  transition: color 0.28s, background 0.28s, border-color 0.28s, transform 0.28s;
+}
+.blogfilter__chip:hover { border-color: #C9B27A; color: var(--navy); transform: translateY(-1px); }
+.blogfilter__chip.is-active {
+  color: var(--white);
+  background: var(--navy);
+  border-color: var(--navy);
+}
+.blogfilter__empty {
+  text-align: center;
+  color: var(--text-3);
+  font-size: 0.92rem;
+  margin: 30px 0 0;
+}
+/* Entrada/salida al filtrar */
+.bcard.is-filtered { display: none; }
+.bcard.is-entering { animation: bcardIn 0.45s var(--ease-out) both; }
+@keyframes bcardIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+.bcard__featured-label {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #B08D2B;
+  margin-bottom: 12px;
+}
+/* Las portadas ilustradas ya traen su propio fondo navy */
+.bcard__media { background: #12203f; }
+
+
+@media (prefers-reduced-motion: reduce) {
+  .bcard.is-entering { animation: none; }
+}
+
+
 /* ==============================================
-   COMPARADOR — Serenity vs Celestial
+   COMPARADOR — Aurea vs Serenity
    ============================================== */
 .vs {
   max-width: 1080px;
@@ -1741,7 +1827,7 @@
   box-shadow: 0 24px 48px -18px rgba(27, 45, 91, 0.22), 0 0 0 1.5px rgba(212, 175, 55, 0.35);
 }
 
-/* Cutaway: selector de estación invierno / verano */
+/* (Selector de estación retirado: el colchón es de una sola cara) */
 .cutaway__seasons {
   display: flex;
   justify-content: center;
@@ -1974,111 +2060,115 @@
 
 
 /* ==============================================
-   MOUTH TAPE — caja 3D giratoria (CSS puro)
+   MOUTH TAPE — bolsa 3D flotante (CSS puro)
    ============================================== */
 .pdp__main--3d {
   background: none;
-  aspect-ratio: 1 / 1;   /* contenedor cuadrado: la caja vertical nunca se recorta al girar */
+  aspect-ratio: 1 / 1;   /* contenedor cuadrado: la bolsa nunca se recorta al balancearse */
 }
-.mt3d {
-  container-type: size;            /* unidad cqmin → la caja escala con el contenedor */
-  --mtw: 31cqmin;     /* ancho cara frontal  */
-  --mth: 56.6cqmin;   /* alto cara frontal — proporción exacta de las fotos (0,5476) */
-  --mtd: 12cqmin;     /* profundidad (canto) */
+.mtbag {
+  container-type: size;   /* unidad cqmin → la bolsa escala con el contenedor */
+  --bw: 44cqmin;          /* ancho de la bolsa */
+  --bh: 67.9cqmin;        /* alto — proporción del recorte (849×1310 ≈ 0,648) */
   width: 100%;
   height: 100%;
   display: grid;
   place-items: center;
   background: #FFFFFF;
-  perspective: 250cqmin;
-  perspective-origin: 50% 48%;
+  perspective: 240cqmin;
+  perspective-origin: 50% 45%;
   overflow: hidden;
 }
-.mt3d__stage {
+.mtbag__stage {
   position: relative;
   transform-style: preserve-3d;
-  animation: mt3d-float 6.5s ease-in-out infinite;
+  animation: mtbag-float 6.5s ease-in-out infinite;
 }
-/* Sombra de apoyo, fija bajo la caja */
-.mt3d__stage::after {
+/* Sombra de apoyo bajo la bolsa, respira con la flotación */
+.mtbag__stage::after {
   content: '';
   position: absolute;
   left: 50%;
   bottom: -8cqmin;
-  width: 38cqmin;
+  width: 40cqmin;
   height: 6cqmin;
   transform: translateX(-50%);
-  background: radial-gradient(50% 50% at 50% 50%, rgba(18,28,55,0.34), rgba(18,28,55,0) 72%);
+  background: radial-gradient(50% 50% at 50% 50%, rgba(18,28,55,0.32), rgba(18,28,55,0) 72%);
   filter: blur(2px);
-  animation: mt3d-shadow 6.5s ease-in-out infinite;
+  animation: mtbag-shadow 6.5s ease-in-out infinite;
 }
-.mt3d__box {
+/* Balanceo con perspectiva (nunca pasa de canto: siempre se ve bien) */
+.mtbag__sway {
   position: relative;
-  width: var(--mtw);
-  height: var(--mth);
+  width: var(--bw);
+  height: var(--bh);
   transform-style: preserve-3d;
-  animation: mt3d-spin 17s linear infinite;
+  animation: mtbag-sway 8s ease-in-out infinite;
   will-change: transform;
 }
-.mt3d__face {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  box-shadow: inset 0 0 0 1px rgba(8,15,35,0.22);
-  border-radius: 3px;
-}
-.mt3d__face--front,
-.mt3d__face--back  { width: var(--mtw); height: var(--mth); }
-.mt3d__face--left,
-.mt3d__face--right { width: var(--mtd); height: var(--mth); }
-.mt3d__face--top,
-.mt3d__face--bottom{ width: var(--mtw); height: var(--mtd); }
-
-.mt3d__face--front  { background-image: url('../images/mt-face-front.png');
-  transform: translate(-50%,-50%) translateZ(calc(var(--mtd) / 2)); }
-.mt3d__face--back   { background-image: url('../images/mt-face-back.png?v=2');
-  transform: translate(-50%,-50%) rotateY(180deg) translateZ(calc(var(--mtd) / 2)); }
-.mt3d__face--right  { background-image: url('../images/mt-face-right.png');
-  transform: translate(-50%,-50%) rotateY(90deg)  translateZ(calc(var(--mtw) / 2)); }
-.mt3d__face--left   { background-image: url('../images/mt-face-left.png');
-  transform: translate(-50%,-50%) rotateY(-90deg) translateZ(calc(var(--mtw) / 2)); }
-.mt3d__face--top    { background: linear-gradient(135deg, #2a3d66, #1a2a4d);
-  transform: translate(-50%,-50%) rotateX(90deg)  translateZ(calc(var(--mth) / 2)); }
-.mt3d__face--bottom { background: linear-gradient(135deg, #1a2a4d, #11203c);
-  transform: translate(-50%,-50%) rotateX(-90deg) translateZ(calc(var(--mth) / 2)); }
-
-/* Brillo sutil sobre cantos (tapa/base) */
-.mt3d__face--top::after,
-.mt3d__face--bottom::after {
-  content: '';
+/* Volumen: 7 copias apiladas en Z, de oscura (fondo) a plena (frente) */
+.mtbag__layer {
   position: absolute;
   inset: 0;
-  background: linear-gradient(110deg, rgba(255,255,255,0.16), rgba(255,255,255,0) 55%);
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.mtbag__layer:nth-child(1) { transform: translateZ(-3.6cqmin); filter: brightness(0.40); }
+.mtbag__layer:nth-child(2) { transform: translateZ(-3.0cqmin); filter: brightness(0.48); }
+.mtbag__layer:nth-child(3) { transform: translateZ(-2.4cqmin); filter: brightness(0.56); }
+.mtbag__layer:nth-child(4) { transform: translateZ(-1.8cqmin); filter: brightness(0.66); }
+.mtbag__layer:nth-child(5) { transform: translateZ(-1.2cqmin); filter: brightness(0.78); }
+.mtbag__layer:nth-child(6) { transform: translateZ(-0.6cqmin); filter: brightness(0.90); }
+.mtbag__layer:nth-child(7) { transform: translateZ(0); }
+/* Barrido de luz sobre la bolsa (recortado a su silueta) */
+.mtbag__sheen {
+  position: absolute;
+  inset: 0;
+  transform: translateZ(0.3cqmin);
+  background: linear-gradient(115deg,
+    rgba(255,255,255,0) 38%,
+    rgba(255,255,255,0.26) 46%,
+    rgba(212,175,55,0.16) 51%,
+    rgba(255,255,255,0) 58%);
+  background-size: 260% 100%;
+  background-repeat: no-repeat;
+  -webkit-mask-image: url('../images/mouth-tape-cut.png');
+  mask-image: url('../images/mouth-tape-cut.png');
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  animation: mtbag-sheen 5.5s ease-in-out infinite;
+  pointer-events: none;
 }
 
-@keyframes mt3d-spin {
-  from { transform: rotateX(-13deg) rotateY(0deg); }
-  to   { transform: rotateX(-13deg) rotateY(360deg); }
+@keyframes mtbag-sway {
+  0%, 100% { transform: rotateX(-3deg) rotateY(-22deg); }
+  50%      { transform: rotateX(2deg) rotateY(22deg); }
 }
-@keyframes mt3d-float {
+@keyframes mtbag-float {
   0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-9px); }
+  50%      { transform: translateY(-2.2cqmin); }
 }
-@keyframes mt3d-shadow {
-  0%, 100% { opacity: 0.85; transform: translateX(-50%) scale(1); }
-  50%      { opacity: 0.55; transform: translateX(-50%) scale(0.9); }
+@keyframes mtbag-shadow {
+  0%, 100% { opacity: 0.8; transform: translateX(-50%) scale(1); }
+  50%      { opacity: 0.5; transform: translateX(-50%) scale(0.86); }
+}
+@keyframes mtbag-sheen {
+  0%       { background-position: 130% 0; }
+  55%, 100% { background-position: -60% 0; }
 }
 
 /* Pista de interacción: pausa al pasar el ratón */
-.mt3d:hover .mt3d__box { animation-play-state: paused; }
+.mtbag:hover .mtbag__sway { animation-play-state: paused; }
 
 @media (prefers-reduced-motion: reduce) {
-  .mt3d__box   { animation: none; transform: rotateX(-13deg) rotateY(-26deg); }
-  .mt3d__stage { animation: none; }
-  .mt3d__stage::after { animation: none; }
+  .mtbag__sway  { animation: none; transform: rotateX(-2deg) rotateY(-14deg); }
+  .mtbag__stage { animation: none; }
+  .mtbag__stage::after { animation: none; }
+  .mtbag__sheen { animation: none; background-position: -60% 0; }
 }
 
 

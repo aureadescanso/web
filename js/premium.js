@@ -1,5 +1,5 @@
 /* =============================================
-   AUREA DESCANSO — Interacciones premium
+   NUVORA DESCANSO — Interacciones premium
    Halo del hero · Cursor magnético · Sellos
    ============================================= */
 (function () {

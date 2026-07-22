@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Cómo elegir el mejor colchón">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17284f"/><stop offset="1" stop-color="#0c1730"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="42%" r="58%">
+      <stop offset="0" stop-color="#D4AF37" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#D4AF37" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/><feColorMatrix type="saturate" values="0"/></filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <ellipse cx="600" cy="270" rx="540" ry="310" fill="url(#glow)"/>
+  <rect width="1200" height="630" filter="url(#grain)" opacity="0.05"/>
+
+  <!-- Capas del colchón en perspectiva -->
+  <g stroke="#E9C766" fill="none" stroke-width="2.6" stroke-linejoin="round">
+    <path d="M250 452 l180 -52 h380 l-180 52 z" stroke-opacity="0.95"/>
+    <path d="M250 452 v34 l180 -52 v-34" stroke-opacity="0.7"/>
+    <path d="M630 452 v34 l180 -52 v-34" stroke-opacity="0.7"/>
+    <path d="M250 486 h380 l180 -52" stroke-opacity="0.55"/>
+    <path d="M250 400 l180 -52 h380 l-180 52 z" stroke-opacity="0.55"/>
+    <path d="M250 352 l180 -52 h380 l-180 52 z" stroke-opacity="0.3"/>
+  </g>
+
+  <!-- Checklist de criterios -->
+  <g stroke="#D4AF37" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="890" cy="228" r="19" stroke-opacity="0.9"/><path d="M881 228 l7 8 l12 -15" stroke-opacity="0.95"/>
+    <circle cx="890" cy="292" r="19" stroke-opacity="0.7"/><path d="M881 292 l7 8 l12 -15" stroke-opacity="0.8"/>
+    <circle cx="890" cy="356" r="19" stroke-opacity="0.5"/><path d="M881 356 l7 8 l12 -15" stroke-opacity="0.6"/>
+  </g>
+  <g fill="#F2E7CE" fill-opacity="0.32">
+    <rect x="928" y="220" width="128" height="8" rx="4"/>
+    <rect x="928" y="284" width="104" height="8" rx="4"/>
+    <rect x="928" y="348" width="116" height="8" rx="4"/>
+  </g>
+
+  <!-- Lupa examinando -->
+  <g stroke="#E9C766" stroke-width="3" fill="none" stroke-linecap="round">
+    <circle cx="360" cy="216" r="54" stroke-opacity="0.9"/>
+    <path d="M400 256 l44 44" stroke-opacity="0.9"/>
+    <path d="M336 216 h48 M360 192 v48" stroke-opacity="0.45"/>
+  </g>
+
+  <g transform="translate(1010 528) scale(0.13)" fill="#D4AF37" fill-opacity="0.5">
+    <path d="M 120,118 C 260,40 420,40 560,92 C 680,135 800,130 915,82 C 800,158 668,163 552,118 C 420,68 268,68 120,118 Z"/>
+    <path d="M 60,175 C 200,208 340,205 480,150 C 620,100 780,104 945,152 C 785,118 635,130 490,180 C 350,228 200,228 60,175 Z"/>
+  </g>
+</svg>

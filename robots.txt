@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /checkout.html
 
-Sitemap: https://aureadescanso.com/sitemap.xml
+Sitemap: https://nuvoradescanso.com/sitemap.xml

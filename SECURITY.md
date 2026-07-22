@@ -1,4 +1,4 @@
-# Auditoría de seguridad — Aurea Descanso
+# Auditoría de seguridad — Nuvora Descanso
 
 Fecha: 2026-06-25 · Alcance: todo el proyecto (`C:\Users\Javi\web`)
 
@@ -52,7 +52,7 @@ Los riesgos reales encontrados son:
 | Validación de inputs | ⚠️ parcial | Solo cliente (no hay servidor que validar). El checkout ya valida tarjeta (Luhn), email, caducidad y obligatorios. |
 | Row Level Security | ❌ | No hay datos por usuario/tenant. |
 | CORS de backend | ❌ | No hay API server. |
-| Variables de entorno | ❌ | No hay build ni entorno de servidor. La única "config" (código `AUREA10`, precios) es pública por naturaleza en cliente. |
+| Variables de entorno | ❌ | No hay build ni entorno de servidor. La única "config" (código `NUVORA10`, precios) es pública por naturaleza en cliente. |
 | Auth / autorización | ❌ | No hay login, sesiones, JWT ni roles. Carrito anónimo en `localStorage`. |
 | Errores / logs | ✅ | No se exponen stack traces; no se loguean datos sensibles. |
 | Dependencias | ✅ | **0 dependencias** de terceros. |
@@ -99,7 +99,7 @@ Los riesgos reales encontrados son:
 
 **Ninguna.** El sitio es estático y no tiene proceso de servidor ni build; no existen
 variables de entorno. No se crea `.env.example` porque sería un artefacto vacío y engañoso.
-La única "configuración" que vive en cliente (código de descuento `AUREA10`, precios del
+La única "configuración" que vive en cliente (código de descuento `NUVORA10`, precios del
 catálogo en `js/shop.js`) es **pública por diseño** y no constituye un secreto.
 
 > Cuando se integre una pasarela de pago o un backend, **ahí sí** habrá secretos
@@ -112,7 +112,7 @@ catálogo en `js/shop.js`) es **pública por diseño** y no constituye un secret
 
 1. Servir el sitio por HTTP (las cabeceras `?` y la CSP funcionan igual; con `file://` no se
    evalúan cabeceras). Por ejemplo, cualquier servidor estático en la raíz del proyecto.
-2. Abrir `index.html`, `producto.html?m=mouth-tape`, `checkout.html?m=serenity&size=2` y un
+2. Abrir `index.html`, `producto.html?m=mouth-tape`, `checkout.html?m=aurea&size=2` y un
    artículo del blog.
 3. En **DevTools → Console**: no debe aparecer ningún error de *Content Security Policy*.
 4. Comprobar que cargan **fuentes** (Playfair/Inter), **imágenes** y el **modelo 3D** del
