@@ -100,21 +100,15 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ══════════════════════════════════════════════
      FADE-IN ON SCROLL (secciones generales)
      ══════════════════════════════════════════════ */
-  var animated = document.querySelectorAll('[data-animate]');
-
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        var delay = parseInt(entry.target.getAttribute('data-delay') || '0', 10);
-        setTimeout(function () { entry.target.classList.add('is-visible'); }, delay);
-        io.unobserve(entry.target);
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    animated.forEach(function (el) { io.observe(el); });
-  } else {
-    animated.forEach(function (el) { el.classList.add('is-visible'); });
+  /* Lo gestiona js/motion.js (cascada automática + variantes de entrada).
+     Solo se hace aquí si esa capa no está cargada, para no dejar
+     contenido invisible en ninguna página. */
+  if (!window.__nuvoraMotion) {
+    var animated = document.querySelectorAll('[data-animate]');
+    setTimeout(function () {
+      if (window.__nuvoraMotion) return;
+      animated.forEach(function (el) { el.classList.add('is-visible'); });
+    }, 0);
   }
 
 

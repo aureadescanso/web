@@ -48,15 +48,62 @@ ul  { list-style: none; }
   padding: 0 24px;
 }
 
-/* --- Fade-in animation --- */
+/* --- Revelado al entrar en pantalla ---
+   Base: subida corta y rápida. Las variantes las asigna js/motion.js
+   según lo que sea cada elemento (tarjeta, imagen, título). */
 [data-animate] {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+  transform: translateY(18px);
+  transition: opacity 0.62s var(--ease-out), transform 0.62s var(--ease-out);
 }
 [data-animate].is-visible {
   opacity: 1;
   transform: none;
+}
+
+/* Tarjetas: además de subir, se acercan ligeramente */
+[data-animate][data-anim="card"] {
+  transform: translateY(26px) scale(0.975);
+  transition: opacity 0.66s var(--ease-out), transform 0.66s var(--ease-out);
+}
+[data-animate][data-anim="card"].is-visible { transform: none; }
+
+/* Imágenes: cortina que se abre de abajo arriba (editorial) */
+[data-animate][data-anim="wipe"] {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 0.95s var(--ease-out);
+}
+[data-animate][data-anim="wipe"].is-visible { clip-path: inset(0 0 0 0); }
+/* La imagen de dentro asoma con un empuje suave */
+[data-animate][data-anim="wipe"] > img {
+  transform: scale(1.06);
+  transition: transform 1.2s var(--ease-out);
+}
+[data-animate][data-anim="wipe"].is-visible > img { transform: none; }
+
+/* Títulos: emergen desde detrás de una línea y enfocan */
+[data-animate][data-anim="title"] {
+  transform: translateY(22px);
+  filter: blur(6px);
+  transition: opacity 0.7s var(--ease-out), transform 0.8s var(--ease-out),
+              filter 0.7s var(--ease-out);
+}
+[data-animate][data-anim="title"].is-visible { transform: none; filter: blur(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-animate],
+  [data-animate][data-anim="card"],
+  [data-animate][data-anim="wipe"],
+  [data-animate][data-anim="title"] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    clip-path: none;
+    transition: none;
+  }
+  [data-animate][data-anim="wipe"] > img { transform: none; transition: none; }
 }
 
 /* --- Shared section title --- */
