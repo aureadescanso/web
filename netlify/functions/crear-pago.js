@@ -8,7 +8,11 @@
      STRIPE_SECRET_KEY   sk_live_... (o sk_test_... para pruebas)
    ============================================= */
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+/* Se crea al usarse, no al cargar el archivo: así, si falta la clave,
+   se responde con un mensaje claro en vez de reventar la función. */
+function getStripe() {
+  return require('stripe')(process.env.STRIPE_SECRET_KEY);
+}
 const { aCentimos, construirPedido } = require('./_catalogo');
 
 const CORS = {
@@ -75,7 +79,7 @@ exports.handler = async function (event) {
       });
     }
 
-    const session = await stripe.checkout.sessions.create({
+    const session = await getStripe().checkout.sessions.create({
       mode: 'payment',
       line_items: line_items,
 

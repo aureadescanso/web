@@ -15,7 +15,9 @@
    y en el panel de Stripe, que ya te envía su propio aviso por email.
    ============================================= */
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+function getStripe() {
+  return require('stripe')(process.env.STRIPE_SECRET_KEY);
+}
 
 exports.handler = async function (event) {
   if (event.httpMethod !== 'POST') {
@@ -33,7 +35,7 @@ exports.handler = async function (event) {
     const cuerpo = event.isBase64Encoded
       ? Buffer.from(event.body, 'base64')
       : event.body;
-    evt = stripe.webhooks.constructEvent(cuerpo, firma, secreto);
+    evt = getStripe().webhooks.constructEvent(cuerpo, firma, secreto);
   } catch (err) {
     console.error('Firma de webhook no válida:', err.message);
     return { statusCode: 400, body: 'Firma no válida' };
@@ -46,7 +48,7 @@ exports.handler = async function (event) {
   try {
     /* Se recuperan las líneas reales cobradas */
     const sesion = evt.data.object;
-    const completa = await stripe.checkout.sessions.retrieve(sesion.id, {
+    const completa = await getStripe().checkout.sessions.retrieve(sesion.id, {
       expand: ['line_items']
     });
 

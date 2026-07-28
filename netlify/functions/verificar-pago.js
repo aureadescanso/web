@@ -6,7 +6,9 @@
    Devuelve lo mínimo: si está pagado y la referencia.
    ============================================= */
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+function getStripe() {
+  return require('stripe')(process.env.STRIPE_SECRET_KEY);
+}
 
 exports.handler = async function (event) {
   const cabeceras = { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' };
@@ -20,7 +22,7 @@ exports.handler = async function (event) {
   }
 
   try {
-    const s = await stripe.checkout.sessions.retrieve(sid);
+    const s = await getStripe().checkout.sessions.retrieve(sid);
     const pagado = s.payment_status === 'paid' || s.payment_status === 'no_payment_required';
     return {
       statusCode: 200,
