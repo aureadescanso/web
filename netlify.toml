@@ -1,0 +1,7 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+# El webhook necesita el cuerpo tal cual para verificar la firma de Stripe
+[functions."stripe-webhook"]
+  included_files = []

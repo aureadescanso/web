@@ -5,9 +5,8 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Condiciones de venta | Nuvora Descanso</title>
-  <meta name="description" content="Condiciones generales de venta de Nuvora Descanso: precios, envío, prueba de 100 noches, devoluciones y garantía.">
-  <link rel="canonical" href="https://nuvoradescanso.com/condiciones-venta.html">
+  <title>Pedido confirmado | Nuvora Descanso</title>
+  <meta name="robots" content="noindex">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -18,9 +17,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="gracias-page">
 
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="custom-cursor" id="customCursor" aria-hidden="true"></div>
 
   <!-- ========== HEADER ========== -->
     <!-- Banda superior de anuncios -->
@@ -80,66 +80,79 @@
       </nav>
     </div>
 
-  <!-- ========== PAGE HERO ========== -->
-  <section class="page-hero">
-    <nav class="page-hero__crumb" aria-label="Migas de pan">
-      <a href="index.html">Inicio</a>
-      <span>/</span>
-      Condiciones de venta
-    </nav>
-    <h1 class="page-hero__title">Condiciones de <em>venta</em></h1>
-  </section>
+  <!-- ========== CONFIRMACIÓN ========== -->
+  <main class="gracias">
+    <div class="gracias__inner">
 
-  <!-- ========== CONTENIDO ========== -->
-  <main class="legal">
-    <p class="legal-updated">Última actualización: 11 de junio de 2026</p>
+      <!-- Cargando: se comprueba el pago contra la pasarela -->
+      <div class="gracias__loading" id="graciasLoading">
+        <span class="spinner spinner--dark" aria-hidden="true"></span>
+        <p>Confirmando tu pago…</p>
+      </div>
 
-    <h2>1. Ámbito de aplicación</h2>
-    <p>Las presentes condiciones regulan la venta de los productos ofrecidos en este sitio web por Alfredo Bautista Palao, NIF 48831933N (en adelante, "Nuvora Descanso"), a consumidores con dirección de entrega en España peninsular. La realización de un pedido implica la aceptación de estas condiciones.</p>
+      <!-- Pago confirmado -->
+      <div class="gracias__ok" id="graciasOk" hidden>
+        <div class="gracias__check" aria-hidden="true">
+          <svg viewBox="0 0 64 64" width="72" height="72">
+            <circle class="gracias__circle" cx="32" cy="32" r="28" fill="none" stroke="#C9A227" stroke-width="3"/>
+            <path class="gracias__tick" d="M20 33.5 L28.5 42 L44 25" fill="none" stroke="#C9A227"
+                  stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
 
-    <h2>2. Productos y precios</h2>
-    <p>Los precios mostrados en el sitio web se expresan en euros e <strong>incluyen el IVA</strong>. Los gastos de envío a España peninsular están incluidos en el precio. Nuvora Descanso se reserva el derecho a modificar los precios, si bien los pedidos se facturarán al precio vigente en el momento de la confirmación.</p>
-    <p>Las fotografías e ilustraciones de los productos tienen carácter orientativo. Las características técnicas de cada producto figuran en su ficha correspondiente.</p>
-    <p><strong>Promoción de regalo:</strong> con la compra de cualquier colchón se incluye de regalo una caja de Mouth Tape Nuvora (30 tiras), valorada en 10 €, salvo fin de existencias. El regalo no es canjeable por dinero y no afecta al importe a reembolsar en caso de devolución del colchón.</p>
+        <span class="gracias__eyebrow">Pedido confirmado</span>
+        <h1 class="gracias__title">Gracias por tu <em>compra</em></h1>
+        <p class="gracias__lead" id="graciasLead">Hemos recibido tu pago correctamente. Te hemos enviado un email con la confirmación y la factura.</p>
 
-    <h2>3. Proceso de compra y pago</h2>
-    <p>Para realizar un pedido, el cliente selecciona el producto y la medida, facilita sus datos de contacto y envío, y elige el método de pago. Métodos de pago disponibles:</p>
-    <ul>
-      <li><strong>Tarjeta de crédito o débito</strong> (Visa, Mastercard), procesada mediante pasarela de pago segura con cifrado SSL.</li>
-      <li><strong>Bizum</strong>, mediante solicitud de pago al teléfono móvil del cliente.</li>
-    </ul>
-    <p>Una vez confirmado el pago, el cliente recibirá un correo electrónico de confirmación con la referencia del pedido.</p>
+        <div class="gracias__ref" id="graciasRef" hidden></div>
 
-    <h2>4. Envío y entrega</h2>
-    <ul>
-      <li><strong>Colchones:</strong> entrega gratuita en domicilio en un plazo estimado de <strong>3 a 5 días laborables</strong>. El colchón se entrega comprimido al vacío y enrollado; alcanza su forma definitiva en aproximadamente 24 horas.</li>
-      <li><strong>Canapés:</strong> entrega gratuita en un plazo estimado de <strong>5 a 7 días laborables</strong>.</li>
-    </ul>
-    <p>Los plazos son estimados y pueden variar por causas ajenas a Nuvora Descanso. Si en el momento de la entrega el embalaje presenta daños visibles, el cliente deberá hacerlo constar en el albarán del transportista y comunicarlo en un plazo de 48 horas.</p>
+        <div class="gracias__steps">
+          <div class="gracias__step">
+            <span class="gracias__step-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M9 14h6"/></svg>
+            </span>
+            <strong>Preparamos tu pedido</strong>
+            <span>Lo empaquetamos al vacío en nuestra fábrica de Yecla.</span>
+          </div>
+          <div class="gracias__step">
+            <span class="gracias__step-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 8h14v9H1zM15 11h4l3 3v3h-7"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg>
+            </span>
+            <strong>Llega en 3–5 días</strong>
+            <span>Envío gratuito con seguimiento. Te avisamos antes de entregar.</span>
+          </div>
+          <div class="gracias__step">
+            <span class="gracias__step-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+            </span>
+            <strong>100 noches de prueba</strong>
+            <span>Si no es para ti, lo recogemos gratis y te devolvemos cada euro.</span>
+          </div>
+        </div>
 
-    <h2>5. Prueba de 100 noches (colchones)</h2>
-    <p>Los colchones Nuvora Descanso incluyen un periodo de prueba de <strong>100 noches</strong> desde la fecha de entrega. Si el colchón no convence al cliente, podrá solicitar su recogida gratuita y el reembolso íntegro del importe pagado, escribiendo a <a href="mailto:nuvoradescanso@gmail.com">nuvoradescanso@gmail.com</a>. El reembolso se efectuará por el mismo medio de pago en un plazo máximo de 14 días desde la recogida.</p>
-    <p>Para los canapés, el periodo de devolución es de <strong>30 días naturales</strong> desde la entrega, con recogida gratuita, siempre que el producto se encuentre en buen estado.</p>
+        <div class="gracias__actions">
+          <a href="index.html" class="gracias__btn">Volver al inicio</a>
+          <a href="blog.html" class="gracias__link">Mientras llega, lee nuestras guías de descanso &rarr;</a>
+        </div>
 
-    <h2>6. Derecho de desistimiento</h2>
-    <p>Conforme al Real Decreto Legislativo 1/2007, el cliente dispone de un plazo de <strong>14 días naturales</strong> desde la recepción del producto para desistir del contrato sin necesidad de justificación. Las condiciones comerciales de Nuvora Descanso (100 noches en colchones, 30 días en canapés) amplían este derecho legal. Para ejercerlo, basta con comunicarlo por email indicando el número de pedido.</p>
+        <p class="gracias__help">¿Alguna duda con tu pedido? Escríbenos a
+          <a href="mailto:nuvoradescanso@gmail.com">nuvoradescanso@gmail.com</a>.</p>
+      </div>
 
-    <h2>7. Garantías</h2>
-    <ul>
-      <li><strong>Garantía legal:</strong> todos los productos cuentan con la garantía legal de <strong>3 años</strong> frente a faltas de conformidad, conforme a la normativa vigente.</li>
-      <li><strong>Garantía comercial de los colchones:</strong> <strong>5 años</strong> contra defectos de fabricación del núcleo, incluyendo hundimientos superiores a 2,5 cm e irregularidades del material.</li>
-      <li><strong>Garantía comercial de los canapés:</strong> <strong>5 años</strong> en estructura y mecanismo de apertura.</li>
-    </ul>
-    <p>La garantía no cubre el desgaste normal por el uso, los daños causados por un uso inadecuado ni las preferencias subjetivas de confort (cubiertas por el periodo de prueba).</p>
+      <!-- Sin datos de pago (entrada directa a la página) -->
+      <div class="gracias__ok" id="graciasSinPago" hidden>
+        <span class="gracias__eyebrow">Nada que confirmar</span>
+        <h1 class="gracias__title">No hay ningún pedido <em>reciente</em></h1>
+        <p class="gracias__lead">Si acabas de comprar y no ves tu confirmación, revisa tu email o escríbenos a
+          <a href="mailto:nuvoradescanso@gmail.com">nuvoradescanso@gmail.com</a>.</p>
+        <div class="gracias__actions">
+          <a href="colchones.html" class="gracias__btn">Ver colchones</a>
+        </div>
+      </div>
 
-    <h2>8. Atención al cliente y reclamaciones</h2>
-    <p>Para cualquier consulta, incidencia o reclamación, el cliente puede dirigirse a <a href="mailto:nuvoradescanso@gmail.com">nuvoradescanso@gmail.com</a>. Asimismo, la Comisión Europea pone a disposición de los consumidores una plataforma de resolución de litigios en línea, disponible en <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">ec.europa.eu/consumers/odr</a>.</p>
-
-    <h2>9. Legislación aplicable</h2>
-    <p>Estas condiciones se rigen por la legislación española. Para cualquier controversia, será competente el juzgado que corresponda al domicilio del consumidor.</p>
+    </div>
   </main>
 
-  <!-- ========== FOOTER ========== -->
   <footer class="footer" id="footer">
     <div class="footer__grid">
       <div class="footer__brand">
@@ -195,5 +208,7 @@
   <script src="js/motion.js"></script>
   <script src="js/premium.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/shop.js"></script>
+  <script src="js/gracias.js"></script>
 </body>
 </html>

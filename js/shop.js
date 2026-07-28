@@ -17,11 +17,11 @@ document.addEventListener('DOMContentLoaded', function () {
       rating: '4,8',
       reviews: 412,
       images: [
-        'images/aurea-frontal.png',
-        'images/aurea-perspectiva.png',
-        'images/aurea-lateral.png',
-        'images/aurea-asas.png',
-        'images/aurea-capas.png'
+        'images/aurea-frontal.webp',
+        'images/aurea-perspectiva.webp',
+        'images/aurea-lateral.webp',
+        'images/aurea-asas.webp',
+        'images/aurea-capas.webp'
       ],
       sizes: [
         { label: '75 × 190 cm',  price: 228.78 },
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
       experience: {
         scenes: [
           {
-            img: 'images/aurea-frontal.png',
+            img: 'images/aurea-frontal.webp',
             alt: 'Colchón Nuvora Aurea de frente en un dormitorio cálido',
             kicker: 'Experiencia Aurea',
             title: 'Diseñado para presidir tu dormitorio',
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
             ]
           },
           {
-            img: 'images/aurea-perspectiva.png',
+            img: 'images/aurea-perspectiva.webp',
             alt: 'Colchón Nuvora Aurea en perspectiva mostrando su altura',
             kicker: 'Presencia real',
             title: '30 centímetros que <em>se notan</em>',
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
             ]
           },
           {
-            img: 'images/aurea-asas.png',
+            img: 'images/aurea-asas.webp',
             alt: 'Detalle de las asas verticales del colchón Nuvora Aurea',
             kicker: 'Los detalles',
             title: 'Lo que otras marcas <em>no enseñan</em>',
@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', function () {
       reviews: 86,
       images: ['images/mouth-tape.webp'],
       box3d: true,
-      cutImg: 'images/mouth-tape-cut.png',
+      cutImg: 'images/mouth-tape-cut.webp',
       gift: true,
       sizes: [
         { label: 'Caja · 30 tiras', price: 10 }
@@ -339,7 +339,7 @@ document.addEventListener('DOMContentLoaded', function () {
       reviews: 54,
       images: ['images/tiras-nasales.webp'],
       box3d: true,
-      cutImg: 'images/tiras-nasales-cut.png',
+      cutImg: 'images/tiras-nasales-cut.webp',
       sizes: [
         { label: 'Caja · 30 tiras', price: 10 }
       ],
@@ -1169,6 +1169,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (isNaN(sIdx) || sIdx < 0 || sIdx >= p.sizes.length) sIdx = 0;
       lines.push({
         id: directId, name: p.name, type: p.type,
+        sizeIdx: sIdx,
         sizeLabel: p.sizes[sIdx].label, price: p.sizes[sIdx].price,
         img: p.images[0], qty: 1
       });
@@ -1177,6 +1178,7 @@ document.addEventListener('DOMContentLoaded', function () {
       lines = window.NuvoraCart.items.map(function (it) {
         return {
           id: it.id, name: it.name, type: it.type,
+          sizeIdx: it.sizeIdx || 0,
           sizeLabel: it.sizeLabel, price: it.price, img: it.img, qty: it.qty
         };
       });
@@ -1256,38 +1258,8 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
 
-    /* — Tabs de método de pago — */
-    var tabs    = document.querySelectorAll('.pay-tab');
-    var methods = document.querySelectorAll('.pay-method');
-    var activeMethod = 'card';
-
-    tabs.forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        activeMethod = this.getAttribute('data-method');
-        tabs.forEach(function (t) { t.classList.remove('is-active'); });
-        this.classList.add('is-active');
-        methods.forEach(function (m) {
-          m.classList.toggle('is-active', m.getAttribute('data-method') === activeMethod);
-        });
-      });
-    });
-
-    /* — Formateo de campos de tarjeta — */
-    var cardNum = document.getElementById('cardNumber');
-    var cardExp = document.getElementById('cardExpiry');
-    var cardCvc = document.getElementById('cardCvc');
-
-    cardNum.addEventListener('input', function () {
-      var v = this.value.replace(/\D/g, '').slice(0, 19);
-      this.value = v.replace(/(\d{4})(?=\d)/g, '$1 ');
-    });
-    cardExp.addEventListener('input', function () {
-      var v = this.value.replace(/\D/g, '').slice(0, 4);
-      this.value = v.length > 2 ? v.slice(0, 2) + '/' + v.slice(2) : v;
-    });
-    cardCvc.addEventListener('input', function () {
-      this.value = this.value.replace(/\D/g, '').slice(0, 4);
-    });
+    /* Los datos de tarjeta se introducen en la pasarela de Stripe,
+       no aquí: por eso esta página ya no valida ni formatea tarjetas. */
 
     /* — Consentimiento legal (obligatorio) — */
     var consentBox   = document.getElementById('chkLegal');
@@ -1299,16 +1271,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     /* — Validación — */
-    function luhn(num) {
-      var sum = 0, dbl = false;
-      for (var i = num.length - 1; i >= 0; i--) {
-        var d = parseInt(num.charAt(i), 10);
-        if (dbl) { d *= 2; if (d > 9) d -= 9; }
-        sum += d; dbl = !dbl;
-      }
-      return sum % 10 === 0;
-    }
-
     function setError(input, on) {
       input.classList.toggle('is-invalid', on);
       var field = input.closest('.chk-field');
@@ -1320,35 +1282,12 @@ document.addEventListener('DOMContentLoaded', function () {
       var ok = true;
 
       form.querySelectorAll('[data-required]').forEach(function (input) {
-        /* Los campos de tarjeta solo cuentan si el método activo es tarjeta */
-        if (input.hasAttribute('data-card') && activeMethod !== 'card') {
-          setError(input, false);
-          return;
-        }
         ok = setError(input, input.value.trim() === '') && ok;
       });
 
       var email = document.getElementById('chkEmail');
       if (email.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
         ok = setError(email, true) && ok;
-      }
-
-      if (activeMethod === 'card') {
-        var digits = cardNum.value.replace(/\s/g, '');
-        if (digits.length < 13 || !luhn(digits)) ok = setError(cardNum, true) && ok;
-
-        var exp = cardExp.value.split('/');
-        var mm = parseInt(exp[0], 10), yy = parseInt(exp[1], 10);
-        var expOk = exp.length === 2 && mm >= 1 && mm <= 12 && !isNaN(yy);
-        if (expOk) {
-          var now = new Date();
-          var curYY = now.getFullYear() % 100;
-          var curMM = now.getMonth() + 1;
-          expOk = yy > curYY || (yy === curYY && mm >= curMM);
-        }
-        if (!expOk) ok = setError(cardExp, true) && ok;
-
-        if (cardCvc.value.length < 3) ok = setError(cardCvc, true) && ok;
       }
 
       if (consentBox && !consentBox.checked) {
@@ -1364,13 +1303,23 @@ document.addEventListener('DOMContentLoaded', function () {
       input.addEventListener('input', function () { setError(input, false); });
     });
 
-    /* — Envío del pedido —
-       NOTA: procesamiento SIMULADO. Para cobrar pagos reales,
-       sustituir simulatePayment() por la integración con la
-       pasarela (Stripe Checkout, Redsys, etc.). Nunca procesar
-       tarjetas reales con este formulario sin pasarela PCI. */
-    function simulatePayment() {
-      return new Promise(function (resolve) { setTimeout(resolve, 1800); });
+    /* — Envío del pedido a Stripe Checkout —
+       El cliente NO introduce la tarjeta aquí: se le lleva a la página
+       segura de Stripe. Nosotros solo mandamos QUÉ quiere comprar; el
+       precio lo pone el servidor (netlify/functions/_catalogo.js). */
+    function mostrarErrorPago(msg) {
+      var caja = document.getElementById('chkPayError');
+      if (!caja) {
+        caja = document.createElement('p');
+        caja.id = 'chkPayError';
+        caja.className = 'chk-payerror';
+        caja.setAttribute('role', 'alert');
+        var btnBox = document.getElementById('chkSubmit');
+        if (btnBox && btnBox.parentNode) btnBox.parentNode.insertBefore(caja, btnBox);
+        else form.appendChild(caja);
+      }
+      caja.textContent = msg;
+      caja.hidden = false;
     }
 
     form.addEventListener('submit', function (e) {
@@ -1384,21 +1333,38 @@ document.addEventListener('DOMContentLoaded', function () {
       var btn = document.getElementById('chkSubmit');
       btn.disabled = true;
       btn.classList.add('is-loading');
+      var errBox = document.getElementById('chkPayError');
+      if (errBox) errBox.hidden = true;
 
-      simulatePayment().then(function () {
-        var ref = 'AUR-' + new Date().getFullYear() + '-' +
-          Math.floor(10000 + Math.random() * 89999);
-        document.getElementById('chkRef').textContent = 'Pedido ' + ref;
+      var emailEl = document.getElementById('chkEmail');
 
-        /* Vaciar la cesta si el pedido venía de ella */
-        if (fromCart && window.NuvoraCart) window.NuvoraCart.clear();
-
-        document.getElementById('chkMain').style.display = 'none';
-        var success = document.getElementById('chkSuccess');
-        success.classList.add('is-visible');
-        var steps = document.querySelectorAll('.checkout__step');
-        if (steps.length) steps[steps.length - 1].classList.add('is-active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+      fetch('/.netlify/functions/crear-pago', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          items: lines.map(function (l) {
+            return { id: l.id, size: l.sizeIdx || 0, qty: l.qty || 1 };
+          }),
+          cupon: couponApplied ? 'NUVORA10' : '',
+          email: emailEl ? emailEl.value.trim() : ''
+        })
+      })
+      .then(function (r) {
+        return r.json().then(function (d) {
+          if (!r.ok) throw new Error(d.error || 'No se ha podido iniciar el pago.');
+          return d;
+        });
+      })
+      .then(function (d) {
+        if (!d.url) throw new Error('Respuesta inesperada de la pasarela.');
+        /* La cesta se vacía al volver de Stripe con el pago hecho
+           (lo hace gracias.html), no antes: si cancela, la conserva. */
+        window.location.href = d.url;
+      })
+      .catch(function (err) {
+        btn.disabled = false;
+        btn.classList.remove('is-loading');
+        mostrarErrorPago(err.message || 'No se ha podido conectar con la pasarela de pago.');
       });
     });
   })();
