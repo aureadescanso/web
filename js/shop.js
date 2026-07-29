@@ -1281,15 +1281,19 @@ document.addEventListener('DOMContentLoaded', function () {
     function validate() {
       var ok = true;
 
-      form.querySelectorAll('[data-required]').forEach(function (input) {
-        ok = setError(input, input.value.trim() === '') && ok;
-      });
-
       var email = document.getElementById('chkEmail');
-      if (email.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+      var emailVal = email.value.trim();
+
+      /* Email es obligatorio */
+      if (!emailVal) {
         ok = setError(email, true) && ok;
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+        ok = setError(email, true) && ok;
+      } else {
+        ok = setError(email, false) && ok;
       }
 
+      /* Consentimiento legal obligatorio */
       if (consentBox && !consentBox.checked) {
         consentLabel.classList.add('has-error');
         ok = false;
