@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estado de tu pedido | Nuvora Descanso</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    body { background: #f5f5f5; }
+    .pedido-container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 8px;
+      padding: 40px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .pedido-header {
+      text-align: center;
+      margin-bottom: 40px;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 20px;
+    }
+    .pedido-ref {
+      font-size: 14px;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .pedido-estado {
+      display: flex;
+      justify-content: space-between;
+      margin: 40px 0;
+      position: relative;
+    }
+    .pedido-paso {
+      flex: 1;
+      text-align: center;
+      position: relative;
+    }
+    .pedido-paso-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      background: #f0f0f0;
+      color: #999;
+    }
+    .pedido-paso.activo .pedido-paso-icon {
+      background: #4CAF50;
+      color: white;
+    }
+    .pedido-paso-label {
+      font-size: 12px;
+      color: #999;
+      text-transform: uppercase;
+    }
+    .pedido-info {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 4px;
+      margin: 30px 0;
+    }
+    .pedido-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .pedido-row:last-child {
+      border: none;
+    }
+    .pedido-label {
+      color: #666;
+      font-weight: 600;
+    }
+    .pedido-valor {
+      color: #333;
+    }
+    .pedido-items {
+      margin: 30px 0;
+    }
+    .pedido-item {
+      padding: 15px;
+      background: #fafafa;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+    .pedido-total {
+      font-size: 20px;
+      font-weight: 700;
+      color: #2c3e50;
+      text-align: right;
+      margin-top: 20px;
+    }
+    .pedido-acciones {
+      margin-top: 30px;
+      display: flex;
+      gap: 10px;
+    }
+    .btn {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-primary {
+      background: #2c3e50;
+      color: white;
+    }
+    .btn-secondary {
+      background: #f0f0f0;
+      color: #333;
+    }
+    .error {
+      background: #ffe6e6;
+      color: #c33;
+      padding: 20px;
+      border-radius: 4px;
+      text-align: center;
+    }
+    .loader {
+      text-align: center;
+      padding: 40px;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <div class="pedido-container">
+    <div id="contenido">
+      <div class="loader">
+        <p>Cargando estado del pedido...</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function getParam(name) {
+      const m = new RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+      return m ? decodeURIComponent(m[1]) : null;
+    }
+
+    const ref = getParam('ref');
+
+    if (!ref) {
+      document.getElementById('contenido').innerHTML = `
+        <div class="error">
+          <h2>Pedido no encontrado</h2>
+          <p>Por favor, usa el enlace que recibiste en tu email.</p>
+        </div>
+      `;
+    } else {
+      fetch('/.netlify/functions/estado-pedido?ref=' + encodeURIComponent(ref))
+        .then(r => r.json())
+        .then(pedido => {
+          const estados = ['pagado', 'preparando', 'enviado', 'entregado'];
+          const pasoActual = estados.indexOf(pedido.estado);
+
+          let pasos = '';
+          ['pagado', 'preparando', 'enviado', 'entregado'].forEach((est, i) => {
+            const iconos = { pagado: '✓', preparando: '📦', enviado: '🚚', entregado: '✓' };
+            const activo = i <= pasoActual ? 'activo' : '';
+            pasos += `
+              <div class="pedido-paso ${activo}">
+                <div class="pedido-paso-icon">${iconos[est]}</div>
+                <div class="pedido-paso-label">${est}</div>
+              </div>
+            `;
+          });
+
+          const html = `
+            <div class="pedido-header">
+              <div class="pedido-ref">${pedido.referencia}</div>
+              <h1>Tu pedido en camino</h1>
+            </div>
+
+            <div class="pedido-estado">${pasos}</div>
+
+            <div class="pedido-info">
+              <div class="pedido-row">
+                <span class="pedido-label">Estado</span>
+                <span class="pedido-valor">${pedido.estado.toUpperCase()}</span>
+              </div>
+              <div class="pedido-row">
+                <span class="pedido-label">Fecha de pedido</span>
+                <span class="pedido-valor">${pedido.fecha}</span>
+              </div>
+              <div class="pedido-row">
+                <span class="pedido-label">Entrega estimada</span>
+                <span class="pedido-valor">${pedido.estimado}</span>
+              </div>
+            </div>
+
+            <div class="pedido-items">
+              <h3>Artículos</h3>
+              ${pedido.items.map(item => `<div class="pedido-item">${item}</div>`).join('')}
+            </div>
+
+            <div class="pedido-total">Total: ${pedido.total}</div>
+
+            <div class="pedido-acciones">
+              <a href="javascript:descargarFactura('${pedido.referencia}')" class="btn btn-primary">Descargar factura</a>
+              <a href="index.html" class="btn btn-secondary">Volver al inicio</a>
+            </div>
+          `;
+
+          document.getElementById('contenido').innerHTML = html;
+        })
+        .catch(err => {
+          document.getElementById('contenido').innerHTML = `
+            <div class="error">
+              <h2>Error al cargar el pedido</h2>
+              <p>${err.message}</p>
+            </div>
+          `;
+        });
+    }
+
+    function descargarFactura(ref) {
+      window.location.href = '/.netlify/functions/generar-factura?ref=' + ref;
+    }
+  </script>
+</body>
+</html>

@@ -76,30 +76,70 @@ exports.handler = async function (event) {
 
     /* Aviso por email, si está configurado el servicio de envío */
     const destino = process.env.PEDIDOS_EMAIL || 'nuvoradescanso@gmail.com';
+    const origen = process.env.URL || process.env.DEPLOY_PRIME_URL || 'https://nuvoradescanso.com';
+    const linkSeguimiento = origen + '/pedido.html?ref=' + encodeURIComponent(pedido.referencia);
+    const linkFactura = origen + '/.netlify/functions/generar-factura?ref=' + encodeURIComponent(pedido.referencia);
+
     if (process.env.RESEND_API_KEY) {
-      const html =
+      const htmlCliente =
+        '<h2>¡Pedido confirmado!</h2>' +
+        '<p>Tu pedido <strong>' + pedido.referencia + '</strong> ha sido procesado correctamente.</p>' +
+        '<h3>Resumen</h3>' +
+        '<ul><li>' + pedido.articulos.join('</li><li>') + '</li></ul>' +
+        '<p><strong>Total: ' + pedido.total + '</strong></p>' +
+        '<h3>Próximos pasos</h3>' +
+        '<p><a href="' + linkSeguimiento + '" style="background: #2c3e50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; display: inline-block;">Ver estado de tu pedido</a></p>' +
+        '<p><a href="' + linkFactura + '">Descargar factura</a></p>' +
+        '<p>Te enviaremos un email cuando tu pedido esté en camino.</p>' +
+        '<p>¿Preguntas? Contáctanos: nuvoradescanso@gmail.com</p>';
+
+      const htmlAdmin =
         '<h2>Nuevo pedido ' + pedido.referencia + '</h2>' +
         '<p><strong>Total cobrado:</strong> ' + pedido.total + '</p>' +
         '<h3>Artículos</h3><ul><li>' + pedido.articulos.join('</li><li>') + '</li></ul>' +
         '<h3>Enviar a</h3>' +
         '<p><strong>' + pedido.nombre + '</strong><br>' + pedido.direccion + '</p>' +
         '<p>Email: ' + pedido.email + '<br>Teléfono: ' + (pedido.telefono || '—') + '</p>' +
-        '<p>Cupón: ' + pedido.cupon + '</p>';
+        '<p>Cupón: ' + pedido.cupon + '</p>' +
+        '<p><a href="' + linkSeguimiento + '">Ver en cliente</a></p>';
 
-      const r = await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-          'Authorization': 'Bearer ' + process.env.RESEND_API_KEY,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          from: 'Nuvora Descanso <noreply@nuvoradescanso.com>',
-          to: [destino],
-          subject: 'Nuevo pedido ' + pedido.referencia + ' — ' + pedido.total,
-          html: html
-        })
-      });
-      if (!r.ok) console.error('No se pudo enviar el email:', await r.text());
+      /* Email al cliente */
+      try {
+        await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Bearer ' + process.env.RESEND_API_KEY,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            from: 'Nuvora Descanso <noreply@nuvoradescanso.com>',
+            to: [pedido.email],
+            subject: 'Pedido confirmado ' + pedido.referencia,
+            html: htmlCliente
+          })
+        });
+      } catch (e) {
+        console.error('No se pudo enviar email al cliente:', e.message);
+      }
+
+      /* Email al admin */
+      try {
+        await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Bearer ' + process.env.RESEND_API_KEY,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            from: 'Nuvora Descanso <noreply@nuvoradescanso.com>',
+            to: [destino],
+            subject: 'Nuevo pedido ' + pedido.referencia + ' — ' + pedido.total,
+            html: htmlAdmin
+          })
+        });
+      } catch (e) {
+        console.error('No se pudo enviar email al admin:', e.message);
+      }
     }
 
     return { statusCode: 200, body: 'ok' };

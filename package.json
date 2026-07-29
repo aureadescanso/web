@@ -5,6 +5,8 @@
   "description": "Tienda de Nuvora Descanso (web estática + funciones de pago en Netlify)",
   "dependencies": {
     "stripe": "^17.5.0",
-    "resend": "^3.0.0"
+    "resend": "^3.0.0",
+    "pdfkit": "^0.14.0",
+    "html-pdf": "^3.0.1"
   }
 }
