@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Packs de descanso completo | Nuvora Descanso</title>
+  <meta name="description" content="Packs de descanso: colchón + canapé + almohada. Tu descanso completo al mejor precio. Ahorra hasta 15% en combos.">
+  <link rel="canonical" href="https://nuvoradescanso.com/packs.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/premium.css">
+  <link rel="stylesheet" href="css/shop.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="custom-cursor" id="customCursor" aria-hidden="true"></div>
+
+  <!-- HEADER -->
+  <div class="announce" aria-label="Ofertas">
+    <div class="announce__track">
+      <span class="announce__item" data-i18n="ann.1">−10 % en tu primera compra con el código NUVORA10</span>
+      <span class="announce__sep" aria-hidden="true">✦</span>
+      <span class="announce__item" data-i18n="ann.2">Envío gratuito siempre, sin pedido mínimo</span>
+      <span class="announce__sep" aria-hidden="true">✦</span>
+      <span class="announce__item" data-i18n="ann.3">Directo de fábrica a tu casa</span>
+      <span class="announce__sep" aria-hidden="true">✦</span>
+      <span class="announce__item" data-i18n="ann.1">−10 % en tu primera compra con el código NUVORA10</span>
+      <span class="announce__sep" aria-hidden="true">✦</span>
+    </div>
+  </div>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo">
+        <img src="images/nuvoradescanso.webp" alt="Nuvora Descanso">
+      </a>
+      <nav class="header__nav" id="nav">
+        <ul class="header__menu">
+          <li><a href="colchones.html" class="header__link" data-i18n="nav.colchones">Colchones</a></li>
+          <li><a href="canapes.html" class="header__link" data-i18n="nav.canapes">Canapés</a></li>
+          <li><a href="almohadas.html" class="header__link" data-i18n="nav.almohadas">Almohadas</a></li>
+          <li><a href="packs.html" class="header__link" data-i18n="nav.packs">Packs de descanso</a></li>
+          <li><a href="blog.html" class="header__link" data-i18n="nav.blog">Blog</a></li>
+          <li><a href="#footer" class="header__link" data-i18n="nav.contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <a href="colchones.html" class="header__cta" data-i18n="nav.comprar">Comprar</a>
+      <button class="cartbtn" id="cartBtn" type="button" aria-label="Abrir cesta">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.4"/><circle cx="18" cy="21" r="1.4"/><path d="M1 1h4l2.6 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+        <span class="cartbtn__badge" id="cartBadge" hidden>0</span>
+      </button>
+      <div class="langpick langpick--header" data-langpick></div>
+      <button class="header__burger" id="burger" aria-label="Menú">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <nav class="mobile-menu__nav">
+      <a href="colchones.html" class="mobile-menu__link" data-i18n="nav.colchones">Colchones</a>
+      <a href="canapes.html" class="mobile-menu__link" data-i18n="nav.canapes">Canapés</a>
+      <a href="almohadas.html" class="mobile-menu__link" data-i18n="nav.almohadas">Almohadas</a>
+      <a href="packs.html" class="mobile-menu__link" data-i18n="nav.packs">Packs de descanso</a>
+      <a href="blog.html" class="mobile-menu__link" data-i18n="nav.blog">Blog</a>
+      <a href="#footer" class="mobile-menu__link" data-i18n="nav.contacto">Contacto</a>
+      <a href="colchones.html" class="mobile-menu__cta" data-i18n="nav.comprar">Comprar</a>
+      <div class="langpick langpick--mobile" data-langpick></div>
+    </nav>
+  </div>
+
+  <main class="shop-page">
+    <section class="hero" style="background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%); padding: 80px 40px; text-align: center; color: white;">
+      <h1 style="font-size: 48px; font-weight: 700; margin-bottom: 16px;">Tu descanso completo en un solo pack</h1>
+      <p style="font-size: 20px; margin-bottom: 12px;">Colchón + Canapé + Almohada</p>
+      <p style="font-size: 16px; opacity: 0.9;">Combina, ahorra y empieza a descansar mejor. Hasta 15% de descuento.</p>
+    </section>
+
+    <section class="shop-grid" style="padding: 60px 40px; max-width: 1200px; margin: 0 auto;">
+      <div class="shop-item" style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 30px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+        <div style="background: #f0f0f0; padding: 40px; border-radius: 8px; margin-bottom: 30px;">
+          <h2 style="font-size: 24px; font-weight: 700; margin-bottom: 20px; color: #2c3e50;">Pack Descanso Completo</h2>
+          <div style="margin-bottom: 30px;">
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 20px;">
+              <div style="text-align: center;">
+                <div style="font-size: 40px; margin-bottom: 10px;">🛏️</div>
+                <p style="font-weight: 600; margin-bottom: 5px;">Colchón Nuvora Aurea</p>
+                <p style="font-size: 12px; color: #666;">Desde 228,78 €</p>
+              </div>
+              <div style="text-align: center;">
+                <div style="font-size: 40px; margin-bottom: 10px;">📦</div>
+                <p style="font-weight: 600; margin-bottom: 5px;">Canapé abatible</p>
+                <p style="font-size: 12px; color: #666;">Blanco, Cambrian o Wengué</p>
+              </div>
+              <div style="text-align: center;">
+                <div style="font-size: 40px; margin-bottom: 10px;">☁️</div>
+                <p style="font-weight: 600; margin-bottom: 5px;">Almohada Premium</p>
+                <p style="font-size: 12px; color: #666;">Desde 49,99 €</p>
+              </div>
+            </div>
+          </div>
+          <div style="background: white; padding: 20px; border-radius: 4px; margin-bottom: 30px;">
+            <p style="color: #27ae60; font-size: 18px; font-weight: 700; margin-bottom: 5px;">Ahorra hasta 15%</p>
+            <p style="color: #666; font-size: 14px;">Comparado con compra individual</p>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 30px;">
+          <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 15px;">Ventajas del pack</h3>
+          <ul style="list-style: none; padding: 0; text-align: left;">
+            <li style="padding: 10px 0; border-bottom: 1px solid #e0e0e0;">✓ Envío único coordinado</li>
+            <li style="padding: 10px 0; border-bottom: 1px solid #e0e0e0;">✓ Montaje del canapé incluido</li>
+            <li style="padding: 10px 0; border-bottom: 1px solid #e0e0e0;">✓ 30 noches de prueba</li>
+            <li style="padding: 10px 0; border-bottom: 1px solid #e0e0e0;">✓ 5 años de garantía</li>
+            <li style="padding: 10px 0;">✓ Descuento garantizado</li>
+          </ul>
+        </div>
+
+        <a href="producto.html?m=pack-descanso-completo" style="display: inline-block; background: #2c3e50; color: white; padding: 15px 40px; border-radius: 4px; text-decoration: none; font-weight: 600; font-size: 16px;">Configurar mi pack</a>
+      </div>
+    </section>
+
+    <!-- Cómo funciona -->
+    <section style="background: #f9f9f9; padding: 60px 40px; margin-top: 40px;">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <h2 style="font-size: 32px; font-weight: 700; text-align: center; margin-bottom: 50px;">Cómo funciona</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; counter-reset: step;">
+          <div style="text-align: center;">
+            <div style="font-size: 36px; font-weight: 700; color: #2c3e50; margin-bottom: 15px;">1</div>
+            <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 10px;">Elige medida de colchón</h3>
+            <p style="color: #666; font-size: 14px;">15 opciones disponibles, desde 75×190 hasta 200×200 cm</p>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: 36px; font-weight: 700; color: #2c3e50; margin-bottom: 15px;">2</div>
+            <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 10px;">Elige color de canapé</h3>
+            <p style="color: #666; font-size: 14px;">Blanco, Cambrian gris o Wengué oscuro</p>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: 36px; font-weight: 700; color: #2c3e50; margin-bottom: 15px;">3</div>
+            <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 10px;">Elige medida de canapé</h3>
+            <p style="color: #666; font-size: 14px;">4 opciones para tu espacio</p>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: 36px; font-weight: 700; color: #2c3e50; margin-bottom: 15px;">4</div>
+            <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 10px;">Elige tamaño almohada</h3>
+            <p style="color: #666; font-size: 14px;">Estándar o Jumbo</p>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: 36px; font-weight: 700; color: #2c3e50; margin-bottom: 15px;">5</div>
+            <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 10px;">Mira el precio total</h3>
+            <p style="color: #666; font-size: 14px;">Con descuento incluido</p>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: 36px; font-weight: 700; color: #2c3e50; margin-bottom: 15px;">6</div>
+            <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 10px;">Añade al carrito</h3>
+            <p style="color: #666; font-size: 14px;">Un solo clic, todo coordinado</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="footer">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="images/nuvoradescanso.webp" alt="Nuvora Descanso" class="footer__logo">
+        <p class="footer__claim" data-i18n="footer.claim">Descanso diseñado y fabricado en España. 30 noches de prueba y 5 años de garantía.</p>
+        <div class="footer__social">
+          <a href="https://instagram.com/aureadescanso" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+        </div>
+      </div>
+      <nav class="footer__col" aria-label="Comprar">
+        <h3 class="footer__head" data-i18n="footer.shop">Comprar</h3>
+        <a href="colchones.html" data-i18n="nav.colchones">Colchones</a>
+        <a href="canapes.html" data-i18n="nav.canapes">Canapés</a>
+        <a href="almohadas.html" data-i18n="nav.almohadas">Almohadas</a>
+        <a href="packs.html" data-i18n="nav.packs">Packs de descanso</a>
+      </nav>
+      <nav class="footer__col" aria-label="Ayuda">
+        <h3 class="footer__head" data-i18n="footer.help">Ayuda</h3>
+        <a href="condiciones-venta.html" data-i18n="footer.shipping">Envíos y devoluciones</a>
+        <a href="blog.html" data-i18n="footer.guides">Guías de descanso</a>
+        <a href="mailto:nuvoradescanso@gmail.com" data-i18n="footer.contact">Contacto</a>
+      </nav>
+      <nav class="footer__col" aria-label="Legal">
+        <h3 class="footer__head">Legal</h3>
+        <a href="aviso-legal.html" data-i18n="footer.legal">Aviso legal</a>
+        <a href="privacidad.html" data-i18n="footer.privacy">Privacidad</a>
+        <a href="cookies.html" data-i18n="footer.cookies">Cookies</a>
+        <a href="condiciones-venta.html" data-i18n="footer.terms">Condiciones de venta</a>
+      </nav>
+    </div>
+    <div class="footer__bar">
+      <div class="footer__bar-inner">
+        <p class="footer__copy">&copy; 2026 Nuvora Descanso. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/motion.js"></script>
+  <script src="js/premium.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

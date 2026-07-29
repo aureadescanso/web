@@ -24,7 +24,8 @@
     es: {
       'nav.colchones': 'Colchones',
       'nav.canapes': 'Canapés',
-      'nav.complementos': 'Complementos',
+      'nav.almohadas': 'Almohadas',
+      'nav.packs': 'Packs de descanso',
       'nav.blog': 'Blog',
       'nav.contacto': 'Contacto',
       'nav.inicio': 'Inicio',

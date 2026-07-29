@@ -181,97 +181,202 @@ document.addEventListener('DOMContentLoaded', function () {
       ]
     },
 
-    'canape-atlas': {
+    'canape-nuvora-blanco': {
       type: 'canape',
-      comingSoon: true,
-      typeLabel: 'Canapé abatible de madera',
-      name: 'Canapé Atlas',
-      desc: 'Canapé abatible con tapa de madera de roble y gran capacidad de almacenaje. Apertura asistida por pistones de gas de doble refuerzo y base transpirable para cuidar tu colchón.',
-      rating: '4,7',
-      reviews: 156,
+      typeLabel: 'Canapé abatible tapizado',
+      name: 'Canapé abatible Nuvora – Blanco',
+      desc: 'Canapé abatible tapizado en tejido premium antimanchas de color blanco. Diseño minimalista elegante con estructura reforzada, apertura asistida y gran capacidad de almacenaje. Perfecto para cualquier dormitorio moderno.',
+      rating: '4,8',
+      reviews: 142,
       images: [
-        'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1200&q=80',
-        'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=1200&q=80',
-        'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=1200&q=80'
+        'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=1200&q=80',
+        'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=1200&q=80'
       ],
+      color: 'Blanco',
       sizes: [
-        { label: '90 × 190 cm',  price: 399 },
-        { label: '135 × 190 cm', price: 459 },
-        { label: '150 × 190 cm', price: 499 },
-        { label: '160 × 200 cm', price: 549 }
+        { label: '90 × 190 cm',  price: 449 },
+        { label: '135 × 190 cm', price: 529 },
+        { label: '150 × 190 cm', price: 579 },
+        { label: '160 × 200 cm', price: 649 }
       ],
       defaultSize: 2,
       details: [
         {
-          title: 'Materiales y capacidad',
+          title: 'Características principales',
           html: '<ul>' +
-            '<li>Estructura de acero lacado con tapa 3D transpirable de madera de roble.</li>' +
-            '<li>Capacidad de almacenaje de hasta 1.000 litros (medida 150×190).</li>' +
-            '<li>Pistones de gas reforzados: apertura suave con una sola mano.</li>' +
-            '<li>Altura del cajón: 32 cm. Patas antideslizantes incluidas.</li>' +
+            '<li>Tapizado en tejido técnico antimanchas, color blanco puro.</li>' +
+            '<li>Estructura de acero reforzada, totalmente estable.</li>' +
+            '<li>Apertura asistida por pistones de gas de calidad superior.</li>' +
+            '<li>Tapa 3D transpirable para proteger tu colchón.</li>' +
+            '<li>Almacenaje XXL: capacidad máxima aprovechada.</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Materiales',
+          html: '<ul>' +
+            '<li>Tapizado: tejido 100% poliéster, resistente a manchas.</li>' +
+            '<li>Estructura: acero lacado de alta resistencia.</li>' +
+            '<li>Base: patas de aluminio antideslizantes.</li>' +
+            '<li>Tapa: tablero 3D transpirable.</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Medidas disponibles',
+          html: '<ul>' +
+            '<li>90 × 190 cm</li>' +
+            '<li>135 × 190 cm</li>' +
+            '<li>150 × 190 cm</li>' +
+            '<li>160 × 200 cm</li>' +
           '</ul>'
         },
         {
           title: 'Envío y montaje',
           html: '<ul>' +
             '<li>Envío gratuito a toda España peninsular en 5–7 días laborables.</li>' +
-            '<li>Montaje sencillo en menos de 30 minutos; manual e herramientas incluidas.</li>' +
+            '<li>Montaje incluido en domicilio (sin coste adicional).</li>' +
             '<li>Devolución gratuita durante los primeros 30 días.</li>' +
           '</ul>'
         },
         {
           title: 'Garantía',
           html: '<ul>' +
-            '<li>5 años de garantía en estructura y mecanismo de apertura.</li>' +
+            '<li>5 años de garantía en estructura y mecanismo.</li>' +
+            '<li>2 años garantía en tapizado contra defectos de fabricación.</li>' +
             '<li>Repuestos disponibles de por vida.</li>' +
           '</ul>'
         }
       ]
     },
 
-    'canape-eter': {
+    'canape-nuvora-cambrian': {
       type: 'canape',
-      comingSoon: true,
       typeLabel: 'Canapé abatible tapizado',
-      name: 'Canapé Éter',
-      desc: 'Canapé abatible tapizado en tejido antimanchas con cabecero a juego opcional. Diseño minimalista de líneas suaves que eleva cualquier dormitorio, con almacenaje XXL.',
+      name: 'Canapé abatible Nuvora – Cambrian',
+      desc: 'Canapé abatible tapizado en tejido premium antimanchas de color cambrian (gris suave). Diseño minimalista elegante con estructura reforzada, apertura asistida y gran capacidad de almacenaje.',
       rating: '4,8',
-      reviews: 98,
+      reviews: 128,
       images: [
-        'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=1200&q=80',
         'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1200&q=80',
-        'https://images.unsplash.com/photo-1586105251261-72a756497a11?w=1200&q=80'
+        'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=1200&q=80'
       ],
+      color: 'Cambrian',
       sizes: [
-        { label: '135 × 190 cm', price: 519 },
-        { label: '150 × 190 cm', price: 559 },
-        { label: '160 × 200 cm', price: 609 },
-        { label: '180 × 200 cm', price: 659 }
+        { label: '90 × 190 cm',  price: 449 },
+        { label: '135 × 190 cm', price: 529 },
+        { label: '150 × 190 cm', price: 579 },
+        { label: '160 × 200 cm', price: 649 }
       ],
-      defaultSize: 1,
+      defaultSize: 2,
       details: [
         {
-          title: 'Materiales y capacidad',
+          title: 'Características principales',
           html: '<ul>' +
-            '<li>Tapizado en tejido técnico antimanchas disponible en 4 colores.</li>' +
-            '<li>Tapa 3D transpirable con apertura de gran ángulo (suelo visible).</li>' +
-            '<li>Almacenaje XXL: 35 cm de profundidad útil.</li>' +
-            '<li>Esquinas redondeadas de seguridad.</li>' +
+            '<li>Tapizado en tejido técnico antimanchas, color cambrian gris suave.</li>' +
+            '<li>Estructura de acero reforzada, totalmente estable.</li>' +
+            '<li>Apertura asistida por pistones de gas de calidad superior.</li>' +
+            '<li>Tapa 3D transpirable para proteger tu colchón.</li>' +
+            '<li>Almacenaje XXL: capacidad máxima aprovechada.</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Materiales',
+          html: '<ul>' +
+            '<li>Tapizado: tejido 100% poliéster, resistente a manchas.</li>' +
+            '<li>Estructura: acero lacado de alta resistencia.</li>' +
+            '<li>Base: patas de aluminio antideslizantes.</li>' +
+            '<li>Tapa: tablero 3D transpirable.</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Medidas disponibles',
+          html: '<ul>' +
+            '<li>90 × 190 cm</li>' +
+            '<li>135 × 190 cm</li>' +
+            '<li>150 × 190 cm</li>' +
+            '<li>160 × 200 cm</li>' +
           '</ul>'
         },
         {
           title: 'Envío y montaje',
           html: '<ul>' +
             '<li>Envío gratuito a toda España peninsular en 5–7 días laborables.</li>' +
-            '<li>Servicio opcional de montaje en domicilio.</li>' +
+            '<li>Montaje incluido en domicilio (sin coste adicional).</li>' +
             '<li>Devolución gratuita durante los primeros 30 días.</li>' +
           '</ul>'
         },
         {
           title: 'Garantía',
           html: '<ul>' +
-            '<li>5 años de garantía en estructura y mecanismo de apertura.</li>' +
-            '<li>Tapizado garantizado contra defectos durante 2 años.</li>' +
+            '<li>5 años de garantía en estructura y mecanismo.</li>' +
+            '<li>2 años garantía en tapizado contra defectos de fabricación.</li>' +
+            '<li>Repuestos disponibles de por vida.</li>' +
+          '</ul>'
+        }
+      ]
+    },
+
+    'canape-nuvora-wengue': {
+      type: 'canape',
+      typeLabel: 'Canapé abatible tapizado',
+      name: 'Canapé abatible Nuvora – Wengué',
+      desc: 'Canapé abatible tapizado en tejido premium antimanchas de color wengué (gris oscuro). Diseño minimalista elegante con estructura reforzada, apertura asistida y gran capacidad de almacenaje. Sofisticación en tu dormitorio.',
+      rating: '4,8',
+      reviews: 135,
+      images: [
+        'https://images.unsplash.com/photo-1586105251261-72a756497a11?w=1200&q=80',
+        'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1200&q=80'
+      ],
+      color: 'Wengué',
+      sizes: [
+        { label: '90 × 190 cm',  price: 449 },
+        { label: '135 × 190 cm', price: 529 },
+        { label: '150 × 190 cm', price: 579 },
+        { label: '160 × 200 cm', price: 649 }
+      ],
+      defaultSize: 2,
+      details: [
+        {
+          title: 'Características principales',
+          html: '<ul>' +
+            '<li>Tapizado en tejido técnico antimanchas, color wengué gris oscuro.</li>' +
+            '<li>Estructura de acero reforzada, totalmente estable.</li>' +
+            '<li>Apertura asistida por pistones de gas de calidad superior.</li>' +
+            '<li>Tapa 3D transpirable para proteger tu colchón.</li>' +
+            '<li>Almacenaje XXL: capacidad máxima aprovechada.</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Materiales',
+          html: '<ul>' +
+            '<li>Tapizado: tejido 100% poliéster, resistente a manchas.</li>' +
+            '<li>Estructura: acero lacado de alta resistencia.</li>' +
+            '<li>Base: patas de aluminio antideslizantes.</li>' +
+            '<li>Tapa: tablero 3D transpirable.</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Medidas disponibles',
+          html: '<ul>' +
+            '<li>90 × 190 cm</li>' +
+            '<li>135 × 190 cm</li>' +
+            '<li>150 × 190 cm</li>' +
+            '<li>160 × 200 cm</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Envío y montaje',
+          html: '<ul>' +
+            '<li>Envío gratuito a toda España peninsular en 5–7 días laborables.</li>' +
+            '<li>Montaje incluido en domicilio (sin coste adicional).</li>' +
+            '<li>Devolución gratuita durante los primeros 30 días.</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Garantía',
+          html: '<ul>' +
+            '<li>5 años de garantía en estructura y mecanismo.</li>' +
+            '<li>2 años garantía en tapizado contra defectos de fabricación.</li>' +
+            '<li>Repuestos disponibles de por vida.</li>' +
           '</ul>'
         }
       ]
@@ -376,6 +481,129 @@ document.addEventListener('DOMContentLoaded', function () {
           title: 'El dúo de la respiración nasal',
           html: '<ul>' +
             '<li>Combínalas con el <a href="producto.html?m=mouth-tape">Mouth Tape Nuvora</a>: las tiras abren la nariz y el tape mantiene la boca cerrada. Respiración nasal completa toda la noche.</li>' +
+          '</ul>'
+        }
+      ]
+    },
+
+    'almohada-premium': {
+      type: 'almohada',
+      typeLabel: 'Almohada de descanso',
+      name: 'Almohada Premium Nuvora',
+      desc: 'Almohada premium con relleno de fibra viscoelástica y funda de algodón 100%. Proporciona el apoyo perfecto para tu cabeza y cuello, adaptándose a tu posición natural. Ideal para acompañar a nuestros colchones.',
+      rating: '4,9',
+      reviews: 248,
+      images: ['https://images.unsplash.com/photo-1584622614875-e62df6a63667?w=1200&q=80'],
+      sizes: [
+        { label: 'Estándar (50×70 cm)', price: 49.99 },
+        { label: 'Jumbo (75×70 cm)', price: 59.99 }
+      ],
+      defaultSize: 0,
+      details: [
+        {
+          title: 'Características principales',
+          html: '<ul>' +
+            '<li>Relleno de fibra viscoelástica que se adapta a tu cabeza y cuello.</li>' +
+            '<li>Funda de algodón 100% orgánico, suave y transpirable.</li>' +
+            '<li>Altura de confort medio: ideal para dormidores de lado y espalda.</li>' +
+            '<li>Firmeza balanceada: ni demasiado dura ni blanda.</li>' +
+            '<li>Reduce puntos de presión y proporciona alineación cervical perfecta.</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Materiales',
+          html: '<ul>' +
+            '<li>Relleno: fibra viscoelástica de alta densidad.</li>' +
+            '<li>Funda exterior: algodón 100% orgánico certificado.</li>' +
+            '<li>Cremallera desmontable: funda lavable a 30°C.</li>' +
+            '<li>Certificaciones: OEKO-TEX Standard 100.</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Medidas',
+          html: '<ul>' +
+            '<li><strong>Estándar:</strong> 50 × 70 cm (cama individual o compartida)</li>' +
+            '<li><strong>Jumbo:</strong> 75 × 70 cm (cama grande)</li>' +
+            '<li>Altura: 12 cm aprox.</li>' +
+            '<li>Peso: 1,2 kg (Estándar) / 1,5 kg (Jumbo)</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Nivel de firmeza',
+          html: '<ul>' +
+            '<li>Firmeza: Media (6/10)</li>' +
+            '<li>Recomendada para: Dormidores de lado y espalda</li>' +
+            '<li>Ideal combinar con: Cualquier colchón Nuvora</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Beneficios',
+          html: '<ul>' +
+            '<li>✓ Alivia la presión en cabeza y cuello</li>' +
+            '<li>✓ Alineación espinal perfecta</li>' +
+            '<li>✓ Transpirabilidad máxima</li>' +
+            '<li>✓ Hipoalergénica (apta para pieles sensibles)</li>' +
+            '<li>✓ Funda extraíble y lavable</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Envío y cuidados',
+          html: '<ul>' +
+            '<li>Envío gratuito a toda España peninsular en 3–5 días laborables.</li>' +
+            '<li>Funda lavable a máquina a 30°C.</li>' +
+            '<li>No lavar en seco. Secar al aire.</li>' +
+            '<li>30 noches de prueba: devolución gratuita si no estás satisfecho.</li>' +
+          '</ul>'
+        }
+      ]
+    },
+
+    'pack-descanso-completo': {
+      type: 'pack',
+      typeLabel: 'Pack de descanso',
+      name: 'Pack Descanso Completo',
+      desc: 'Tu descanso completo en un solo pack. Colchón Nuvora Aurea + Canapé abatible + Almohada Premium, todo lo que necesitas para descansar como mereces. Ahorra hasta el 15% comprando el combo.',
+      rating: '4,9',
+      reviews: 89,
+      images: ['https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=1200&q=80'],
+      isBulk: true,
+      details: [
+        {
+          title: 'Qué incluye el pack',
+          html: '<ul>' +
+            '<li>✓ <strong>Colchón Nuvora Aurea</strong> — a elegir medida (desde 228,78 €)</li>' +
+            '<li>✓ <strong>Canapé abatible Nuvora</strong> — a elegir color y medida (desde 449 €)</li>' +
+            '<li>✓ <strong>Almohada Premium Nuvora</strong> — a elegir tamaño (desde 49,99 €)</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Ventajas del pack',
+          html: '<ul>' +
+            '<li>Ahorra hasta el 15% comparado con compra individual.</li>' +
+            '<li>Envío único: todo llega coordinado en tu domicilio.</li>' +
+            '<li>Montaje del canapé incluido sin coste adicional.</li>' +
+            '<li>30 noches de prueba para el pack completo.</li>' +
+            '<li>5 años de garantía en colchón y canapé.</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Cómo funciona',
+          html: '<ul>' +
+            '<li>1. Elige la medida del colchón (15 opciones disponibles).</li>' +
+            '<li>2. Elige el color del canapé: Blanco, Cambrian o Wengué.</li>' +
+            '<li>3. Elige la medida del canapé (4 opciones).</li>' +
+            '<li>4. Elige el tamaño de almohada: Estándar o Jumbo.</li>' +
+            '<li>5. Mira el precio total con descuento.</li>' +
+            '<li>6. Añade el pack completo al carrito con un solo clic.</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Envío',
+          html: '<ul>' +
+            '<li>Envío gratuito a toda España peninsular en 5–7 días laborables.</li>' +
+            '<li>El colchón llega comprimido; se expande en 24 horas.</li>' +
+            '<li>El canapé llega listo para montar; montaje incluido.</li>' +
+            '<li>Seguimiento de envío en tiempo real.</li>' +
           '</ul>'
         }
       ]
