@@ -55,8 +55,27 @@
     total: function () {
       return this.items.reduce(function (a, it) { return a + it.price * it.qty; }, 0);
     },
-    hasColchon: function () {
-      return this.items.some(function (it) { return it.type === 'colchon'; });
+    /* ¿La cesta forma un pack de descanso? (colchón + canapé + almohada)
+       El descuento real lo aplican el checkout y el servidor. */
+    isPack: function () {
+      var t = {};
+      this.items.forEach(function (it) { t[it.type] = true; });
+      return !!(t.colchon && t.canape && t.almohada);
+    },
+    /* Añade varias líneas de una vez sin abrir y cerrar el panel en cada una */
+    addMany: function (lines) {
+      var self = this;
+      lines.forEach(function (line) {
+        var found = null;
+        self.items.forEach(function (it) {
+          if (it.id === line.id && it.sizeIdx === line.sizeIdx) found = it;
+        });
+        if (found) found.qty += 1;
+        else { line.qty = 1; self.items.push(line); }
+      });
+      persist(this.items);
+      refresh();
+      open();
     },
     clear: function () {
       this.items = [];
@@ -126,15 +145,14 @@
           '<span class="cart__price">' + fmt(it.price * it.qty) + '</span>' +
         '</div>';
     });
-    if (Cart.hasColchon()) {
+    if (Cart.isPack()) {
       html +=
         '<div class="cart__item cart__item--gift">' +
-          '<img class="cart__img" src="' + rel('images/mouth-tape.webp') + '" alt="Mouth Tape Nuvora">' +
           '<div class="cart__info">' +
-            '<span class="cart__name">Mouth Tape Nuvora · 30 tiras</span>' +
-            '<span class="cart__meta">' + T('cart.gift', 'Regalo por tu colchón · Valorado en 10 €') + '</span>' +
+            '<span class="cart__name">' + T('cart.pack', 'Pack de descanso completo') + '</span>' +
+            '<span class="cart__meta">' + T('cart.packsub', 'Colchón + canapé + almohada: −12 % al tramitar el pedido') + '</span>' +
           '</div>' +
-          '<span class="cart__price cart__price--gift">GRATIS</span>' +
+          '<span class="cart__price cart__price--gift">&minus;12 %</span>' +
         '</div>';
     }
     body.innerHTML = html;

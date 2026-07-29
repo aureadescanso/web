@@ -24,30 +24,30 @@ document.addEventListener('DOMContentLoaded', function () {
         'images/aurea-capas.webp'
       ],
       sizes: [
-        { label: '75 × 190 cm',  price: 228.78 },
-        { label: '75 × 200 cm',  price: 240.22 },
-        { label: '80 × 190 cm',  price: 240.83 },
-        { label: '80 × 200 cm',  price: 252.88 },
-        { label: '90 × 190 cm',  price: 253.52 },
-        { label: '90 × 200 cm',  price: 266.20 },
-        { label: '105 × 190 cm', price: 288.57 },
-        { label: '105 × 200 cm', price: 303.01 },
-        { label: '110 × 190 cm', price: 303.01 },
-        { label: '110 × 200 cm', price: 318.15 },
-        { label: '120 × 190 cm', price: 333.30 },
-        { label: '120 × 200 cm', price: 349.96 },
-        { label: '135 × 190 cm', price: 356.15 },
-        { label: '135 × 200 cm', price: 373.96 },
-        { label: '140 × 190 cm', price: 373.96 },
-        { label: '140 × 200 cm', price: 392.65 },
-        { label: '150 × 190 cm', price: 389.43 },
-        { label: '150 × 200 cm', price: 408.91 },
-        { label: '160 × 190 cm', price: 428.52 },
-        { label: '160 × 200 cm', price: 449.96 },
-        { label: '180 × 190 cm', price: 477.99 },
-        { label: '180 × 200 cm', price: 492.78 },
-        { label: '200 × 190 cm', price: 524.87 },
-        { label: '200 × 200 cm', price: 541.10 }
+        { label: '75 × 190 cm',  price: 205.34 },
+        { label: '75 × 200 cm',  price: 215.61 },
+        { label: '80 × 190 cm',  price: 216.16 },
+        { label: '80 × 200 cm',  price: 226.97 },
+        { label: '90 × 190 cm',  price: 227.54 },
+        { label: '90 × 200 cm',  price: 238.93 },
+        { label: '105 × 190 cm', price: 259.01 },
+        { label: '105 × 200 cm', price: 271.96 },
+        { label: '110 × 190 cm', price: 271.96 },
+        { label: '110 × 200 cm', price: 285.55 },
+        { label: '120 × 190 cm', price: 299.15 },
+        { label: '120 × 200 cm', price: 314.11 },
+        { label: '135 × 190 cm', price: 319.66 },
+        { label: '135 × 200 cm', price: 335.64 },
+        { label: '140 × 190 cm', price: 335.64 },
+        { label: '140 × 200 cm', price: 352.42 },
+        { label: '150 × 190 cm', price: 349.53 },
+        { label: '150 × 200 cm', price: 367.02 },
+        { label: '160 × 190 cm', price: 384.62 },
+        { label: '160 × 200 cm', price: 403.86 },
+        { label: '180 × 190 cm', price: 429.02 },
+        { label: '180 × 200 cm', price: 442.29 },
+        { label: '200 × 190 cm', price: 471.09 },
+        { label: '200 × 200 cm', price: 485.66 }
       ],
       defaultSize: 16,
       cutaway: {
@@ -138,12 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
       desc: 'Firmeza media-alta con muelles ensacados individualmente y doble capa de viscoelástica. Máxima transpirabilidad e independencia de lechos: el colchón para parejas exigentes.',
       rating: '4,9',
       reviews: 287,
-      images: [
-        'images/producto2.jpg',
-        'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=1200&q=80',
-        'https://images.unsplash.com/photo-1586105251261-72a756497a11?w=1200&q=80',
-        'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80'
-      ],
+      images: ['images/producto2.jpg'],
       sizes: [
         { label: '90 × 190 cm',  price: 699 },
         { label: '135 × 190 cm', price: 749 },
@@ -181,207 +176,6 @@ document.addEventListener('DOMContentLoaded', function () {
       ]
     },
 
-    'canape-nuvora-blanco': {
-      type: 'canape',
-      typeLabel: 'Canapé abatible tapizado',
-      name: 'Canapé abatible Nuvora – Blanco',
-      desc: 'Canapé abatible tapizado en tejido premium antimanchas de color blanco. Diseño minimalista elegante con estructura reforzada, apertura asistida y gran capacidad de almacenaje. Perfecto para cualquier dormitorio moderno.',
-      rating: '4,8',
-      reviews: 142,
-      images: [
-        'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=1200&q=80',
-        'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=1200&q=80'
-      ],
-      color: 'Blanco',
-      sizes: [
-        { label: '90 × 190 cm',  price: 449 },
-        { label: '135 × 190 cm', price: 529 },
-        { label: '150 × 190 cm', price: 579 },
-        { label: '160 × 200 cm', price: 649 }
-      ],
-      defaultSize: 2,
-      details: [
-        {
-          title: 'Características principales',
-          html: '<ul>' +
-            '<li>Tapizado en tejido técnico antimanchas, color blanco puro.</li>' +
-            '<li>Estructura de acero reforzada, totalmente estable.</li>' +
-            '<li>Apertura asistida por pistones de gas de calidad superior.</li>' +
-            '<li>Tapa 3D transpirable para proteger tu colchón.</li>' +
-            '<li>Almacenaje XXL: capacidad máxima aprovechada.</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Materiales',
-          html: '<ul>' +
-            '<li>Tapizado: tejido 100% poliéster, resistente a manchas.</li>' +
-            '<li>Estructura: acero lacado de alta resistencia.</li>' +
-            '<li>Base: patas de aluminio antideslizantes.</li>' +
-            '<li>Tapa: tablero 3D transpirable.</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Medidas disponibles',
-          html: '<ul>' +
-            '<li>90 × 190 cm</li>' +
-            '<li>135 × 190 cm</li>' +
-            '<li>150 × 190 cm</li>' +
-            '<li>160 × 200 cm</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Envío y montaje',
-          html: '<ul>' +
-            '<li>Envío gratuito a toda España peninsular en 5–7 días laborables.</li>' +
-            '<li>Montaje incluido en domicilio (sin coste adicional).</li>' +
-            '<li>Devolución gratuita durante los primeros 30 días.</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Garantía',
-          html: '<ul>' +
-            '<li>5 años de garantía en estructura y mecanismo.</li>' +
-            '<li>2 años garantía en tapizado contra defectos de fabricación.</li>' +
-            '<li>Repuestos disponibles de por vida.</li>' +
-          '</ul>'
-        }
-      ]
-    },
-
-    'canape-nuvora-cambrian': {
-      type: 'canape',
-      typeLabel: 'Canapé abatible tapizado',
-      name: 'Canapé abatible Nuvora – Cambrian',
-      desc: 'Canapé abatible tapizado en tejido premium antimanchas de color cambrian (gris suave). Diseño minimalista elegante con estructura reforzada, apertura asistida y gran capacidad de almacenaje.',
-      rating: '4,8',
-      reviews: 128,
-      images: [
-        'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1200&q=80',
-        'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=1200&q=80'
-      ],
-      color: 'Cambrian',
-      sizes: [
-        { label: '90 × 190 cm',  price: 449 },
-        { label: '135 × 190 cm', price: 529 },
-        { label: '150 × 190 cm', price: 579 },
-        { label: '160 × 200 cm', price: 649 }
-      ],
-      defaultSize: 2,
-      details: [
-        {
-          title: 'Características principales',
-          html: '<ul>' +
-            '<li>Tapizado en tejido técnico antimanchas, color cambrian gris suave.</li>' +
-            '<li>Estructura de acero reforzada, totalmente estable.</li>' +
-            '<li>Apertura asistida por pistones de gas de calidad superior.</li>' +
-            '<li>Tapa 3D transpirable para proteger tu colchón.</li>' +
-            '<li>Almacenaje XXL: capacidad máxima aprovechada.</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Materiales',
-          html: '<ul>' +
-            '<li>Tapizado: tejido 100% poliéster, resistente a manchas.</li>' +
-            '<li>Estructura: acero lacado de alta resistencia.</li>' +
-            '<li>Base: patas de aluminio antideslizantes.</li>' +
-            '<li>Tapa: tablero 3D transpirable.</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Medidas disponibles',
-          html: '<ul>' +
-            '<li>90 × 190 cm</li>' +
-            '<li>135 × 190 cm</li>' +
-            '<li>150 × 190 cm</li>' +
-            '<li>160 × 200 cm</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Envío y montaje',
-          html: '<ul>' +
-            '<li>Envío gratuito a toda España peninsular en 5–7 días laborables.</li>' +
-            '<li>Montaje incluido en domicilio (sin coste adicional).</li>' +
-            '<li>Devolución gratuita durante los primeros 30 días.</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Garantía',
-          html: '<ul>' +
-            '<li>5 años de garantía en estructura y mecanismo.</li>' +
-            '<li>2 años garantía en tapizado contra defectos de fabricación.</li>' +
-            '<li>Repuestos disponibles de por vida.</li>' +
-          '</ul>'
-        }
-      ]
-    },
-
-    'canape-nuvora-wengue': {
-      type: 'canape',
-      typeLabel: 'Canapé abatible tapizado',
-      name: 'Canapé abatible Nuvora – Wengué',
-      desc: 'Canapé abatible tapizado en tejido premium antimanchas de color wengué (gris oscuro). Diseño minimalista elegante con estructura reforzada, apertura asistida y gran capacidad de almacenaje. Sofisticación en tu dormitorio.',
-      rating: '4,8',
-      reviews: 135,
-      images: [
-        'https://images.unsplash.com/photo-1586105251261-72a756497a11?w=1200&q=80',
-        'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1200&q=80'
-      ],
-      color: 'Wengué',
-      sizes: [
-        { label: '90 × 190 cm',  price: 449 },
-        { label: '135 × 190 cm', price: 529 },
-        { label: '150 × 190 cm', price: 579 },
-        { label: '160 × 200 cm', price: 649 }
-      ],
-      defaultSize: 2,
-      details: [
-        {
-          title: 'Características principales',
-          html: '<ul>' +
-            '<li>Tapizado en tejido técnico antimanchas, color wengué gris oscuro.</li>' +
-            '<li>Estructura de acero reforzada, totalmente estable.</li>' +
-            '<li>Apertura asistida por pistones de gas de calidad superior.</li>' +
-            '<li>Tapa 3D transpirable para proteger tu colchón.</li>' +
-            '<li>Almacenaje XXL: capacidad máxima aprovechada.</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Materiales',
-          html: '<ul>' +
-            '<li>Tapizado: tejido 100% poliéster, resistente a manchas.</li>' +
-            '<li>Estructura: acero lacado de alta resistencia.</li>' +
-            '<li>Base: patas de aluminio antideslizantes.</li>' +
-            '<li>Tapa: tablero 3D transpirable.</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Medidas disponibles',
-          html: '<ul>' +
-            '<li>90 × 190 cm</li>' +
-            '<li>135 × 190 cm</li>' +
-            '<li>150 × 190 cm</li>' +
-            '<li>160 × 200 cm</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Envío y montaje',
-          html: '<ul>' +
-            '<li>Envío gratuito a toda España peninsular en 5–7 días laborables.</li>' +
-            '<li>Montaje incluido en domicilio (sin coste adicional).</li>' +
-            '<li>Devolución gratuita durante los primeros 30 días.</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Garantía',
-          html: '<ul>' +
-            '<li>5 años de garantía en estructura y mecanismo.</li>' +
-            '<li>2 años garantía en tapizado contra defectos de fabricación.</li>' +
-            '<li>Repuestos disponibles de por vida.</li>' +
-          '</ul>'
-        }
-      ]
-    },
-
     'mouth-tape': {
       type: 'accesorio',
       typeLabel: 'Accesorio de descanso',
@@ -392,7 +186,9 @@ document.addEventListener('DOMContentLoaded', function () {
       images: ['images/mouth-tape.webp'],
       box3d: true,
       cutImg: 'images/mouth-tape-cut.webp',
-      gift: true,
+      /* Complementos desactivados temporalmente: no se enlaza ni se puede
+         abrir la ficha. Se conserva la ficha completa para reactivarla. */
+      hidden: true,
       sizes: [
         { label: 'Caja · 30 tiras', price: 10 }
       ],
@@ -426,9 +222,9 @@ document.addEventListener('DOMContentLoaded', function () {
           '</ul>'
         },
         {
-          title: 'De regalo con tu colchón',
+          title: 'Disponibilidad',
           html: '<ul>' +
-            '<li>Con la compra de cualquier colchón Nuvora, una caja de Mouth Tape (30 tiras) va <strong>de regalo</strong> en tu pedido, sin hacer nada.</li>' +
+            '<li>Producto temporalmente no disponible en la tienda.</li>' +
             '<li><a href="colchones.html">Ver colchones</a></li>' +
           '</ul>'
         }
@@ -445,6 +241,8 @@ document.addEventListener('DOMContentLoaded', function () {
       images: ['images/tiras-nasales.webp'],
       box3d: true,
       cutImg: 'images/tiras-nasales-cut.webp',
+      /* Complementos desactivados temporalmente (ver 'mouth-tape'). */
+      hidden: true,
       sizes: [
         { label: 'Caja · 30 tiras', price: 10 }
       ],
@@ -486,129 +284,238 @@ document.addEventListener('DOMContentLoaded', function () {
       ]
     },
 
-    'almohada-premium': {
+    'almohada-nuvora': {
       type: 'almohada',
-      typeLabel: 'Almohada de descanso',
-      name: 'Almohada Premium Nuvora',
-      desc: 'Almohada premium con relleno de fibra viscoelástica y funda de algodón 100%. Proporciona el apoyo perfecto para tu cabeza y cuello, adaptándose a tu posición natural. Ideal para acompañar a nuestros colchones.',
-      rating: '4,9',
-      reviews: 248,
-      images: ['https://images.unsplash.com/photo-1584622614875-e62df6a63667?w=1200&q=80'],
+      typeLabel: 'Almohada viscoelástica',
+      name: 'Almohada viscoelástica Nuvora',
+      desc: 'La pieza que le falta a tu descanso. Núcleo de viscoelástica perforada que se amolda a tu cuello en segundos y vuelve a su sitio cada noche, con funda de tejido técnico transpirable, desenfundable y lavable. Si te levantas con el cuello cargado, empieza por aquí.',
+      images: ['images/almohada-nuvora.webp'],
+      compare: false,
       sizes: [
-        { label: 'Estándar (50×70 cm)', price: 49.99 },
-        { label: 'Jumbo (75×70 cm)', price: 59.99 }
+        { label: '70 × 40 cm',  price: 44.90 },
+        { label: '90 × 40 cm',  price: 54.90 },
+        { label: '135 × 40 cm', price: 64.90 },
+        { label: '150 × 40 cm', price: 69.90 }
       ],
-      defaultSize: 0,
+      defaultSize: 1,
       details: [
         {
           title: 'Características principales',
           html: '<ul>' +
-            '<li>Relleno de fibra viscoelástica que se adapta a tu cabeza y cuello.</li>' +
-            '<li>Funda de algodón 100% orgánico, suave y transpirable.</li>' +
-            '<li>Altura de confort medio: ideal para dormidores de lado y espalda.</li>' +
-            '<li>Firmeza balanceada: ni demasiado dura ni blanda.</li>' +
-            '<li>Reduce puntos de presión y proporciona alineación cervical perfecta.</li>' +
+            '<li>Núcleo de <strong>viscoelástica perforada</strong> de 50 kg/m³: se adapta al peso de la cabeza y recupera la forma al levantarte.</li>' +
+            '<li><strong>Altura de 12 cm</strong> con perfil ergonómico: mantiene el cuello alineado con la columna.</li>' +
+            '<li>Canales de ventilación que evacúan el calor y la humedad durante la noche.</li>' +
+            '<li>Funda exterior <strong>desenfundable con cremallera</strong> y lavable a 30 °C.</li>' +
+            '<li>Tratamiento antiácaros y antibacteriano: apta para pieles sensibles y alérgicos.</li>' +
           '</ul>'
         },
         {
           title: 'Materiales',
           html: '<ul>' +
-            '<li>Relleno: fibra viscoelástica de alta densidad.</li>' +
-            '<li>Funda exterior: algodón 100% orgánico certificado.</li>' +
-            '<li>Cremallera desmontable: funda lavable a 30°C.</li>' +
-            '<li>Certificaciones: OEKO-TEX Standard 100.</li>' +
+            '<li><strong>Núcleo:</strong> espuma viscoelástica de 50 kg/m³ con perforación vertical.</li>' +
+            '<li><strong>Funda:</strong> tejido técnico transpirable con cremallera perimetral.</li>' +
+            '<li><strong>Certificación:</strong> OEKO-TEX® Standard 100, libre de sustancias nocivas.</li>' +
+            '<li>Fabricada en España, en nuestra propia fábrica.</li>' +
           '</ul>'
         },
         {
-          title: 'Medidas',
+          title: 'Medidas disponibles',
           html: '<ul>' +
-            '<li><strong>Estándar:</strong> 50 × 70 cm (cama individual o compartida)</li>' +
-            '<li><strong>Jumbo:</strong> 75 × 70 cm (cama grande)</li>' +
-            '<li>Altura: 12 cm aprox.</li>' +
-            '<li>Peso: 1,2 kg (Estándar) / 1,5 kg (Jumbo)</li>' +
+            '<li><strong>70 × 40 cm</strong> — camas de 70, 80 y 90 cm</li>' +
+            '<li><strong>90 × 40 cm</strong> — camas de 90 y 105 cm</li>' +
+            '<li><strong>135 × 40 cm</strong> — camas de 135 y 140 cm</li>' +
+            '<li><strong>150 × 40 cm</strong> — camas de 150 y 160 cm</li>' +
+            '<li>Altura: 12 cm · Peso aproximado: 1,2 kg (70 cm)</li>' +
           '</ul>'
         },
         {
           title: 'Nivel de firmeza',
           html: '<ul>' +
-            '<li>Firmeza: Media (6/10)</li>' +
-            '<li>Recomendada para: Dormidores de lado y espalda</li>' +
-            '<li>Ideal combinar con: Cualquier colchón Nuvora</li>' +
+            '<li><strong>Firmeza media (6/10).</strong> El punto medio que funciona para la mayoría.</li>' +
+            '<li><strong>Recomendada si duermes de lado o boca arriba:</strong> rellena el hueco del hombro sin empujar la cabeza hacia delante.</li>' +
+            '<li>Si duermes boca abajo, elige la medida más ancha y colócala baja: notarás menos tensión cervical.</li>' +
           '</ul>'
         },
         {
-          title: 'Beneficios',
+          title: 'Beneficios principales',
           html: '<ul>' +
-            '<li>✓ Alivia la presión en cabeza y cuello</li>' +
-            '<li>✓ Alineación espinal perfecta</li>' +
-            '<li>✓ Transpirabilidad máxima</li>' +
-            '<li>✓ Hipoalergénica (apta para pieles sensibles)</li>' +
-            '<li>✓ Funda extraíble y lavable</li>' +
+            '<li>Alivia la presión en cuello y hombros desde la primera noche.</li>' +
+            '<li>Mantiene la alineación cervical y reduce los despertares por mala postura.</li>' +
+            '<li>Transpirable: menos calor acumulado bajo la cabeza.</li>' +
+            '<li>Higiénica: funda lavable y tratamiento antiácaros.</li>' +
+            '<li>Sin deformaciones: la viscoelástica de 50 kg/m³ no se apelmaza.</li>' +
           '</ul>'
         },
         {
-          title: 'Envío y cuidados',
+          title: 'Envío, prueba y cuidados',
           html: '<ul>' +
             '<li>Envío gratuito a toda España peninsular en 3–5 días laborables.</li>' +
-            '<li>Funda lavable a máquina a 30°C.</li>' +
-            '<li>No lavar en seco. Secar al aire.</li>' +
-            '<li>30 noches de prueba: devolución gratuita si no estás satisfecho.</li>' +
-          '</ul>'
-        }
-      ]
-    },
-
-    'pack-descanso-completo': {
-      type: 'pack',
-      typeLabel: 'Pack de descanso',
-      name: 'Pack Descanso Completo',
-      desc: 'Tu descanso completo en un solo pack. Colchón Nuvora Aurea + Canapé abatible + Almohada Premium, todo lo que necesitas para descansar como mereces. Ahorra hasta el 15% comprando el combo.',
-      rating: '4,9',
-      reviews: 89,
-      images: ['https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=1200&q=80'],
-      isBulk: true,
-      details: [
-        {
-          title: 'Qué incluye el pack',
-          html: '<ul>' +
-            '<li>✓ <strong>Colchón Nuvora Aurea</strong> — a elegir medida (desde 228,78 €)</li>' +
-            '<li>✓ <strong>Canapé abatible Nuvora</strong> — a elegir color y medida (desde 449 €)</li>' +
-            '<li>✓ <strong>Almohada Premium Nuvora</strong> — a elegir tamaño (desde 49,99 €)</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Ventajas del pack',
-          html: '<ul>' +
-            '<li>Ahorra hasta el 15% comparado con compra individual.</li>' +
-            '<li>Envío único: todo llega coordinado en tu domicilio.</li>' +
-            '<li>Montaje del canapé incluido sin coste adicional.</li>' +
-            '<li>30 noches de prueba para el pack completo.</li>' +
-            '<li>5 años de garantía en colchón y canapé.</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Cómo funciona',
-          html: '<ul>' +
-            '<li>1. Elige la medida del colchón (15 opciones disponibles).</li>' +
-            '<li>2. Elige el color del canapé: Blanco, Cambrian o Wengué.</li>' +
-            '<li>3. Elige la medida del canapé (4 opciones).</li>' +
-            '<li>4. Elige el tamaño de almohada: Estándar o Jumbo.</li>' +
-            '<li>5. Mira el precio total con descuento.</li>' +
-            '<li>6. Añade el pack completo al carrito con un solo clic.</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Envío',
-          html: '<ul>' +
-            '<li>Envío gratuito a toda España peninsular en 5–7 días laborables.</li>' +
-            '<li>El colchón llega comprimido; se expande en 24 horas.</li>' +
-            '<li>El canapé llega listo para montar; montaje incluido.</li>' +
-            '<li>Seguimiento de envío en tiempo real.</li>' +
+            '<li><strong>30 noches de prueba:</strong> si no es la tuya, la recogemos y te devolvemos el importe.</li>' +
+            '<li>Airea el núcleo 24 h al recibirla. No lavar el núcleo: solo la funda, a 30 °C.</li>' +
+            '<li>Secar al aire, sin secadora ni lavado en seco.</li>' +
           '</ul>'
         }
       ]
     }
   };
+
+  /* ══════════════════════════════════════════════
+     CANAPÉ ABATIBLE NUVORA — un mismo modelo, tres acabados.
+     Se generan aquí para que las medidas, los precios y las
+     fichas técnicas no se puedan desincronizar entre colores.
+     ══════════════════════════════════════════════ */
+  (function () {
+    /* 30 medidas: 10 anchos × 3 fondos (180, 190 y 200 cm).
+       Los índices deben coincidir con CANAPE_MEDIDAS en
+       netlify/functions/_catalogo.js. */
+    var SIZES = [
+      { label: '90 × 180 cm',  price: 300 },
+      { label: '90 × 190 cm',  price: 300 },
+      { label: '90 × 200 cm',  price: 315 },
+      { label: '105 × 180 cm', price: 305 },
+      { label: '105 × 190 cm', price: 305 },
+      { label: '105 × 200 cm', price: 325 },
+      { label: '110 × 180 cm', price: 320 },
+      { label: '110 × 190 cm', price: 320 },
+      { label: '110 × 200 cm', price: 335 },
+      { label: '120 × 180 cm', price: 320 },
+      { label: '120 × 190 cm', price: 320 },
+      { label: '120 × 200 cm', price: 335 },
+      { label: '135 × 180 cm', price: 335 },
+      { label: '135 × 190 cm', price: 335 },
+      { label: '135 × 200 cm', price: 355 },
+      { label: '140 × 180 cm', price: 335 },
+      { label: '140 × 190 cm', price: 335 },
+      { label: '140 × 200 cm', price: 350 },
+      { label: '150 × 180 cm', price: 345 },
+      { label: '150 × 190 cm', price: 345 },
+      { label: '150 × 200 cm', price: 360 },
+      { label: '160 × 180 cm', price: 355 },
+      { label: '160 × 190 cm', price: 355 },
+      { label: '160 × 200 cm', price: 375 },
+      { label: '180 × 180 cm', price: 595 },
+      { label: '180 × 190 cm', price: 595 },
+      { label: '180 × 200 cm', price: 615 },
+      { label: '200 × 180 cm', price: 610 },
+      { label: '200 × 190 cm', price: 610 },
+      { label: '200 × 200 cm', price: 630 }
+    ];
+
+    var COLORS = [
+      {
+        id: 'canape-nuvora-blanco',
+        color: 'Blanco',
+        swatch: '#F2EDE4',
+        file: 'blanco',
+        claim: 'El acabado que agranda el dormitorio.',
+        desc: 'Gana hasta 1.000 litros de almacenaje sin que se note. El acabado blanco refleja la luz y hace que la habitación respire: ideal en dormitorios pequeños o de estilo nórdico. Estructura reforzada, apertura asistida con pistones de gas y tapa transpirable que cuida tu colchón.',
+        note: 'El blanco es nuestro acabado más vendido: combina con cualquier textil y no pasa de moda.'
+      },
+      {
+        id: 'canape-nuvora-cambrian',
+        color: 'Cambrian',
+        swatch: '#B6A78F',
+        file: 'cambrian',
+        claim: 'Madera cálida, sin el precio de la madera maciza.',
+        desc: 'El acabado Cambrian imita la veta del roble natural con un tono cálido y luminoso que encaja tanto en un dormitorio rústico como en uno contemporáneo. Debajo, hasta 1.000 litros de almacenaje y una apertura asistida que se abre con dos dedos.',
+        note: 'Cambrian es el término medio perfecto: aporta calidez sin oscurecer la habitación.'
+      },
+      {
+        id: 'canape-nuvora-wengue',
+        color: 'Wengué',
+        swatch: '#49362C',
+        file: 'wengue',
+        claim: 'Marrón oscuro con carácter.',
+        desc: 'Un marrón chocolate profundo que aporta peso visual y contrasta con la ropa de cama clara. El acabado wengué es el favorito en dormitorios amplios y de estilo clásico. Con la misma estructura reforzada, la misma apertura asistida y los mismos 1.000 litros de almacenaje.',
+        note: 'Wengué disimula el uso diario mejor que ningún otro acabado.'
+      }
+    ];
+
+    COLORS.forEach(function (c) {
+      CATALOG[c.id] = {
+        type: 'canape',
+        typeLabel: 'Canapé abatible',
+        name: 'Canapé abatible Nuvora – ' + c.color,
+        color: c.color,
+        model: 'canape-nuvora',
+        desc: c.desc,
+        images: [
+          'images/canape-' + c.file + '.webp',
+          'images/canape-' + c.file + '-detalle.webp'
+        ],
+        compare: false,
+        sizes: SIZES.slice(),
+        /* 30 medidas son demasiadas para pastillas: desplegable */
+        sizeUi: 'select',
+        defaultSize: 19, /* 150 × 190 cm */
+        variants: COLORS.map(function (v) {
+          return { id: v.id, label: v.color, swatch: v.swatch };
+        }),
+        details: [
+          {
+            title: 'Características principales',
+            html: '<ul>' +
+              '<li><strong>Hasta 1.000 litros de almacenaje</strong> bajo la cama: la ropa de temporada deja de ocupar armario.</li>' +
+              '<li><strong>Apertura asistida</strong> con dos pistones de gas: se levanta con una mano y se queda arriba solo.</li>' +
+              '<li><strong>Tapa 3D transpirable</strong> tapizada: deja pasar el aire y alarga la vida de tu colchón.</li>' +
+              '<li><strong>Estructura reforzada</strong> con travesaños de acero y refuerzo central: nada de crujidos.</li>' +
+              '<li><strong>Acabado ' + c.color + '</strong> con canto ABS termosellado, resistente a golpes y humedad.</li>' +
+              '<li>Fondo de melamina hidrófuga forrado: la ropa guardada no coge olor.</li>' +
+            '</ul>'
+          },
+          {
+            title: 'Materiales y acabado',
+            html: '<ul>' +
+              '<li><strong>Cuerpo:</strong> melamina hidrófuga de 16 mm en acabado ' + c.color + '.</li>' +
+              '<li><strong>Cantos:</strong> ABS termosellado de 1 mm en todo el perímetro.</li>' +
+              '<li><strong>Herrajes:</strong> acero lacado con doble pistón de gas por lateral.</li>' +
+              '<li><strong>Tapa:</strong> tablero tapizado en tejido 3D transpirable gris perla.</li>' +
+              '<li><strong>Patas:</strong> 4 patas de 8 cm con base antideslizante (incluidas).</li>' +
+              '<li>' + c.note + '</li>' +
+            '</ul>'
+          },
+          {
+            title: 'Medidas disponibles',
+            html: '<ul>' +
+              SIZES.map(function (s) {
+                return '<li>' + s.label + ' — ' + s.price.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €</li>';
+              }).join('') +
+              '<li>Altura del cuerpo: 34 cm · Altura total con patas: 42 cm.</li>' +
+              '<li>Profundidad útil de almacenaje: 26 cm.</li>' +
+            '</ul>'
+          },
+          {
+            title: 'Envío y entrega',
+            html: '<ul>' +
+              '<li><strong>Envío gratuito</strong> a toda España peninsular en 5–7 días laborables.</li>' +
+              '<li>Te avisamos por teléfono para acordar el día y la franja horaria de entrega.</li>' +
+              '<li>Necesitas un hueco de acceso de al menos 80 cm de ancho.</li>' +
+              '<li>Devolución gratuita durante los primeros 30 días.</li>' +
+            '</ul>'
+          },
+          {
+            title: 'Garantía',
+            html: '<ul>' +
+              '<li><strong>5 años</strong> de garantía en estructura y mecanismo de elevación.</li>' +
+              '<li><strong>2 años</strong> en tapizado y acabados frente a defectos de fabricación.</li>' +
+              '<li>Repuestos de pistones y herrajes disponibles de por vida.</li>' +
+            '</ul>'
+          },
+          {
+            title: 'Combina con tu colchón',
+            html: '<ul>' +
+              '<li>Elige el canapé en la misma medida que tu colchón: si tu colchón es de 150 × 190 cm, tu canapé también.</li>' +
+              '<li>¿Aún no tienes colchón? Mira el <a href="producto.html?m=aurea">Nuvora Aurea</a> o llévate los dos en un <a href="packs.html">pack de descanso</a> y ahorra un 12 %.</li>' +
+            '</ul>'
+          }
+        ]
+      };
+    });
+  })();
+
+
+  /* El configurador de packs (js/packs.js) lee el catálogo desde aquí */
+  window.NuvoraCatalog = CATALOG;
 
   function formatPrice(n) {
     return n.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
@@ -620,6 +527,19 @@ document.addEventListener('DOMContentLoaded', function () {
   function storePrice(n) {
     return n / (1 - STORE_DISCOUNT);
   }
+
+  /* ── Pack de descanso ──
+     Un pedido con colchón + canapé + almohada lleva un −12 % automático.
+     No es acumulable con el cupón: se aplica el mayor de los dos.
+     El servidor repite este mismo cálculo en netlify/functions/_catalogo.js;
+     si cambias el porcentaje aquí, cámbialo también allí. */
+  var PACK_DISCOUNT = 0.12;
+  function isPackOrder(lines) {
+    var t = {};
+    lines.forEach(function (l) { t[l.type] = true; });
+    return !!(t.colchon && t.canape && t.almohada);
+  }
+  window.NuvoraPack = { rate: PACK_DISCOUNT, isPack: isPackOrder };
 
   /* Escapa texto antes de insertarlo como HTML (defensa frente a datos manipulados en localStorage) */
   function esc(s) {
@@ -638,7 +558,10 @@ document.addEventListener('DOMContentLoaded', function () {
       if (start === null) start = t;
       var p = Math.min((t - start) / dur, 1);
       var eased = 1 - Math.pow(1 - p, 3); /* easeOutCubic */
-      onStep(Math.round(from + (to - from) * eased));
+      /* Durante la cuenta se redondea (queda más limpio), pero el último
+         fotograma debe ser el importe exacto: si no, 205,34 € acaba
+         mostrándose como 205,00 €. */
+      onStep(p < 1 ? Math.round(from + (to - from) * eased) : to);
       if (p < 1) requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);
@@ -659,8 +582,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var id = getParam('m');
     var product = CATALOG[id];
 
-    /* Producto inexistente → volver al catálogo */
-    if (!product) {
+    /* Producto inexistente, o categoría desactivada temporalmente
+       (hidden: true → Complementos), → volver al catálogo */
+    if (!product || product.hidden) {
       window.location.replace('colchones.html');
       return;
     }
@@ -715,12 +639,14 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    var catalogPage  = product.type === 'canape' ? 'canapes.html' : 'colchones.html';
-    var catalogLabel = product.type === 'canape' ? 'Canapés' : 'Colchones';
-    if (product.type === 'accesorio') {
-      catalogPage = 'complementos.html';
-      catalogLabel = 'Complementos';
-    }
+    var CATEGORY = {
+      colchon:  { page: 'colchones.html', label: 'Colchones' },
+      canape:   { page: 'canapes.html',   label: 'Canapés' },
+      almohada: { page: 'almohadas.html', label: 'Almohadas' }
+    };
+    var cat = CATEGORY[product.type] || CATEGORY.colchon;
+    var catalogPage  = cat.page;
+    var catalogLabel = cat.label;
     var selectedSize = product.defaultSize || 0;
 
     document.title = product.name + ' | Nuvora Descanso';
@@ -815,10 +741,10 @@ document.addEventListener('DOMContentLoaded', function () {
       /* Coste por noche durante la garantía: reencuadra el precio */
       var perEl = document.getElementById('pdpPerNight');
       if (perEl) {
-        if (product.gift) {
-          perEl.innerHTML = '<strong>Gratis</strong> con la compra de cualquier colchón';
-        } else if (product.type === 'accesorio') {
-          perEl.innerHTML = 'El dúo perfecto con el <strong>Mouth Tape</strong>: nariz abierta, boca cerrada';
+        if (product.type === 'almohada') {
+          perEl.innerHTML = 'Con <strong>30 noches de prueba</strong>: si no es la tuya, la recogemos gratis';
+        } else if (product.type === 'canape') {
+          perEl.innerHTML = 'Hasta <strong>1.000 litros de almacenaje</strong> bajo la cama';
         } else {
           var years = 5;
           var perNight = (price / (years * 365)).toFixed(2).replace('.', ',');
@@ -831,22 +757,65 @@ document.addEventListener('DOMContentLoaded', function () {
       if (bbPrice) bbPrice.textContent = formatPrice(price);
     }
 
-    product.sizes.forEach(function (s, i) {
-      var b = document.createElement('button');
-      b.className = 'size-pill' + (i === selectedSize ? ' is-active' : '');
-      b.textContent = s.label;
-      b.addEventListener('click', function () {
-        selectedSize = i;
-        sizesEl.querySelectorAll('.size-pill').forEach(function (p) { p.classList.remove('is-active'); });
-        b.classList.add('is-active');
-        /* "Pop" de la pastilla elegida */
-        b.classList.remove('is-pop');
-        void b.offsetWidth; /* reinicia la animación */
-        b.classList.add('is-pop');
+    /* — Variantes de color: el mismo modelo en otros acabados —
+       Al elegir otra muestra se abre su ficha conservando la medida. */
+    (function () {
+      var wrap = document.getElementById('pdpVariants');
+      if (!wrap || !product.variants || product.variants.length < 2) return;
+      wrap.hidden = false;
+      var nameEl = document.getElementById('pdpVariantName');
+      if (nameEl) nameEl.textContent = product.color || '';
+      var box = document.getElementById('pdpSwatches');
+      product.variants.forEach(function (v) {
+        var current = v.id === id;
+        var el = document.createElement(current ? 'span' : 'a');
+        el.className = 'swatch' + (current ? ' is-active' : '');
+        if (!current) el.setAttribute('href', 'producto.html?m=' + encodeURIComponent(v.id));
+        el.setAttribute('title', v.label);
+        el.setAttribute('aria-label', 'Acabado ' + v.label);
+        if (current) el.setAttribute('aria-current', 'true');
+        el.innerHTML = '<span class="swatch__dot" style="background:' + v.swatch + '"></span>' +
+                       '<span class="swatch__label">' + esc(v.label) + '</span>';
+        box.appendChild(el);
+      });
+    })();
+
+    if (product.sizeUi === 'select') {
+      /* Catálogos largos (el canapé tiene 30 medidas): un desplegable
+         ocupa menos y se maneja mejor en móvil que 30 pastillas. */
+      var sel = document.createElement('select');
+      sel.className = 'size-select';
+      sel.setAttribute('aria-label', 'Medida');
+      product.sizes.forEach(function (s, i) {
+        var opt = document.createElement('option');
+        opt.value = String(i);
+        opt.textContent = s.label + ' · ' + formatPrice(s.price);
+        if (i === selectedSize) opt.selected = true;
+        sel.appendChild(opt);
+      });
+      sel.addEventListener('change', function () {
+        selectedSize = parseInt(sel.value, 10) || 0;
         renderPrice(true);
       });
-      sizesEl.appendChild(b);
-    });
+      sizesEl.appendChild(sel);
+    } else {
+      product.sizes.forEach(function (s, i) {
+        var b = document.createElement('button');
+        b.className = 'size-pill' + (i === selectedSize ? ' is-active' : '');
+        b.textContent = s.label;
+        b.addEventListener('click', function () {
+          selectedSize = i;
+          sizesEl.querySelectorAll('.size-pill').forEach(function (p) { p.classList.remove('is-active'); });
+          b.classList.add('is-active');
+          /* "Pop" de la pastilla elegida */
+          b.classList.remove('is-pop');
+          void b.offsetWidth; /* reinicia la animación */
+          b.classList.add('is-pop');
+          renderPrice(true);
+        });
+        sizesEl.appendChild(b);
+      });
+    }
     renderPrice();
 
     /* — Comprar ahora → checkout directo — */
@@ -889,21 +858,20 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    /* — Solo colchones: regalo Mouth Tape + enlace al comparador — */
-    if (product.type === 'colchon') {
+    /* — Colchón, canapé y almohada: aviso de ahorro con el pack — */
+    if (product.type === 'colchon' || product.type === 'canape' || product.type === 'almohada') {
       var buyWrap = document.querySelector('.pdp__buy');
       if (buyWrap) {
-        var gift = document.createElement('div');
-        gift.className = 'pdp__gift';
-        gift.innerHTML =
+        var packNote = document.createElement('div');
+        packNote.className = 'pdp__gift';
+        packNote.innerHTML =
           '<svg class="pdp__gift-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' +
-            '<rect x="3" y="8" width="18" height="4"/><rect x="5" y="12" width="14" height="9"/>' +
-            '<path d="M12 8v13M12 8c0-2.2-1.8-4-4-4-1.5 0-2.5 1-2.5 2C5.5 7.2 7.5 8 12 8zm0 0c0-2.2 1.8-4 4-4 1.5 0 2.5 1 2.5 2 0 1.2-2 2-6.5 2z"/>' +
+            '<path d="M21 8H3v12h18zM3 8l2-4h14l2 4M12 4v16"/>' +
           '</svg>' +
-          '<span class="pdp__gift-text"><strong>De regalo con tu colchón:</strong> ' +
-          '<a href="producto.html?m=mouth-tape">Mouth Tape Nuvora</a> (30 tiras), valorado en 10 €. ' +
-          'Respira por la nariz, ronca menos. Se añade solo a tu pedido.</span>';
-        buyWrap.parentNode.insertBefore(gift, buyWrap.nextSibling);
+          '<span class="pdp__gift-text"><strong>Combina y ahorra un 12 %:</strong> ' +
+          'llévate este producto dentro de un <a href="packs.html">pack de descanso</a> ' +
+          '(colchón + canapé + almohada) y paga menos que comprándolos por separado.</span>';
+        buyWrap.parentNode.insertBefore(packNote, buyWrap.nextSibling);
       }
     }
 
@@ -930,6 +898,20 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       var t3 = document.getElementById('trustYears');
       if (t3) t3.querySelector('strong').textContent = '5 años';
+    }
+
+    /* — Journey: almohadas — */
+    if (product.type === 'almohada') {
+      var pj2 = document.getElementById('journeyStep2When');
+      if (pj2) pj2.textContent = 'Días 3–5';
+      var pj4 = document.getElementById('journeyStep4');
+      if (pj4) {
+        pj4.querySelector('.journey__when').textContent = 'Cada semana';
+        pj4.querySelector('.journey__what').textContent = 'Funda lavable';
+        pj4.querySelector('.journey__how').textContent  = 'Desenfunda con la cremallera y lávala a 30 °C. El núcleo, ni tocarlo.';
+      }
+      var pt3 = document.getElementById('trustYears');
+      if (pt3) pt3.querySelector('strong').textContent = '2 años';
     }
 
     /* — Adaptación para accesorios (Mouth Tape) — */
@@ -1415,7 +1397,6 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    var hasColchon = lines.some(function (l) { return l.type === 'colchon'; });
     var subtotal = lines.reduce(function (a, l) { return a + l.price * l.qty; }, 0);
 
     /* — Pintar resumen — */
@@ -1433,30 +1414,48 @@ document.addEventListener('DOMContentLoaded', function () {
           '<span class="chk-item__price">' + formatPrice(l.price * l.qty) + '</span>' +
         '</div>';
     });
-    if (hasColchon && CATALOG['mouth-tape']) {
+    /* Pack de descanso: el pedido lleva colchón + canapé + almohada.
+       El mismo cálculo se repite en el servidor (netlify/functions/_catalogo.js). */
+    var packOn = isPackOrder(lines);
+    if (packOn) {
       itemsHtml +=
-        '<div class="chk-item chk-item--gift">' +
-          '<div class="chk-item__img"><img src="' + CATALOG['mouth-tape'].images[0] + '" alt="Mouth Tape Nuvora"></div>' +
+        '<div class="chk-item chk-item--pack">' +
           '<div>' +
-            '<div class="chk-item__name">Mouth Tape Nuvora · 30 tiras</div>' +
-            '<div class="chk-item__meta">Regalo por tu colchón · Valorado en 10 €</div>' +
+            '<div class="chk-item__name">Pack de descanso completo</div>' +
+            '<div class="chk-item__meta">Colchón + canapé + almohada en el mismo pedido</div>' +
           '</div>' +
-          '<span class="chk-gift-price">GRATIS</span>' +
+          '<span class="chk-gift-price">−' + Math.round(PACK_DISCOUNT * 100) + ' %</span>' +
         '</div>';
     }
     itemsBox.innerHTML = itemsHtml;
 
-    /* — Cupón de descuento (NUVORA10 = −10 %) — */
+    /* — Descuentos: pack automático y cupón NUVORA10, no acumulables — */
     var couponApplied = false;
     function tt(k, fb) { return (window.NuvoraI18n && window.NuvoraI18n.t(k)) || fb; }
     function renderTotals() {
-      var discount = couponApplied ? Math.round(subtotal * 0.10) : 0;
+      var packAmount   = packOn ? subtotal * PACK_DISCOUNT : 0;
+      var couponAmount = couponApplied ? subtotal * 0.10 : 0;
+      /* Se aplica el mayor de los dos, nunca los dos a la vez */
+      var discount = Math.round(Math.max(packAmount, couponAmount) * 100) / 100;
       var total = subtotal - discount;
       document.getElementById('chkSubtotal').textContent = formatPrice(subtotal);
       var dRow = document.getElementById('chkDiscountRow');
       if (dRow) {
-        dRow.hidden = !couponApplied;
-        if (couponApplied) document.getElementById('chkDiscount').textContent = '−' + formatPrice(discount);
+        dRow.hidden = discount <= 0;
+        if (discount > 0) {
+          var label = dRow.querySelector('span');
+          if (label) {
+            if (packAmount >= couponAmount) {
+              /* Etiqueta fija: no debe reescribirla el motor de idiomas */
+              label.removeAttribute('data-i18n');
+              label.textContent = 'Descuento pack (−' + Math.round(PACK_DISCOUNT * 100) + ' %)';
+            } else {
+              label.setAttribute('data-i18n', 'chk.discount');
+              label.textContent = tt('chk.discount', 'Descuento');
+            }
+          }
+          document.getElementById('chkDiscount').textContent = '−' + formatPrice(discount);
+        }
       }
       document.getElementById('chkTotal').textContent = formatPrice(total);
     }
@@ -1470,7 +1469,9 @@ document.addEventListener('DOMContentLoaded', function () {
         var code = couponInput.value.trim().toUpperCase();
         if (code === 'NUVORA10') {
           couponApplied = true;
-          couponMsg.textContent = tt('chk.coupon_ok', 'Código NUVORA10 aplicado: −10 %');
+          couponMsg.textContent = packOn
+            ? 'Tu pedido ya tiene el −' + Math.round(PACK_DISCOUNT * 100) + ' % de pack, que es mayor. Los descuentos no se acumulan.'
+            : tt('chk.coupon_ok', 'Código NUVORA10 aplicado: −10 %');
           couponMsg.className = 'chk-coupon__msg is-ok';
           couponInput.disabled = true;
           couponBtn.disabled = true;

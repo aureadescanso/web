@@ -57,12 +57,14 @@
       'cart.checkout': 'Tramitar pedido',
       'cart.continue': 'Seguir comprando',
       'cart.remove': 'Eliminar',
-      'cart.gift': 'Regalo por tu colchón · Valorado en 10 €'
+      'cart.pack': 'Pack de descanso completo',
+      'cart.packsub': 'Colchón + canapé + almohada: −12 % al tramitar el pedido'
     },
     en: {
       'nav.colchones': 'Mattresses',
       'nav.canapes': 'Storage beds',
-      'nav.complementos': 'Accessories',
+      'nav.almohadas': 'Pillows',
+      'nav.packs': 'Sleep bundles',
       'nav.blog': 'Blog',
       'nav.contacto': 'Contact',
       'nav.inicio': 'Home',
@@ -94,12 +96,14 @@
       'cart.checkout': 'Checkout',
       'cart.continue': 'Continue shopping',
       'cart.remove': 'Remove',
-      'cart.gift': 'Gift with your mattress · Worth €10'
+      'cart.pack': 'Complete sleep bundle',
+      'cart.packsub': 'Mattress + storage bed + pillow: −12% at checkout'
     },
     it: {
       'nav.colchones': 'Materassi',
       'nav.canapes': 'Sommier contenitore',
-      'nav.complementos': 'Accessori',
+      'nav.almohadas': 'Cuscini',
+      'nav.packs': 'Pacchetti riposo',
       'nav.blog': 'Blog',
       'nav.contacto': 'Contatti',
       'nav.inicio': 'Home',
@@ -109,7 +113,7 @@
       'hero.cta1': 'Scopri i nostri materassi',
       'hero.cta2': 'Vedi i sommier',
       'hero.t1': 'Spedizione gratis 3–5 giorni',
-      'hero.t2': '100 notti di prova',
+      'hero.t2': '30 notti di prova',
       'hero.t3': '5 anni di garanzia',
       'home.products': 'I nostri materassi',
       'home.allsizes': 'Vedi tutti i dettagli e le misure',
@@ -118,7 +122,7 @@
       'footer.cookies': 'Cookie',
       'footer.terms': 'Condizioni di vendita',
       'footer.contact': 'Contatti',
-      'footer.claim': 'Riposo progettato e prodotto in Spagna. 100 notti di prova e 5 anni di garanzia.',
+      'footer.claim': 'Riposo progettato e prodotto in Spagna. 30 notti di prova e 5 anni di garanzia.',
       'footer.shop': 'Acquista',
       'footer.help': 'Assistenza',
       'footer.guides': 'Guide al riposo',
@@ -131,12 +135,14 @@
       'cart.checkout': 'Procedi all’ordine',
       'cart.continue': 'Continua lo shopping',
       'cart.remove': 'Rimuovi',
-      'cart.gift': 'Omaggio con il materasso · Valore 10 €'
+      'cart.pack': 'Pacchetto riposo completo',
+      'cart.packsub': 'Materasso + sommier + cuscino: −12 % alla cassa'
     },
     fr: {
       'nav.colchones': 'Matelas',
       'nav.canapes': 'Sommiers coffre',
-      'nav.complementos': 'Accessoires',
+      'nav.almohadas': 'Oreillers',
+      'nav.packs': 'Packs sommeil',
       'nav.blog': 'Blog',
       'nav.contacto': 'Contact',
       'nav.inicio': 'Accueil',
@@ -146,7 +152,7 @@
       'hero.cta1': 'Découvrez nos matelas',
       'hero.cta2': 'Voir les sommiers',
       'hero.t1': 'Livraison gratuite 3–5 jours',
-      'hero.t2': '100 nuits d’essai',
+      'hero.t2': '30 nuits d’essai',
       'hero.t3': '5 ans de garantie',
       'home.products': 'Nos matelas',
       'home.allsizes': 'Voir tous les détails et tailles',
@@ -155,7 +161,7 @@
       'footer.cookies': 'Cookies',
       'footer.terms': 'Conditions de vente',
       'footer.contact': 'Contact',
-      'footer.claim': 'Un sommeil conçu et fabriqué en Espagne. 100 nuits d’essai et 5 ans de garantie.',
+      'footer.claim': 'Un sommeil conçu et fabriqué en Espagne. 30 nuits d’essai et 5 ans de garantie.',
       'footer.shop': 'Acheter',
       'footer.help': 'Aide',
       'footer.guides': 'Guides du sommeil',
@@ -168,12 +174,14 @@
       'cart.checkout': 'Commander',
       'cart.continue': 'Continuer mes achats',
       'cart.remove': 'Retirer',
-      'cart.gift': 'Cadeau avec votre matelas · Valeur 10 €'
+      'cart.pack': 'Pack sommeil complet',
+      'cart.packsub': 'Matelas + sommier coffre + oreiller : −12 % au paiement'
     },
     de: {
       'nav.colchones': 'Matratzen',
       'nav.canapes': 'Bettkästen',
-      'nav.complementos': 'Zubehör',
+      'nav.almohadas': 'Kissen',
+      'nav.packs': 'Schlaf-Sets',
       'nav.blog': 'Blog',
       'nav.contacto': 'Kontakt',
       'nav.inicio': 'Start',
@@ -183,7 +191,7 @@
       'hero.cta1': 'Entdecke unsere Matratzen',
       'hero.cta2': 'Bettkästen ansehen',
       'hero.t1': 'Gratisversand 3–5 Tage',
-      'hero.t2': '100 Nächte Probeschlafen',
+      'hero.t2': '30 Nächte Probeschlafen',
       'hero.t3': '5 Jahre Garantie',
       'home.products': 'Unsere Matratzen',
       'home.allsizes': 'Alle Details und Größen ansehen',
@@ -192,7 +200,7 @@
       'footer.cookies': 'Cookies',
       'footer.terms': 'Verkaufsbedingungen',
       'footer.contact': 'Kontakt',
-      'footer.claim': 'Schlafkomfort, entworfen und gefertigt in Spanien. 100 Nächte Probeschlafen und 5 Jahre Garantie.',
+      'footer.claim': 'Schlafkomfort, entworfen und gefertigt in Spanien. 30 Nächte Probeschlafen und 5 Jahre Garantie.',
       'footer.shop': 'Einkaufen',
       'footer.help': 'Hilfe',
       'footer.guides': 'Schlaf-Ratgeber',
@@ -205,7 +213,8 @@
       'cart.checkout': 'Zur Kasse',
       'cart.continue': 'Weiter einkaufen',
       'cart.remove': 'Entfernen',
-      'cart.gift': 'Geschenk zur Matratze · Wert 10 €'
+      'cart.pack': 'Komplettes Schlaf-Set',
+      'cart.packsub': 'Matratze + Bettkasten + Kissen: −12 % an der Kasse'
     }
   };
 
@@ -302,7 +311,7 @@
       'seals.eyebrow': 'La promessa Nuvora',
       'seals.s1t': 'Fatto in Spagna', 'seals.s1d': 'Produzione propria, senza intermediari',
       'seals.s2t': 'Tessuti OEKO-TEX', 'seals.s2d': 'Privi di sostanze nocive',
-      'seals.s3t': '100 notti di prova', 'seals.s3d': 'Reso gratuito se non ti convince',
+      'seals.s3t': '30 notti di prova', 'seals.s3d': 'Reso gratuito se non ti convince',
       'seals.s4t': '5 anni di garanzia', 'seals.s4d': 'Assistenza diretta dalla fabbrica',
       'cta.title': 'Il tuo miglior riposo<br>inizia qui.', 'cta.btn': 'Vedi i materassi',
       'bh.label': 'Blog del riposo', 'bh.title': 'Impara a dormire meglio',
@@ -335,7 +344,7 @@
       'seals.eyebrow': 'La promesse Nuvora',
       'seals.s1t': 'Fabriqué en Espagne', 'seals.s1d': 'Production propre, sans intermédiaires',
       'seals.s2t': 'Tissus OEKO-TEX', 'seals.s2d': 'Sans substances nocives',
-      'seals.s3t': '100 nuits d’essai', 'seals.s3d': 'Retour gratuit si non convaincu',
+      'seals.s3t': '30 nuits d’essai', 'seals.s3d': 'Retour gratuit si non convaincu',
       'seals.s4t': '5 ans de garantie', 'seals.s4d': 'Assistance directe de l’usine',
       'cta.title': 'Votre meilleur sommeil<br>commence ici.', 'cta.btn': 'Voir les matelas',
       'bh.label': 'Blog du sommeil', 'bh.title': 'Apprenez à mieux dormir',
@@ -368,7 +377,7 @@
       'seals.eyebrow': 'Das Nuvora-Versprechen',
       'seals.s1t': 'Hergestellt in Spanien', 'seals.s1d': 'Eigene Produktion, ohne Zwischenhändler',
       'seals.s2t': 'OEKO-TEX-Stoffe', 'seals.s2d': 'Frei von Schadstoffen',
-      'seals.s3t': '100 Nächte Probeschlafen', 'seals.s3d': 'Kostenlose Rückgabe, wenn sie nicht überzeugt',
+      'seals.s3t': '30 Nächte Probeschlafen', 'seals.s3d': 'Kostenlose Rückgabe, wenn sie nicht überzeugt',
       'seals.s4t': '5 Jahre Garantie', 'seals.s4d': 'Direkter Support ab Werk',
       'cta.title': 'Dein bester Schlaf<br>beginnt hier.', 'cta.btn': 'Matratzen ansehen',
       'bh.label': 'Schlaf-Blog', 'bh.title': 'Lerne, besser zu schlafen',
@@ -380,9 +389,9 @@
   /* ── Banda superior + cupón de checkout ── */
   var EXTRA = {
     es: {
-      'ann.1': '−10 % en tu primera compra con el código NUVORA10',
-      'ann.2': 'Envío gratuito siempre, sin pedido mínimo',
-      'ann.3': 'Mouth Tape de regalo con cada colchón',
+      'ann.1': 'Envío gratis en todos nuestros productos',
+      'ann.2': '10 % de descuento en tu primera compra',
+      'ann.3': 'Directo de fábrica a tu casa',
       'chk.coupon_q': '¿Tienes un código de descuento?',
       'chk.coupon_ph': 'Código',
       'chk.coupon_btn': 'Aplicar',
@@ -399,9 +408,9 @@
       'soon.ok': '¡Estás en la lista! Te avisaremos el día del lanzamiento.'
     },
     en: {
-      'ann.1': '−10% off your first order with code NUVORA10',
-      'ann.2': 'Free shipping always, no minimum order',
-      'ann.3': 'Free Mouth Tape with every mattress',
+      'ann.1': 'Free shipping on every product',
+      'ann.2': '10% off your first order',
+      'ann.3': 'Straight from our factory to your home',
       'chk.coupon_q': 'Have a discount code?',
       'chk.coupon_ph': 'Code',
       'chk.coupon_btn': 'Apply',
@@ -418,9 +427,9 @@
       'soon.ok': 'You are on the list! We will notify you on launch day.'
     },
     it: {
-      'ann.1': '−10% sul tuo primo ordine con il codice NUVORA10',
-      'ann.2': 'Spedizione sempre gratuita, senza minimo d’ordine',
-      'ann.3': 'Mouth Tape in omaggio con ogni materasso',
+      'ann.1': 'Spedizione gratuita su tutti i prodotti',
+      'ann.2': '10 % di sconto sul tuo primo ordine',
+      'ann.3': 'Direttamente dalla fabbrica a casa tua',
       'chk.coupon_q': 'Hai un codice sconto?',
       'chk.coupon_ph': 'Codice',
       'chk.coupon_btn': 'Applica',
@@ -437,9 +446,9 @@
       'soon.ok': 'Sei in lista! Ti avviseremo il giorno del lancio.'
     },
     fr: {
-      'ann.1': '−10 % sur votre première commande avec le code NUVORA10',
-      'ann.2': 'Livraison toujours gratuite, sans minimum',
-      'ann.3': 'Mouth Tape offert avec chaque matelas',
+      'ann.1': 'Livraison gratuite sur tous nos produits',
+      'ann.2': '10 % de remise sur votre première commande',
+      'ann.3': 'Directement de l’usine à votre domicile',
       'chk.coupon_q': 'Vous avez un code promo ?',
       'chk.coupon_ph': 'Code',
       'chk.coupon_btn': 'Appliquer',
@@ -456,9 +465,9 @@
       'soon.ok': 'Vous êtes sur la liste ! Nous vous préviendrons le jour du lancement.'
     },
     de: {
-      'ann.1': '−10 % auf deine erste Bestellung mit dem Code NUVORA10',
-      'ann.2': 'Immer Gratisversand, ohne Mindestbestellwert',
-      'ann.3': 'Gratis Mouth Tape zu jeder Matratze',
+      'ann.1': 'Gratisversand für alle Produkte',
+      'ann.2': '10 % Rabatt auf deine erste Bestellung',
+      'ann.3': 'Direkt ab Werk zu dir nach Hause',
       'chk.coupon_q': 'Hast du einen Rabattcode?',
       'chk.coupon_ph': 'Code',
       'chk.coupon_btn': 'Anwenden',

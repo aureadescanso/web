@@ -36,7 +36,7 @@ exports.handler = async function (event) {
 
   try {
     const datos = JSON.parse(event.body || '{}');
-    const { lineas, hayColchon, cupon, codigoCupon } = construirPedido(datos.items, datos.cupon);
+    const { lineas, hayPack, descuento, codigoCupon } = construirPedido(datos.items, datos.cupon);
 
     /* Origen de la web, para las URLs de vuelta */
     const origen = process.env.URL || process.env.DEPLOY_PRIME_URL ||
@@ -46,9 +46,9 @@ exports.handler = async function (event) {
     const line_items = lineas.map(function (l) {
       let precio = l.precio;
       let sufijo = '';
-      if (cupon) {
-        precio = precio * (1 - cupon.descuento);
-        sufijo = ' · ' + cupon.etiqueta;
+      if (descuento) {
+        precio = precio * (1 - descuento.descuento);
+        sufijo = ' · ' + descuento.etiqueta;
       }
       return {
         quantity: l.qty,
@@ -63,21 +63,6 @@ exports.handler = async function (event) {
         }
       };
     });
-
-    /* Regalo: Mouth Tape con cualquier colchón (a 0 €, para que se vea) */
-    if (hayColchon) {
-      line_items.push({
-        quantity: 1,
-        price_data: {
-          currency: 'eur',
-          unit_amount: 0,
-          product_data: {
-            name: 'Mouth Tape Nuvora · 30 tiras',
-            description: 'Regalo por tu colchón — valorado en 10 €'
-          }
-        }
-      });
-    }
 
     const session = await getStripe().checkout.sessions.create({
       mode: 'payment',
@@ -118,7 +103,8 @@ exports.handler = async function (event) {
         resumen: lineas.map(function (l) {
           return l.nombre + ' (' + l.medida + ') x' + l.qty;
         }).join(' | ').slice(0, 480),
-        regalo_mouth_tape: hayColchon ? 'si' : 'no'
+        pack_descanso: hayPack ? 'si' : 'no',
+        descuento_aplicado: descuento ? descuento.etiqueta : 'ninguno'
       },
 
       /* Factura automática con los datos fiscales del cliente */

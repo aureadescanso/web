@@ -15,52 +15,104 @@ const CATALOGO = {
     tipo: 'colchon',
     imagen: 'images/aurea-frontal.webp',
     medidas: [
-      { label: '75 × 190 cm', precio: 228.78 },
-      { label: '75 × 200 cm', precio: 240.22 },
-      { label: '80 × 190 cm', precio: 240.83 },
-      { label: '80 × 200 cm', precio: 252.88 },
-      { label: '90 × 190 cm', precio: 253.52 },
-      { label: '90 × 200 cm', precio: 266.20 },
-      { label: '105 × 190 cm', precio: 288.57 },
-      { label: '105 × 200 cm', precio: 303.01 },
-      { label: '110 × 190 cm', precio: 303.01 },
-      { label: '110 × 200 cm', precio: 318.15 },
-      { label: '120 × 190 cm', precio: 333.30 },
-      { label: '120 × 200 cm', precio: 349.96 },
-      { label: '135 × 190 cm', precio: 356.15 },
-      { label: '135 × 200 cm', precio: 373.96 },
-      { label: '140 × 190 cm', precio: 373.96 },
-      { label: '140 × 200 cm', precio: 392.65 },
-      { label: '150 × 190 cm', precio: 389.43 },
-      { label: '150 × 200 cm', precio: 408.91 },
-      { label: '160 × 190 cm', precio: 428.52 },
-      { label: '160 × 200 cm', precio: 449.96 },
-      { label: '180 × 190 cm', precio: 477.99 },
-      { label: '180 × 200 cm', precio: 492.78 },
-      { label: '200 × 190 cm', precio: 524.87 },
-      { label: '200 × 200 cm', precio: 541.10 }
+      { label: '75 × 190 cm', precio: 205.34 },
+      { label: '75 × 200 cm', precio: 215.61 },
+      { label: '80 × 190 cm', precio: 216.16 },
+      { label: '80 × 200 cm', precio: 226.97 },
+      { label: '90 × 190 cm', precio: 227.54 },
+      { label: '90 × 200 cm', precio: 238.93 },
+      { label: '105 × 190 cm', precio: 259.01 },
+      { label: '105 × 200 cm', precio: 271.96 },
+      { label: '110 × 190 cm', precio: 271.96 },
+      { label: '110 × 200 cm', precio: 285.55 },
+      { label: '120 × 190 cm', precio: 299.15 },
+      { label: '120 × 200 cm', precio: 314.11 },
+      { label: '135 × 190 cm', precio: 319.66 },
+      { label: '135 × 200 cm', precio: 335.64 },
+      { label: '140 × 190 cm', precio: 335.64 },
+      { label: '140 × 200 cm', precio: 352.42 },
+      { label: '150 × 190 cm', precio: 349.53 },
+      { label: '150 × 200 cm', precio: 367.02 },
+      { label: '160 × 190 cm', precio: 384.62 },
+      { label: '160 × 200 cm', precio: 403.86 },
+      { label: '180 × 190 cm', precio: 429.02 },
+      { label: '180 × 200 cm', precio: 442.29 },
+      { label: '200 × 190 cm', precio: 471.09 },
+      { label: '200 × 200 cm', precio: 485.66 }
     ]
   },
-  'mouth-tape': {
-    nombre: 'Mouth Tape Nuvora',
-    tipo: 'accesorio',
-    imagen: 'images/mouth-tape.webp',
-    medidas: [{ label: 'Caja · 30 tiras', precio: 10 }]
-  },
-  'tiras-nasales': {
-    nombre: 'Tiras Nasales Nuvora',
-    tipo: 'accesorio',
-    imagen: 'images/tiras-nasales.webp',
-    medidas: [{ label: 'Caja · 30 tiras', precio: 10 }]
+  'almohada-nuvora': {
+    nombre: 'Almohada viscoelástica Nuvora',
+    tipo: 'almohada',
+    imagen: 'images/almohada-nuvora.webp',
+    medidas: [
+      { label: '70 × 40 cm', precio: 44.90 },
+      { label: '90 × 40 cm', precio: 54.90 },
+      { label: '135 × 40 cm', precio: 64.90 },
+      { label: '150 × 40 cm', precio: 69.90 }
+    ]
   }
-  /* Canapés y Nuvora Serenity están en "Próximamente":
+  /* Nuvora Serenity sigue en "Próximamente" y los Complementos
+     (Mouth Tape, Tiras Nasales) están desactivados temporalmente:
      no se pueden comprar, por eso no aparecen aquí. */
 };
+
+/* Canapé abatible Nuvora: mismo modelo en tres acabados.
+   Las medidas y los índices deben coincidir con js/shop.js. */
+const CANAPE_MEDIDAS = [
+  { label: '90 × 180 cm', precio: 300 },
+  { label: '90 × 190 cm', precio: 300 },
+  { label: '90 × 200 cm', precio: 315 },
+  { label: '105 × 180 cm', precio: 305 },
+  { label: '105 × 190 cm', precio: 305 },
+  { label: '105 × 200 cm', precio: 325 },
+  { label: '110 × 180 cm', precio: 320 },
+  { label: '110 × 190 cm', precio: 320 },
+  { label: '110 × 200 cm', precio: 335 },
+  { label: '120 × 180 cm', precio: 320 },
+  { label: '120 × 190 cm', precio: 320 },
+  { label: '120 × 200 cm', precio: 335 },
+  { label: '135 × 180 cm', precio: 335 },
+  { label: '135 × 190 cm', precio: 335 },
+  { label: '135 × 200 cm', precio: 355 },
+  { label: '140 × 180 cm', precio: 335 },
+  { label: '140 × 190 cm', precio: 335 },
+  { label: '140 × 200 cm', precio: 350 },
+  { label: '150 × 180 cm', precio: 345 },
+  { label: '150 × 190 cm', precio: 345 },
+  { label: '150 × 200 cm', precio: 360 },
+  { label: '160 × 180 cm', precio: 355 },
+  { label: '160 × 190 cm', precio: 355 },
+  { label: '160 × 200 cm', precio: 375 },
+  { label: '180 × 180 cm', precio: 595 },
+  { label: '180 × 190 cm', precio: 595 },
+  { label: '180 × 200 cm', precio: 615 },
+  { label: '200 × 180 cm', precio: 610 },
+  { label: '200 × 190 cm', precio: 610 },
+  { label: '200 × 200 cm', precio: 630 }
+];
+[
+  ['canape-nuvora-blanco', 'Blanco', 'blanco'],
+  ['canape-nuvora-cambrian', 'Cambrian', 'cambrian'],
+  ['canape-nuvora-wengue', 'Wengué', 'wengue']
+].forEach(function ([id, color, archivo]) {
+  CATALOGO[id] = {
+    nombre: 'Canapé abatible Nuvora – ' + color,
+    tipo: 'canape',
+    imagen: 'images/canape-' + archivo + '.webp',
+    medidas: CANAPE_MEDIDAS.map(m => ({ ...m }))
+  };
+});
 
 /* Cupones válidos (se validan en el servidor, no en el navegador) */
 const CUPONES = {
   'NUVORA10': { descuento: 0.10, etiqueta: '−10 % (NUVORA10)' }
 };
+
+/* Pack de descanso: colchón + canapé + almohada en el mismo pedido
+   llevan un −12 % automático. No acumulable con cupón: se aplica el
+   mayor de los dos. Debe coincidir con PACK_DISCOUNT en js/shop.js. */
+const PACK = { descuento: 0.12, etiqueta: '−12 % (pack de descanso)' };
 
 /* Convierte a céntimos, que es como Stripe maneja los importes */
 function aCentimos(euros) {
@@ -78,7 +130,7 @@ function construirPedido(items, cupon) {
   }
 
   const lineas = [];
-  let hayColchon = false;
+  const tipos = new Set();
 
   items.forEach(function (it) {
     const prod = CATALOGO[String(it.id || '')];
@@ -92,7 +144,7 @@ function construirPedido(items, cupon) {
     if (qty < 1) qty = 1;
     if (qty > 10) qty = 10;
 
-    if (prod.tipo === 'colchon') hayColchon = true;
+    tipos.add(prod.tipo);
 
     lineas.push({
       id: it.id,
@@ -108,7 +160,21 @@ function construirPedido(items, cupon) {
   const codigo = String(cupon || '').trim().toUpperCase();
   const cup = CUPONES[codigo] || null;
 
-  return { lineas, hayColchon, cupon: cup, codigoCupon: cup ? codigo : null };
+  /* Pack automático: colchón + canapé + almohada en el mismo pedido */
+  const hayPack = tipos.has('colchon') && tipos.has('canape') && tipos.has('almohada');
+
+  /* No acumulables: gana el descuento mayor */
+  let descuento = null;
+  if (hayPack && (!cup || PACK.descuento >= cup.descuento)) descuento = PACK;
+  else if (cup) descuento = cup;
+
+  return {
+    lineas,
+    hayPack,
+    descuento,
+    cupon: cup,
+    codigoCupon: cup ? codigo : null
+  };
 }
 
-module.exports = { CATALOGO, CUPONES, aCentimos, construirPedido };
+module.exports = { CATALOGO, CUPONES, PACK, aCentimos, construirPedido };

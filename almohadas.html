@@ -2,13 +2,44 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Almohadas de descanso | Nuvora Descanso</title>
-  <meta name="description" content="Almohadas premium que se adaptan a tu cuerpo. Descanso perfecto para cabeza y cuello. Envío gratis, 30 noches de prueba.">
+  <title>Almohadas | Nuvora Descanso</title>
+  <meta name="description" content="Almohada viscoelástica Nuvora: firmeza media, funda técnica lavable y 4 medidas. Envío gratuito y 30 noches de prueba. Desde 44,90 €.">
   <link rel="canonical" href="https://nuvoradescanso.com/almohadas.html">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Nuvora Descanso">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:title" content="Almohadas | Nuvora Descanso">
+  <meta property="og:description" content="Almohada viscoelástica Nuvora: firmeza media, funda lavable y 4 medidas. Envío gratuito y 30 noches de prueba.">
+  <meta property="og:url" content="https://nuvoradescanso.com/almohadas.html">
+  <meta property="og:image" content="https://nuvoradescanso.com/images/almohada-nuvora.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Product",
+          "name": "Almohada viscoelástica Nuvora",
+          "url": "https://nuvoradescanso.com/producto.html?m=almohada-nuvora",
+          "image": "https://nuvoradescanso.com/images/almohada-nuvora.webp",
+          "description": "Almohada de viscoelástica perforada de 50 kg/m³, firmeza media y funda técnica desenfundable. Disponible en cuatro medidas.",
+          "brand": { "@type": "Brand", "name": "Nuvora Descanso" },
+          "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "44.90", "highPrice": "69.90", "availability": "https://schema.org/InStock" }
+        }
+      }
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/premium.css">
   <link rel="stylesheet" href="css/shop.css">
@@ -17,33 +48,38 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
+
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <div class="custom-cursor" id="customCursor" aria-hidden="true"></div>
 
-  <!-- HEADER -->
+  <!-- ========== HEADER ========== -->
+    <!-- Banda superior de anuncios -->
   <div class="announce" aria-label="Ofertas">
     <div class="announce__track">
-      <span class="announce__item" data-i18n="ann.1">−10 % en tu primera compra con el código NUVORA10</span>
+      <span class="announce__item" data-i18n="ann.1">Envío gratis en todos nuestros productos</span>
       <span class="announce__sep" aria-hidden="true">✦</span>
-      <span class="announce__item" data-i18n="ann.2">Envío gratuito siempre, sin pedido mínimo</span>
+      <span class="announce__item" data-i18n="ann.2">10 % de descuento en tu primera compra</span>
       <span class="announce__sep" aria-hidden="true">✦</span>
       <span class="announce__item" data-i18n="ann.3">Directo de fábrica a tu casa</span>
       <span class="announce__sep" aria-hidden="true">✦</span>
-      <span class="announce__item" data-i18n="ann.1">−10 % en tu primera compra con el código NUVORA10</span>
+      <span class="announce__item" data-i18n="ann.1">Envío gratis en todos nuestros productos</span>
+      <span class="announce__sep" aria-hidden="true">✦</span>
+      <span class="announce__item" data-i18n="ann.2">10 % de descuento en tu primera compra</span>
+      <span class="announce__sep" aria-hidden="true">✦</span>
+      <span class="announce__item" data-i18n="ann.3">Directo de fábrica a tu casa</span>
       <span class="announce__sep" aria-hidden="true">✦</span>
     </div>
   </div>
-
   <header class="header" id="header">
     <div class="header__inner">
       <a href="index.html" class="header__logo">
-        <img src="images/nuvoradescanso.webp" alt="Nuvora Descanso">
+        <img src="images/nuvoradescanso.webp" alt="Nuvora Descanso" class="header__logo-img">
       </a>
       <nav class="header__nav" id="nav">
         <ul class="header__menu">
           <li><a href="colchones.html" class="header__link" data-i18n="nav.colchones">Colchones</a></li>
           <li><a href="canapes.html" class="header__link" data-i18n="nav.canapes">Canapés</a></li>
-          <li><a href="almohadas.html" class="header__link" data-i18n="nav.almohadas">Almohadas</a></li>
+          <li><a href="almohadas.html" class="header__link is-active" data-i18n="nav.almohadas">Almohadas</a></li>
           <li><a href="packs.html" class="header__link" data-i18n="nav.packs">Packs de descanso</a></li>
           <li><a href="blog.html" class="header__link" data-i18n="nav.blog">Blog</a></li>
           <li><a href="#footer" class="header__link" data-i18n="nav.contacto">Contacto</a></li>
@@ -60,78 +96,134 @@
         <span></span>
       </button>
     </div>
-  </header>
+    </header>
 
   <div class="mobile-menu" id="mobileMenu">
-    <nav class="mobile-menu__nav">
-      <a href="colchones.html" class="mobile-menu__link" data-i18n="nav.colchones">Colchones</a>
-      <a href="canapes.html" class="mobile-menu__link" data-i18n="nav.canapes">Canapés</a>
-      <a href="almohadas.html" class="mobile-menu__link" data-i18n="nav.almohadas">Almohadas</a>
-      <a href="packs.html" class="mobile-menu__link" data-i18n="nav.packs">Packs de descanso</a>
-      <a href="blog.html" class="mobile-menu__link" data-i18n="nav.blog">Blog</a>
-      <a href="#footer" class="mobile-menu__link" data-i18n="nav.contacto">Contacto</a>
-      <a href="colchones.html" class="mobile-menu__cta" data-i18n="nav.comprar">Comprar</a>
-      <div class="langpick langpick--mobile" data-langpick></div>
+      <nav class="mobile-menu__nav">
+        <a href="index.html" class="mobile-menu__link" data-i18n="nav.inicio">Inicio</a>
+        <a href="colchones.html" class="mobile-menu__link" data-i18n="nav.colchones">Colchones</a>
+        <a href="canapes.html" class="mobile-menu__link" data-i18n="nav.canapes">Canapés</a>
+        <a href="almohadas.html" class="mobile-menu__link" data-i18n="nav.almohadas">Almohadas</a>
+        <a href="packs.html" class="mobile-menu__link" data-i18n="nav.packs">Packs de descanso</a>
+        <a href="blog.html" class="mobile-menu__link" data-i18n="nav.blog">Blog</a>
+        <a href="#footer" class="mobile-menu__link" data-i18n="nav.contacto">Contacto</a>
+        <a href="colchones.html" class="mobile-menu__cta" data-i18n="nav.comprar">Comprar</a>
+        <div class="langpick langpick--mobile" data-langpick></div>
+      </nav>
+    </div>
+
+  <!-- ========== PAGE HERO ========== -->
+  <section class="page-hero">
+    <nav class="page-hero__crumb" aria-label="Migas de pan">
+      <a href="index.html">Inicio</a>
+      <span>/</span>
+      Almohadas
     </nav>
+    <h1 class="page-hero__title">Nuestras <em>almohadas</em></h1>
+    <p class="page-hero__sub">El colchón sostiene el cuerpo; la almohada, el cuello. Viscoelástica perforada de 50 kg/m³, funda técnica lavable y cuatro medidas para que encaje con tu cama.</p>
+  </section>
+
+  <!-- Banda de confianza -->
+  <div class="trust-strip">
+    <span class="trust-strip__item">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 8h14v9H1zM15 11h4l3 3v3h-7"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg>
+      Envío gratuito 3–5 días
+    </span>
+    <span class="trust-strip__item">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+      30 noches de prueba
+    </span>
+    <span class="trust-strip__item">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+      OEKO-TEX&reg; 100
+    </span>
+    <span class="trust-strip__item">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>
+      Pago 100% seguro
+    </span>
   </div>
 
-  <main class="shop-page">
-    <section class="hero" style="background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%); padding: 60px 40px; text-align: center;">
-      <h1 style="font-size: 48px; font-weight: 700; margin-bottom: 16px; color: #2c3e50;">Almohadas Premium Nuvora</h1>
-      <p style="font-size: 18px; color: #666; margin-bottom: 40px;">Descanso perfecto para tu cabeza y cuello. Diseñadas para acompañar nuestros colchones.</p>
-    </section>
+  <!-- ========== CATÁLOGO ========== -->
+  <section class="catalog">
+    <div class="catalog__grid catalog__grid--single">
 
-    <section class="shop-grid" style="padding: 60px 40px; max-width: 1200px; margin: 0 auto;">
-      <div class="shop-item" style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; text-align: center;">
-        <img src="https://images.unsplash.com/photo-1584622614875-e62df6a63667?w=500&q=80" alt="Almohada Premium" style="width: 100%; height: 300px; object-fit: cover; border-radius: 4px; margin-bottom: 20px;">
-        <h2 style="font-size: 20px; font-weight: 600; margin-bottom: 12px;">Almohada Premium Nuvora</h2>
-        <p style="color: #666; margin-bottom: 20px; font-size: 14px;">Relleno de fibra viscoelástica con funda de algodón 100%. Firmeza media, perfecta para lado y espalda.</p>
-        <p style="font-size: 18px; font-weight: 700; color: #2c3e50; margin-bottom: 20px;">Desde 49,99 €</p>
-        <a href="producto.html?m=almohada-premium" style="display: inline-block; background: #2c3e50; color: white; padding: 12px 30px; border-radius: 4px; text-decoration: none; font-weight: 600;">Ver detalles</a>
-      </div>
-    </section>
+      <!-- Almohada viscoelástica Nuvora -->
+      <article class="pcard" data-animate>
+        <a href="producto.html?m=almohada-nuvora" class="pcard__media">
+          <img src="images/almohada-nuvora.webp" alt="Almohada viscoelástica Nuvora" loading="lazy">
+          <span class="pcard__badge">Nuevo</span>
+        </a>
+        <div class="pcard__body">
+          <h2 class="pcard__name"><a href="producto.html?m=almohada-nuvora">Almohada viscoelástica Nuvora</a></h2>
+          <p class="pcard__desc">Se amolda al cuello en segundos y recupera la forma cada mañana. Si te levantas con el cuello cargado, empieza por aquí.</p>
+          <div class="pcard__chips">
+            <span class="pcard__chip">Firmeza media</span>
+            <span class="pcard__chip">12 cm de altura</span>
+            <span class="pcard__chip">Funda lavable</span>
+            <span class="pcard__chip">4 medidas</span>
+          </div>
+          <div class="pcard__footer">
+            <span class="pcard__price">
+              <span class="pcard__price-from">Desde</span>
+              <span class="pcard__price-val">44,90 €</span>
+            </span>
+            <a href="producto.html?m=almohada-nuvora" class="pcard__btn">Ver almohada &rarr;</a>
+          </div>
+        </div>
+      </article>
 
-    <!-- Características -->
-    <section style="background: #f9f9f9; padding: 60px 40px; margin-top: 40px;">
-      <div style="max-width: 1200px; margin: 0 auto;">
-        <h2 style="font-size: 32px; font-weight: 700; text-align: center; margin-bottom: 40px;">¿Por qué elegir nuestras almohadas?</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
-          <div style="text-align: center;">
-            <div style="font-size: 40px; margin-bottom: 15px;">🛏️</div>
-            <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 10px;">Adaptación perfecta</h3>
-            <p style="color: #666;">Viscoelástica que se amolda a tu cabeza y cuello</p>
-          </div>
-          <div style="text-align: center;">
-            <div style="font-size: 40px; margin-bottom: 15px;">☁️</div>
-            <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 10px;">Comodidad máxima</h3>
-            <p style="color: #666;">Firmeza balanceada para cualquier posición de sueño</p>
-          </div>
-          <div style="text-align: center;">
-            <div style="font-size: 40px; margin-bottom: 15px;">🌿</div>
-            <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 10px;">100% algodón orgánico</h3>
-            <p style="color: #666;">Funda natural, transpirable e hipoalergénica</p>
-          </div>
-          <div style="text-align: center;">
-            <div style="font-size: 40px; margin-bottom: 15px;">✓</div>
-            <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 10px;">30 noches de prueba</h3>
-            <p style="color: #666;">Devuelve gratis si no estás satisfecho</p>
-          </div>
-          <div style="text-align: center;">
-            <div style="font-size: 40px; margin-bottom: 15px;">🚚</div>
-            <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 10px;">Envío gratis</h3>
-            <p style="color: #666;">A toda España peninsular sin mínimo</p>
-          </div>
-          <div style="text-align: center;">
-            <div style="font-size: 40px; margin-bottom: 15px;">🔒</div>
-            <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 10px;">Garantía total</h3>
-            <p style="color: #666;">Calidad certificada OEKO-TEX</p>
-          </div>
+    </div>
+
+    <!-- Por qué esta almohada -->
+    <section class="whyband" data-animate aria-label="Por qué elegir la almohada Nuvora">
+      <h2 class="whyband__title">Por qué vas a dormir mejor con ella</h2>
+      <div class="whyband__grid">
+        <div class="whyband__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c3-4 6-6 9-6s6 2 9 6c-3 4-6 6-9 6s-6-2-9-6z"/><circle cx="12" cy="12" r="2.5"/></svg>
+          <h3>Se adapta, no se hunde</h3>
+          <p>Viscoelástica perforada de 50 kg/m³: cede lo justo bajo el peso de la cabeza y vuelve a su sitio al levantarte.</p>
+        </div>
+        <div class="whyband__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18h16M6 14l3-4 3 3 3-6 3 7"/></svg>
+          <h3>El cuello, alineado</h3>
+          <p>12 cm de altura con perfil ergonómico: rellena el hueco del hombro si duermes de lado y evita la tensión cervical.</p>
+        </div>
+        <div class="whyband__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M18 6l-2.5 2.5M8.5 15.5L6 18"/></svg>
+          <h3>Ni calor ni humedad</h3>
+          <p>Canales de ventilación verticales que evacúan el calor: menos noches dando la vuelta a la almohada.</p>
+        </div>
+        <div class="whyband__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v4a8 8 0 0 1-16 0z"/><path d="M8 20h8"/></svg>
+          <h3>Se lava, y se nota</h3>
+          <p>Funda con cremallera perimetral, a la lavadora a 30 °C. Tratamiento antiácaros y antibacteriano.</p>
+        </div>
+        <div class="whyband__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+          <h3>30 noches para decidir</h3>
+          <p>Pruébala un mes entero. Si no es la tuya, la recogemos gratis y te devolvemos el importe.</p>
+        </div>
+        <div class="whyband__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12h-6v-7H9v7z"/></svg>
+          <h3>Hecha por nosotros</h3>
+          <p>Fabricada en nuestra planta de España y enviada directa a tu casa, sin intermediarios que inflen el precio.</p>
         </div>
       </div>
     </section>
-  </main>
 
-  <!-- FOOTER -->
+    <!-- Cross-sell packs -->
+    <div class="crossband" data-animate>
+      <div class="crossband__inner">
+        <div>
+          <h2 class="crossband__title">Combínala en un <em>pack de descanso</em></h2>
+          <p class="crossband__sub">Colchón, canapé y almohada juntos: un 12 % menos que comprándolos por separado.</p>
+        </div>
+        <a href="packs.html" class="crossband__btn">Ver packs &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
   <footer class="footer" id="footer">
     <div class="footer__grid">
       <div class="footer__brand">
@@ -140,6 +232,9 @@
         <div class="footer__social">
           <a href="https://instagram.com/aureadescanso" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://tiktok.com/@aureadescanso" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.48 6.3 6.3 0 001.86-4.49V8.72a8.26 8.26 0 004.84 1.56v-3.45a4.85 4.85 0 01-1.12-.14z"/></svg>
           </a>
         </div>
       </div>
@@ -167,6 +262,15 @@
     <div class="footer__bar">
       <div class="footer__bar-inner">
         <p class="footer__copy">&copy; 2026 Nuvora Descanso. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
+        <div class="footer__pay" aria-label="Pago seguro">
+          <span class="footer__pay-note">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            <span data-i18n="footer.ssl">Pago cifrado SSL</span>
+          </span>
+          <span class="paybadge" title="Visa"><svg width="34" height="12" viewBox="0 0 34 12" aria-label="Visa" role="img"><text x="17" y="10.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" font-style="italic" fill="#1A1F71">VISA</text></svg></span>
+          <span class="paybadge" title="Mastercard"><svg width="30" height="19" viewBox="0 0 30 19" aria-label="Mastercard" role="img"><circle cx="11" cy="9.5" r="8.6" fill="#EB001B"/><circle cx="19" cy="9.5" r="8.6" fill="#F79E1B"/><path d="M15 2.6a8.6 8.6 0 0 1 0 13.8 8.6 8.6 0 0 1 0-13.8z" fill="#FF5F00"/></svg></span>
+          <span class="paybadge" title="Bizum"><svg width="36" height="12" viewBox="0 0 36 12" aria-label="Bizum" role="img"><text x="18" y="10.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10.5" font-weight="700" fill="#11C5C5">bizum</text></svg></span>
+        </div>
       </div>
     </div>
   </footer>
@@ -176,5 +280,6 @@
   <script src="js/motion.js"></script>
   <script src="js/premium.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/shop.js"></script>
 </body>
 </html>
