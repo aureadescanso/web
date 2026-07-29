@@ -1,0 +1,261 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplo de Factura | Nuvora Descanso</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+      color: #333;
+    }
+    .factura {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 40px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    .cabecera {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #f0f0f0;
+    }
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #2c3e50;
+    }
+    .subtitulo {
+      font-size: 12px;
+      color: #999;
+      margin-top: 5px;
+    }
+    .contacto {
+      font-size: 11px;
+      color: #666;
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+    .factura-info {
+      text-align: right;
+    }
+    .factura-titulo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #2c3e50;
+    }
+    .factura-datos {
+      font-size: 12px;
+      color: #666;
+      margin-top: 10px;
+      line-height: 1.8;
+    }
+    .contenido {
+      display: flex;
+      gap: 40px;
+      margin: 40px 0;
+    }
+    .cliente-box {
+      flex: 1;
+    }
+    .cliente-box h3 {
+      font-size: 12px;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    .cliente-info {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #333;
+    }
+    .tabla {
+      width: 100%;
+      margin: 30px 0;
+      border-collapse: collapse;
+    }
+    .tabla thead {
+      background: #f9f9f9;
+      border-top: 2px solid #ddd;
+      border-bottom: 2px solid #ddd;
+    }
+    .tabla th {
+      padding: 12px;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 600;
+      color: #666;
+      text-transform: uppercase;
+    }
+    .tabla td {
+      padding: 15px 12px;
+      font-size: 13px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .tabla tr:last-child td {
+      border-bottom: none;
+    }
+    .cantidad {
+      text-align: center;
+    }
+    .precio {
+      text-align: right;
+    }
+    .resumen {
+      display: flex;
+      justify-content: flex-end;
+      margin: 30px 0;
+    }
+    .resumen-box {
+      width: 250px;
+    }
+    .resumen-fila {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      font-size: 13px;
+    }
+    .resumen-fila.total {
+      border-top: 2px solid #ddd;
+      padding-top: 15px;
+      margin-top: 15px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #2c3e50;
+    }
+    .pie {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 2px solid #f0f0f0;
+      text-align: center;
+      font-size: 11px;
+      color: #999;
+      line-height: 1.8;
+    }
+    .imprime-btn {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .imprime-btn button {
+      padding: 12px 30px;
+      background: #2c3e50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .imprime-btn button:hover {
+      background: #1e293b;
+    }
+    @media print {
+      body { background: white; padding: 0; }
+      .imprime-btn { display: none; }
+      .factura { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="factura">
+    <div class="cabecera">
+      <div>
+        <div class="logo">🌙 Nuvora Descanso</div>
+        <div class="subtitulo">Descanso diseñado y fabricado en España</div>
+        <div class="contacto">
+          nuvoradescanso@gmail.com<br>
+          https://nuvoradescanso.com
+        </div>
+      </div>
+      <div class="factura-info">
+        <div class="factura-titulo">FACTURA</div>
+        <div class="factura-datos">
+          <strong>Referencia:</strong> NUV-2026-78401<br>
+          <strong>Fecha:</strong> 29 de julio de 2026<br>
+          <strong>Estado:</strong> Pagado
+        </div>
+      </div>
+    </div>
+
+    <div class="contenido">
+      <div class="cliente-box">
+        <h3>Cliente</h3>
+        <div class="cliente-info">
+          <strong>Juan García López</strong><br>
+          Calle Principal, 42, 3º B<br>
+          28001 Madrid<br>
+          España<br>
+          <br>
+          <strong>Email:</strong> juan@example.com
+        </div>
+      </div>
+    </div>
+
+    <table class="tabla">
+      <thead>
+        <tr>
+          <th style="width: 50%;">CONCEPTO</th>
+          <th style="width: 20%;" class="cantidad">CANTIDAD</th>
+          <th style="width: 15%;" class="precio">PRECIO UNITARIO</th>
+          <th style="width: 15%;" class="precio">TOTAL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Nuvora Aurea</strong><br><small>Colchón viscoelástico 110 × 200 cm</small></td>
+          <td class="cantidad">1</td>
+          <td class="precio">318,15 €</td>
+          <td class="precio">318,15 €</td>
+        </tr>
+        <tr>
+          <td><strong>Mouth Tape Nuvora · 30 tiras</strong><br><small>Regalo por tu colchón — valorado en 10 €</small></td>
+          <td class="cantidad">1</td>
+          <td class="precio">0,00 €</td>
+          <td class="precio">0,00 €</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="resumen">
+      <div class="resumen-box">
+        <div class="resumen-fila">
+          <span>Subtotal</span>
+          <span>318,15 €</span>
+        </div>
+        <div class="resumen-fila">
+          <span>Envío</span>
+          <span>Gratis</span>
+        </div>
+        <div class="resumen-fila total">
+          <span>TOTAL A PAGAR</span>
+          <span>318,15 €</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pie">
+      <p><strong>Condiciones de entrega:</strong></p>
+      <p>Envío gratuito a toda España peninsular en 3-5 días laborables. El colchón llega comprimido y se expande en 24 horas.</p>
+      <p style="margin-top: 15px;"><strong>Garantía:</strong> 5 años de garantía completa contra defectos de fabricación. 30 noches de prueba sin riesgo.</p>
+      <p style="margin-top: 15px;">Gracias por confiar en Nuvora Descanso. Tu descanso, nuestra misión.</p>
+    </div>
+
+    <div class="imprime-btn">
+      <button onclick="window.print()">🖨️ Imprimir o descargar como PDF</button>
+    </div>
+  </div>
+</body>
+</html>
+

@@ -1,4 +1,4 @@
-/* =============================================
+﻿/* =============================================
    NUVORA DESCANSO — Shop JS
    Catálogo · Ficha de producto · Checkout
    ============================================= */
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
             alt: 'Detalle de las asas verticales del colchón Nuvora Aurea',
             kicker: 'Los detalles',
             title: 'Lo que otras marcas <em>no enseñan</em>',
-            text: 'Cuatro asas verticales cosidas a la platabanda para girarlo sin esfuerzo. Pruébalo 100 noches: si no te enamora, lo recogemos gratis.',
+            text: 'Cuatro asas verticales cosidas a la platabanda para girarlo sin esfuerzo. Pruébalo 30 noches: si no te enamora, lo recogemos gratis.',
             cta: 'Añadir a la cesta',
             hotspots: [
               { x: 53, y: 46, title: '4 asas verticales', text: 'Girarlo 180° cada pocos meses para repartir el desgaste deja de ser un castigo: dos personas lo hacen en menos de un minuto.' },
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
           html: '<ul>' +
             '<li>Envío gratuito a toda España peninsular en 3–5 días laborables.</li>' +
             '<li>Llega comprimido al vacío y enrollado; se expande en 24 horas.</li>' +
-            '<li>100 noches de prueba: si no te convence, lo recogemos gratis y te devolvemos el importe íntegro.</li>' +
+            '<li>30 noches de prueba: si no te convence, lo recogemos gratis y te devolvemos el importe íntegro.</li>' +
           '</ul>'
         },
         {
@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
           html: '<ul>' +
             '<li>Envío gratuito a toda España peninsular en 3–5 días laborables.</li>' +
             '<li>Entrega en domicilio con aviso previo por SMS.</li>' +
-            '<li>100 noches de prueba con recogida y reembolso gratuitos.</li>' +
+            '<li>30 noches de prueba con recogida y reembolso gratuitos.</li>' +
           '</ul>'
         },
         {
@@ -1374,3 +1374,4 @@ document.addEventListener('DOMContentLoaded', function () {
   })();
 
 });
+

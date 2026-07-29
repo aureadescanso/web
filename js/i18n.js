@@ -1,4 +1,4 @@
-/* =============================================
+﻿/* =============================================
    NUVORA DESCANSO — Multidioma (i18n)
    ES · EN · IT · FR · DE  ·  sin dependencias
    Traduce los elementos con [data-i18n] / [data-i18n-ph]
@@ -34,7 +34,7 @@
       'hero.cta1': 'Descubre nuestros colchones',
       'hero.cta2': 'Ver canapés',
       'hero.t1': 'Envío gratis 3–5 días',
-      'hero.t2': '100 noches de prueba',
+      'hero.t2': '30 noches de prueba',
       'hero.t3': '5 años de garantía',
       'home.products': 'Nuestros colchones',
       'home.allsizes': 'Ver todos los detalles y medidas',
@@ -43,7 +43,7 @@
       'footer.cookies': 'Cookies',
       'footer.terms': 'Condiciones de venta',
       'footer.contact': 'Contacto',
-      'footer.claim': 'Descanso diseñado y fabricado en España. 100 noches de prueba y 5 años de garantía.',
+      'footer.claim': 'Descanso diseñado y fabricado en España. 30 noches de prueba y 5 años de garantía.',
       'footer.shop': 'Comprar',
       'footer.help': 'Ayuda',
       'footer.guides': 'Guías de descanso',
@@ -235,7 +235,7 @@
       'seals.eyebrow': 'La promesa Nuvora',
       'seals.s1t': 'Fabricado en España', 'seals.s1d': 'Producción propia, sin intermediarios',
       'seals.s2t': 'Tejidos OEKO-TEX', 'seals.s2d': 'Libres de sustancias nocivas',
-      'seals.s3t': '100 noches de prueba', 'seals.s3d': 'Devolución gratuita si no convence',
+      'seals.s3t': '30 noches de prueba', 'seals.s3d': 'Devolución gratuita si no convence',
       'seals.s4t': '5 años de garantía', 'seals.s4d': 'Atención directa de fábrica',
       'cta.title': 'Tu mejor descanso<br>empieza aquí.', 'cta.btn': 'Ver colchones',
       'bh.label': 'Blog de descanso', 'bh.title': 'Aprende a dormir mejor',
@@ -559,3 +559,4 @@
     apply(getLang());
   });
 })();
+

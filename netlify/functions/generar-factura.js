@@ -1,4 +1,4 @@
-/* =============================================
+﻿/* =============================================
    GENERAR FACTURA PDF
    =============================================
    POST /.netlify/functions/generar-factura
@@ -80,7 +80,7 @@ exports.handler = async function (event) {
 
     /* Pie */
     doc.fontSize(9).font('Helvetica').fillColor('#666');
-    doc.text('Gracias por tu confianza. 100 noches de prueba. 5 años de garantía.', 40, 700, { align: 'center' });
+    doc.text('Gracias por tu confianza. 30 noches de prueba. 5 años de garantía.', 40, 700, { align: 'center' });
 
     doc.end();
 
@@ -106,3 +106,4 @@ exports.handler = async function (event) {
     return { statusCode: 500, body: 'Error generando factura: ' + err.message };
   }
 };
+

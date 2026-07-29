@@ -1,4 +1,4 @@
-/* =============================================
+﻿/* =============================================
    NUVORA DESCANSO — Cinematic Experience JS
    ============================================= */
 document.addEventListener('DOMContentLoaded', function () {
@@ -336,7 +336,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var testimonials = [
       { quote: 'Llevaba años con dolor de espalda. Desde que tengo el Nuvora Aurea, duermo como nunca. La diferencia se nota desde la primera noche.', cite: 'María López — Madrid', img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=96&h=96&fit=crop&crop=face' },
       { quote: 'El proceso de compra fue sencillísimo. Llegó en 3 días, lo saqué de la caja y en minutos estaba listo. Estamos encantados.', cite: 'Carlos García — Barcelona', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=96&h=96&fit=crop&crop=face' },
-      { quote: 'Probé las 100 noches convencida de que lo devolvería. Ocho meses después, sigo durmiendo de maravilla.', cite: 'Ana Ruiz — Valencia', img: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=96&h=96&fit=crop&crop=face' },
+      { quote: 'Probé las 30 noches convencida de que lo devolvería. Ocho meses después, sigo durmiendo de maravilla.', cite: 'Ana Ruiz — Valencia', img: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=96&h=96&fit=crop&crop=face' },
       { quote: 'Mi pareja se mueve mucho por la noche. Con el Nuvora Serenity, no me entero. La independencia de lechos es real.', cite: 'Javier Moreno — Sevilla', img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=96&h=96&fit=crop&crop=face' },
       { quote: 'Nos costó decidir, pero la garantía de 5 años nos convenció. Tres años después, está como el primer día.', cite: 'Laura y Pablo — Bilbao', img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=96&h=96&fit=crop&crop=face' },
       { quote: 'He probado colchones de 1.500 €. Este de 499 € los supera con creces. Eliminar intermediarios se nota.', cite: 'Fernando Díaz — Málaga', img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=96&h=96&fit=crop&crop=face' },
@@ -679,3 +679,4 @@ document.addEventListener('DOMContentLoaded', function () {
   })();
 
 });
+
