@@ -4,6 +4,7 @@
   "private": true,
   "description": "Tienda de Nuvora Descanso (web estática + funciones de pago en Netlify)",
   "dependencies": {
-    "stripe": "^17.5.0"
+    "stripe": "^17.5.0",
+    "resend": "^3.0.0"
   }
 }

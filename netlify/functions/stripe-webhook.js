@@ -93,7 +93,7 @@ exports.handler = async function (event) {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          from: process.env.RESEND_FROM || 'Nuvora <onboarding@resend.dev>',
+          from: 'Nuvora Descanso <noreply@nuvoradescanso.com>',
           to: [destino],
           subject: 'Nuevo pedido ' + pedido.referencia + ' — ' + pedido.total,
           html: html
