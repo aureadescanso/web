@@ -446,8 +446,27 @@ ul  { list-style: none; }
 }
 .productos__grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+/* Distintivo sobre la foto (gama alta) */
+.producto__flag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  font-family: var(--sans);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #0A1128;
+  background: linear-gradient(120deg, #B8922C, #D4AF37);
+  padding: 6px 13px;
+  border-radius: 100px;
+}
+@media (max-width: 1000px) {
+  .productos__grid { grid-template-columns: repeat(2, 1fr); }
 }
 .producto {
   border-radius: 18px;

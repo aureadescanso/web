@@ -6,6 +6,7 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pedido confirmado | Nuvora Descanso</title>
+  <meta name="description" content="Gracias por tu pedido. Aquí tienes el resumen de tu compra y los siguientes pasos de la entrega.">
   <meta name="robots" content="noindex">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
@@ -144,7 +145,9 @@
       <!-- Sin datos de pago (entrada directa a la página) -->
       <div class="gracias__ok" id="graciasSinPago" hidden>
         <span class="gracias__eyebrow">Nada que confirmar</span>
-        <h1 class="gracias__title">No hay ningún pedido <em>reciente</em></h1>
+        <!-- Bloque alternativo del mismo estado: va como H2 para que la
+             página no tenga dos H1 -->
+        <h2 class="gracias__title">No hay ningún pedido <em>reciente</em></h2>
         <p class="gracias__lead">Si acabas de comprar y no ves tu confirmación, revisa tu email o escríbenos a
           <a href="mailto:nuvoradescanso@gmail.com">nuvoradescanso@gmail.com</a>.</p>
         <div class="gracias__actions">

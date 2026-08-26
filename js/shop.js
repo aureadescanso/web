@@ -514,11 +514,235 @@ document.addEventListener('DOMContentLoaded', function () {
   })();
 
 
+  /* ══════════════════════════════════════════════
+     NUVORA AUREA — dos núcleos, mismas medidas.
+     El de muelles ensacados cuesta 50 € más en CADA medida y
+     se calcula a partir del viscoelástico para que las tarifas
+     no se puedan desincronizar. Ambos se enlazan como variantes.
+     ══════════════════════════════════════════════ */
+  (function () {
+    var SUPLEMENTO = 50;
+    var visco = CATALOG['aurea'];
+    if (!visco) return;
+
+    CATALOG['aurea-muelles'] = {
+      type: 'colchon',
+      typeLabel: 'Colchón de muelles ensacados',
+      name: 'Nuvora Aurea Muelles Ensacados',
+      desc: 'El mismo Aurea, con núcleo de muelles ensacados individualmente. Cada muelle trabaja por su cuenta: si tu pareja se mueve, tú no te enteras. Más aireado que la espuma y con un punto más de firmeza, para quien duerme caluroso o busca un soporte más firme.',
+      images: [
+        'images/aurea-frontal.webp',
+        'images/aurea-perspectiva.webp',
+        'images/aurea-lateral.webp',
+        'images/aurea-asas.webp'
+      ],
+      /* Mismas medidas que el viscoelástico, 50 € más cada una */
+      sizes: visco.sizes.map(function (s) {
+        return { label: s.label, price: s.price + SUPLEMENTO };
+      }),
+      defaultSize: visco.defaultSize,
+      details: [
+        {
+          title: 'Composición y tecnología',
+          html: '<ul>' +
+            '<li><strong>Núcleo de muelles ensacados individualmente:</strong> cada muelle va en su propia funda de tejido y se hunde solo donde recibe peso.</li>' +
+            '<li><strong>Independencia de lechos:</strong> los movimientos de un lado de la cama no se transmiten al otro.</li>' +
+            '<li><strong>Más transpirable que la espuma:</strong> el aire circula entre los muelles y el calor no se queda debajo del cuerpo.</li>' +
+            '<li><strong>Refuerzo perimetral:</strong> puedes sentarte en el borde sin que se venza.</li>' +
+            '<li>Capa de confort acolchada tapa a tapa y tejido transpirable, igual que en el viscoelástico.</li>' +
+            '<li>Firmeza: media-firme, un punto por encima de la versión viscoelástica.</li>' +
+          '</ul>'
+        },
+        {
+          title: '¿Viscoelástico o muelles?',
+          html: '<ul>' +
+            '<li><strong>Elige muelles ensacados</strong> si dormís dos y os molestan los movimientos del otro, si eres caluroso o si prefieres una acogida más firme.</li>' +
+            '<li><strong>Elige <a href="producto.html?m=aurea">viscoelástico</a></strong> si duermes de lado, buscas que el colchón te abrace y quieres el precio más ajustado.</li>' +
+            '<li>Las dos versiones comparten medidas, garantía y las 30 noches de prueba. Si te equivocas, lo recogemos gratis.</li>' +
+            '<li>¿Sigues con dudas? Lo desarrollamos en la <a href="blog/viscoelastico-o-muelles.html">guía de viscoelástico o muelles</a>.</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Envío y devoluciones',
+          html: '<ul>' +
+            '<li>Envío gratuito a toda España peninsular en 3–5 días laborables.</li>' +
+            '<li>30 noches de prueba: si no te convence, lo recogemos gratis y te devolvemos el importe íntegro.</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Garantía',
+          html: '<ul>' +
+            '<li>5 años de garantía completa contra defectos de fabricación.</li>' +
+            '<li>Cubre hundimientos superiores a 2,5 cm y la rotura de muelles.</li>' +
+            '<li>Sin letra pequeña: gestión directa con nosotros, sin intermediarios.</li>' +
+          '</ul>'
+        }
+      ]
+    };
+
+    /* Selector de núcleo en las dos fichas (etiquetas, sin muestra de color) */
+    var NUCLEOS = [
+      { id: 'aurea',         label: 'Viscoelástico' },
+      { id: 'aurea-muelles', label: 'Muelles ensacados' }
+    ];
+    CATALOG['aurea'].variantLabel = 'Elige el núcleo';
+    CATALOG['aurea'].variantName = 'Viscoelástico';
+    CATALOG['aurea'].variants = NUCLEOS;
+    CATALOG['aurea-muelles'].variantLabel = 'Elige el núcleo';
+    CATALOG['aurea-muelles'].variantName = 'Muelles ensacados';
+    CATALOG['aurea-muelles'].variants = NUCLEOS;
+
+    /* ══════════════════════════════════════════════
+       NUVORA SUPREME — gama alta, doble cara.
+       Tarifa: 280 € más que el colchón más barato (el Aurea
+       viscoelástico) en cada una de las 24 medidas.
+       ══════════════════════════════════════════════ */
+    var SUPREME_EXTRA = 280;
+    CATALOG['supreme'] = {
+      type: 'colchon',
+      typeLabel: 'Colchón de muelles ensacados · doble cara',
+      name: 'Nuvora Supreme',
+      desc: 'Nuestro colchón más completo. Once capas repartidas en dos caras: en invierno duermes sobre pura lana; cuando aprieta el calor le das la vuelta y duermes sobre algodón natural. Debajo, una carcasa de muelles ensacados de 18 cm con viscogel y ElioSupport® que reparte el peso y aísla los movimientos del otro lado de la cama.',
+      images: [
+        'images/supreme-frontal.webp',
+        'images/supreme-ambiente.webp',
+        'images/supreme-lateral.webp',
+        'images/supreme-esquina.webp',
+        'images/supreme-tacto.webp',
+        /* Despiece fotográfico. Va aquí y no junto al esquema de capas
+           porque su numeración es la de la foto, no la de nuestra lista. */
+        'images/supreme-capas.webp'
+      ],
+      sizes: visco.sizes.map(function (s) {
+        return { label: s.label, price: s.price + SUPREME_EXTRA };
+      }),
+      defaultSize: visco.defaultSize,
+
+      /* Despiece: 11 capas en tres bloques. Los grosores del dibujo son
+         orientativos —las capas finas no se verían a escala real—, por eso
+         se avisa en los distintivos. */
+      cutaway: {
+        sub: 'Once capas y dos caras para dormir. Elige una estación y mira cómo cambia el colchón: al pasar a verano se voltea, igual que harías en casa.',
+        chips: ['Doble cara: invierno y verano', 'Muelles ensacados de 18 cm', 'Viscogel de 2 cm', 'Esquema orientativo, no a escala'],
+        seasons: [
+          { key: 'Cara invierno', label: 'Invierno', note: 'Pura lana: retiene el calor y te aísla del frío.' },
+          { key: 'Cara verano',   label: 'Verano',   note: 'Cotton natural: fresco, transpirable y seco.' }
+        ],
+        flipOn: 'Cara verano',
+        layers: [
+          { group: 'Cara invierno', name: 'Tejido viscosa',        spec: '400 g/m², tacto sedoso',              t: 11,  color: '#F4EAD2', tex: 'quilt' },
+          { group: 'Cara invierno', name: 'Viscoelástica',         spec: '1,6 cm que se amoldan al cuerpo',      t: 24,  color: '#E2C181', tex: 'visco' },
+          { group: 'Cara invierno', name: 'Pura lana',             spec: '100 g: calor natural en invierno',     t: 19,  color: '#FBF6EA', tex: 'fiber' },
+          { group: 'Cara invierno', name: 'Eliocell Plus®',        spec: '2,6 cm de acogida progresiva',         t: 36,  color: '#DCE6F7', tex: 'hr' },
+          { group: 'Núcleo',        name: 'Viscogel',              spec: '2 cm que disipan el calor',            t: 28,  color: '#B9CDEB', tex: 'visco' },
+          { group: 'Núcleo',        name: 'Carcasa de muelles',    spec: '18 cm ensacados individualmente',      t: 104, color: '#8CA7DA', tex: 'core' },
+          { group: 'Núcleo',        name: 'ElioSupport®',          spec: '2 cm de base estabilizadora',          t: 28,  color: '#A9BFE4', tex: 'hr' },
+          { group: 'Cara verano',   name: 'Eliocell Plus®',        spec: '1,3 cm de acogida más firme',          t: 19,  color: '#DCE6F7', tex: 'hr' },
+          { group: 'Cara verano',   name: 'Fibra hipoalergénica',  spec: '200 g, apta para alérgicos',           t: 22,  color: '#FDFCF8', tex: 'fiber' },
+          { group: 'Cara verano',   name: 'Cotton Natural',        spec: 'Algodón que respira en verano',        t: 14,  color: '#F7F2E6', tex: 'mesh' },
+          { group: 'Cara verano',   name: 'Tejido viscosa',        spec: '400 g/m², tacto sedoso',               t: 11,  color: '#F4EAD2', tex: 'quilt' }
+        ]
+      },
+
+      details: [
+        {
+          title: 'Composición, capa a capa',
+          html: '<ul>' +
+            '<li><strong>Cara de invierno:</strong> tejido viscosa 400 g/m² · viscoelástica 1,6 cm · pura lana 100 g · Eliocell Plus® 2,6 cm.</li>' +
+            '<li><strong>Núcleo:</strong> viscogel 2 cm · carcasa de muelles ensacados 18 cm · ElioSupport® 2 cm.</li>' +
+            '<li><strong>Cara de verano:</strong> Eliocell Plus® 1,3 cm · fibra hipoalergénica 200 g · Cotton Natural · tejido viscosa 400 g/m².</li>' +
+            '<li>Suman <strong>27,5 cm</strong> las capas con espesor declarado, más los tejidos, la lana y la fibra.</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Las dos caras: cuándo voltearlo',
+          html: '<ul>' +
+            '<li><strong>Cara de invierno (lana):</strong> la lana retiene el calor corporal y te aísla del frío. Úsala de octubre a abril, más o menos.</li>' +
+            '<li><strong>Cara de verano (algodón):</strong> el Cotton Natural evacúa la humedad y da sensación de fresco. Úsala en los meses de calor.</li>' +
+            '<li><strong>Cómo voltearlo:</strong> dos veces al año, al cambiar de estación. Aprovecha y gíralo también cabeza-pies para repartir el desgaste.</li>' +
+            '<li>Las dos caras están completamente acabadas: no hay una cara «buena» y otra «mala».</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Qué aporta cada tecnología',
+          html: '<ul>' +
+            '<li><strong>Muelles ensacados:</strong> cada muelle va en su funda y se hunde solo donde recibe peso. Si tu pareja se mueve, tú no lo notas.</li>' +
+            '<li><strong>Viscogel:</strong> viscoelástica con gel, que se adapta como la visco pero acumula menos calor.</li>' +
+            '<li><strong>Eliocell Plus®:</strong> espuma de acogida que suaviza la transición entre el acolchado y los muelles.</li>' +
+            '<li><strong>ElioSupport®:</strong> capa base que estabiliza la carcasa y evita que los muelles trabajen contra el somier.</li>' +
+            '<li><strong>Pura lana y Cotton Natural:</strong> fibras naturales, cada una para su estación.</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Medidas disponibles',
+          html: '<ul>' +
+            '<li>24 medidas, de <strong>75 × 190 cm</strong> a <strong>200 × 200 cm</strong>, las mismas que el resto de nuestros colchones.</li>' +
+            '<li>Elige la medida arriba para ver su precio exacto.</li>' +
+            '<li>Se fabrica bajo pedido en nuestra planta de España.</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Envío y devoluciones',
+          html: '<ul>' +
+            '<li>Envío gratuito a toda España peninsular.</li>' +
+            '<li><strong>30 noches de prueba:</strong> si no te convence, lo recogemos gratis y te devolvemos el importe íntegro.</li>' +
+            '<li>Al ser un colchón de muelles, llega en plano: no se comprime ni se enrolla.</li>' +
+          '</ul>'
+        },
+        {
+          title: 'Garantía',
+          html: '<ul>' +
+            '<li>5 años de garantía completa contra defectos de fabricación.</li>' +
+            '<li>Cubre hundimientos superiores a 2,5 cm y la rotura de muelles.</li>' +
+            '<li>Sin letra pequeña: gestión directa con nosotros, sin intermediarios.</li>' +
+          '</ul>'
+        }
+      ]
+    };
+  })();
+
   /* El configurador de packs (js/packs.js) lee el catálogo desde aquí */
   window.NuvoraCatalog = CATALOG;
 
   function formatPrice(n) {
     return n.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+  }
+
+  /* ── Etiquetas de la ficha para buscadores y redes ──
+     producto.html es una sola plantilla para todos los productos, así que
+     el HTML sale con un título genérico. Aquí se sustituye por el del
+     producto y, sobre todo, se declara la URL canónica con su ?m=: sin
+     ella Google puede tratar todas las fichas como la misma página. */
+  var URL_BASE = 'https://nuvoradescanso.com/';
+  function metaTag(sel, attr, valor, crear) {
+    var el = document.head.querySelector(sel);
+    if (!el) {
+      if (!crear) return;
+      el = document.createElement(crear.tag);
+      Object.keys(crear.attrs).forEach(function (k) { el.setAttribute(k, crear.attrs[k]); });
+      document.head.appendChild(el);
+    }
+    el.setAttribute(attr, valor);
+  }
+  function setSeo(product, id) {
+    var url = URL_BASE + 'producto.html?m=' + encodeURIComponent(id);
+    var img = product.images && product.images[0] ? URL_BASE + product.images[0] : '';
+    var desc = String(product.desc || '').replace(/\s+/g, ' ').trim().slice(0, 155);
+
+    metaTag('link[rel="canonical"]', 'href', url,
+      { tag: 'link', attrs: { rel: 'canonical' } });
+    metaTag('meta[name="description"]', 'content', desc,
+      { tag: 'meta', attrs: { name: 'description' } });
+    metaTag('meta[property="og:title"]', 'content', product.name + ' | Nuvora Descanso',
+      { tag: 'meta', attrs: { property: 'og:title' } });
+    metaTag('meta[property="og:description"]', 'content', desc,
+      { tag: 'meta', attrs: { property: 'og:description' } });
+    metaTag('meta[property="og:url"]', 'content', url,
+      { tag: 'meta', attrs: { property: 'og:url' } });
+    if (img) {
+      metaTag('meta[property="og:image"]', 'content', img,
+        { tag: 'meta', attrs: { property: 'og:image' } });
+    }
   }
 
   /* Precio de referencia en tienda física: nuestro precio es un 35 % menor.
@@ -592,6 +816,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /* Producto "Próximamente": teaser inmersivo en vez de la ficha normal */
     if (product.comingSoon) {
       document.title = product.name + ' · Próximamente | Nuvora Descanso';
+      setSeo(product, id);
       var t = function (k, fb) { return (window.NuvoraI18n && window.NuvoraI18n.t(k)) || fb; };
       var tape = '';
       for (var ti = 0; ti < 10; ti++) {
@@ -647,9 +872,15 @@ document.addEventListener('DOMContentLoaded', function () {
     var cat = CATEGORY[product.type] || CATEGORY.colchon;
     var catalogPage  = cat.page;
     var catalogLabel = cat.label;
+    /* La medida puede venir en la URL (?m=…&size=…): así los anuncios de
+       Google Shopping y los enlaces compartidos abren la ficha con la
+       medida y el precio que se anunciaron. */
     var selectedSize = product.defaultSize || 0;
+    var sizeParam = parseInt(getParam('size'), 10);
+    if (!isNaN(sizeParam) && product.sizes[sizeParam]) selectedSize = sizeParam;
 
     document.title = product.name + ' | Nuvora Descanso';
+    setSeo(product, id);
 
     /* — Migas — */
     document.getElementById('pdpCrumbCat').setAttribute('href', catalogPage);
@@ -757,24 +988,29 @@ document.addEventListener('DOMContentLoaded', function () {
       if (bbPrice) bbPrice.textContent = formatPrice(price);
     }
 
-    /* — Variantes de color: el mismo modelo en otros acabados —
-       Al elegir otra muestra se abre su ficha conservando la medida. */
+    /* — Variantes del mismo modelo —
+       Con `swatch` se pinta la muestra de color (acabados del canapé);
+       sin él, solo la etiqueta (núcleo del colchón). Al elegir otra
+       se abre su ficha. */
     (function () {
       var wrap = document.getElementById('pdpVariants');
       if (!wrap || !product.variants || product.variants.length < 2) return;
       wrap.hidden = false;
+      var rotulo = product.variantLabel || 'Elige tu acabado';
+      var labelEl = document.getElementById('pdpVariantLabel');
+      if (labelEl) labelEl.textContent = rotulo;
       var nameEl = document.getElementById('pdpVariantName');
-      if (nameEl) nameEl.textContent = product.color || '';
+      if (nameEl) nameEl.textContent = product.variantName || product.color || '';
       var box = document.getElementById('pdpSwatches');
       product.variants.forEach(function (v) {
         var current = v.id === id;
         var el = document.createElement(current ? 'span' : 'a');
-        el.className = 'swatch' + (current ? ' is-active' : '');
+        el.className = 'swatch' + (current ? ' is-active' : '') + (v.swatch ? '' : ' swatch--text');
         if (!current) el.setAttribute('href', 'producto.html?m=' + encodeURIComponent(v.id));
         el.setAttribute('title', v.label);
-        el.setAttribute('aria-label', 'Acabado ' + v.label);
+        el.setAttribute('aria-label', rotulo + ': ' + v.label);
         if (current) el.setAttribute('aria-current', 'true');
-        el.innerHTML = '<span class="swatch__dot" style="background:' + v.swatch + '"></span>' +
+        el.innerHTML = (v.swatch ? '<span class="swatch__dot" style="background:' + v.swatch + '"></span>' : '') +
                        '<span class="swatch__label">' + esc(v.label) + '</span>';
         box.appendChild(el);
       });
@@ -1091,7 +1327,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
       var stageEl  = document.getElementById('cutawayStage');
       var labelsEl = document.getElementById('cutawayLabels');
-      var slabs = [], labels = [];
+      /* Las capas van en su propio grupo: así, en los colchones de doble
+         cara, se voltean ellas y la sombra del suelo se queda abajo. */
+      var pile = document.createElementNS(NS, 'g');
+      pile.setAttribute('class', 'cutaway__pile');
+      svg.appendChild(pile);
+      var slabs = [], labels = [], blocks = [];
       var y = PAD + DY;
       var lastGroup = null;
 
@@ -1143,7 +1384,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         poly([[x + W, y], [x + W + DX, y - DY], [x + W + DX, y + l.t - DY], [x + W, y + l.t]], shade(l.color, -0.22));
 
-        svg.appendChild(slab);
+        pile.appendChild(slab);
         slabs.push(slab);
         y += l.t;
 
@@ -1153,6 +1394,7 @@ document.addEventListener('DOMContentLoaded', function () {
           gh.textContent = l.group;
           labelsEl.appendChild(gh);
           lastGroup = l.group;
+          blocks.push({ header: gh, items: [] });
         }
         var li = document.createElement('li');
         li.className = 'cutaway__label';
@@ -1163,7 +1405,22 @@ document.addEventListener('DOMContentLoaded', function () {
           '<span class="cutaway__lspec">' + l.spec + '</span>';
         labelsEl.appendChild(li);
         labels.push(li);
+        blocks[blocks.length - 1].items.push(li);
       });
+
+      /* Al voltear no basta con invertir la lista entera: el título de
+         cada bloque tiene que seguir encima de sus capas. Se invierte el
+         orden de los bloques y el de las capas dentro de cada uno. */
+      function setLabelOrder(flipped) {
+        var pos = 0;
+        var bs = flipped ? blocks.slice().reverse() : blocks;
+        bs.forEach(function (b) {
+          b.header.style.order = pos++;
+          var its = flipped ? b.items.slice().reverse() : b.items;
+          its.forEach(function (it) { it.style.order = pos++; });
+        });
+      }
+      setLabelOrder(false);
 
       stageEl.appendChild(svg);
 
@@ -1219,7 +1476,40 @@ document.addEventListener('DOMContentLoaded', function () {
         el.addEventListener('mouseleave', function () { setActive(-1, false); });
       });
 
-      /* Colchón de una sola cara: sin selector de estación */
+      /* — Colchones de doble cara: selector de estación —
+         Al elegir la cara de verano el dibujo se voltea, igual que
+         harías con el colchón en casa, y las etiquetas se invierten. */
+      var seasonsEl = document.getElementById('cutawaySeasons');
+      if (seasonsEl && cw.seasons && cw.seasons.length) {
+        seasonsEl.hidden = false;
+        var noteEl = document.getElementById('cutawaySeasonNote');
+        cw.seasons.forEach(function (s, i) {
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'cutaway__season' + (i === 0 ? ' is-active' : '');
+          b.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+          b.textContent = s.label;
+          b.addEventListener('click', function () {
+            seasonsEl.querySelectorAll('.cutaway__season').forEach(function (o) {
+              o.classList.remove('is-active');
+              o.setAttribute('aria-pressed', 'false');
+            });
+            b.classList.add('is-active');
+            b.setAttribute('aria-pressed', 'true');
+            currentSeason = s.key;
+            var voltear = cw.flipOn === s.key;
+            stageEl.classList.toggle('is-flipped', voltear);
+            setLabelOrder(voltear);
+            if (noteEl) noteEl.textContent = s.note || '';
+            applySeason();
+          });
+          seasonsEl.appendChild(b);
+        });
+        /* Arranca en la primera cara, resaltada */
+        currentSeason = cw.seasons[0].key;
+        if (noteEl) noteEl.textContent = cw.seasons[0].note || '';
+        applySeason();
+      }
     })();
 
     /* — Experiencia inmersiva: cine de scroll con hotspots — */

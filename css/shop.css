@@ -447,6 +447,9 @@
   color: var(--text-2);
   white-space: nowrap;
 }
+/* Variante sin muestra de color (p. ej. el núcleo del colchón):
+   sin el círculo, el relleno izquierdo se iguala al derecho. */
+.swatch--text { padding-left: 15px; }
 .swatch.is-active .swatch__label { color: var(--navy); font-weight: 600; }
 .size-pill {
   font-family: var(--sans);
@@ -1228,6 +1231,42 @@
   color: rgba(255, 255, 255, 0.65);
   line-height: 1.7;
 }
+/* ── Selector de cara (colchones de doble cara) ── */
+.cutaway__seasons[hidden] { display: none; }
+.cutaway__seasons {
+  display: inline-flex;
+  gap: 5px;
+  margin: 24px auto 0;
+  padding: 5px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+.cutaway__season {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.66);
+  background: none;
+  border: none;
+  border-radius: 100px;
+  padding: 9px 22px;
+  cursor: pointer;
+  transition: color 0.3s, background 0.4s var(--ease-out);
+}
+.cutaway__season:hover { color: #fff; }
+.cutaway__season.is-active {
+  color: #14203F;
+  background: linear-gradient(120deg, #F0DC9A 0%, #D4AF37 55%, #B98F22 100%);
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.28);
+}
+.cutaway__season-note {
+  min-height: 1.4em;
+  margin: 14px auto 0;
+  font-size: 0.84rem;
+  color: #E2C46E;
+}
+
 .cutaway__layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 380px;
@@ -1241,6 +1280,17 @@
   height: auto;
   margin: 0 auto;
   overflow: visible;
+}
+/* Cara de verano: se voltea la pila de capas (la sombra del suelo no)
+   y las etiquetas se leen al revés, como el colchón real. */
+.cutaway__pile {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.95s cubic-bezier(.16, 1, .3, 1);
+}
+.cutaway__stage.is-flipped .cutaway__pile { transform: scaleY(-1); }
+@media (prefers-reduced-motion: reduce) {
+  .cutaway__pile { transition: none; }
 }
 .cutaway-slab {
   cursor: pointer;
@@ -2650,10 +2700,31 @@
 /* Una sola tarjeta en la rejilla: que no se estire a lo ancho */
 .catalog__grid--single { max-width: 520px; }
 
+/* ── Rejilla de catálogo pareja ──
+   Todas las tarjetas miden lo mismo y sus piezas se alinean entre
+   columnas: descripción arriba, distintivos en medio y precio y botón
+   siempre abajo, aunque un producto tenga más texto que otro. */
+.catalog__grid > .pcard { height: 100%; }
+/* Con más de una columna, todas las filas miden lo mismo: si una
+   tarjeta se queda sola en la última fila, no encoge respecto a las
+   de arriba. En móvil no se aplica: apiladas no compiten y solo
+   añadiría huecos. */
+@media (min-width: 701px) {
+  .catalog__grid { grid-auto-rows: 1fr; }
+}
+/* Reserva tres líneas de descripción para que los distintivos de todas
+   las tarjetas arranquen a la misma altura. El precio y el botón ya se
+   pegan abajo con el margin-top:auto del pie. */
+.pcard__desc { min-height: 4.32rem; }
+/* Si el precio y el botón no caben en una línea, se apilan en vez de
+   partir el texto en tres renglones. */
+.pcard__footer { flex-wrap: wrap; }
+
 /* ── Muestras de acabado en la tarjeta de catálogo ── */
 .pcard__colors {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
   margin: 0 0 18px;
 }
@@ -2672,6 +2743,25 @@
   transition: transform 0.25s var(--ease-out), box-shadow 0.25s;
 }
 .pcard__dot:hover { transform: scale(1.16); }
+/* Opción de texto en la tarjeta (núcleo del colchón) */
+.pcard__opt {
+  font-size: 0.73rem;
+  font-weight: 500;
+  color: var(--text-2);
+  text-decoration: none;
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 100px;
+  padding: 5px 11px;
+  white-space: nowrap;
+  transition: border-color 0.25s, color 0.25s;
+}
+.pcard__opt:hover { border-color: var(--navy); color: var(--navy); }
+.pcard__opt.is-active {
+  border-color: var(--navy);
+  color: var(--navy);
+  font-weight: 600;
+}
 .pcard__dot.is-active {
   box-shadow: inset -2px -3px 5px rgba(0, 0, 0, 0.16), 0 0 0 2px #fff, 0 0 0 3.5px var(--navy);
 }

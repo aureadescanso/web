@@ -74,7 +74,7 @@
       'hero.cta1': 'Discover our mattresses',
       'hero.cta2': 'See storage beds',
       'hero.t1': 'Free shipping 3–5 days',
-      'hero.t2': '100-night trial',
+      'hero.t2': '30-night trial',
       'hero.t3': '5-year warranty',
       'home.products': 'Our mattresses',
       'home.allsizes': 'See all details and sizes',
@@ -83,7 +83,7 @@
       'footer.cookies': 'Cookies',
       'footer.terms': 'Terms of sale',
       'footer.contact': 'Contact',
-      'footer.claim': 'Rest designed and made in Spain. 100-night trial and a 5-year warranty.',
+      'footer.claim': 'Rest designed and made in Spain. 30-night trial and a 5-year warranty.',
       'footer.shop': 'Shop',
       'footer.help': 'Help',
       'footer.guides': 'Sleep guides',
@@ -226,7 +226,7 @@
       'home.serenity_desc': 'Firmeza media-alta. Muelles ensacados con doble capa de viscoelástica.',
       'home.discover': 'Descubrir →',
       'home.cross_t': '¿Necesitas también <em>canapé</em>?',
-      'home.cross_sub': 'Almacenaje oculto y la base perfecta para tu colchón. Desde 399 €.',
+      'home.cross_sub': 'Almacenaje oculto y la base perfecta para tu colchón. Desde 300 €.',
       'home.cross_btn': 'Descubrir canapés →',
       'fab.eyebrow': 'Hecho en España',
       'fab.title': 'Lo fabricamos <em>nosotros</em>, sin intermediarios',
@@ -259,7 +259,7 @@
       'home.serenity_desc': 'Medium-firm. Pocket springs with a double layer of memory foam.',
       'home.discover': 'Discover →',
       'home.cross_t': 'Need a <em>storage bed</em> too?',
-      'home.cross_sub': 'Hidden storage and the perfect base for your mattress. From €399.',
+      'home.cross_sub': 'Hidden storage and the perfect base for your mattress. From €300.',
       'home.cross_btn': 'Discover storage beds →',
       'fab.eyebrow': 'Made in Spain',
       'fab.title': 'We make them <em>ourselves</em>, no middlemen',
@@ -278,7 +278,7 @@
       'seals.eyebrow': 'The Nuvora promise',
       'seals.s1t': 'Made in Spain', 'seals.s1d': 'Own production, no middlemen',
       'seals.s2t': 'OEKO-TEX fabrics', 'seals.s2d': 'Free of harmful substances',
-      'seals.s3t': '100-night trial', 'seals.s3d': 'Free return if you’re not convinced',
+      'seals.s3t': '30-night trial', 'seals.s3d': 'Free return if you’re not convinced',
       'seals.s4t': '5-year warranty', 'seals.s4d': 'Direct support from the factory',
       'cta.title': 'Your best sleep<br>starts here.', 'cta.btn': 'See mattresses',
       'bh.label': 'Sleep blog', 'bh.title': 'Learn to sleep better',
@@ -292,7 +292,7 @@
       'home.serenity_desc': 'Rigidità medio-alta. Molle insacchettate con doppio strato di memory.',
       'home.discover': 'Scopri →',
       'home.cross_t': 'Ti serve anche un <em>sommier</em>?',
-      'home.cross_sub': 'Spazio nascosto e la base perfetta per il tuo materasso. Da 399 €.',
+      'home.cross_sub': 'Spazio nascosto e la base perfetta per il tuo materasso. Da 300 €.',
       'home.cross_btn': 'Scopri i sommier →',
       'fab.eyebrow': 'Fatto in Spagna',
       'fab.title': 'Li produciamo <em>noi</em>, senza intermediari',
@@ -325,7 +325,7 @@
       'home.serenity_desc': 'Fermeté moyenne-ferme. Ressorts ensachés avec double couche de mousse à mémoire.',
       'home.discover': 'Découvrir →',
       'home.cross_t': 'Besoin aussi d’un <em>sommier coffre</em> ?',
-      'home.cross_sub': 'Rangement caché et la base parfaite pour votre matelas. Dès 399 €.',
+      'home.cross_sub': 'Rangement caché et la base parfaite pour votre matelas. Dès 300 €.',
       'home.cross_btn': 'Découvrir les sommiers →',
       'fab.eyebrow': 'Fabriqué en Espagne',
       'fab.title': 'Nous les fabriquons <em>nous-mêmes</em>, sans intermédiaires',
@@ -358,7 +358,7 @@
       'home.serenity_desc': 'Mittel-fest. Taschenfederkern mit doppelter Memory-Schaum-Schicht.',
       'home.discover': 'Entdecken →',
       'home.cross_t': 'Brauchst du auch einen <em>Bettkasten</em>?',
-      'home.cross_sub': 'Versteckter Stauraum und die perfekte Basis für deine Matratze. Ab 399 €.',
+      'home.cross_sub': 'Versteckter Stauraum und die perfekte Basis für deine Matratze. Ab 300 €.',
       'home.cross_btn': 'Bettkästen entdecken →',
       'fab.eyebrow': 'Hergestellt in Spanien',
       'fab.title': 'Wir fertigen sie <em>selbst</em>, ohne Zwischenhändler',
@@ -389,6 +389,7 @@
   /* ── Banda superior + cupón de checkout ── */
   var EXTRA = {
     es: {
+      'home.supreme_desc': 'Doble cara: pura lana en invierno y algodón natural en verano, sobre muelles ensacados de 18 cm con viscogel.',
       'ann.1': 'Envío gratis en todos nuestros productos',
       'ann.2': '10 % de descuento en tu primera compra',
       'ann.3': 'Directo de fábrica a tu casa',
@@ -408,6 +409,7 @@
       'soon.ok': '¡Estás en la lista! Te avisaremos el día del lanzamiento.'
     },
     en: {
+      'home.supreme_desc': 'Two sleeping sides: pure wool for winter and natural cotton for summer, over an 18 cm pocket-spring core with viscogel.',
       'ann.1': 'Free shipping on every product',
       'ann.2': '10% off your first order',
       'ann.3': 'Straight from our factory to your home',
@@ -427,6 +429,7 @@
       'soon.ok': 'You are on the list! We will notify you on launch day.'
     },
     it: {
+      'home.supreme_desc': 'Due lati: pura lana in inverno e cotone naturale in estate, su una molleggiatura insacchettata di 18 cm con viscogel.',
       'ann.1': 'Spedizione gratuita su tutti i prodotti',
       'ann.2': '10 % di sconto sul tuo primo ordine',
       'ann.3': 'Direttamente dalla fabbrica a casa tua',
@@ -446,6 +449,7 @@
       'soon.ok': 'Sei in lista! Ti avviseremo il giorno del lancio.'
     },
     fr: {
+      'home.supreme_desc': 'Deux faces : pure laine en hiver et coton naturel en été, sur un noyau de ressorts ensachés de 18 cm avec viscogel.',
       'ann.1': 'Livraison gratuite sur tous nos produits',
       'ann.2': '10 % de remise sur votre première commande',
       'ann.3': 'Directement de l’usine à votre domicile',
@@ -465,6 +469,7 @@
       'soon.ok': 'Vous êtes sur la liste ! Nous vous préviendrons le jour du lancement.'
     },
     de: {
+      'home.supreme_desc': 'Zwei Liegeseiten: reine Wolle im Winter und Naturbaumwolle im Sommer, über einem 18 cm Taschenfederkern mit Viscogel.',
       'ann.1': 'Gratisversand für alle Produkte',
       'ann.2': '10 % Rabatt auf deine erste Bestellung',
       'ann.3': 'Direkt ab Werk zu dir nach Hause',

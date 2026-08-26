@@ -57,6 +57,35 @@ const CATALOGO = {
      no se pueden comprar, por eso no aparecen aquí. */
 };
 
+/* Nuvora Aurea con núcleo de muelles ensacados: mismas medidas que el
+   viscoelástico y 50 € más cada una. Se calcula a partir de la tarifa
+   del viscoelástico, igual que en js/shop.js, para que no se puedan
+   desincronizar. */
+const SUPLEMENTO_MUELLES = 50;
+CATALOGO['aurea-muelles'] = {
+  nombre: 'Nuvora Aurea Muelles Ensacados',
+  tipo: 'colchon',
+  imagen: 'images/aurea-frontal.webp',
+  medidas: CATALOGO['aurea'].medidas.map(m => ({
+    label: m.label,
+    precio: Math.round((m.precio + SUPLEMENTO_MUELLES) * 100) / 100
+  }))
+};
+
+/* Nuvora Supreme (gama alta, doble cara): 280 € más que el colchón más
+   barato —el Aurea viscoelástico— en cada medida. Debe coincidir con
+   SUPREME_EXTRA en js/shop.js. */
+const SUPREME_EXTRA = 280;
+CATALOGO['supreme'] = {
+  nombre: 'Nuvora Supreme',
+  tipo: 'colchon',
+  imagen: 'images/supreme-frontal.webp',
+  medidas: CATALOGO['aurea'].medidas.map(m => ({
+    label: m.label,
+    precio: Math.round((m.precio + SUPREME_EXTRA) * 100) / 100
+  }))
+};
+
 /* Canapé abatible Nuvora: mismo modelo en tres acabados.
    Las medidas y los índices deben coincidir con js/shop.js. */
 const CANAPE_MEDIDAS = [

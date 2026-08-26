@@ -131,15 +131,15 @@
         <h2 class="packcfg__h">Tu pack incluye <span class="packcfg__count">3 productos</span></h2>
 
         <article class="packitem" id="packItemColchon">
-          <a class="packitem__media" href="producto.html?m=aurea">
+          <a class="packitem__media" href="producto.html?m=aurea" data-link>
             <img src="images/aurea-frontal.webp" alt="Colchón Nuvora Aurea" loading="lazy">
           </a>
           <div class="packitem__body">
             <span class="packitem__kind">Colchón</span>
-            <h3 class="packitem__name">Nuvora Aurea</h3>
-            <p class="packitem__desc">Núcleo HR de 28 kg/m³ con 2 cm de viscoelástica adaptable y 30 cm de altura.</p>
+            <h3 class="packitem__name" data-name>Nuvora Aurea</h3>
+            <p class="packitem__desc">Acolchado tapa a tapa y 30 cm de altura, con el núcleo que elijas.</p>
             <span class="packitem__sel" data-sel>Medida: &mdash;</span>
-            <a class="packitem__link" href="producto.html?m=aurea">Ver ficha completa &rarr;</a>
+            <a class="packitem__link" href="producto.html?m=aurea" data-link>Ver ficha completa &rarr;</a>
           </div>
           <span class="packitem__price" data-price>&mdash;</span>
         </article>
@@ -177,6 +177,11 @@
       <aside class="packpanel">
         <span class="packpanel__eyebrow">Configura tu pack</span>
         <h2 class="packpanel__title">Elige medidas y acabado</h2>
+
+        <div class="packfield">
+          <span class="packfield__label">Modelo de colchón</span>
+          <div class="packfield__swatches" id="packCores"></div>
+        </div>
 
         <div class="packfield">
           <label class="packfield__label" for="packMattressSize">Medida del colchón</label>
@@ -248,7 +253,7 @@
   <section class="packsteps" data-animate aria-label="Cómo funciona el pack">
     <h2 class="packsteps__title">Cómo funciona</h2>
     <ol class="packsteps__list">
-      <li><span>1</span><strong>Elige la medida del colchón</strong>24 opciones, de 75 × 190 a 200 × 200 cm.</li>
+      <li><span>1</span><strong>Elige el colchón y su medida</strong>Cualquiera de nuestros tres modelos, en 24 medidas.</li>
       <li><span>2</span><strong>Elige el acabado del canapé</strong>Blanco, cambrian o wengué, al mismo precio.</li>
       <li><span>3</span><strong>Ajusta la medida del canapé</strong>Se sincroniza sola con la del colchón.</li>
       <li><span>4</span><strong>Añade el pack a la cesta</strong>Un solo botón. El &minus;12 % se aplica al tramitar el pedido.</li>
