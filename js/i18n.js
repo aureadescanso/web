@@ -222,8 +222,8 @@
   var HOME = {
     es: {
       'home.products': 'Nuestros colchones',
+      'home.aureamuelles_desc': 'Firmeza media-firme. Muelles ensacados individualmente: más aireado y sin notar a quien duerme al lado.',
       'home.aurea_desc': 'Firmeza media. Viscoelástica adaptable de 2 cm sobre núcleo HR de 28 kg/m³ y 30 cm de altura.',
-      'home.serenity_desc': 'Firmeza media-alta. Muelles ensacados con doble capa de viscoelástica.',
       'home.discover': 'Descubrir →',
       'home.cross_t': '¿Necesitas también <em>canapé</em>?',
       'home.cross_sub': 'Almacenaje oculto y la base perfecta para tu colchón. Desde 300 €.',
@@ -255,8 +255,8 @@
     },
     en: {
       'home.products': 'Our mattresses',
+      'home.aureamuelles_desc': 'Medium-firm. Individually pocketed springs: more breathable and you won’t feel your partner move.',
       'home.aurea_desc': 'Medium firmness. 2 cm of adaptive memory foam over a 28 kg/m³ HR core, 30 cm tall.',
-      'home.serenity_desc': 'Medium-firm. Pocket springs with a double layer of memory foam.',
       'home.discover': 'Discover →',
       'home.cross_t': 'Need a <em>storage bed</em> too?',
       'home.cross_sub': 'Hidden storage and the perfect base for your mattress. From €300.',
@@ -288,8 +288,8 @@
     },
     it: {
       'home.products': 'I nostri materassi',
+      'home.aureamuelles_desc': 'Rigidità medio-alta. Molle insacchettate singolarmente: più areato e senza sentire chi dorme accanto.',
       'home.aurea_desc': 'Rigidità media. 2 cm di memory adattabile su nucleo HR da 28 kg/m³, alto 30 cm.',
-      'home.serenity_desc': 'Rigidità medio-alta. Molle insacchettate con doppio strato di memory.',
       'home.discover': 'Scopri →',
       'home.cross_t': 'Ti serve anche un <em>sommier</em>?',
       'home.cross_sub': 'Spazio nascosto e la base perfetta per il tuo materasso. Da 300 €.',
@@ -321,8 +321,8 @@
     },
     fr: {
       'home.products': 'Nos matelas',
+      'home.aureamuelles_desc': 'Fermeté moyenne-ferme. Ressorts ensachés individuellement : plus aéré et sans sentir votre partenaire bouger.',
       'home.aurea_desc': 'Fermeté moyenne. 2 cm de mousse à mémoire adaptable sur noyau HR de 28 kg/m³, 30 cm de hauteur.',
-      'home.serenity_desc': 'Fermeté moyenne-ferme. Ressorts ensachés avec double couche de mousse à mémoire.',
       'home.discover': 'Découvrir →',
       'home.cross_t': 'Besoin aussi d’un <em>sommier coffre</em> ?',
       'home.cross_sub': 'Rangement caché et la base parfaite pour votre matelas. Dès 300 €.',
@@ -354,8 +354,8 @@
     },
     de: {
       'home.products': 'Unsere Matratzen',
+      'home.aureamuelles_desc': 'Mittel-fest. Einzeln getaschte Federn: luftiger und ohne zu spüren, wer neben dir schläft.',
       'home.aurea_desc': 'Mittlere Festigkeit. 2 cm anpassungsfähiger Memory-Schaum über 28 kg/m³ HR-Kern, 30 cm hoch.',
-      'home.serenity_desc': 'Mittel-fest. Taschenfederkern mit doppelter Memory-Schaum-Schicht.',
       'home.discover': 'Entdecken →',
       'home.cross_t': 'Brauchst du auch einen <em>Bettkasten</em>?',
       'home.cross_sub': 'Versteckter Stauraum und die perfekte Basis für deine Matratze. Ab 300 €.',
@@ -390,6 +390,10 @@
   var EXTRA = {
     es: {
       'home.supreme_desc': 'Doble cara: pura lana en invierno y algodón natural en verano, sobre muelles ensacados de 18 cm con viscogel.',
+      'ck.text': 'Usamos cookies de <strong>TikTok</strong> para medir la publicidad y saber qué anuncios funcionan. Sin ellas la web va igual de bien. Puedes cambiar de opinión cuando quieras en la <a href="cookies.html">política de cookies</a>.',
+      'ck.yes': 'Aceptar',
+      'ck.no': 'Rechazar',
+      'ck.aria': 'Aviso de cookies',
       'ann.1': 'Envío gratis en todos nuestros productos',
       'ann.2': '10 % de descuento en tu primera compra',
       'ann.3': 'Directo de fábrica a tu casa',
@@ -410,6 +414,10 @@
     },
     en: {
       'home.supreme_desc': 'Two sleeping sides: pure wool for winter and natural cotton for summer, over an 18 cm pocket-spring core with viscogel.',
+      'ck.text': 'We use <strong>TikTok</strong> cookies to measure our advertising and see which ads work. The site works just as well without them. You can change your mind any time in our <a href="cookies.html">cookie policy</a>.',
+      'ck.yes': 'Accept',
+      'ck.no': 'Reject',
+      'ck.aria': 'Cookie notice',
       'ann.1': 'Free shipping on every product',
       'ann.2': '10% off your first order',
       'ann.3': 'Straight from our factory to your home',
@@ -430,6 +438,10 @@
     },
     it: {
       'home.supreme_desc': 'Due lati: pura lana in inverno e cotone naturale in estate, su una molleggiatura insacchettata di 18 cm con viscogel.',
+      'ck.text': 'Usiamo cookie di <strong>TikTok</strong> per misurare la pubblicità e capire quali annunci funzionano. Senza di essi il sito funziona ugualmente. Puoi cambiare idea quando vuoi nella <a href="cookies.html">politica dei cookie</a>.',
+      'ck.yes': 'Accetta',
+      'ck.no': 'Rifiuta',
+      'ck.aria': 'Avviso sui cookie',
       'ann.1': 'Spedizione gratuita su tutti i prodotti',
       'ann.2': '10 % di sconto sul tuo primo ordine',
       'ann.3': 'Direttamente dalla fabbrica a casa tua',
@@ -450,6 +462,10 @@
     },
     fr: {
       'home.supreme_desc': 'Deux faces : pure laine en hiver et coton naturel en été, sur un noyau de ressorts ensachés de 18 cm avec viscogel.',
+      'ck.text': 'Nous utilisons des cookies <strong>TikTok</strong> pour mesurer notre publicité et savoir quelles annonces fonctionnent. Le site marche aussi bien sans eux. Vous pouvez changer d’avis à tout moment dans la <a href="cookies.html">politique de cookies</a>.',
+      'ck.yes': 'Accepter',
+      'ck.no': 'Refuser',
+      'ck.aria': 'Avis sur les cookies',
       'ann.1': 'Livraison gratuite sur tous nos produits',
       'ann.2': '10 % de remise sur votre première commande',
       'ann.3': 'Directement de l’usine à votre domicile',
@@ -470,6 +486,10 @@
     },
     de: {
       'home.supreme_desc': 'Zwei Liegeseiten: reine Wolle im Winter und Naturbaumwolle im Sommer, über einem 18 cm Taschenfederkern mit Viscogel.',
+      'ck.text': 'Wir verwenden <strong>TikTok</strong>-Cookies, um unsere Werbung zu messen und zu sehen, welche Anzeigen funktionieren. Ohne sie funktioniert die Website genauso gut. Du kannst es jederzeit in der <a href="cookies.html">Cookie-Richtlinie</a> ändern.',
+      'ck.yes': 'Annehmen',
+      'ck.no': 'Ablehnen',
+      'ck.aria': 'Cookie-Hinweis',
       'ann.1': 'Gratisversand für alle Produkte',
       'ann.2': '10 % Rabatt auf deine erste Bestellung',
       'ann.3': 'Direkt ab Werk zu dir nach Hause',

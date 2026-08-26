@@ -130,52 +130,6 @@ document.addEventListener('DOMContentLoaded', function () {
       ]
     },
 
-    'serenity': {
-      type: 'colchon',
-      comingSoon: true,
-      typeLabel: 'Colchón híbrido de muelles ensacados',
-      name: 'Nuvora Serenity',
-      desc: 'Firmeza media-alta con muelles ensacados individualmente y doble capa de viscoelástica. Máxima transpirabilidad e independencia de lechos: el colchón para parejas exigentes.',
-      rating: '4,9',
-      reviews: 287,
-      images: ['images/producto2.jpg'],
-      sizes: [
-        { label: '90 × 190 cm',  price: 699 },
-        { label: '135 × 190 cm', price: 749 },
-        { label: '150 × 190 cm', price: 799 },
-        { label: '160 × 200 cm', price: 849 },
-        { label: '180 × 200 cm', price: 899 }
-      ],
-      defaultSize: 3,
-      details: [
-        {
-          title: 'Composición y tecnología',
-          html: '<ul>' +
-            '<li>Más de 600 muelles ensacados individualmente (medida 150×190).</li>' +
-            '<li>Doble capa de viscoelástica de 3 + 2 cm para una acogida progresiva.</li>' +
-            '<li>Refuerzo perimetral: aprovechamiento total de la superficie.</li>' +
-            '<li>Altura total: 30 cm. Firmeza: media-alta (7,5/10). Transpirabilidad máxima.</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Envío y devoluciones',
-          html: '<ul>' +
-            '<li>Envío gratuito a toda España peninsular en 3–5 días laborables.</li>' +
-            '<li>Entrega en domicilio con aviso previo por SMS.</li>' +
-            '<li>30 noches de prueba con recogida y reembolso gratuitos.</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Garantía',
-          html: '<ul>' +
-            '<li>5 años de garantía completa contra defectos de fabricación.</li>' +
-            '<li>Cubre muelles, núcleo, hundimientos e irregularidades.</li>' +
-            '<li>Atención directa de fábrica, respuesta en menos de 48 h.</li>' +
-          '</ul>'
-        }
-      ]
-    },
-
     'mouth-tape': {
       type: 'accesorio',
       typeLabel: 'Accesorio de descanso',
@@ -1860,6 +1814,23 @@ document.addEventListener('DOMContentLoaded', function () {
       if (errBox) errBox.hidden = true;
 
       var emailEl = document.getElementById('chkEmail');
+
+      /* Píxel de TikTok: inicio de compra (solo si aceptó las cookies) */
+      if (window.NuvoraTrack) {
+        window.NuvoraTrack('InitiateCheckout', {
+          contents: lines.map(function (l) {
+            return {
+              content_id: l.id,
+              content_type: 'product',
+              content_name: l.name,
+              price: l.price,
+              quantity: l.qty || 1
+            };
+          }),
+          value: Math.round(subtotal * 100) / 100,
+          currency: 'EUR'
+        });
+      }
 
       fetch('/.netlify/functions/crear-pago', {
         method: 'POST',

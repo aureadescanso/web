@@ -52,9 +52,8 @@ const CATALOGO = {
       { label: '150 × 40 cm', precio: 69.90 }
     ]
   }
-  /* Nuvora Serenity sigue en "Próximamente" y los Complementos
-     (Mouth Tape, Tiras Nasales) están desactivados temporalmente:
-     no se pueden comprar, por eso no aparecen aquí. */
+  /* Los Complementos (Mouth Tape, Tiras Nasales) están desactivados
+     temporalmente: no se pueden comprar, por eso no aparecen aquí. */
 };
 
 /* Nuvora Aurea con núcleo de muelles ensacados: mismas medidas que el

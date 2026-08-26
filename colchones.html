@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://analytics.tiktok.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://analytics.tiktok.com; connect-src 'self' https://analytics.tiktok.com https://*.tiktok.com; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Colchones | Nuvora Descanso</title>
@@ -62,19 +62,6 @@
           "brand": { "@type": "Brand", "name": "Nuvora Descanso" },
           "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "255.34", "highPrice": "535.66", "availability": "https://schema.org/InStock" }
         }
-      },
-      {
-        "@type": "ListItem",
-        "position": 4,
-        "item": {
-          "@type": "Product",
-          "name": "Nuvora Serenity",
-          "url": "https://nuvoradescanso.com/producto.html?m=serenity",
-          "image": "https://nuvoradescanso.com/images/producto2.jpg",
-          "description": "Próximamente. El nuevo colchón premium de Nuvora Descanso.",
-          "brand": { "@type": "Brand", "name": "Nuvora Descanso" },
-          "offers": { "@type": "Offer", "availability": "https://schema.org/PreOrder" }
-        }
       }
     ]
   }
@@ -85,6 +72,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="js/tiktok.js"></script>
 </head>
 <body>
 
@@ -211,15 +199,15 @@
         </div>
       </article>
 
-      <!-- Nuvora Aurea -->
-      <article class="pcard" data-animate>
+      <!-- Nuvora Aurea · viscoelástico -->
+      <article class="pcard" data-animate data-delay="120">
         <a href="producto.html?m=aurea" class="pcard__media">
-          <img src="images/aurea-frontal.webp" alt="Colchón Nuvora Aurea" loading="lazy">
+          <img src="images/aurea-frontal.webp" alt="Colchón Nuvora Aurea viscoelástico" loading="lazy">
           <span class="pcard__badge">Más vendido</span>
         </a>
         <div class="pcard__body">
-          <h2 class="pcard__name"><a href="producto.html?m=aurea">Nuvora Aurea</a></h2>
-          <p class="pcard__desc">Acolchado tapa a tapa y 30 cm de altura, con el núcleo que prefieras: viscoelástico o muelles ensacados.</p>
+          <h2 class="pcard__name"><a href="producto.html?m=aurea">Nuvora Aurea Viscoelástico</a></h2>
+          <p class="pcard__desc">Viscoelástica de 2 cm sobre núcleo HR de 28 kg/m³. La acogida que abraza sin hundir.</p>
           <div class="pcard__chips">
             <span class="pcard__chip">Firmeza media</span>
             <span class="pcard__chip">30 cm de altura</span>
@@ -228,7 +216,7 @@
           <div class="pcard__colors" aria-label="Núcleos disponibles">
             <span class="pcard__colors-label">2 núcleos</span>
             <a href="producto.html?m=aurea" class="pcard__opt is-active">Viscoelástico</a>
-            <a href="producto.html?m=aurea-muelles" class="pcard__opt">Muelles ensacados</a>
+            <a href="producto.html?m=aurea-muelles" class="pcard__opt">Muelles</a>
           </div>
           <div class="pcard__footer">
             <span class="pcard__price">
@@ -240,30 +228,30 @@
         </div>
       </article>
 
-      <!-- Nuvora Serenity — Próximamente -->
-      <article class="pcard pcard--soon" data-animate data-delay="120">
-        <a href="producto.html?m=serenity" class="pcard__media soon-media">
-          <img src="images/producto2.jpg" alt="Nuvora Serenity — Próximamente" loading="lazy">
-          <div class="soon-veil"></div>
-          <div class="tape tape--1"><div class="tape__track">
-            <span>Próximamente</span><span class="soon-dot">✦</span><span>Nuvora Serenity</span><span class="soon-dot">✦</span><span>Próximamente</span><span class="soon-dot">✦</span><span>Nuvora Serenity</span><span class="soon-dot">✦</span><span>Próximamente</span><span class="soon-dot">✦</span><span>Nuvora Serenity</span><span class="soon-dot">✦</span><span>Próximamente</span><span class="soon-dot">✦</span><span>Nuvora Serenity</span><span class="soon-dot">✦</span>
-          </div></div>
-          <div class="tape tape--2"><div class="tape__track">
-            <span>Coming soon</span><span class="soon-dot">✦</span><span>Nuvora Serenity</span><span class="soon-dot">✦</span><span>Coming soon</span><span class="soon-dot">✦</span><span>Nuvora Serenity</span><span class="soon-dot">✦</span><span>Coming soon</span><span class="soon-dot">✦</span><span>Nuvora Serenity</span><span class="soon-dot">✦</span><span>Coming soon</span><span class="soon-dot">✦</span><span>Nuvora Serenity</span><span class="soon-dot">✦</span>
-          </div></div>
-          <span class="soon-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-            <span data-i18n="soon.badge">Próximamente</span>
-          </span>
+      <!-- Nuvora Aurea · muelles ensacados -->
+      <article class="pcard" data-animate data-delay="240">
+        <a href="producto.html?m=aurea-muelles" class="pcard__media">
+          <img src="images/aurea-perspectiva.webp" alt="Colchón Nuvora Aurea de muelles ensacados" loading="lazy">
         </a>
         <div class="pcard__body">
-          <h2 class="pcard__name"><a href="producto.html?m=serenity">Nuvora Serenity</a></h2>
-          <p class="pcard__desc" data-i18n="soon.teaser">El próximo capítulo del descanso Nuvora. Estamos afinando cada detalle. Muy pronto.</p>
+          <h2 class="pcard__name"><a href="producto.html?m=aurea-muelles">Nuvora Aurea Muelles</a></h2>
+          <p class="pcard__desc">Muelles ensacados individualmente: más firme, más aireado y sin notar a quien duerme al lado.</p>
+          <div class="pcard__chips">
+            <span class="pcard__chip">Firmeza media-firme</span>
+            <span class="pcard__chip">30 cm de altura</span>
+            <span class="pcard__chip">24 medidas</span>
+          </div>
+          <div class="pcard__colors" aria-label="Núcleos disponibles">
+            <span class="pcard__colors-label">2 núcleos</span>
+            <a href="producto.html?m=aurea" class="pcard__opt">Viscoelástico</a>
+            <a href="producto.html?m=aurea-muelles" class="pcard__opt is-active">Muelles</a>
+          </div>
           <div class="pcard__footer">
             <span class="pcard__price">
-              <span class="pcard__price-from" data-i18n="soon.price">Precio por desvelar</span>
+              <span class="pcard__price-from">Desde</span>
+              <span class="pcard__price-val">255,34 €</span>
             </span>
-            <a href="mailto:nuvoradescanso@gmail.com?subject=Lista%20de%20espera%20%E2%80%94%20Nuvora%20Serenity&body=Hola%2C%20quiero%20que%20me%20avis%C3%A9is%20cuando%20salga%20el%20Nuvora%20Serenity.%20%C2%A1Gracias!" class="pcard__btn pcard__btn--gold" data-i18n="soon.notify">Avísame del lanzamiento</a>
+            <a href="producto.html?m=aurea-muelles" class="pcard__btn">Ver colchón &rarr;</a>
           </div>
         </div>
       </article>

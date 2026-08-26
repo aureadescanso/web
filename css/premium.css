@@ -793,3 +793,87 @@ html { scrollbar-width: thin; scrollbar-color: rgba(27, 45, 91, 0.55) transparen
 @media (prefers-reduced-motion: reduce) {
   .pcard[data-animate], .bcard[data-animate], .producto[data-animate] { filter: none; }
 }
+
+/* ──────────────────────────────────────────────
+   AVISO DE COOKIES (js/tiktok.js)
+   Solo aparece mientras el visitante no ha contestado.
+   ────────────────────────────────────────────── */
+.ckbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1900;
+  padding: 14px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .45s var(--ease-out), transform .5s var(--ease-out);
+}
+.ckbar.is-open { opacity: 1; transform: none; }
+
+.ckbar__inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 18px 24px;
+  border-radius: 18px;
+  background: linear-gradient(140deg, #0A1128 0%, #1B2D5B 100%);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  box-shadow: 0 22px 60px rgba(6, 12, 28, 0.42);
+}
+.ckbar__text {
+  flex: 1 1 380px;
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.78);
+}
+.ckbar__text strong { color: #fff; font-weight: 600; }
+.ckbar__text a {
+  color: #E2C46E;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.ckbar__btns {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+.ckbar__no,
+.ckbar__yes {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 100px;
+  padding: 11px 22px;
+  cursor: pointer;
+  transition: background .25s, color .25s, transform .25s var(--ease-out);
+}
+.ckbar__no {
+  color: rgba(255, 255, 255, 0.72);
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+}
+.ckbar__no:hover { color: #fff; background: rgba(255, 255, 255, 0.08); }
+.ckbar__yes {
+  color: #14203F;
+  background: linear-gradient(120deg, #F0DC9A 0%, #D4AF37 55%, #B98F22 100%);
+  border: none;
+}
+.ckbar__yes:hover { transform: translateY(-2px); }
+
+@media (max-width: 620px) {
+  .ckbar { padding: 10px; }
+  .ckbar__inner { padding: 16px 18px; gap: 14px; }
+  .ckbar__text { font-size: 0.8rem; flex-basis: 100%; }
+  .ckbar__btns { width: 100%; }
+  .ckbar__no, .ckbar__yes { flex: 1; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ckbar { transition: none; opacity: 1; transform: none; }
+}

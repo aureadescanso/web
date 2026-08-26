@@ -29,6 +29,25 @@
     });
   }
 
+  /* Avisa al píxel de TikTok, si el visitante ha aceptado las cookies */
+  function medir(evento, lineas) {
+    if (!window.NuvoraTrack) return;
+    var total = lineas.reduce(function (a, l) { return a + l.price * (l.qty || 1); }, 0);
+    window.NuvoraTrack(evento, {
+      contents: lineas.map(function (l) {
+        return {
+          content_id: l.id,
+          content_type: 'product',
+          content_name: l.name,
+          price: l.price,
+          quantity: l.qty || 1
+        };
+      }),
+      value: Math.round(total * 100) / 100,
+      currency: 'EUR'
+    });
+  }
+
   var Cart = {
     items: load(),
     /* línea: { id, name, sizeLabel, sizeIdx, price, img, type } */
@@ -41,6 +60,7 @@
       else { line.qty = 1; this.items.push(line); }
       persist(this.items);
       refresh();
+      medir('AddToCart', [line]);
       open();
     },
     setQty: function (i, q) {
@@ -75,6 +95,7 @@
       });
       persist(this.items);
       refresh();
+      medir('AddToCart', lines);
       open();
     },
     clear: function () {

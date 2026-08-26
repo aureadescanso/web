@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://analytics.tiktok.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://analytics.tiktok.com; connect-src 'self' https://analytics.tiktok.com https://*.tiktok.com; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nuvora Descanso | Colchones Premium</title>
@@ -52,6 +52,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <script src="js/tiktok.js"></script>
 </head>
 <body>
 
@@ -183,10 +184,10 @@
         </article>
         <article class="producto producto--tilt" data-animate data-delay="120">
           <a href="producto.html?m=aurea" class="producto__img">
-            <img src="images/aurea-frontal.webp" alt="Nuvora Aurea" loading="lazy">
+            <img src="images/aurea-frontal.webp" alt="Nuvora Aurea viscoelástico" loading="lazy">
           </a>
           <div class="producto__body">
-            <h3 class="producto__name"><a href="producto.html?m=aurea">Nuvora Aurea</a></h3>
+            <h3 class="producto__name"><a href="producto.html?m=aurea">Nuvora Aurea Viscoelástico</a></h3>
             <p class="producto__desc" data-i18n="home.aurea_desc">Firmeza media. Viscoelástica adaptable de 2 cm sobre núcleo HR de 28 kg/m³ y 30 cm de altura.</p>
             <div class="producto__footer">
               <span class="producto__price">Desde 205,34 &euro;</span>
@@ -194,27 +195,16 @@
             </div>
           </div>
         </article>
-        <article class="producto producto--tilt producto--soon" data-animate data-delay="240">
-          <a href="producto.html?m=serenity" class="producto__img soon-media">
-            <img src="images/producto2.jpg" alt="Nuvora Serenity — Próximamente" loading="lazy">
-            <div class="soon-veil"></div>
-            <div class="tape tape--1"><div class="tape__track">
-              <span>Próximamente</span><span class="soon-dot">✦</span><span>Nuvora Serenity</span><span class="soon-dot">✦</span><span>Próximamente</span><span class="soon-dot">✦</span><span>Nuvora Serenity</span><span class="soon-dot">✦</span><span>Próximamente</span><span class="soon-dot">✦</span><span>Nuvora Serenity</span><span class="soon-dot">✦</span><span>Próximamente</span><span class="soon-dot">✦</span><span>Nuvora Serenity</span><span class="soon-dot">✦</span>
-            </div></div>
-            <div class="tape tape--2"><div class="tape__track">
-              <span>Coming soon</span><span class="soon-dot">✦</span><span>Nuvora Serenity</span><span class="soon-dot">✦</span><span>Coming soon</span><span class="soon-dot">✦</span><span>Nuvora Serenity</span><span class="soon-dot">✦</span><span>Coming soon</span><span class="soon-dot">✦</span><span>Nuvora Serenity</span><span class="soon-dot">✦</span><span>Coming soon</span><span class="soon-dot">✦</span><span>Nuvora Serenity</span><span class="soon-dot">✦</span>
-            </div></div>
-            <span class="soon-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-              <span data-i18n="soon.badge">Próximamente</span>
-            </span>
+        <article class="producto producto--tilt" data-animate data-delay="240">
+          <a href="producto.html?m=aurea-muelles" class="producto__img">
+            <img src="images/aurea-perspectiva.webp" alt="Nuvora Aurea de muelles ensacados" loading="lazy">
           </a>
           <div class="producto__body">
-            <h3 class="producto__name"><a href="producto.html?m=serenity">Nuvora Serenity</a></h3>
-            <p class="producto__desc" data-i18n="soon.teaser">El próximo capítulo del descanso Nuvora. Estamos afinando cada detalle. Muy pronto.</p>
+            <h3 class="producto__name"><a href="producto.html?m=aurea-muelles">Nuvora Aurea Muelles</a></h3>
+            <p class="producto__desc" data-i18n="home.aureamuelles_desc">Firmeza media-firme. Muelles ensacados individualmente: más aireado y sin notar a quien duerme al lado.</p>
             <div class="producto__footer">
-              <span class="producto__price" data-i18n="soon.price">Precio por desvelar</span>
-              <a href="producto.html?m=serenity" class="producto__link producto__link--gold" data-i18n="soon.notify">Avísame del lanzamiento</a>
+              <span class="producto__price">Desde 255,34 &euro;</span>
+              <a href="producto.html?m=aurea-muelles" class="producto__link" data-i18n="home.discover">Descubrir &rarr;</a>
             </div>
           </div>
         </article>

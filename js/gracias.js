@@ -28,6 +28,25 @@
       .then(function (d) {
         if (!d.pagado) { mostrar(sinPago); return; }
 
+        /* Píxel de TikTok: compra completada. Se mide ANTES de vaciar la
+           cesta, que es de donde salen las líneas y el importe. */
+        if (window.NuvoraTrack && window.NuvoraCart) {
+          var items = window.NuvoraCart.items || [];
+          window.NuvoraTrack('CompletePayment', {
+            contents: items.map(function (l) {
+              return {
+                content_id: l.id,
+                content_type: 'product',
+                content_name: l.name,
+                price: l.price,
+                quantity: l.qty || 1
+              };
+            }),
+            value: Math.round(window.NuvoraCart.total() * 100) / 100,
+            currency: 'EUR'
+          });
+        }
+
         /* Pago confirmado: se vacía la cesta (aquí, no antes de pagar) */
         if (window.NuvoraCart && window.NuvoraCart.clear) window.NuvoraCart.clear();
 
