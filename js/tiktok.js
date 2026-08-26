@@ -61,10 +61,81 @@
   if (leerConsentimiento() === 'granted') arrancarPixel();
 
   /* ── API para el resto del sitio ── */
+  /* ── Identificadores que mejoran la atribución ── */
+  var TTCLID_KEY = 'nuvora_ttclid';
+
+  /* El id del clic viene en la URL del anuncio y se pierde al navegar:
+     se guarda para poder mandarlo también en la compra. */
+  (function () {
+    var m = /[?&]ttclid=([^&]+)/.exec(window.location.search);
+    if (m) { try { localStorage.setItem(TTCLID_KEY, decodeURIComponent(m[1])); } catch (e) {} }
+  })();
+
+  function ttclid() {
+    try { return localStorage.getItem(TTCLID_KEY) || ''; } catch (e) { return ''; }
+  }
+  /* Cookie que planta el propio píxel de TikTok */
+  function ttp() {
+    var m = /(?:^|;\s*)_ttp=([^;]+)/.exec(document.cookie);
+    return m ? decodeURIComponent(m[1]) : '';
+  }
+  function nuevoId() {
+    if (window.crypto && window.crypto.randomUUID) return window.crypto.randomUUID();
+    return 'e-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10);
+  }
+
+  /* ── Envío del evento por los dos caminos ──
+     El mismo `event_id` va al píxel del navegador y a la Events API del
+     servidor. TikTok los cruza y cuenta UNA sola conversión, aunque le
+     lleguen las dos copias. Si el navegador tiene un bloqueador, la
+     copia del servidor llega igual. */
   window.NuvoraTrack = function (evento, datos) {
-    if (leerConsentimiento() !== 'granted' || !window.ttq) return;
-    arrancarPixel();
-    try { window.ttq.track(evento, datos || {}); } catch (e) {}
+    if (leerConsentimiento() !== 'granted') return;
+    datos = datos || {};
+    var id = datos.event_id || nuevoId();
+
+    /* 1 · Píxel del navegador */
+    if (window.ttq) {
+      arrancarPixel();
+      try {
+        window.ttq.track(evento, {
+          contents: datos.contents,
+          value: datos.value,
+          currency: datos.currency || 'EUR'
+        }, { event_id: id });
+      } catch (e) {}
+    }
+
+    /* 2 · Events API, desde nuestro servidor */
+    try {
+      var cuerpo = JSON.stringify({
+        event: evento,
+        event_id: id,
+        value: datos.value,
+        contents: datos.contents,
+        url: window.location.href,
+        referrer: document.referrer || '',
+        ttp: ttp(),
+        ttclid: ttclid(),
+        /* El correo va en claro hasta NUESTRO servidor, por HTTPS, y allí
+           se cifra en SHA-256 antes de salir hacia TikTok. */
+        email: datos.email || '',
+        phone: datos.phone || ''
+      });
+      /* sendBeacon sobrevive al cambio de página (el checkout redirige a
+         Stripe justo después de InitiateCheckout). */
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon('/.netlify/functions/tiktok-evento',
+          new Blob([cuerpo], { type: 'application/json' }));
+      } else {
+        fetch('/.netlify/functions/tiktok-evento', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: cuerpo,
+          keepalive: true
+        }).catch(function () {});
+      }
+    } catch (e) {}
   };
 
   window.NuvoraConsent = {
@@ -136,26 +207,9 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     setTimeout(montarAviso, 700);
-
-    /* ViewContent: solo en las fichas de producto */
-    if (document.getElementById('pdpRoot')) {
-      var m = /[?&]m=([^&]*)/.exec(window.location.search);
-      var id = m ? decodeURIComponent(m[1]) : '';
-      var cat = window.NuvoraCatalog && window.NuvoraCatalog[id];
-      if (cat && cat.sizes) {
-        var i = cat.defaultSize || 0;
-        window.NuvoraTrack('ViewContent', {
-          contents: [{
-            content_id: id,
-            content_type: 'product',
-            content_name: cat.name,
-            price: cat.sizes[i].price,
-            quantity: 1
-          }],
-          value: cat.sizes[i].price,
-          currency: 'EUR'
-        });
-      }
-    }
   });
+
+  /* El evento ViewContent lo dispara js/shop.js cuando ya ha resuelto
+     qué producto y qué medida se están viendo: este archivo carga en el
+     <head> y aquí todavía no existe el catálogo. */
 })();

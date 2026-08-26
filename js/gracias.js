@@ -28,9 +28,15 @@
       .then(function (d) {
         if (!d.pagado) { mostrar(sinPago); return; }
 
-        /* Píxel de TikTok: compra completada. Se mide ANTES de vaciar la
-           cesta, que es de donde salen las líneas y el importe. */
+        /* TikTok: compra completada. Se mide ANTES de vaciar la cesta,
+           que es de donde salen las líneas y el importe. El correo lo
+           confirma la pasarela, así que es el dato más fiable que
+           podemos mandar para que TikTok atribuya la venta. */
         if (window.NuvoraTrack && window.NuvoraCart) {
+          var correo = d.email || '';
+          if (!correo) {
+            try { correo = sessionStorage.getItem('nuvora_email') || ''; } catch (e) {}
+          }
           var items = window.NuvoraCart.items || [];
           window.NuvoraTrack('CompletePayment', {
             contents: items.map(function (l) {
@@ -43,8 +49,10 @@
               };
             }),
             value: Math.round(window.NuvoraCart.total() * 100) / 100,
-            currency: 'EUR'
+            currency: 'EUR',
+            email: correo
           });
+          try { sessionStorage.removeItem('nuvora_email'); } catch (e) {}
         }
 
         /* Pago confirmado: se vacía la cesta (aquí, no antes de pagar) */

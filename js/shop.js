@@ -1008,6 +1008,24 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     renderPrice();
 
+    /* — TikTok: ficha vista —
+       Se dispara aquí, y no en js/tiktok.js, porque ese archivo carga
+       en el <head> y todavía no sabe qué producto ni qué medida se
+       están viendo. */
+    if (window.NuvoraTrack) {
+      window.NuvoraTrack('ViewContent', {
+        contents: [{
+          content_id: id,
+          content_type: 'product',
+          content_name: product.name,
+          price: product.sizes[selectedSize].price,
+          quantity: 1
+        }],
+        value: product.sizes[selectedSize].price,
+        currency: 'EUR'
+      });
+    }
+
     /* — Comprar ahora → checkout directo — */
     function goCheckout() {
       window.location.href =
@@ -1815,7 +1833,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
       var emailEl = document.getElementById('chkEmail');
 
-      /* Píxel de TikTok: inicio de compra (solo si aceptó las cookies) */
+      /* TikTok: inicio de compra (solo si aceptó las cookies).
+         Aquí ya tenemos el correo, que es lo que mejor permite a TikTok
+         reconocer al usuario. Se cifra en nuestro servidor, nunca aquí. */
       if (window.NuvoraTrack) {
         window.NuvoraTrack('InitiateCheckout', {
           contents: lines.map(function (l) {
@@ -1828,8 +1848,16 @@ document.addEventListener('DOMContentLoaded', function () {
             };
           }),
           value: Math.round(subtotal * 100) / 100,
-          currency: 'EUR'
+          currency: 'EUR',
+          email: emailEl ? emailEl.value.trim() : ''
         });
+        /* El correo se guarda para poder identificar también la compra
+           al volver de Stripe, donde ya no está el formulario. */
+        try {
+          if (emailEl && emailEl.value) {
+            sessionStorage.setItem('nuvora_email', emailEl.value.trim());
+          }
+        } catch (e) {}
       }
 
       fetch('/.netlify/functions/crear-pago', {
