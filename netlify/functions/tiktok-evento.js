@@ -9,7 +9,7 @@
    DEDUPLICACIÓN: cada evento lleva un `event_id` que se genera en el
    navegador y se manda por los dos caminos, píxel y API. TikTok lo usa
    para contar una sola conversión cuando llegan las dos copias. Por eso
-   el nombre del evento tiene que ser EL MISMO en js/tiktok.js y aquí.
+   el nombre del evento tiene que ser EL MISMO en js/pixels.js y aquí.
 
    VARIABLE DE ENTORNO NECESARIA (Netlify → Environment variables):
      TIKTOK_ACCESS_TOKEN   el token que genera TikTok en

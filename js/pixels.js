@@ -1,16 +1,21 @@
 /* =============================================
-   NUVORA DESCANSO — Píxel de TikTok + consentimiento
+   NUVORA DESCANSO — Píxeles de publicidad + consentimiento
    =============================================
-   El código base de TikTok se sirve desde este archivo, y no en línea
-   dentro del HTML, para no tener que abrir la CSP con 'unsafe-inline':
-   con `script-src 'self'` basta, y solo se añade el dominio de TikTok
-   para el script remoto y sus envíos.
+   Dos plataformas comparten este archivo:
+     · TikTok (píxel DA7KU5JC77U208UL93F0, "alfredo")
+     · Meta   (píxel 1465349585647608, Facebook e Instagram)
 
-   IMPORTANTE — consentimiento: el píxel instala cookies de publicidad,
-   así que en España necesita el permiso previo del usuario (RGPD y
-   art. 22.2 LSSI). Por eso arranca con `holdConsent()`: se carga pero
-   NO envía nada hasta que la persona acepta en el aviso. Si rechaza, o
-   si no contesta, no se envía ni un evento.
+   El código base de ambos se sirve desde aquí, y no en línea dentro del
+   HTML, para no tener que abrir la CSP con 'unsafe-inline': con
+   `script-src 'self'` basta, y solo se añaden los dominios de TikTok y
+   de Meta para sus scripts remotos y sus envíos.
+
+   IMPORTANTE — consentimiento: los píxeles instalan cookies de
+   publicidad, así que en España necesitan el permiso previo del usuario
+   (RGPD y art. 22.2 LSSI). Por eso NO se descarga ningún SDK hasta que
+   la persona acepta en el aviso: si rechaza, o si no contesta, el
+   navegador ni siquiera contacta con TikTok ni con Meta, y por tanto no
+   se les entrega la IP del visitante.
 
    Eventos que se mandan (todos pasan por window.NuvoraTrack, que
    comprueba el consentimiento antes de disparar):
@@ -18,11 +23,14 @@
      AddToCart        · al añadir algo a la cesta
      InitiateCheckout · al pulsar "Tramitar pedido"
      CompletePayment  · al volver de Stripe con el pago hecho
+   Meta usa los mismos nombres salvo el último, que allí se llama
+   Purchase: la traducción está en EVENTO_META.
    ============================================= */
 (function () {
   'use strict';
 
-  var PIXEL = 'DA7KU5JC77U208UL93F0';
+  var PIXEL_TIKTOK = 'DA7KU5JC77U208UL93F0';
+  var PIXEL_META = '1465349585647608';
   var KEY = 'nuvora_consent_v1';
 
   function leerConsentimiento() {
@@ -32,7 +40,7 @@
     try { localStorage.setItem(KEY, v); } catch (e) {}
   }
 
-  /* ── Código base del píxel (el que da TikTok) ── */
+  /* ── Código base del píxel de TikTok (el que da TikTok) ── */
   !function (w, d, t) {
     w.TiktokAnalyticsObject = t; var ttq = w[t] = w[t] || []; ttq.methods = ["page", "track", "identify", "instances", "debug", "on", "off", "once", "ready", "alias", "group", "enableCookie", "disableCookie", "holdConsent", "revokeConsent", "grantConsent"], ttq.setAndDefer = function (t, e) { t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } }; for (var i = 0; i < ttq.methods.length; i++) ttq.setAndDefer(ttq, ttq.methods[i]); ttq.instance = function (t) {
       for (
@@ -49,18 +57,50 @@
     ttq.holdConsent();
   }(window, document, 'ttq');
 
-  var arrancado = false;
-  function arrancarPixel() {
-    if (arrancado || !window.ttq) return;
-    arrancado = true;
-    window.ttq.load(PIXEL);
+  /* ── Código base del píxel de Meta (el que da Meta) ──
+     Es el mismo que entrega Facebook, con un solo cambio: la línea que
+     insertaba el <script> de fbevents.js se ha movido a arrancarMeta().
+     Así la cola `fbq.queue` existe desde el principio, pero el SDK no se
+     descarga hasta que hay consentimiento. */
+  !function (f, b, e, v, n, t, s) {
+    if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) };
+    if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = [];
+  }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+
+  /* No se incluye el <noscript><img> del píxel de Meta que viene en el
+     código original: ese pide la imagen a Facebook nada más abrir la
+     página, sin pasar por el aviso de cookies. Sin JavaScript no hay
+     forma de pedir permiso, así que tampoco puede haber seguimiento. */
+
+  var tiktokArrancado = false;
+  function arrancarTikTok() {
+    if (tiktokArrancado || !window.ttq) return;
+    tiktokArrancado = true;
+    window.ttq.load(PIXEL_TIKTOK);
     window.ttq.grantConsent();
     window.ttq.page();
   }
 
-  if (leerConsentimiento() === 'granted') arrancarPixel();
+  var metaArrancado = false;
+  function arrancarMeta() {
+    if (metaArrancado || !window.fbq) return;
+    metaArrancado = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://connect.facebook.net/en_US/fbevents.js';
+    var p = document.getElementsByTagName('script')[0];
+    p.parentNode.insertBefore(s, p);
+    window.fbq('init', PIXEL_META);
+    window.fbq('track', 'PageView');
+  }
 
-  /* ── API para el resto del sitio ── */
+  function arrancarPixeles() {
+    arrancarTikTok();
+    arrancarMeta();
+  }
+
+  if (leerConsentimiento() === 'granted') arrancarPixeles();
+
   /* ── Identificadores que mejoran la atribución ── */
   var TTCLID_KEY = 'nuvora_ttclid';
 
@@ -84,34 +124,66 @@
     return 'e-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10);
   }
 
+  /* Meta llama Purchase a lo que TikTok llama CompletePayment. El resto
+     de nombres coinciden. */
+  var EVENTO_META = { CompletePayment: 'Purchase' };
+
+  /* Nuestras líneas van en el formato de TikTok (content_id, price…);
+     Meta espera otro (id, item_price…). Aquí se traducen. */
+  function contenidosMeta(contents) {
+    return (contents || []).map(function (c) {
+      return { id: c.content_id, quantity: c.quantity || 1, item_price: c.price };
+    });
+  }
+
   /* ── Envío del evento por los dos caminos ──
      El mismo `event_id` va al píxel del navegador y a la Events API del
      servidor. TikTok los cruza y cuenta UNA sola conversión, aunque le
      lleguen las dos copias. Si el navegador tiene un bloqueador, la
-     copia del servidor llega igual. */
+     copia del servidor llega igual.
+     A Meta se le pasa ese mismo identificador como `eventID`: hoy solo
+     recibe la copia del navegador, pero si algún día se activa su
+     Conversions API la deduplicación ya está preparada. */
   window.NuvoraTrack = function (evento, datos) {
     if (leerConsentimiento() !== 'granted') return;
     datos = datos || {};
     var id = datos.event_id || nuevoId();
+    var valor = datos.value;
+    var moneda = datos.currency || 'EUR';
 
-    /* 1 · Píxel del navegador */
+    /* 1 · Píxel de TikTok, en el navegador */
     if (window.ttq) {
-      arrancarPixel();
+      arrancarTikTok();
       try {
         window.ttq.track(evento, {
           contents: datos.contents,
-          value: datos.value,
-          currency: datos.currency || 'EUR'
+          value: valor,
+          currency: moneda
         }, { event_id: id });
       } catch (e) {}
     }
 
-    /* 2 · Events API, desde nuestro servidor */
+    /* 2 · Píxel de Meta, en el navegador */
+    if (window.fbq) {
+      arrancarMeta();
+      try {
+        var cont = contenidosMeta(datos.contents);
+        window.fbq('track', EVENTO_META[evento] || evento, {
+          content_type: 'product',
+          content_ids: cont.map(function (c) { return c.id; }),
+          contents: cont,
+          value: valor,
+          currency: moneda
+        }, { eventID: id });
+      } catch (e) {}
+    }
+
+    /* 3 · Events API de TikTok, desde nuestro servidor */
     try {
       var cuerpo = JSON.stringify({
         event: evento,
         event_id: id,
-        value: datos.value,
+        value: valor,
         contents: datos.contents,
         url: window.location.href,
         referrer: document.referrer || '',
@@ -142,12 +214,14 @@
     estado: leerConsentimiento,
     aceptar: function () {
       guardarConsentimiento('granted');
-      arrancarPixel();
+      arrancarPixeles();
       cerrarAviso();
     },
     rechazar: function () {
       guardarConsentimiento('denied');
       if (window.ttq) window.ttq.revokeConsent();
+      /* Meta ni siquiera se ha cargado, pero por si acaso: */
+      if (window.fbq && metaArrancado) window.fbq('consent', 'revoke');
       cerrarAviso();
     }
   };
@@ -181,9 +255,9 @@
       '<div class="ckbar__inner">' +
         '<p class="ckbar__text" data-i18n-html="ck.text">' +
           T('ck.text',
-            'Usamos cookies de <strong>TikTok</strong> para medir la publicidad y saber qué anuncios ' +
-            'funcionan. Sin ellas la web va igual de bien. Puedes cambiar de opinión cuando quieras en la ' +
-            '<a href="' + base + 'cookies.html">política de cookies</a>.') +
+            'Usamos cookies de <strong>TikTok</strong> y <strong>Meta</strong> para medir la publicidad y ' +
+            'saber qué anuncios funcionan. Sin ellas la web va igual de bien. Puedes cambiar de opinión ' +
+            'cuando quieras en la <a href="' + base + 'cookies.html">política de cookies</a>.') +
         '</p>' +
         '<div class="ckbar__btns">' +
           '<button type="button" class="ckbar__no" data-no data-i18n="ck.no">' +

@@ -1009,7 +1009,7 @@ document.addEventListener('DOMContentLoaded', function () {
     renderPrice();
 
     /* — TikTok: ficha vista —
-       Se dispara aquí, y no en js/tiktok.js, porque ese archivo carga
+       Se dispara aquí, y no en js/pixels.js, porque ese archivo carga
        en el <head> y todavía no sabe qué producto ni qué medida se
        están viendo. */
     if (window.NuvoraTrack) {

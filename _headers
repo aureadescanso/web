@@ -1,7 +1,7 @@
 # Cabeceras de seguridad para hosts estáticos (Netlify, Cloudflare Pages, etc.)
 # Se aplican a todas las rutas. Para Apache usa .htaccess; para Nginx, el bloque equivalente en SECURITY.md.
 /*
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://analytics.tiktok.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://analytics.tiktok.com; connect-src 'self' https://analytics.tiktok.com https://*.tiktok.com; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://analytics.tiktok.com https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://analytics.tiktok.com https://www.facebook.com; connect-src 'self' https://analytics.tiktok.com https://*.tiktok.com https://*.tiktokw.us https://www.facebook.com https://connect.facebook.net; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
