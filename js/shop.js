@@ -766,6 +766,87 @@ document.addEventListener('DOMContentLoaded', function () {
       metaTag('meta[property="og:image"]', 'content', img,
         { tag: 'meta', attrs: { property: 'og:image' } });
     }
+    setSchema(product, id, url, img, desc);
+  }
+
+  /* ── Datos estructurados de la ficha ──
+     Sin esto Google no puede enseñar precio ni disponibilidad junto al
+     resultado: solo el título y el texto. Las páginas de categoría ya lo
+     tenían; las fichas, que son las que de verdad venden, no.
+
+     Se declara AggregateOffer con el mínimo y el máximo porque cada
+     producto tiene varias medidas a distinto precio, y los importes
+     salen del catálogo, no escritos a mano, para que no puedan
+     desviarse de lo que se cobra.
+
+     NO se declara aggregateRating a propósito: marcar valoraciones que
+     no vengan de compradores reales es motivo de penalización en Google
+     y de sanción por publicidad engañosa. */
+  function setSchema(product, id, url, img, desc) {
+    var precios = (product.sizes || []).map(function (s) { return s.price; });
+    if (!precios.length) return;
+
+    var categoria = { colchon: 'colchones', canape: 'canapes', almohada: 'almohadas' }[product.type];
+    var etiquetaCat = { colchon: 'Colchones', canape: 'Canapés', almohada: 'Almohadas' }[product.type];
+
+    var datos = {
+      '@context': 'https://schema.org',
+      '@graph': [{
+        '@type': 'Product',
+        '@id': url + '#producto',
+        name: product.name,
+        description: desc,
+        image: (product.images || []).map(function (i) { return URL_BASE + i; }),
+        brand: { '@type': 'Brand', name: 'Nuvora Descanso' },
+        category: etiquetaCat || 'Descanso',
+        /* Fabricación propia: no hay código de barras, así que se
+           identifica por referencia interna, igual que en el feed. */
+        mpn: id,
+        sku: id,
+        offers: {
+          '@type': 'AggregateOffer',
+          priceCurrency: 'EUR',
+          lowPrice: Math.min.apply(null, precios).toFixed(2),
+          highPrice: Math.max.apply(null, precios).toFixed(2),
+          offerCount: precios.length,
+          availability: 'https://schema.org/InStock',
+          itemCondition: 'https://schema.org/NewCondition',
+          url: url,
+          seller: { '@type': 'Organization', name: 'Nuvora Descanso' },
+          shippingDetails: {
+            '@type': 'OfferShippingDetails',
+            shippingRate: { '@type': 'MonetaryAmount', value: '0', currency: 'EUR' },
+            shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'ES' }
+          },
+          hasMerchantReturnPolicy: {
+            '@type': 'MerchantReturnPolicy',
+            applicableCountry: 'ES',
+            returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+            merchantReturnDays: 30,
+            returnMethod: 'https://schema.org/ReturnByMail',
+            returnFees: 'https://schema.org/FreeReturn'
+          }
+        }
+      }, {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Inicio', item: URL_BASE },
+          categoria
+            ? { '@type': 'ListItem', position: 2, name: etiquetaCat, item: URL_BASE + categoria + '.html' }
+            : null,
+          { '@type': 'ListItem', position: categoria ? 3 : 2, name: product.name, item: url }
+        ].filter(Boolean)
+      }]
+    };
+
+    var el = document.getElementById('pdpSchema');
+    if (!el) {
+      el = document.createElement('script');
+      el.type = 'application/ld+json';
+      el.id = 'pdpSchema';
+      document.head.appendChild(el);
+    }
+    el.textContent = JSON.stringify(datos);
   }
 
   /* Precio de referencia en tienda física: nuestro precio es un 35 % menor.
