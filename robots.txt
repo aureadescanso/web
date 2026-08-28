@@ -1,5 +1,10 @@
 User-agent: *
 Allow: /
-Disallow: /checkout.html
+
+# Nota: las páginas que no deben salir en Google (checkout, pedido,
+# gracias, factura de ejemplo y el material de redes de /carousels/)
+# llevan una etiqueta "noindex" en su propio HTML. No se bloquean aquí
+# a propósito: si se bloqueara el rastreo, Google no podría leer esa
+# etiqueta y acabaría indexando la URL de todas formas.
 
 Sitemap: https://nuvoradescanso.com/sitemap.xml

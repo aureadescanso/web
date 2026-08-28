@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="La almohada rellena el hueco entre la cabeza y el colchón">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17284f"/><stop offset="1" stop-color="#0c1730"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="46%" r="58%">
+      <stop offset="0" stop-color="#D4AF37" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#D4AF37" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/><feColorMatrix type="saturate" values="0"/></filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <ellipse cx="600" cy="300" rx="540" ry="310" fill="url(#glow)"/>
+  <rect width="1200" height="630" filter="url(#grain)" opacity="0.05"/>
+
+  <g id="contenido" transform="translate(0,-55)">
+
+  <!-- Tres perfiles: baja, correcta, alta -->
+  <g fill="none" stroke-linecap="round">
+    <!-- Colchones -->
+    <g stroke="#E9C766" stroke-opacity="0.4" stroke-width="2">
+      <rect x="110" y="378" width="300" height="62" rx="9"/>
+      <rect x="450" y="378" width="300" height="62" rx="9"/>
+      <rect x="790" y="378" width="300" height="62" rx="9"/>
+    </g>
+
+    <!-- 1 · Almohada baja: la cabeza cae -->
+    <rect x="140" y="352" width="118" height="26" rx="12" fill="#E9C766" fill-opacity="0.14" stroke="#E9C766" stroke-opacity="0.34" stroke-width="1.4"/>
+    <circle cx="199" cy="330" r="26" stroke="#D98A8A" stroke-width="4"/>
+    <path d="M225 344 C 262 352, 286 366, 330 372" stroke="#D98A8A" stroke-width="4.5"/>
+    <path d="M330 372 C 356 374, 374 378, 392 378" stroke="#D98A8A" stroke-width="4.5"/>
+
+    <!-- 2 · Correcta: línea recta -->
+    <rect x="480" y="336" width="118" height="42" rx="16" fill="#E9C766" fill-opacity="0.2" stroke="#E9C766" stroke-opacity="0.62" stroke-width="1.6"/>
+    <circle cx="539" cy="306" r="26" stroke="#E9C766" stroke-width="4"/>
+    <path d="M565 322 L 670 356" stroke="#E9C766" stroke-width="5"/>
+    <path d="M670 356 C 700 364, 716 372, 732 378" stroke="#E9C766" stroke-width="5"/>
+
+    <!-- 3 · Alta: el cuello se dobla -->
+    <rect x="820" y="316" width="118" height="62" rx="20" fill="#E9C766" fill-opacity="0.14" stroke="#E9C766" stroke-opacity="0.34" stroke-width="1.4"/>
+    <circle cx="879" cy="286" r="26" stroke="#D98A8A" stroke-width="4"/>
+    <path d="M903 300 C 930 318, 940 350, 1000 366" stroke="#D98A8A" stroke-width="4.5"/>
+    <path d="M1000 366 C 1030 372, 1050 378, 1070 378" stroke="#D98A8A" stroke-width="4.5"/>
+  </g>
+
+  <!-- La recta ideal marcada en la escena central -->
+  <path d="M513 292 L 745 372" stroke="#F5EFE0" stroke-opacity="0.32" stroke-width="1.4" stroke-dasharray="6 8"/>
+
+  <g font-family="Georgia, 'Times New Roman', serif" text-anchor="middle" font-size="25">
+    <text x="260" y="486" fill="#D98A8A">Demasiado baja</text>
+    <text x="600" y="486" fill="#F3E7C6">A la altura</text>
+    <text x="940" y="486" fill="#D98A8A">Demasiado alta</text>
+  </g>
+  </g>
+</svg>

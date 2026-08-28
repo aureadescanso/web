@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Medidas de colchones con sus cotas">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17284f"/><stop offset="1" stop-color="#0c1730"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="44%" r="58%">
+      <stop offset="0" stop-color="#D4AF37" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#D4AF37" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/><feColorMatrix type="saturate" values="0"/></filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <ellipse cx="600" cy="290" rx="540" ry="310" fill="url(#glow)"/>
+  <rect width="1200" height="630" filter="url(#grain)" opacity="0.05"/>
+
+  <g id="contenido" transform="translate(0,-60)">
+
+  <!-- Tres colchones vistos desde arriba, a escala relativa -->
+  <g fill="none" stroke="#E9C766" stroke-width="2.2">
+    <rect x="150" y="215" width="150" height="250" rx="12" stroke-opacity="0.55"/>
+    <rect x="360" y="215" width="225" height="250" rx="12" stroke-opacity="0.8"/>
+    <rect x="645" y="215" width="250" height="250" rx="12"/>
+  </g>
+
+  <!-- Acolchado insinuado -->
+  <g stroke="#E9C766" stroke-opacity="0.16" stroke-width="1">
+    <path d="M150 280h150M150 345h150M150 410h150"/>
+    <path d="M360 280h225M360 345h225M360 410h225"/>
+    <path d="M645 280h250M645 345h250M645 410h250"/>
+  </g>
+
+  <!-- Almohadas -->
+  <g fill="#E9C766" fill-opacity="0.13">
+    <rect x="166" y="231" width="118" height="34" rx="10"/>
+    <rect x="376" y="231" width="90" height="34" rx="10"/>
+    <rect x="479" y="231" width="90" height="34" rx="10"/>
+    <rect x="661" y="231" width="103" height="34" rx="10"/>
+    <rect x="776" y="231" width="103" height="34" rx="10"/>
+  </g>
+
+  <!-- Cotas de ancho -->
+  <g stroke="#D4AF37" stroke-opacity="0.75" stroke-width="1.4">
+    <path d="M150 500h150M155 495l-5 5 5 5M295 495l5 5-5 5"/>
+    <path d="M360 500h225M365 495l-5 5 5 5M580 495l5 5-5 5"/>
+    <path d="M645 500h250M650 495l-5 5 5 5M890 495l5 5-5 5"/>
+  </g>
+
+  <g font-family="Georgia, 'Times New Roman', serif" fill="#F3E7C6" text-anchor="middle">
+    <text x="225" y="533" font-size="27">90 cm</text>
+    <text x="472" y="533" font-size="27">135 cm</text>
+    <text x="770" y="533" font-size="27">150 cm</text>
+  </g>
+
+  <!-- Cota de largo -->
+  <g stroke="#D4AF37" stroke-opacity="0.6" stroke-width="1.4">
+    <path d="M950 215v250M945 220l5-5 5 5M945 460l5 5 5-5"/>
+  </g>
+  <text x="1000" y="332" font-family="Georgia, 'Times New Roman', serif" font-size="25" fill="#F3E7C6">190</text>
+  <text x="1000" y="362" font-family="Georgia, 'Times New Roman', serif" font-size="25" fill="#F3E7C6">200</text>
+  <text x="1052" y="347" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#C9B48A" fill-opacity="0.75">cm</text>
+  </g>
+</svg>
