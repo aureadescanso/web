@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Rutina de cuidado del colchón: girar, aspirar y airear">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17284f"/><stop offset="1" stop-color="#0c1730"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="46%" r="58%">
+      <stop offset="0" stop-color="#D4AF37" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#D4AF37" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/><feColorMatrix type="saturate" values="0"/></filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <ellipse cx="600" cy="300" rx="540" ry="310" fill="url(#glow)"/>
+  <rect width="1200" height="630" filter="url(#grain)" opacity="0.05"/>
+
+  <g id="contenido">
+    <!-- Colchón central visto desde arriba -->
+    <rect x="455" y="205" width="290" height="230" rx="16" fill="none" stroke="#E9C766" stroke-width="2.4"/>
+    <g stroke="#E9C766" stroke-opacity="0.18" stroke-width="1">
+      <path d="M455 262h290M455 320h290M455 378h290"/>
+      <path d="M528 205v230M600 205v230M672 205v230"/>
+    </g>
+    <rect x="478" y="222" width="110" height="30" rx="9" fill="#E9C766" fill-opacity="0.13"/>
+    <rect x="612" y="222" width="110" height="30" rx="9" fill="#E9C766" fill-opacity="0.13"/>
+
+    <!-- Flechas de giro alrededor -->
+    <g fill="none" stroke="#D4AF37" stroke-opacity="0.6" stroke-width="2.2" stroke-linecap="round">
+      <path d="M420 250 A 205 205 0 0 1 600 158"/>
+      <path d="M591 150l12 8-10 11"/>
+      <path d="M780 390 A 205 205 0 0 1 600 482"/>
+      <path d="M609 490l-12-8 10-11"/>
+    </g>
+
+    <!-- Izquierda: aspirar -->
+    <g fill="none" stroke="#E9C766" stroke-opacity="0.75" stroke-width="2.2" stroke-linecap="round">
+      <path d="M150 330 l 58 -34 l 22 38 l -58 34 z"/>
+      <path d="M208 296 l 42 -70"/>
+      <circle cx="256" cy="214" r="14"/>
+    </g>
+    <g fill="#E9C766" fill-opacity="0.4">
+      <circle cx="140" cy="376" r="3"/><circle cx="166" cy="392" r="2.4"/><circle cx="192" cy="378" r="3"/>
+      <circle cx="120" cy="398" r="2.2"/><circle cx="215" cy="398" r="2.4"/>
+    </g>
+
+    <!-- Derecha: airear -->
+    <g fill="none" stroke="#E9C766" stroke-opacity="0.75" stroke-width="2.2" stroke-linecap="round">
+      <rect x="930" y="212" width="140" height="180" rx="8"/>
+      <path d="M1000 212v180M930 302h140"/>
+    </g>
+    <g fill="none" stroke="#E9C766" stroke-opacity="0.45" stroke-width="2" stroke-linecap="round">
+      <path d="M860 250 C 892 250, 892 274, 860 274 C 838 274, 838 262, 856 262"/>
+      <path d="M868 320 C 906 320, 906 348, 868 348 C 842 348, 842 334, 862 334"/>
+      <path d="M876 390 C 902 390, 902 410, 876 410"/>
+    </g>
+
+    <g font-family="Georgia, 'Times New Roman', serif" text-anchor="middle" font-size="25" fill="#F3E7C6">
+      <text x="200" y="470">Aspirar</text>
+      <text x="600" y="540">Girar cada 3 meses</text>
+      <text x="1000" y="470">Airear</text>
+    </g>
+  </g>
+</svg>

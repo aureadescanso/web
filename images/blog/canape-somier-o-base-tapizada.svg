@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Canapé abatible, somier de láminas y base tapizada comparados">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17284f"/><stop offset="1" stop-color="#0c1730"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="46%" r="58%">
+      <stop offset="0" stop-color="#D4AF37" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#D4AF37" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/><feColorMatrix type="saturate" values="0"/></filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <ellipse cx="600" cy="300" rx="540" ry="310" fill="url(#glow)"/>
+  <rect width="1200" height="630" filter="url(#grain)" opacity="0.05"/>
+
+  <g id="contenido" fill="none" stroke-linecap="round">
+
+    <!-- 1 · Canapé abatible, con la tapa levantada -->
+    <g stroke="#E9C766" stroke-width="2.4">
+      <path d="M120 400 h250 v66 h-250 z"/>
+      <path d="M126 372 l236 -74 l16 30 l-236 74 z"/>
+      <path d="M300 330 l 58 62" stroke-opacity="0.6" stroke-width="1.8"/>
+    </g>
+    <g stroke="#E9C766" stroke-opacity="0.28" stroke-width="1.4">
+      <path d="M150 466v22M340 466v22"/>
+      <path d="M150 420h190M150 442h190"/>
+    </g>
+
+    <!-- 2 · Somier de láminas -->
+    <g stroke="#E9C766" stroke-width="2.4">
+      <path d="M475 400 h250 v18 h-250 z"/>
+      <path d="M492 466v22M708 466v22"/>
+      <path d="M492 418v48M708 418v48"/>
+    </g>
+    <g stroke="#E9C766" stroke-opacity="0.85" stroke-width="4" stroke-linecap="round">
+      <path d="M492 388h216M492 372h216M492 356h216M492 340h216"/>
+    </g>
+    <!-- El aire pasa entre lamina y lamina -->
+    <g stroke="#E9C766" stroke-opacity="0.35" stroke-width="1.6">
+      <path d="M540 332v-26M600 332v-34M660 332v-26"/>
+      <path d="M536 310l4-6 4 6M596 302l4-6 4 6M656 310l4-6 4 6"/>
+    </g>
+
+    <!-- 3 · Base tapizada -->
+    <g stroke="#E9C766" stroke-width="2.4">
+      <path d="M830 356 h250 v62 h-250 z"/>
+      <path d="M848 418v70M1062 418v70"/>
+    </g>
+    <g stroke="#E9C766" stroke-opacity="0.3" stroke-width="1.2">
+      <path d="M830 378h250"/>
+    </g>
+    <g fill="#E9C766" fill-opacity="0.3" stroke="none">
+      <circle cx="870" cy="398" r="3"/><circle cx="910" cy="398" r="3"/><circle cx="950" cy="398" r="3"/>
+      <circle cx="990" cy="398" r="3"/><circle cx="1030" cy="398" r="3"/>
+    </g>
+
+    <g font-family="Georgia, 'Times New Roman', serif" text-anchor="middle" font-size="25" fill="#F3E7C6" stroke="none">
+      <text x="245" y="546">Canapé abatible</text>
+      <text x="600" y="546">Somier de láminas</text>
+      <text x="955" y="546">Base tapizada</text>
+    </g>
+  </g>
+</svg>
