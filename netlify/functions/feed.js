@@ -50,7 +50,7 @@ function esc(s) {
    descripciones vacías y penaliza las que solo repiten el título. */
 const DESCRIPCION = {
   'aurea': 'Colchón viscoelástico con núcleo HR de 28 kg/m³, 2 cm de viscoelástica adaptable y 30 cm de altura. Fabricado en España.',
-  'aurea-muelles': 'Colchón con núcleo de muelles ensacados individualmente: independencia de lechos, mayor transpirabilidad y firmeza media-firme. Fabricado en España.',
+  'aurea-muelles': 'Colchón con núcleo de muelles ensacados individualmente y acolchado de fibra hueca: independencia de lechos, mayor transpirabilidad y firmeza media-firme. Fabricado en España.',
   'supreme': 'Colchón de gama alta y doble cara: pura lana para el invierno y algodón natural para el verano, sobre carcasa de muelles ensacados de 18 cm con viscogel. Fabricado en España.',
   'almohada-nuvora': 'Almohada de viscoelástica perforada de 50 kg/m³, firmeza media y funda técnica desenfundable y lavable.',
   'canape-nuvora-blanco': 'Canapé abatible con acabado blanco, apertura asistida por pistones de gas y hasta 1.000 litros de almacenaje.',

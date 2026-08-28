@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', function () {
     'aurea': {
       type: 'colchon',
       typeLabel: 'Colchón viscoelástico',
-      name: 'Nuvora Aurea',
-      desc: 'Colchón viscoelástico de gama alta: 2 cm de viscoelástica que se adaptan a tu cuerpo y alivian los puntos de presión, sobre un núcleo HR de 28 kg/m³ que sujeta sin hundir. Acolchado tapa a tapa, 30 cm de altura y tejido transpirable para dormir fresco.',
+      name: 'Nuvora Aurea Viscoelástico',
+      desc: 'La versión viscoelástica del Aurea: 2 cm de viscoelástica que se adaptan a tu cuerpo y alivian los puntos de presión, sobre un núcleo de espuma HR de 28 kg/m³ que sujeta sin hundir. Acolchado tapa a tapa, 30 cm de altura y tejido transpirable para dormir fresco. Es la que te acoge; si prefieres un soporte más firme y aireado, el Aurea también se fabrica con núcleo de muelles ensacados.',
       rating: '4,8',
       reviews: 412,
       images: [
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
         scenes: [
           {
             img: 'images/aurea-frontal.webp',
-            alt: 'Colchón Nuvora Aurea de frente en un dormitorio cálido',
+            alt: 'Colchón Nuvora Aurea viscoelástico de frente en un dormitorio cálido',
             kicker: 'Experiencia Aurea',
             title: 'Diseñado para presidir tu dormitorio',
             text: 'Tejido stretch de 300 g/m² con acolchado tapa a tapa y platabanda firmada. Sigue bajando y tócalo con los ojos.',
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
           },
           {
             img: 'images/aurea-perspectiva.webp',
-            alt: 'Colchón Nuvora Aurea en perspectiva mostrando su altura',
+            alt: 'Colchón Nuvora Aurea viscoelástico en perspectiva mostrando su altura',
             kicker: 'Presencia real',
             title: '30 centímetros que <em>se notan</em>',
             text: 'Bajo la superficie, un núcleo HR de 28 kg/m³ y 25 cm de grosor: soporte de alta densidad que no se rinde.',
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
           },
           {
             img: 'images/aurea-asas.webp',
-            alt: 'Detalle de las asas verticales del colchón Nuvora Aurea',
+            alt: 'Detalle de las asas verticales del colchón Nuvora Aurea viscoelástico',
             kicker: 'Los detalles',
             title: 'Lo que otras marcas <em>no enseñan</em>',
             text: 'Cuatro asas verticales cosidas a la platabanda para girarlo sin esfuerzo. Pruébalo 30 noches: si no te enamora, lo recogemos gratis.',
@@ -459,7 +459,7 @@ document.addEventListener('DOMContentLoaded', function () {
             title: 'Combina con tu colchón',
             html: '<ul>' +
               '<li>Elige el canapé en la misma medida que tu colchón: si tu colchón es de 150 × 190 cm, tu canapé también.</li>' +
-              '<li>¿Aún no tienes colchón? Mira el <a href="producto.html?m=aurea">Nuvora Aurea</a> o llévate los dos en un <a href="packs.html">pack de descanso</a> y ahorra un 12 %.</li>' +
+              '<li>¿Aún no tienes colchón? Mira <a href="colchones.html">nuestros colchones</a> o llévate los dos en un <a href="packs.html">pack de descanso</a> y ahorra un 12 %.</li>' +
             '</ul>'
           }
         ]
@@ -475,47 +475,111 @@ document.addEventListener('DOMContentLoaded', function () {
      no se puedan desincronizar. Ambos se enlazan como variantes.
      ══════════════════════════════════════════════ */
   (function () {
-    var SUPLEMENTO = 50;
+    var SUPLEMENTO = 39.33;
     var visco = CATALOG['aurea'];
     if (!visco) return;
+
+    /* Comparativa entre los dos núcleos. Se escribe UNA vez y se coloca en
+       las dos fichas: si estuviera duplicada acabaría diciendo cosas
+       distintas en cada una, que es justo lo que había que arreglar.
+       La diferencia real es que el viscoelástico lleva 2 cm de
+       viscoelástica sobre un bloque de espuma HR, y el de muelles no
+       lleva viscoelástica: en su lugar van los muelles ensacados. */
+    var COMPARATIVA = {
+      title: '¿Viscoelástico o muelles?',
+      html: '<ul>' +
+        '<li><strong>La diferencia está en el núcleo.</strong> El <a href="producto.html?m=aurea">viscoelástico</a> lleva 2 cm de viscoelástica sobre un bloque de espuma HR de 28 kg/m³. El de <a href="producto.html?m=aurea-muelles">muelles ensacados</a> lleva acolchado de fibra hueca sobre muelles ensacados, cada uno en su funda. Todo lo demás —tejido, acolchado tapa a tapa, platabanda, asas y medidas— es igual.</li>' +
+        '<li><strong>Elige viscoelástico</strong> si duermes de lado y quieres que el colchón te acoja aliviando hombros y caderas, o si buscas el precio más ajustado.</li>' +
+        '<li><strong>Elige muelles ensacados</strong> si dormís dos y os molestan los movimientos del otro, si duermes caluroso o si prefieres un soporte más firme y aireado.</li>' +
+        '<li>Las dos versiones comparten garantía y las 30 noches de prueba. Si te equivocas, lo recogemos gratis.</li>' +
+        '<li>¿Sigues con dudas? Lo desarrollamos en la <a href="blog/viscoelastico-o-muelles.html">guía de viscoelástico o muelles</a>.</li>' +
+      '</ul>'
+    };
 
     CATALOG['aurea-muelles'] = {
       type: 'colchon',
       typeLabel: 'Colchón de muelles ensacados',
       name: 'Nuvora Aurea Muelles Ensacados',
-      desc: 'El mismo Aurea, con núcleo de muelles ensacados individualmente. Cada muelle trabaja por su cuenta: si tu pareja se mueve, tú no te enteras. Más aireado que la espuma y con un punto más de firmeza, para quien duerme caluroso o busca un soporte más firme.',
+      desc: 'La versión del Aurea con núcleo de muelles ensacados individualmente. Cada muelle va en su propia funda y se hunde solo donde recibe peso, así que si tu pareja se mueve tú no te enteras, y el aire circula entre ellos en vez de quedarse debajo del cuerpo. Acolchado de fibra hueca tapa a tapa, con el mismo tejido stretch y los mismos acabados que el resto de la gama. Firmeza media-firme.',
       images: [
         'images/aurea-frontal.webp',
         'images/aurea-perspectiva.webp',
         'images/aurea-lateral.webp',
         'images/aurea-asas.webp'
       ],
-      /* Mismas medidas que el viscoelástico, 50 € más cada una */
+      /* Mismas medidas que el viscoelástico, 39,33 € más cada una */
       sizes: visco.sizes.map(function (s) {
         return { label: s.label, price: s.price + SUPLEMENTO };
       }),
       defaultSize: visco.defaultSize,
+
+      /* Despiece propio: no vale reutilizar el del viscoelástico, porque
+         la diferencia entre los dos modelos está justamente aquí. Solo se
+         dibujan las capas que conocemos; el bloque de muelles sustituye a
+         la viscoelástica y al núcleo de espuma. */
+      cutaway: {
+        sub: 'Bajo el acolchado de fibra van los muelles ensacados, cada uno en su funda, trabajando por separado.',
+        chips: ['Altura total: 30 cm aprox.', 'Acolchado tapa a tapa', 'Platabanda en tejido stretch', '4 asas verticales'],
+        layers: [
+          { group: 'Acolchado', name: 'Tejido stretch',      spec: '300 g/m², suave y elástico',                   t: 12,  color: '#F2E7CE', tex: 'quilt' },
+          { group: 'Acolchado', name: 'Fibra hueca',         spec: 'Acolchado mullido y transpirable',             t: 30,  color: '#FDFCF8', tex: 'fiber' },
+          { group: 'Núcleo',    name: 'Muelles ensacados',   spec: 'Cada muelle en su funda, trabaja por separado', t: 110, color: '#8CA7DA', tex: 'core' },
+          { group: 'Base',      name: 'Base reforzada',      spec: 'Tejido inferior antideslizante',               t: 9,   color: '#C7B79A', tex: 'quilt' }
+        ]
+      },
+
+      experience: {
+        scenes: [
+          {
+            img: 'images/aurea-frontal.webp',
+            alt: 'Colchón Nuvora Aurea de muelles ensacados de frente en un dormitorio cálido',
+            kicker: 'Experiencia Aurea',
+            title: 'El mismo acabado, otro carácter',
+            text: 'Por fuera es el Aurea de siempre: tejido stretch de 300 g/m² acolchado tapa a tapa. Por dentro, muelles ensacados uno a uno.',
+            hotspots: [
+              { x: 68, y: 66, title: 'Platabanda acolchada', text: 'El lateral en tejido stretch acolchado mantiene la forma del colchón año tras año y remata el diseño con la firma Nuvora.' },
+              { x: 45, y: 50, title: 'Acolchado de fibra', text: 'Fibra hueca cosida tapa a tapa: mullida, transpirable y sin retener calor. Aquí el trabajo de sostenerte lo hacen los muelles.' }
+            ]
+          },
+          {
+            img: 'images/aurea-perspectiva.webp',
+            alt: 'Colchón Nuvora Aurea de muelles ensacados en perspectiva mostrando su altura',
+            kicker: 'Independencia de lechos',
+            title: 'Que se mueva, <em>tú sigue durmiendo</em>',
+            text: 'Cada muelle va ensacado por separado. El que se hunde bajo tu cadera no arrastra al de al lado, así que el movimiento no cruza la cama.',
+            hotspots: [
+              { x: 58, y: 62, title: 'Muelles ensacados uno a uno', text: 'En un bloque de espuma, el peso se reparte por toda la superficie. Aquí no: cada muelle responde solo en su punto, y por eso no notas a quien duerme al lado.' },
+              { x: 36, y: 42, title: 'El aire circula por dentro', text: 'Entre muelle y muelle queda aire, que se renueva cada vez que te mueves. Es la razón de que un colchón de muelles se note más fresco que uno de espuma.' }
+            ]
+          },
+          {
+            img: 'images/aurea-asas.webp',
+            alt: 'Detalle de las asas verticales del colchón Nuvora Aurea de muelles ensacados',
+            kicker: 'Los detalles',
+            title: 'Lo que otras marcas <em>no enseñan</em>',
+            text: 'Cuatro asas verticales cosidas a la platabanda para girarlo sin esfuerzo. Pruébalo 30 noches: si no te enamora, lo recogemos gratis.',
+            cta: 'Añadir a la cesta',
+            hotspots: [
+              { x: 53, y: 46, title: '4 asas verticales', text: 'Girarlo 180° cada pocos meses para repartir el desgaste deja de ser un castigo: dos personas lo hacen en menos de un minuto.' },
+              { x: 15, y: 52, title: 'Acolchado tapa a tapa', text: 'Cada capa va cosida al tejido, no suelta. Por eso la superficie sigue uniforme tras miles de noches.' }
+            ]
+          }
+        ]
+      },
+
       details: [
         {
           title: 'Composición y tecnología',
           html: '<ul>' +
             '<li><strong>Núcleo de muelles ensacados individualmente:</strong> cada muelle va en su propia funda de tejido y se hunde solo donde recibe peso.</li>' +
+            '<li><strong>Acolchado de fibra hueca</strong> cosido tapa a tapa: mullido, transpirable y sin retener calor.</li>' +
             '<li><strong>Independencia de lechos:</strong> los movimientos de un lado de la cama no se transmiten al otro.</li>' +
             '<li><strong>Más transpirable que la espuma:</strong> el aire circula entre los muelles y el calor no se queda debajo del cuerpo.</li>' +
-            '<li><strong>Refuerzo perimetral:</strong> puedes sentarte en el borde sin que se venza.</li>' +
-            '<li>Capa de confort acolchada tapa a tapa y tejido transpirable, igual que en el viscoelástico.</li>' +
-            '<li>Firmeza: media-firme, un punto por encima de la versión viscoelástica.</li>' +
+            '<li>Tejido stretch de 300 g/m², acolchado tapa a tapa, platabanda y 4 asas verticales: los acabados de toda la gama Aurea.</li>' +
+            '<li>Altura total del colchón terminado: 30 cm aprox. Firmeza: media-firme, un punto por encima de la versión viscoelástica.</li>' +
           '</ul>'
         },
-        {
-          title: '¿Viscoelástico o muelles?',
-          html: '<ul>' +
-            '<li><strong>Elige muelles ensacados</strong> si dormís dos y os molestan los movimientos del otro, si eres caluroso o si prefieres una acogida más firme.</li>' +
-            '<li><strong>Elige <a href="producto.html?m=aurea">viscoelástico</a></strong> si duermes de lado, buscas que el colchón te abrace y quieres el precio más ajustado.</li>' +
-            '<li>Las dos versiones comparten medidas, garantía y las 30 noches de prueba. Si te equivocas, lo recogemos gratis.</li>' +
-            '<li>¿Sigues con dudas? Lo desarrollamos en la <a href="blog/viscoelastico-o-muelles.html">guía de viscoelástico o muelles</a>.</li>' +
-          '</ul>'
-        },
+        COMPARATIVA,
         {
           title: 'Envío y devoluciones',
           html: '<ul>' +
@@ -533,6 +597,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       ]
     };
+
+    /* La comparativa va en las DOS fichas y se escribe una sola vez: si se
+       duplicara, acabarían diciendo cosas distintas. Cada ficha enlaza a la
+       otra, así que el enlace se ajusta al montarla. */
+    CATALOG['aurea'].details.splice(1, 0, COMPARATIVA);
 
     /* Selector de núcleo en las dos fichas (etiquetas, sin muestra de color) */
     var NUCLEOS = [

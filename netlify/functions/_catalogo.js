@@ -11,7 +11,7 @@
 
 const CATALOGO = {
   'aurea': {
-    nombre: 'Nuvora Aurea',
+    nombre: 'Nuvora Aurea Viscoelástico',
     tipo: 'colchon',
     imagen: 'images/aurea-frontal.webp',
     medidas: [
@@ -57,10 +57,10 @@ const CATALOGO = {
 };
 
 /* Nuvora Aurea con núcleo de muelles ensacados: mismas medidas que el
-   viscoelástico y 50 € más cada una. Se calcula a partir de la tarifa
+   viscoelástico y 39,33 € más cada una. Se calcula a partir de la tarifa
    del viscoelástico, igual que en js/shop.js, para que no se puedan
    desincronizar. */
-const SUPLEMENTO_MUELLES = 50;
+const SUPLEMENTO_MUELLES = 39.33;
 CATALOGO['aurea-muelles'] = {
   nombre: 'Nuvora Aurea Muelles Ensacados',
   tipo: 'colchon',

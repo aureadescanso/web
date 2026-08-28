@@ -222,7 +222,7 @@
   var HOME = {
     es: {
       'home.products': 'Nuestros colchones',
-      'home.aureamuelles_desc': 'Firmeza media-firme. Muelles ensacados individualmente: más aireado y sin notar a quien duerme al lado.',
+      'home.aureamuelles_desc': 'Firmeza media-firme. Muelles ensacados uno a uno: más aireados y sin notar a quien duerme al lado.',
       'home.aurea_desc': 'Firmeza media. Viscoelástica adaptable de 2 cm sobre núcleo HR de 28 kg/m³ y 30 cm de altura.',
       'home.discover': 'Descubrir →',
       'home.cross_t': '¿Necesitas también <em>canapé</em>?',
@@ -288,7 +288,7 @@
     },
     it: {
       'home.products': 'I nostri materassi',
-      'home.aureamuelles_desc': 'Rigidità medio-alta. Molle insacchettate singolarmente: più areato e senza sentire chi dorme accanto.',
+      'home.aureamuelles_desc': 'Rigidità medio-alta. Molle insacchettate una a una: più areate e senza sentire chi dorme accanto.',
       'home.aurea_desc': 'Rigidità media. 2 cm di memory adattabile su nucleo HR da 28 kg/m³, alto 30 cm.',
       'home.discover': 'Scopri →',
       'home.cross_t': 'Ti serve anche un <em>sommier</em>?',
@@ -321,7 +321,7 @@
     },
     fr: {
       'home.products': 'Nos matelas',
-      'home.aureamuelles_desc': 'Fermeté moyenne-ferme. Ressorts ensachés individuellement : plus aéré et sans sentir votre partenaire bouger.',
+      'home.aureamuelles_desc': 'Fermeté moyenne-ferme. Ressorts ensachés un à un : plus aérés et sans sentir votre partenaire bouger.',
       'home.aurea_desc': 'Fermeté moyenne. 2 cm de mousse à mémoire adaptable sur noyau HR de 28 kg/m³, 30 cm de hauteur.',
       'home.discover': 'Découvrir →',
       'home.cross_t': 'Besoin aussi d’un <em>sommier coffre</em> ?',
