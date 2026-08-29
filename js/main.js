@@ -324,115 +324,14 @@ document.addEventListener('DOMContentLoaded', function () {
   })();
 
 
-  /* ══════════════════════════════════════════════
-     TESTIMONIOS — Stagger Cards
-     ══════════════════════════════════════════════ */
-  (function () {
-    var stage = document.getElementById('staggerStage');
-    var prevBtn = document.getElementById('staggerPrev');
-    var nextBtn = document.getElementById('staggerNext');
-    if (!stage) return;
-
-    var testimonials = [
-      /* Ojo al tocar estos textos: Meta bloquea los datos de un sitio si
-         detecta referencias a dolencias concretas o a profesionales
-         Nada de dolores concretos, diagnósticos ni profesionales
-         sanitarios recomendando el producto. */
-      { quote: 'Me costaba coger el sueño y daba vueltas media noche. Con el Nuvora Aurea me quedo dormida enseguida.', cite: 'María López — Madrid', img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=96&h=96&fit=crop&crop=face' },
-      { quote: 'El proceso de compra fue sencillísimo. Llegó en 3 días, lo saqué de la caja y en minutos estaba listo. Estamos encantados.', cite: 'Carlos García — Barcelona', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=96&h=96&fit=crop&crop=face' },
-      { quote: 'Probé las 30 noches convencida de que lo devolvería. Ocho meses después, sigo durmiendo de maravilla.', cite: 'Ana Ruiz — Valencia', img: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=96&h=96&fit=crop&crop=face' },
-      { quote: 'Mi pareja se mueve mucho por la noche. Con el Aurea de muelles, no me entero. La independencia de lechos es real.', cite: 'Javier Moreno — Sevilla', img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=96&h=96&fit=crop&crop=face' },
-      { quote: 'Nos costó decidir, pero la garantía de 5 años nos convenció. Tres años después, está como el primer día.', cite: 'Laura y Pablo — Bilbao', img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=96&h=96&fit=crop&crop=face' },
-      { quote: 'He probado colchones de 1.500 €. Este de 499 € los supera con creces. Eliminar intermediarios se nota.', cite: 'Fernando Díaz — Málaga', img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=96&h=96&fit=crop&crop=face' },
-      { quote: 'Sufro de calor por las noches y este colchón transpira de verdad: no acumula calor y por fin duermo del tirón hasta la mañana.', cite: 'Carmen Vega — Zaragoza', img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=96&h=96&fit=crop&crop=face' },
-      { quote: 'Lo compré para mi madre. Tiene 72 años y dice que no dormía tan bien desde joven. Eso no tiene precio.', cite: 'Roberto Sanz — A Coruña', img: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=96&h=96&fit=crop&crop=face' },
-      { quote: 'La firmeza media es justo lo que buscaba: ni se hunde ni es una tabla. Se nota que está bien pensado.', cite: 'Elena Torres — Murcia', img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=96&h=96&fit=crop&crop=face' },
-      { quote: 'Pedí un sábado, llegó el martes. Desempaquetar fue casi divertido. Calidad brutal por ese precio.', cite: 'Diego Herrera — Valladolid', img: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=96&h=96&fit=crop&crop=face' },
-      { quote: 'Después de comparar 20 marcas online, Nuvora fue la que mejor relación calidad-precio ofrecía. Acerté.', cite: 'Sofía Martín — Alicante', img: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=96&h=96&fit=crop&crop=face' },
-      { quote: 'Lo mejor: sin tienda física, sin vendedor presionando. Compras tranquilo y si no te gusta, te lo recogen.', cite: 'Marcos Peña — Granada', img: 'https://images.unsplash.com/photo-1463453091185-61582044d556?w=96&h=96&fit=crop&crop=face' }
-    ];
-
-    var cardSize = window.matchMedia('(min-width: 640px)').matches ? 340 : 270;
-
-    function handleResize() {
-      cardSize = window.matchMedia('(min-width: 640px)').matches ? 340 : 270;
-      render();
-    }
-    window.addEventListener('resize', handleResize);
-
-    function handleMove(steps) {
-      if (steps > 0) {
-        for (var i = 0; i < steps; i++) {
-          testimonials.push(testimonials.shift());
-        }
-      } else {
-        for (var i = 0; i < Math.abs(steps); i++) {
-          testimonials.unshift(testimonials.pop());
-        }
-      }
-      render();
-    }
-
-    function render() {
-      stage.innerHTML = '';
-      var half = Math.floor(testimonials.length / 2);
-
-      testimonials.forEach(function (t, index) {
-        var position = index - half;
-        var isCenter = position === 0;
-
-        var card = document.createElement('div');
-        card.className = 'stagger__card' + (isCenter ? ' is-center' : '');
-
-        var offsetX = (cardSize / 1.5) * position;
-        var offsetY = isCenter ? -55 : (position % 2 ? 12 : -12);
-        var rot = isCenter ? 0 : (position % 2 ? 2.5 : -2.5);
-
-        card.style.width = cardSize + 'px';
-        card.style.height = cardSize + 'px';
-        card.style.transform = 'translate(-50%, -50%) translateX(' + offsetX + 'px) translateY(' + offsetY + 'px) rotate(' + rot + 'deg)';
-
-        if (isCenter) {
-          card.style.boxShadow = '0px 8px 0px 4px var(--border)';
-        }
-
-        card.innerHTML =
-          '<img class="stagger__avatar" src="' + t.img + '" alt="' + t.cite.split('—')[0].trim() + '" loading="lazy">' +
-          '<p class="stagger__quote">&ldquo;' + t.quote + '&rdquo;</p>' +
-          '<cite class="stagger__cite">— ' + t.cite + '</cite>';
-
-        (function (pos) {
-          card.addEventListener('click', function () { handleMove(pos); });
-        })(position);
-
-        stage.appendChild(card);
-      });
-    }
-
-    render();
-
-    if (prevBtn) prevBtn.addEventListener('click', function () { handleMove(-1); });
-    if (nextBtn) nextBtn.addEventListener('click', function () { handleMove(1); });
-
-    // Keyboard navigation
-    document.addEventListener('keydown', function (e) {
-      var rect = stage.getBoundingClientRect();
-      if (rect.top > window.innerHeight || rect.bottom < 0) return;
-      if (e.key === 'ArrowRight') handleMove(1);
-      if (e.key === 'ArrowLeft') handleMove(-1);
-    });
-
-    // Touch swipe on stage
-    var touchStartX = 0;
-    stage.addEventListener('touchstart', function (e) {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-    stage.addEventListener('touchend', function (e) {
-      var diff = touchStartX - e.changedTouches[0].screenX;
-      if (diff > 50) handleMove(1);
-      if (diff < -50) handleMove(-1);
-    }, { passive: true });
-  })();
+  /* Aquí había un carrusel de testimonios que nunca llegó a mostrarse:
+     su contenedor no existe en ninguna página, así que la función salía
+     por la primera línea. Contenía doce reseñas inventadas, con nombres
+     y fotos de banco de imágenes, y un par de ellas mencionaban
+     dolencias concretas y una profesión sanitaria. Meta lee este archivo
+     y por eso bloqueó los datos publicitarios del dominio.
+     Si algún día hay reseñas de verdad, se monta de nuevo: el diseño
+     está en el historial de git. */
 
 
   /* ══════════════════════════════════════════════
