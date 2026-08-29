@@ -3,7 +3,7 @@
    =============================================
    Dos plataformas comparten este archivo:
      · TikTok (píxel DA7KU5JC77U208UL93F0, "alfredo")
-     · Meta   (píxel 1465349585647608, Facebook e Instagram)
+     · Meta   (píxel 1617076499935241, Facebook e Instagram)
 
    El código base de ambos se sirve desde aquí, y no en línea dentro del
    HTML, para no tener que abrir la CSP con 'unsafe-inline': con
