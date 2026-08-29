@@ -50,7 +50,10 @@
             }),
             value: Math.round(window.NuvoraCart.total() * 100) / 100,
             currency: 'EUR',
-            email: correo
+            email: correo,
+            /* La referencia del pedido evita que Analytics cuente dos
+               veces la misma venta si alguien recarga esta página */
+            orderId: d.referencia || ''
           });
           try { sessionStorage.removeItem('nuvora_email'); } catch (e) {}
         }

@@ -1,7 +1,7 @@
 # Cabeceras de seguridad para hosts Apache.
 # (En Netlify/Cloudflare Pages usa el archivo _headers; este archivo es inofensivo allí.)
 <IfModule mod_headers.c>
-  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://analytics.tiktok.com https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://analytics.tiktok.com https://www.facebook.com; connect-src 'self' https://analytics.tiktok.com https://*.tiktok.com https://*.tiktokw.us https://www.facebook.com https://connect.facebook.net; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://analytics.tiktok.com https://connect.facebook.net https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://analytics.tiktok.com https://www.facebook.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://analytics.tiktok.com https://*.tiktok.com https://*.tiktokw.us https://www.facebook.com https://connect.facebook.net https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
   Header always set X-Frame-Options "DENY"
   Header always set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"

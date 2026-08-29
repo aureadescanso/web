@@ -1,9 +1,10 @@
 /* =============================================
-   NUVORA DESCANSO — Píxeles de publicidad + consentimiento
+   NUVORA DESCANSO — Medición + consentimiento
    =============================================
-   Dos plataformas comparten este archivo:
-     · TikTok (píxel DA7KU5JC77U208UL93F0, "alfredo")
-     · Meta   (píxel 1465349585647608, Facebook e Instagram)
+   Tres servicios comparten este archivo:
+     · TikTok   (píxel DA7KU5JC77U208UL93F0, "alfredo")
+     · Meta     (píxel 1465349585647608, Facebook e Instagram)
+     · Google Analytics 4 (para saber qué funciona, no para anunciar)
 
    El código base de ambos se sirve desde aquí, y no en línea dentro del
    HTML, para no tener que abrir la CSP con 'unsafe-inline': con
@@ -21,8 +22,10 @@
      · Meta: su SDK sí se carga y se inicializa siempre, porque de otro
        modo Meta no reconoce la instalación. A cambio, no se le manda
        NINGÚN evento sin consentimiento y se le borran las cookies.
+     · Google Analytics: nada hasta que la persona acepta. Sus cookies
+       (_ga) son de análisis, y en España también necesitan permiso.
 
-   En los dos casos, sin permiso no se comunica ni una visita, ni una
+   En los tres casos, sin permiso no se comunica ni una visita, ni una
    ficha de producto, ni una compra.
 
    Eventos que se mandan (todos pasan por window.NuvoraTrack, que
@@ -31,14 +34,24 @@
      AddToCart        · al añadir algo a la cesta
      InitiateCheckout · al pulsar "Tramitar pedido"
      CompletePayment  · al volver de Stripe con el pago hecho
-   Meta usa los mismos nombres salvo el último, que allí se llama
-   Purchase: la traducción está en EVENTO_META.
+   Cada plataforma los llama distinto; la traducción está en EVENTO_META
+   y en EVENTO_GA.
    ============================================= */
 (function () {
   'use strict';
 
   var PIXEL_TIKTOK = 'DA7KU5JC77U208UL93F0';
   var PIXEL_META = '1465349585647608';
+
+  /* Identificador de la propiedad de Google Analytics 4. Se saca de
+     analytics.google.com → Administrar → Flujos de datos → el flujo web.
+     Empieza por G- seguido de diez caracteres.
+
+     Mientras esté vacío no se carga nada de Google: ni script, ni
+     cookies, ni peticiones. Todo lo demás ya está montado, así que en
+     cuanto se rellene empieza a medir. */
+  var GA4 = '';
+
   var KEY = 'nuvora_consent_v1';
 
   function leerConsentimiento() {
@@ -112,11 +125,17 @@
   /* Red de seguridad: si el `init` llegara a plantar sus cookies, se
      borran mientras no haya consentimiento. Se comprueba varias veces
      porque el SDK termina de cargar después de esta línea. */
+  /* Borra las cookies de medición mientras no haya consentimiento.
+     Las de Google llevan un sufijo variable (_ga_XXXXXXXX), así que se
+     recorren todas las del navegador en vez de buscar nombres exactos. */
   function limpiarCookiesMeta() {
-    ['_fbp', '_fbc'].forEach(function (c) {
-      if (document.cookie.indexOf(c + '=') < 0) return;
-      var host = location.hostname;
-      var dominios = ['', host, '.' + host, host.replace(/^www\./, '.')];
+    var host = location.hostname;
+    var dominios = ['', host, '.' + host, host.replace(/^www\./, '.')];
+    var nombres = document.cookie.split(';')
+      .map(function (c) { return c.split('=')[0].trim(); })
+      .filter(function (n) { return /^(_fbp|_fbc|_ga|_gid|_gat)/.test(n); });
+
+    nombres.forEach(function (c) {
       dominios.forEach(function (d) {
         document.cookie = c + '=; Max-Age=0; path=/' + (d ? '; domain=' + d : '');
       });
@@ -159,9 +178,50 @@
     window.fbq('track', 'PageView');
   }
 
+  /* ── Google Analytics 4 ──
+     No se carga nada hasta que la persona acepta: sus cookies (_ga) son
+     de análisis y en España también necesitan permiso previo. Y como
+     Analytics no tiene que «detectarse» desde fuera, no hay motivo para
+     adelantarlo como con Meta.
+
+     Se carga además con calma, después de que la página esté montada,
+     para que no compita con lo que el visitante está esperando ver. */
+  var gaArrancado = false;
+  function arrancarGA() {
+    if (gaArrancado || !GA4) return;
+    gaArrancado = true;
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    /* Sin anuncios personalizados: esto es para medir, no para segmentar */
+    window.gtag('config', GA4, {
+      anonymize_ip: true,
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false
+    });
+
+    function traer() {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA4);
+      document.head.appendChild(s);
+    }
+    if (document.readyState === 'complete') {
+      if (window.requestIdleCallback) window.requestIdleCallback(traer, { timeout: 3000 });
+      else setTimeout(traer, 1200);
+    } else {
+      window.addEventListener('load', function () {
+        if (window.requestIdleCallback) window.requestIdleCallback(traer, { timeout: 3000 });
+        else setTimeout(traer, 1200);
+      });
+    }
+  }
+
   function arrancarPixeles() {
     arrancarTikTok();
     arrancarMeta();
+    arrancarGA();
   }
 
   if (leerConsentimiento() === 'granted') arrancarPixeles();
@@ -198,6 +258,30 @@
   function contenidosMeta(contents) {
     return (contents || []).map(function (c) {
       return { id: c.content_id, quantity: c.quantity || 1, item_price: c.price };
+    });
+  }
+
+  /* Google Analytics tiene sus propios nombres para lo mismo. Usar los
+     suyos importa: son los que alimentan los informes de comercio
+     electrónico que vienen hechos. Con nombres inventados, esos informes
+     salen vacíos. */
+  var EVENTO_GA = {
+    ViewContent: 'view_item',
+    AddToCart: 'add_to_cart',
+    InitiateCheckout: 'begin_checkout',
+    CompletePayment: 'purchase'
+  };
+
+  /* Y su propio formato de línea de pedido */
+  function articulosGA(contents) {
+    return (contents || []).map(function (c) {
+      return {
+        item_id: c.content_id,
+        item_name: c.content_name || c.content_id,
+        item_variant: c.size || undefined,
+        price: c.price,
+        quantity: c.quantity || 1
+      };
     });
   }
 
@@ -243,7 +327,30 @@
       } catch (e) {}
     }
 
-    /* 3 · Events API de TikTok, desde nuestro servidor */
+    /* 3 · Google Analytics */
+    if (GA4) {
+      arrancarGA();
+      try {
+        var nombreGA = EVENTO_GA[evento];
+        if (nombreGA && window.gtag) {
+          var envio = {
+            currency: moneda,
+            value: valor,
+            items: articulosGA(datos.contents)
+          };
+          /* En una compra, Analytics necesita la referencia del pedido
+             para no contar dos veces si alguien recarga la página de
+             gracias. Sin ella, un F5 duplica la venta en los informes. */
+          if (nombreGA === 'purchase') {
+            envio.transaction_id = datos.orderId || id;
+            envio.shipping = 0;
+          }
+          window.gtag('event', nombreGA, envio);
+        }
+      } catch (e) {}
+    }
+
+    /* 4 · Events API de TikTok, desde nuestro servidor */
     try {
       var cuerpo = JSON.stringify({
         event: evento,

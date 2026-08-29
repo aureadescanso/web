@@ -390,7 +390,7 @@
   var EXTRA = {
     es: {
       'home.supreme_desc': 'Doble cara: pura lana en invierno y algodón natural en verano, sobre muelles ensacados de 18 cm con viscogel.',
-      'ck.text': 'Usamos cookies de <strong>TikTok</strong> y <strong>Meta</strong> para medir la publicidad y saber qué anuncios funcionan. Sin ellas la web va igual de bien. Puedes cambiar de opinión cuando quieras en la <a href="cookies.html">política de cookies</a>.',
+      'ck.text': 'Usamos cookies de <strong>TikTok</strong> y <strong>Meta</strong> para medir la publicidad, y <strong>Google Analytics</strong> para saber qué páginas te interesan. Sin ellas la web va igual de bien. Puedes cambiar de opinión cuando quieras en la <a href="cookies.html">política de cookies</a>.',
       'ck.yes': 'Aceptar',
       'ck.no': 'Rechazar',
       'ck.aria': 'Aviso de cookies',
@@ -417,7 +417,7 @@
     },
     en: {
       'home.supreme_desc': 'Two sleeping sides: pure wool for winter and natural cotton for summer, over an 18 cm pocket-spring core with viscogel.',
-      'ck.text': 'We use <strong>TikTok</strong> and <strong>Meta</strong> cookies to measure our advertising and see which ads work. The site works just as well without them. You can change your mind any time in our <a href="cookies.html">cookie policy</a>.',
+      'ck.text': 'We use <strong>TikTok</strong> and <strong>Meta</strong> cookies to measure our advertising, and <strong>Google Analytics</strong> to see which pages people find useful. The site works just as well without them. You can change your mind any time in our <a href="cookies.html">cookie policy</a>.',
       'ck.yes': 'Accept',
       'ck.no': 'Reject',
       'ck.aria': 'Cookie notice',
@@ -444,7 +444,7 @@
     },
     it: {
       'home.supreme_desc': 'Due lati: pura lana in inverno e cotone naturale in estate, su una molleggiatura insacchettata di 18 cm con viscogel.',
-      'ck.text': 'Usiamo cookie di <strong>TikTok</strong> e <strong>Meta</strong> per misurare la pubblicità e capire quali annunci funzionano. Senza di essi il sito funziona ugualmente. Puoi cambiare idea quando vuoi nella <a href="cookies.html">politica dei cookie</a>.',
+      'ck.text': 'Usiamo cookie di <strong>TikTok</strong> e <strong>Meta</strong> per misurare la pubblicità, e <strong>Google Analytics</strong> per capire quali pagine interessano. Senza di essi il sito funziona ugualmente. Puoi cambiare idea quando vuoi nella <a href="cookies.html">politica dei cookie</a>.',
       'ck.yes': 'Accetta',
       'ck.no': 'Rifiuta',
       'ck.aria': 'Avviso sui cookie',
@@ -471,7 +471,7 @@
     },
     fr: {
       'home.supreme_desc': 'Deux faces : pure laine en hiver et coton naturel en été, sur un noyau de ressorts ensachés de 18 cm avec viscogel.',
-      'ck.text': 'Nous utilisons des cookies <strong>TikTok</strong> et <strong>Meta</strong> pour mesurer notre publicité et savoir quelles annonces fonctionnent. Le site marche aussi bien sans eux. Vous pouvez changer d’avis à tout moment dans la <a href="cookies.html">politique de cookies</a>.',
+      'ck.text': 'Nous utilisons des cookies <strong>TikTok</strong> et <strong>Meta</strong> pour mesurer notre publicité, et <strong>Google Analytics</strong> pour savoir quelles pages intéressent. Le site marche aussi bien sans eux. Vous pouvez changer d’avis à tout moment dans la <a href="cookies.html">politique de cookies</a>.',
       'ck.yes': 'Accepter',
       'ck.no': 'Refuser',
       'ck.aria': 'Avis sur les cookies',
@@ -498,7 +498,7 @@
     },
     de: {
       'home.supreme_desc': 'Zwei Liegeseiten: reine Wolle im Winter und Naturbaumwolle im Sommer, über einem 18 cm Taschenfederkern mit Viscogel.',
-      'ck.text': 'Wir verwenden Cookies von <strong>TikTok</strong> und <strong>Meta</strong>, um unsere Werbung zu messen und zu sehen, welche Anzeigen funktionieren. Ohne sie funktioniert die Website genauso gut. Du kannst es jederzeit in der <a href="cookies.html">Cookie-Richtlinie</a> ändern.',
+      'ck.text': 'Wir verwenden Cookies von <strong>TikTok</strong> und <strong>Meta</strong>, um unsere Werbung zu messen, und <strong>Google Analytics</strong>, um zu sehen, welche Seiten interessieren. Ohne sie funktioniert die Website genauso gut. Du kannst es jederzeit in der <a href="cookies.html">Cookie-Richtlinie</a> ändern.',
       'ck.yes': 'Annehmen',
       'ck.no': 'Ablehnen',
       'ck.aria': 'Cookie-Hinweis',
