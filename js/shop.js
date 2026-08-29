@@ -130,114 +130,6 @@ document.addEventListener('DOMContentLoaded', function () {
       ]
     },
 
-    'mouth-tape': {
-      type: 'accesorio',
-      typeLabel: 'Accesorio de descanso',
-      name: 'Mouth Tape Nuvora',
-      desc: '30 tiras adhesivas de tejido transpirable que mantienen la boca cerrada mientras duermes y fomentan la respiración nasal: menos ronquidos, menos boca seca y un despertar con más energía. Sin medicamentos ni ingredientes activos.',
-      rating: '4,7',
-      reviews: 86,
-      images: ['images/mouth-tape.webp'],
-      box3d: true,
-      cutImg: 'images/mouth-tape-cut.webp',
-      /* Complementos desactivados temporalmente: no se enlaza ni se puede
-         abrir la ficha. Se conserva la ficha completa para reactivarla. */
-      hidden: true,
-      sizes: [
-        { label: 'Caja · 30 tiras', price: 10 }
-      ],
-      defaultSize: 0,
-      details: [
-        {
-          title: 'Qué es y cómo funciona',
-          html: '<ul>' +
-            '<li>Tiras adhesivas que mantienen la boca cerrada durante la noche y fomentan la respiración nasal, la forma natural de respirar al dormir.</li>' +
-            '<li>Tejido transpirable, cómodo y suave con la piel.</li>' +
-            '<li>Adhesivo seguro, apto para el uso nocturno y fácil de retirar.</li>' +
-            '<li>Sin medicamentos ni ingredientes activos. Uso externo.</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Modo de empleo',
-          html: '<ul>' +
-            '<li>1. Asegúrate de que la piel esté limpia y seca.</li>' +
-            '<li>2. Retira el protector de la tira.</li>' +
-            '<li>3. Colócala sobre el centro de los labios.</li>' +
-            '<li>4. Presiona suavemente.</li>' +
-            '<li>5. Retira al despertar.</li>' +
-            '<li><strong>Importante:</strong> no usar con congestión nasal, dificultad para respirar por la nariz, ni en niños. Si tienes apnea del sueño diagnosticada, consulta antes con tu médico.</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Envío y devoluciones',
-          html: '<ul>' +
-            '<li>Envío a toda España peninsular en 3–5 días laborables.</li>' +
-            '<li>Devolución gratuita durante los primeros 30 días si la caja está sin abrir.</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Disponibilidad',
-          html: '<ul>' +
-            '<li>Producto temporalmente no disponible en la tienda.</li>' +
-            '<li><a href="colchones.html">Ver colchones</a></li>' +
-          '</ul>'
-        }
-      ]
-    },
-
-    'tiras-nasales': {
-      type: 'accesorio',
-      typeLabel: 'Accesorio de descanso',
-      name: 'Tiras Nasales Nuvora',
-      desc: '30 tiras nasales flexibles que abren suavemente las fosas nasales desde fuera: más flujo de aire, menos ronquidos y una respiración más fácil durante toda la noche. Sin medicamentos, aptas para el uso diario.',
-      rating: '4,6',
-      reviews: 54,
-      images: ['images/tiras-nasales.webp'],
-      box3d: true,
-      cutImg: 'images/tiras-nasales-cut.webp',
-      /* Complementos desactivados temporalmente (ver 'mouth-tape'). */
-      hidden: true,
-      sizes: [
-        { label: 'Caja · 30 tiras', price: 10 }
-      ],
-      defaultSize: 0,
-      details: [
-        {
-          title: 'Qué son y cómo funcionan',
-          html: '<ul>' +
-            '<li>Tiras flexibles que se adhieren sobre el puente de la nariz y abren las fosas nasales desde fuera, de forma mecánica.</li>' +
-            '<li>Más flujo de aire al instante: respiración más fácil y menos ronquidos.</li>' +
-            '<li>Adhesivo suave con la piel, cómodo durante toda la noche.</li>' +
-            '<li>Sin medicamentos ni ingredientes activos. Uso externo.</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Modo de empleo',
-          html: '<ul>' +
-            '<li>1. Lava y seca bien la piel de la nariz.</li>' +
-            '<li>2. Retira el protector de la tira.</li>' +
-            '<li>3. Céntrala sobre el puente de la nariz, justo encima de las aletas.</li>' +
-            '<li>4. Presiona unos segundos para fijarla.</li>' +
-            '<li>5. Retírala por la mañana, mejor con agua tibia.</li>' +
-            '<li><strong>Importante:</strong> no usar sobre piel irritada o con heridas, ni en niños pequeños.</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Envío y devoluciones',
-          html: '<ul>' +
-            '<li>Envío a toda España peninsular en 3–5 días laborables.</li>' +
-            '<li>Devolución gratuita durante los primeros 30 días si la caja está sin abrir.</li>' +
-          '</ul>'
-        },
-        {
-          title: 'El dúo de la respiración nasal',
-          html: '<ul>' +
-            '<li>Combínalas con el <a href="producto.html?m=mouth-tape">Mouth Tape Nuvora</a>: las tiras abren la nariz y el tape mantiene la boca cerrada. Respiración nasal completa toda la noche.</li>' +
-          '</ul>'
-        }
-      ]
-    },
-
     'almohada-nuvora': {
       type: 'almohada',
       typeLabel: 'Almohada viscoelástica',
@@ -260,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function () {
             '<li><strong>Altura de 12 cm</strong> con perfil ergonómico: mantiene el cuello alineado con la columna.</li>' +
             '<li>Canales de ventilación que evacúan el calor y la humedad durante la noche.</li>' +
             '<li>Funda exterior <strong>desenfundable con cremallera</strong> y lavable a 30 °C.</li>' +
-            '<li>Tratamiento antiácaros y antibacteriano: apta para pieles sensibles y alérgicos.</li>' +
+            '<li>Funda tratada contra los ácaros, apta para pieles sensibles y alérgicos.</li>' +
           '</ul>'
         },
         {
@@ -296,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
             '<li>Alivia la presión en cuello y hombros desde la primera noche.</li>' +
             '<li>Mantiene la alineación cervical y reduce los despertares por mala postura.</li>' +
             '<li>Transpirable: menos calor acumulado bajo la cabeza.</li>' +
-            '<li>Higiénica: funda lavable y tratamiento antiácaros.</li>' +
+            '<li>Higiénica: funda lavable y tratada contra los ácaros.</li>' +
             '<li>Sin deformaciones: la viscoelástica de 50 kg/m³ no se apelmaza.</li>' +
           '</ul>'
         },
@@ -466,7 +358,6 @@ document.addEventListener('DOMContentLoaded', function () {
       };
     });
   })();
-
 
   /* ══════════════════════════════════════════════
      NUVORA AUREA — dos núcleos, mismas medidas.
@@ -1272,31 +1163,12 @@ document.addEventListener('DOMContentLoaded', function () {
       if (pt3) pt3.querySelector('strong').textContent = '2 años';
     }
 
-    /* — Adaptación para accesorios (Mouth Tape) — */
-    if (product.type === 'accesorio') {
-      var aj3 = document.getElementById('journeyStep3');
-      if (aj3) {
-        aj3.querySelector('.journey__when').textContent = 'Primeros 30 días';
-        aj3.querySelector('.journey__what').textContent = 'Devolución gratuita';
-        aj3.querySelector('.journey__how').textContent  = 'Si no es para ti y la caja está sin abrir, te devolvemos el importe.';
-      }
-      var aj4 = document.getElementById('journeyStep4');
-      if (aj4) {
-        aj4.querySelector('.journey__when').textContent = 'Cada noche';
-        aj4.querySelector('.journey__what').textContent = 'Respiración nasal';
-        aj4.querySelector('.journey__how').textContent  = 'Tejido transpirable y adhesivo apto para uso nocturno. Sin medicamentos.';
-      }
-      var at2 = document.getElementById('trustNights');
-      if (at2) {
-        at2.querySelector('strong').textContent = '30 días';
-        at2.querySelector('span').textContent = 'devolución';
-      }
-      var at3 = document.getElementById('trustYears');
-      if (at3) {
-        at3.querySelector('strong').textContent = 'Sin';
-        at3.querySelector('span').textContent = 'medicamentos';
-      }
-    }
+    /* Aquí había una adaptación de la ficha para los complementos (Mouth
+       Tape y Tiras Nasales). Esos productos se retiraron del catálogo, así
+       que este código ya no lo ejecutaba nadie: solo dejaba en el archivo
+       unos textos que hacían saltar el clasificador de salud de Meta y
+       bloqueaban los datos publicitarios de todo el sitio.
+       Recuperable en el historial de git. */
 
     /* — Acordeón de detalles — */
     var accEl = document.getElementById('pdpAccordion');
