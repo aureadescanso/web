@@ -3,7 +3,7 @@
    =============================================
    Tres servicios comparten este archivo:
      · TikTok   (píxel DA7KU5JC77U208UL93F0, "alfredo")
-     · Meta     (píxel 1465349585647608, Facebook e Instagram)
+     · Meta     (píxel 1617076499935241, Facebook e Instagram)
      · Google Analytics 4 (para saber qué funciona, no para anunciar)
 
    El código base de ambos se sirve desde aquí, y no en línea dentro del
@@ -41,16 +41,15 @@
   'use strict';
 
   var PIXEL_TIKTOK = 'DA7KU5JC77U208UL93F0';
-  var PIXEL_META = '1465349585647608';
+  var PIXEL_META = '1617076499935241';
 
-  /* Identificador de la propiedad de Google Analytics 4. Se saca de
-     analytics.google.com → Administrar → Flujos de datos → el flujo web.
-     Empieza por G- seguido de diez caracteres.
+  /* Propiedad de Google Analytics 4 de Nuvora Descanso, activa desde el
+     29 de agosto de 2026. Si algún día hay que cambiarla, el
+     identificador está en analytics.google.com → Administrar → Flujos de
+     datos → el flujo web.
 
-     Mientras esté vacío no se carga nada de Google: ni script, ni
-     cookies, ni peticiones. Todo lo demás ya está montado, así que en
-     cuanto se rellene empieza a medir. */
-  /* Propiedad de Nuvora Descanso, activa desde el 29 de agosto de 2026 */
+     Si se deja vacío no se carga nada de Google: ni script, ni cookies,
+     ni peticiones. */
   var GA4 = 'G-NHHPXZE6CG';
 
   var KEY = 'nuvora_consent_v1';
