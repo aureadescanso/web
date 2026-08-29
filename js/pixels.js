@@ -74,9 +74,31 @@
   !function (f, b, e, v, n, t, s) {
     if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) };
     if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-    n.queue = []; t = b.createElement(e); t.async = !0;
-    t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
+    n.queue = [];
   }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+
+  /* El programa de Meta pesa 191 kB entre el archivo y su configuración,
+     y se ejecuta antes que nada. Medido: en la página de colchones dejaba
+     al script que pinta el catálogo esperando hasta los 4,3 segundos, y
+     con él la imagen principal.
+
+     Así que se descarga igual, pero DESPUÉS de que la página esté
+     montada. La cola de fbq guarda mientras tanto lo que se le pida, y
+     Meta sigue detectando el píxel: su comprobador espera a que la
+     página termine de cargar. */
+  function traerSdkMeta() {
+    if (document.querySelector('script[src*="fbevents.js"]')) return;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://connect.facebook.net/en_US/fbevents.js';
+    document.head.appendChild(s);
+  }
+  function cuandoHayaCalma() {
+    if (window.requestIdleCallback) window.requestIdleCallback(traerSdkMeta, { timeout: 3000 });
+    else setTimeout(traerSdkMeta, 1200);
+  }
+  if (document.readyState === 'complete') cuandoHayaCalma();
+  else window.addEventListener('load', cuandoHayaCalma);
 
   /* Solo se inicializa. NO se llama a `track` hasta que haya
      consentimiento, y un evento que no se dispara no se envía.
