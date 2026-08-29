@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" role="img" aria-label="Espacio de paso que hay que dejar alrededor de la cama">
+  <rect width="1000" height="400" fill="#FCFAF4"/>
+
+  <text x="500" y="40" font-family="Georgia, 'Times New Roman', serif" font-size="23" fill="#14203F" text-anchor="middle">Mide la habitación, no solo la cama</text>
+
+  <!-- Paredes de la habitación -->
+  <rect x="120" y="66" width="760" height="286" rx="6" fill="#fff" stroke="#14203F" stroke-opacity="0.45" stroke-width="2"/>
+
+  <!-- Armario arriba -->
+  <rect x="120" y="66" width="760" height="34" fill="#14203F" fill-opacity="0.06"/>
+  <text x="500" y="89" font-family="Helvetica, Arial, sans-serif" font-size="12.5" fill="#7B8496" text-anchor="middle">armario de puertas abatibles</text>
+
+  <!-- Cama, vista desde arriba -->
+  <rect x="352" y="190" width="296" height="146" rx="10" fill="#fff" stroke="#14203F" stroke-width="2"/>
+  <rect x="368" y="202" width="126" height="34" rx="8" fill="#C9A227" fill-opacity="0.18"/>
+  <rect x="506" y="202" width="126" height="34" rx="8" fill="#C9A227" fill-opacity="0.18"/>
+  <g stroke="#14203F" stroke-opacity="0.12" stroke-width="1">
+    <path d="M352 262h296M352 300h296"/>
+  </g>
+  <text x="500" y="290" font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#14203F" text-anchor="middle">150 × 190</text>
+
+  <!-- Cota izquierda -->
+  <g stroke="#C9A227" stroke-width="1.5">
+    <path d="M140 263h206M146 257l-6 6 6 6M340 257l6 6-6 6"/>
+  </g>
+  <rect x="188" y="238" width="112" height="22" rx="6" fill="#FCFAF4"/>
+  <text x="244" y="254" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#A8862A" text-anchor="middle">60–70 cm</text>
+
+  <!-- Cota derecha -->
+  <g stroke="#C9A227" stroke-width="1.5">
+    <path d="M654 263h206M660 257l-6 6 6 6M854 257l6 6-6 6"/>
+  </g>
+  <rect x="701" y="238" width="112" height="22" rx="6" fill="#FCFAF4"/>
+  <text x="757" y="254" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#A8862A" text-anchor="middle">60–70 cm</text>
+
+  <!-- Cota superior, frente al armario -->
+  <g stroke="#C0392B" stroke-width="1.5">
+    <path d="M500 106v78M494 112l6-6 6 6M494 178l6 6 6-6"/>
+  </g>
+  <rect x="512" y="134" width="88" height="22" rx="6" fill="#FCFAF4"/>
+  <text x="556" y="150" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#C0392B" text-anchor="middle">90 cm</text>
+
+  <!-- Puerta abajo a la izquierda -->
+  <path d="M160 352 v-8 h74 v8" fill="none" stroke="#14203F" stroke-opacity="0.45" stroke-width="2"/>
+  <path d="M234 344 A 74 74 0 0 1 160 270" fill="none" stroke="#14203F" stroke-opacity="0.25" stroke-width="1.3" stroke-dasharray="4 5"/>
+  <text x="197" y="374" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#7B8496" text-anchor="middle">puerta</text>
+
+  <text x="640" y="374" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#3D4657" text-anchor="middle">Si no te salen estos números, compensa más bajar de 150 a 135 que quedarte sin paso</text>
+</svg>

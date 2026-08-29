@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 330" role="img" aria-label="Cómo debe quedar la columna en cada postura al dormir">
+  <rect width="1000" height="330" fill="#FCFAF4"/>
+
+  <!-- ── DE LADO ── -->
+  <g transform="translate(20,0)">
+    <text x="150" y="42" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#14203F" text-anchor="middle">De lado</text>
+
+    <!-- colchón -->
+    <rect x="26" y="176" width="248" height="52" rx="9" fill="#fff" stroke="#14203F" stroke-opacity="0.35" stroke-width="1.5"/>
+    <!-- hundimiento bajo hombro y cadera -->
+    <path d="M26 190 C 78 190, 84 214, 112 214 C 140 214, 150 196, 178 196 C 206 196, 212 212, 240 212 C 258 212, 264 196, 274 194"
+          fill="none" stroke="#C9A227" stroke-opacity="0.35" stroke-width="1.4"/>
+    <!-- cuerpo: cabeza, hombro, cintura, cadera -->
+    <circle cx="54" cy="170" r="15" fill="none" stroke="#14203F" stroke-width="2.4"/>
+    <path d="M70 178 C 92 184, 96 202, 112 202 C 130 202, 140 184, 160 184 C 182 184, 190 200, 214 200 C 232 200, 244 190, 258 186"
+          fill="none" stroke="#14203F" stroke-width="3" stroke-linecap="round"/>
+    <!-- puntos de presión -->
+    <circle cx="112" cy="202" r="5" fill="#C9A227"/>
+    <circle cx="214" cy="200" r="5" fill="#C9A227"/>
+    <text x="112" y="256" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#A8862A" text-anchor="middle">hombro</text>
+    <text x="214" y="256" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#A8862A" text-anchor="middle">cadera</text>
+    <text x="150" y="292" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#3D4657" text-anchor="middle">Los dos tienen que hundirse</text>
+    <text x="150" y="311" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#3D4657" text-anchor="middle">para que la columna quede recta</text>
+  </g>
+
+  <line x1="333" y1="30" x2="333" y2="300" stroke="#E2DDD0" stroke-width="1" stroke-dasharray="5 7"/>
+
+  <!-- ── BOCA ARRIBA ── -->
+  <g transform="translate(353,0)">
+    <text x="150" y="42" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#14203F" text-anchor="middle">Boca arriba</text>
+
+    <rect x="26" y="176" width="248" height="52" rx="9" fill="#fff" stroke="#14203F" stroke-opacity="0.35" stroke-width="1.5"/>
+    <path d="M26 190 C 90 190, 110 200, 150 200 C 190 200, 214 190, 274 190"
+          fill="none" stroke="#C9A227" stroke-opacity="0.35" stroke-width="1.4"/>
+    <circle cx="54" cy="170" r="15" fill="none" stroke="#14203F" stroke-width="2.4"/>
+    <path d="M70 180 C 108 180, 118 194, 150 194 C 184 194, 214 182, 258 182"
+          fill="none" stroke="#14203F" stroke-width="3" stroke-linecap="round"/>
+    <!-- hueco lumbar -->
+    <path d="M104 182 L 104 194" stroke="#C0392B" stroke-width="1.4" stroke-dasharray="3 3"/>
+    <text x="104" y="256" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#C0392B" text-anchor="middle">zona lumbar</text>
+    <text x="150" y="292" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#3D4657" text-anchor="middle">Mete la mano bajo la espalda:</text>
+    <text x="150" y="311" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#3D4657" text-anchor="middle">si entra holgada, es demasiado firme</text>
+  </g>
+
+  <line x1="666" y1="30" x2="666" y2="300" stroke="#E2DDD0" stroke-width="1" stroke-dasharray="5 7"/>
+
+  <!-- ── BOCA ABAJO ── -->
+  <g transform="translate(686,0)">
+    <text x="150" y="42" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#14203F" text-anchor="middle">Boca abajo</text>
+
+    <rect x="26" y="176" width="248" height="52" rx="9" fill="#fff" stroke="#14203F" stroke-opacity="0.35" stroke-width="1.5"/>
+    <path d="M26 190 C 96 190, 108 216, 150 216 C 192 216, 208 190, 274 190"
+          fill="none" stroke="#C0392B" stroke-opacity="0.3" stroke-width="1.4"/>
+    <circle cx="54" cy="172" r="15" fill="none" stroke="#14203F" stroke-width="2.4"/>
+    <path d="M70 182 C 106 182, 116 206, 150 206 C 186 206, 216 184, 258 184"
+          fill="none" stroke="#14203F" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="150" cy="206" r="5" fill="#C0392B"/>
+    <text x="150" y="256" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#C0392B" text-anchor="middle">si la cadera cae, la lumbar se arquea</text>
+    <text x="150" y="292" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#3D4657" text-anchor="middle">La postura más exigente:</text>
+    <text x="150" y="311" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#3D4657" text-anchor="middle">pide firme y almohada muy baja</text>
+  </g>
+</svg>

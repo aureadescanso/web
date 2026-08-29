@@ -1115,6 +1115,39 @@
 }
 
 /* ══════════════════════════════════════════════
+   ILUSTRACIÓN DENTRO DEL ARTÍCULO
+   ══════════════════════════════════════════════
+   Un dibujo a mitad de un texto largo hace dos cosas: explica en un
+   golpe de vista lo que costaría tres párrafos, y da un respiro visual
+   que evita que la página parezca un muro. */
+.article-fig {
+  margin: 46px 0;
+}
+
+.article-fig img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: #FCFAF4;
+}
+
+.article-fig figcaption {
+  margin-top: 12px;
+  font-family: var(--sans);
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: var(--muted);
+  text-align: center;
+}
+
+@media (max-width: 620px) {
+  .article-fig { margin: 34px 0; }
+  .article-fig figcaption { font-size: 0.8rem; text-align: left; }
+}
+
+/* ══════════════════════════════════════════════
    TARJETA DE PRODUCTO DENTRO DEL ARTÍCULO
    ══════════════════════════════════════════════
    Sustituye a la llamada de solo texto: con la foto y el precio
@@ -1216,7 +1249,42 @@
   padding-bottom: 1px;
   transition: color 0.25s, border-color 0.25s;
 }
-.pcard-art__link:hover { color: var(--navy); border-color: var(--navy); }
+.pcard-art:hover .pcard-art__link { color: var(--navy); border-color: var(--navy); }
+
+/* Las tres garantías, que es lo que de verdad quita el miedo a comprar
+   un colchón sin haberlo probado */
+.pcard-art__trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin-top: 12px;
+  padding-top: 11px;
+  border-top: 1px solid var(--border);
+}
+.pcard-art__trust span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: var(--muted);
+  white-space: nowrap;
+}
+/* Punto dorado como viñeta, dibujado sin imagen */
+.pcard-art__trust span::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #C9A227;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 620px) {
+  .pcard-art__trust { gap: 3px 12px; }
+  .pcard-art__trust span { font-size: 0.7rem; }
+}
 
 @media (max-width: 620px) {
   .pcard-art { grid-template-columns: 1fr; gap: 16px; padding: 16px; }

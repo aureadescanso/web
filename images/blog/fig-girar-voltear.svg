@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 360" role="img" aria-label="Girar el colchón es darle media vuelta en horizontal; voltearlo es darle la vuelta de arriba abajo">
+  <rect width="1000" height="360" fill="#FCFAF4"/>
+
+  <!-- ─── GIRAR ─── -->
+  <g transform="translate(0,0)">
+    <text x="250" y="46" font-family="Georgia, 'Times New Roman', serif" font-size="25" fill="#14203F" text-anchor="middle">Girar</text>
+    <text x="250" y="72" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#7B8496" text-anchor="middle">Media vuelta en horizontal · en todos los colchones</text>
+
+    <!-- Antes -->
+    <g transform="translate(96,104)">
+      <rect width="130" height="176" rx="10" fill="#fff" stroke="#14203F" stroke-width="1.6"/>
+      <rect x="14" y="14" width="102" height="30" rx="8" fill="#C9A227" fill-opacity="0.18"/>
+      <text x="65" y="34" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#A8862A" text-anchor="middle">cabecera</text>
+      <ellipse cx="65" cy="116" rx="34" ry="26" fill="#14203F" fill-opacity="0.09"/>
+      <text x="65" y="121" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#7B8496" text-anchor="middle">zona de</text>
+      <text x="65" y="134" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#7B8496" text-anchor="middle">más peso</text>
+    </g>
+
+    <!-- Flecha de giro -->
+    <g fill="none" stroke="#C9A227" stroke-width="2" stroke-linecap="round">
+      <path d="M244 176 A 34 34 0 1 1 256 176"/>
+      <path d="M250 168l7 8-8 7"/>
+    </g>
+
+    <!-- Después -->
+    <g transform="translate(274,104)">
+      <rect width="130" height="176" rx="10" fill="#fff" stroke="#14203F" stroke-width="1.6"/>
+      <rect x="14" y="132" width="102" height="30" rx="8" fill="#C9A227" fill-opacity="0.18"/>
+      <text x="65" y="152" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#A8862A" text-anchor="middle">cabecera</text>
+      <ellipse cx="65" cy="60" rx="34" ry="26" fill="#14203F" fill-opacity="0.09"/>
+      <text x="65" y="65" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#7B8496" text-anchor="middle">zona de</text>
+      <text x="65" y="78" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#7B8496" text-anchor="middle">más peso</text>
+    </g>
+
+    <text x="250" y="316" font-family="Helvetica, Arial, sans-serif" font-size="13.5" fill="#3D4657" text-anchor="middle">La zona que aguanta tu cadera descansa</text>
+    <text x="250" y="336" font-family="Helvetica, Arial, sans-serif" font-size="13.5" fill="#3D4657" text-anchor="middle">y el hundimiento tarda mucho más</text>
+  </g>
+
+  <!-- Separador -->
+  <line x1="500" y1="34" x2="500" y2="330" stroke="#E2DDD0" stroke-width="1" stroke-dasharray="5 7"/>
+
+  <!-- ─── VOLTEAR ─── -->
+  <g transform="translate(500,0)">
+    <text x="250" y="46" font-family="Georgia, 'Times New Roman', serif" font-size="25" fill="#14203F" text-anchor="middle">Voltear</text>
+    <text x="250" y="72" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#7B8496" text-anchor="middle">De arriba abajo · SOLO si es de doble cara</text>
+
+    <!-- Corte lateral: cara buena arriba -->
+    <g transform="translate(96,128)">
+      <rect width="130" height="26" rx="6" fill="#C9A227" fill-opacity="0.24" stroke="#C9A227" stroke-width="1.3"/>
+      <text x="65" y="18" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#A8862A" text-anchor="middle">cara de dormir</text>
+      <rect y="26" width="130" height="76" fill="#fff" stroke="#14203F" stroke-width="1.6"/>
+      <text x="65" y="70" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#7B8496" text-anchor="middle">núcleo</text>
+      <rect y="102" width="130" height="20" rx="6" fill="#14203F" fill-opacity="0.1" stroke="#14203F" stroke-opacity="0.3" stroke-width="1.2"/>
+      <text x="65" y="116" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#7B8496" text-anchor="middle">base reforzada</text>
+    </g>
+
+    <!-- Flecha de volteo, entre los dos cortes y sin tocarlos -->
+    <g fill="none" stroke="#C0392B" stroke-width="2" stroke-linecap="round">
+      <path d="M238 178 A 24 24 0 1 0 262 178"/>
+      <path d="M256 171l7 7-8 5"/>
+    </g>
+    <text x="250" y="272" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#C0392B" text-anchor="middle">solo doble cara</text>
+
+    <!-- Cara mala arriba -->
+    <g transform="translate(274,128)">
+      <rect width="130" height="20" rx="6" fill="#C0392B" fill-opacity="0.12" stroke="#C0392B" stroke-opacity="0.5" stroke-width="1.2"/>
+      <text x="65" y="14" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#C0392B" text-anchor="middle">base reforzada</text>
+      <rect y="20" width="130" height="76" fill="#fff" stroke="#14203F" stroke-width="1.6"/>
+      <text x="65" y="64" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#7B8496" text-anchor="middle">núcleo</text>
+      <rect y="96" width="130" height="26" rx="6" fill="#C9A227" fill-opacity="0.24" stroke="#C9A227" stroke-width="1.3"/>
+      <text x="65" y="113" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#A8862A" text-anchor="middle">cara de dormir</text>
+    </g>
+
+    <text x="250" y="316" font-family="Helvetica, Arial, sans-serif" font-size="13.5" fill="#3D4657" text-anchor="middle">Si el colchón es de una sola cara, dormirías</text>
+    <text x="250" y="336" font-family="Helvetica, Arial, sans-serif" font-size="13.5" fill="#3D4657" text-anchor="middle">sobre una base que no está hecha para eso</text>
+  </g>
+</svg>
