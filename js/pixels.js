@@ -3,7 +3,7 @@
    =============================================
    Dos plataformas comparten este archivo:
      · TikTok (píxel DA7KU5JC77U208UL93F0, "alfredo")
-     · Meta   (píxel 1617076499935241, Facebook e Instagram)
+     · Meta   (píxel 1465349585647608, Facebook e Instagram)
 
    El código base de ambos se sirve desde aquí, y no en línea dentro del
    HTML, para no tener que abrir la CSP con 'unsafe-inline': con
@@ -12,10 +12,18 @@
 
    IMPORTANTE — consentimiento: los píxeles instalan cookies de
    publicidad, así que en España necesitan el permiso previo del usuario
-   (RGPD y art. 22.2 LSSI). Por eso NO se descarga ningún SDK hasta que
-   la persona acepta en el aviso: si rechaza, o si no contesta, el
-   navegador ni siquiera contacta con TikTok ni con Meta, y por tanto no
-   se les entrega la IP del visitante.
+   (RGPD y art. 22.2 LSSI). Cada plataforma se trata distinto porque no
+   se comportan igual:
+
+     · TikTok: no se descarga nada hasta que la persona acepta. Su SDK
+       permite dejar la cola preparada sin cargarlo, así que el navegador
+       ni siquiera contacta con TikTok.
+     · Meta: su SDK sí se carga y se inicializa siempre, porque de otro
+       modo Meta no reconoce la instalación. A cambio, no se le manda
+       NINGÚN evento sin consentimiento y se le borran las cookies.
+
+   En los dos casos, sin permiso no se comunica ni una visita, ni una
+   ficha de producto, ni una compra.
 
    Eventos que se mandan (todos pasan por window.NuvoraTrack, que
    comprueba el consentimiento antes de disparar):
@@ -30,7 +38,7 @@
   'use strict';
 
   var PIXEL_TIKTOK = 'DA7KU5JC77U208UL93F0';
-  var PIXEL_META = '1617076499935241';
+  var PIXEL_META = '1465349585647608';
   var KEY = 'nuvora_consent_v1';
 
   function leerConsentimiento() {
@@ -62,12 +70,7 @@
      siempre, en todas las páginas, que es lo que exige Meta para dar la
      instalación por buena y lo que busca su comprobador.
 
-     La parte del consentimiento se resuelve con el mecanismo que la
-     propia Meta documenta para Europa: `consent revoke` ANTES del init.
-     Con el consentimiento retirado el píxel queda instalado y visible
-     para Meta, pero no envía ni un evento ni planta cookies. Cuando la
-     persona acepta se llama a `consent grant` y entonces empieza a
-     medir. Si rechaza, se queda como está: presente y mudo. */
+     El consentimiento se resuelve más abajo, no aquí. */
   !function (f, b, e, v, n, t, s) {
     if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) };
     if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
