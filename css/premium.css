@@ -877,3 +877,68 @@ html { scrollbar-width: thin; scrollbar-color: rgba(27, 45, 91, 0.55) transparen
 @media (prefers-reduced-motion: reduce) {
   .ckbar { transition: none; opacity: 1; transform: none; }
 }
+
+/* ── Galleta fija: abre el aviso para cambiar de opinión ──
+   La ley obliga a que retirar el consentimiento sea tan fácil como
+   darlo, así que este botón está siempre visible, se haya contestado
+   o no. */
+.ckdot {
+  position: fixed;
+  left: 22px;
+  bottom: 22px;
+  z-index: 1500;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  background: linear-gradient(140deg, #0A1128 0%, #1B2D5B 100%);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  box-shadow: 0 8px 24px rgba(6, 12, 28, 0.34);
+  color: #E2C46E;
+  transition: transform .3s var(--ease-out), box-shadow .3s, border-color .3s, opacity .3s;
+}
+.ckdot:hover {
+  transform: translateY(-3px);
+  border-color: rgba(212, 175, 55, 0.75);
+  box-shadow: 0 14px 32px rgba(6, 12, 28, 0.46);
+}
+.ckdot:focus-visible {
+  outline: 2px solid #E2C46E;
+  outline-offset: 3px;
+}
+.ckdot svg { display: block; }
+
+/* Mientras el aviso está abierto la galleta sobra */
+.ckdot.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.82);
+}
+
+/* Un punto indica la decisión actual: dorado aceptado, apagado rechazado */
+.ckdot__state {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid #0A1128;
+  background: rgba(255, 255, 255, 0.34);
+}
+.ckdot.is-granted .ckdot__state { background: #D4AF37; }
+
+/* En la ficha de producto, la barra de compra ocupa la parte de abajo */
+body:has(.buybar.is-visible) .ckdot { bottom: 84px; }
+
+@media (max-width: 620px) {
+  .ckdot { left: 14px; bottom: 14px; width: 42px; height: 42px; }
+  .ckdot svg { width: 21px; height: 21px; }
+  body:has(.buybar.is-visible) .ckdot { bottom: 76px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ckdot { transition: none; }
+}

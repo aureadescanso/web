@@ -272,10 +272,12 @@
   };
 
   /* ── Aviso de cookies ──
-     Solo aparece si la persona no ha contestado todavía. */
+     Aparece solo si la persona no ha contestado todavía, pero puede
+     reabrirse siempre desde la galleta. */
   var aviso = null;
 
   function cerrarAviso() {
+    mostrarGalleta();
     if (!aviso) return;
     aviso.classList.remove('is-open');
     var el = aviso;
@@ -287,8 +289,10 @@
     return (window.NuvoraI18n && window.NuvoraI18n.t(k)) || fb;
   }
 
-  function montarAviso() {
-    if (leerConsentimiento() !== null) return;
+  function montarAviso(forzar) {
+    if (aviso) return;
+    if (!forzar && leerConsentimiento() !== null) return;
+    ocultarGalleta();
     var base = /\/blog\//.test(window.location.pathname) ? '../' : '';
 
     aviso = document.createElement('div');
@@ -324,8 +328,58 @@
     });
   }
 
+  /* ── La galleta ──
+     Siempre visible, se haya contestado o no. El RGPD exige que retirar
+     el consentimiento sea tan fácil como darlo, y esconder esa opción
+     dentro de la política de cookies no lo es. El puntito de la esquina
+     dice en qué estado estás sin tener que abrir nada. */
+  var galleta = null;
+
+  function ocultarGalleta() { if (galleta) galleta.classList.add('is-hidden'); }
+  function mostrarGalleta() {
+    if (!galleta) return;
+    galleta.classList.remove('is-hidden');
+    pintarGalleta();
+  }
+  function pintarGalleta() {
+    if (!galleta) return;
+    var estado = leerConsentimiento();
+    galleta.classList.toggle('is-granted', estado === 'granted');
+    var texto = estado === 'granted'
+      ? T('ck.dotOn', 'Cookies aceptadas · pulsa para cambiarlo')
+      : estado === 'denied'
+        ? T('ck.dotOff', 'Cookies rechazadas · pulsa para cambiarlo')
+        : T('ck.dot', 'Preferencias de cookies');
+    galleta.setAttribute('aria-label', texto);
+    galleta.setAttribute('title', texto);
+  }
+
+  function montarGalleta() {
+    if (galleta) return;
+    galleta = document.createElement('button');
+    galleta.type = 'button';
+    galleta.className = 'ckdot';
+    galleta.innerHTML =
+      '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
+        '<path d="M12 2.6a9.4 9.4 0 1 0 9.4 9.4 3.4 3.4 0 0 1-4.2-4.6A3.4 3.4 0 0 1 12 2.6z" ' +
+          'stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>' +
+        '<circle cx="9" cy="9.4" r="1.15" fill="currentColor"/>' +
+        '<circle cx="8.4" cy="14.6" r="1.05" fill="currentColor"/>' +
+        '<circle cx="13.4" cy="13.2" r="1.3" fill="currentColor"/>' +
+        '<circle cx="12.6" cy="17.6" r="0.9" fill="currentColor"/>' +
+      '</svg>' +
+      '<span class="ckdot__state" aria-hidden="true"></span>';
+    galleta.addEventListener('click', function () { montarAviso(true); });
+    document.body.appendChild(galleta);
+    pintarGalleta();
+  }
+
+  /* Para poder abrirlo desde un enlace de la política de cookies */
+  window.NuvoraConsent.abrir = function () { montarAviso(true); };
+
   document.addEventListener('DOMContentLoaded', function () {
-    setTimeout(montarAviso, 700);
+    montarGalleta();
+    setTimeout(function () { montarAviso(false); }, 700);
   });
 
   /* El evento ViewContent lo dispara js/shop.js cuando ya ha resuelto
