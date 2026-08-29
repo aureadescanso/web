@@ -50,6 +50,7 @@
      Mientras esté vacío no se carga nada de Google: ni script, ni
      cookies, ni peticiones. Todo lo demás ya está montado, así que en
      cuanto se rellene empieza a medir. */
+  /* Propiedad de Nuvora Descanso, activa desde el 29 de agosto de 2026 */
   var GA4 = 'G-NHHPXZE6CG';
 
   var KEY = 'nuvora_consent_v1';
