@@ -1042,7 +1042,190 @@
 .artshare__btn svg { flex: 0 0 auto; }
 .artshare__btn.is-done { border-color: #C9A227; color: #B08D2B; }
 
+/* ══════════════════════════════════════════════
+   RESUMEN DE APERTURA — «Lo importante en 30 segundos»
+   ══════════════════════════════════════════════
+   Va justo debajo del titular. Quien tiene prisa se lleva la respuesta
+   sin leer el artículo; quien no la tiene, entra sabiendo qué va a
+   encontrar. Y es el bloque que Google recorta para los resultados
+   destacados, así que conviene que sea lo primero del cuerpo. */
+.article-key {
+  margin: 0 0 46px;
+  padding: 28px 30px 26px;
+  border-radius: 16px;
+  background: linear-gradient(150deg, #FCFAF4 0%, #F6F1E4 100%);
+  border: 1px solid rgba(201, 162, 39, 0.26);
+  box-shadow: 0 10px 30px rgba(20, 32, 63, 0.05);
+}
+
+.article-key__heading {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 16px;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #A8862A;
+}
+.article-key__heading svg { flex: 0 0 auto; }
+
+/* La especificidad tiene que superar a «.article-content__inner ul»,
+   que pone viñeta de disco a todas las listas del artículo. Si no, salen
+   dos marcas: el punto negro y la de comprobación. */
+.article-content__inner .article-key__list,
+.article-key__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 11px;
+}
+
+.article-content__inner .article-key__list li,
+.article-key__list li {
+  position: relative;
+  padding-left: 26px;
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 300;
+  color: var(--text);
+}
+.article-key__list li strong { font-weight: 600; color: var(--navy); }
+
+/* Marca de verificación dibujada en CSS, sin imagen que cargar */
+.article-content__inner .article-key__list li::before,
+.article-key__list li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 0.5em;
+  width: 10px;
+  height: 6px;
+  border-left: 2px solid #C9A227;
+  border-bottom: 2px solid #C9A227;
+  transform: rotate(-45deg);
+}
+
+@media (max-width: 620px) {
+  .article-key { padding: 22px 20px 20px; margin-bottom: 34px; }
+  .article-key__list li { font-size: 0.95rem; }
+}
+
+/* ══════════════════════════════════════════════
+   TARJETA DE PRODUCTO DENTRO DEL ARTÍCULO
+   ══════════════════════════════════════════════
+   Sustituye a la llamada de solo texto: con la foto y el precio
+   delante, la decisión se toma sin salir del artículo. */
+.pcard-art {
+  display: grid;
+  grid-template-columns: 148px 1fr;
+  gap: 22px;
+  align-items: center;
+  margin: 44px 0;
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 34px rgba(20, 32, 63, 0.07);
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s, border-color 0.3s;
+}
+.pcard-art:hover {
+  transform: translateY(-2px);
+  border-color: #C9B27A;
+  box-shadow: 0 18px 44px rgba(20, 32, 63, 0.11);
+}
+
+/* La tarjeta es un <a>, así que sus partes son <span> y hay que sacarlas
+   de la disposición en línea o se amontonan todas en el mismo renglón. */
+.pcard-art__media,
+.pcard-art__body,
+.pcard-art__eyebrow,
+.pcard-art__name,
+.pcard-art__text { display: block; }
+
+.pcard-art__media {
+  border-radius: 11px;
+  overflow: hidden;
+  background: var(--gray);
+  aspect-ratio: 4 / 3;
+}
+.pcard-art__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pcard-art__eyebrow {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: #A8862A;
+}
+
+.pcard-art__name {
+  font-family: var(--serif);
+  font-size: 1.28rem;
+  line-height: 1.25;
+  color: var(--navy);
+  margin: 5px 0 7px;
+}
+
+.pcard-art__text {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  font-weight: 300;
+  color: var(--text);
+  margin: 0 0 13px;
+}
+
+.pcard-art__foot {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+}
+
+.pcard-art__price {
+  font-family: var(--serif);
+  font-size: 1.32rem;
+  color: var(--navy);
+}
+.pcard-art__price small {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-right: 5px;
+}
+
+.pcard-art__link {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #A8862A;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(201, 162, 39, 0.4);
+  padding-bottom: 1px;
+  transition: color 0.25s, border-color 0.25s;
+}
+.pcard-art__link:hover { color: var(--navy); border-color: var(--navy); }
+
+@media (max-width: 620px) {
+  .pcard-art { grid-template-columns: 1fr; gap: 16px; padding: 16px; }
+  .pcard-art__media { aspect-ratio: 16 / 9; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .article-hero__cover { animation: none; }
   .readbar { transition: none; }
+  .pcard-art { transition: none; }
+  .pcard-art:hover { transform: none; }
 }
