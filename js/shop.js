@@ -882,17 +882,32 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('pdpCrumbCat').textContent = catalogLabel;
     document.getElementById('pdpCrumbName').textContent = product.name;
 
-    /* — Galería — */
+    /* — Galería —
+       Las miniaturas se ven a unos 150 px, así que no tiene sentido
+       servirles la foto de 1.400. Existe una copia reducida con el
+       sufijo -sm; si faltara para alguna imagen, se usa la grande. */
+    function versionPequena(src) {
+      return src.replace(/\.webp$/, '-sm.webp');
+    }
+
     var mainImg = document.getElementById('pdpMainImg');
     mainImg.src = product.images[0];
     mainImg.alt = product.name;
+    /* La foto grande es lo primero que se ve: que no espere su turno */
+    mainImg.setAttribute('fetchpriority', 'high');
 
     var thumbsEl = document.getElementById('pdpThumbs');
     product.images.forEach(function (src, i) {
       var b = document.createElement('button');
       b.className = 'pdp__thumb' + (i === 0 ? ' is-active' : '');
       b.setAttribute('aria-label', 'Imagen ' + (i + 1));
-      b.innerHTML = '<img src="' + src + '" alt="" loading="lazy">';
+      var mini = document.createElement('img');
+      mini.alt = '';
+      mini.loading = 'lazy';
+      mini.decoding = 'async';
+      mini.onerror = function () { if (mini.src !== src) mini.src = src; };
+      mini.src = versionPequena(src);
+      b.appendChild(mini);
       b.addEventListener('click', function () {
         mainImg.style.opacity = '0';
         setTimeout(function () {

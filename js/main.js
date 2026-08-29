@@ -324,6 +324,39 @@ document.addEventListener('DOMContentLoaded', function () {
   })();
 
 
+  /* ══════════════════════════════════════════════
+     VÍDEO DE LA FÁBRICA — se carga al acercarse
+     ══════════════════════════════════════════════
+     Pesa 1,3 MB y está a media página. Con autoplay el navegador lo
+     descargaba nada más abrir la portada, aunque el visitante no llegara
+     nunca hasta él: el 65 % del peso de la página, compitiendo por el
+     ancho de banda con lo que sí se ve arriba. */
+  (function () {
+    var video = document.querySelector('.fabrica__video');
+    if (!video) return;
+    var fuente = video.querySelector('source[data-src]');
+    if (!fuente) return;
+
+    var cargado = false;
+    function cargar() {
+      if (cargado) return;
+      cargado = true;
+      fuente.src = fuente.getAttribute('data-src');
+      video.load();
+      /* play() devuelve una promesa que se rechaza si el navegador lo
+         impide; sin el catch queda un error suelto en la consola. */
+      var p = video.play();
+      if (p && p.catch) p.catch(function () {});
+    }
+
+    if (!('IntersectionObserver' in window)) { cargar(); return; }
+    var obs = new IntersectionObserver(function (entradas) {
+      if (entradas[0].isIntersecting) { cargar(); obs.disconnect(); }
+    }, { rootMargin: '300px' });   /* un poco antes de llegar, para que no se note */
+    obs.observe(video);
+  })();
+
+
   /* Aquí había un carrusel de testimonios que nunca llegó a mostrarse:
      su contenedor no existe en ninguna página, así que la función salía
      por la primera línea. Contenía doce reseñas inventadas, con nombres

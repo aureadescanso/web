@@ -350,7 +350,15 @@ ul  { list-style: none; }
   letter-spacing: -0.035em;
   color: var(--navy);
   margin-bottom: 24px;
-  min-height: 1.05em; /* evita CLS mientras escribe el typewriter */
+  /* El typewriter escribe el titular letra a letra, así que arranca
+     vacío. Hay que reservarle el alto que va a ocupar o el resto de la
+     portada baja de golpe cuando termina de escribir.
+     Ojo: en móvil el texto ocupa DOS líneas, y reservar una sola dejaba
+     un salto de medio titular. Medido: 105 px con el titular completo. */
+  min-height: 2.1em;
+}
+@media (min-width: 701px) {
+  .hero__title { min-height: 1.05em; }
 }
 
 /* Cursor parpadeante del typewriter */

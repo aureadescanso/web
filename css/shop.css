@@ -3229,3 +3229,42 @@
   .whyband, .packclaims, .packsteps, .finishband { padding: 0 18px; }
   .catalog__grid--single { max-width: 100%; }
 }
+
+/* ══════════════════════════════════════════════
+   ESPACIO RESERVADO EN LA FICHA DE PRODUCTO
+   ══════════════════════════════════════════════
+   La ficha llega al navegador con los huecos vacíos y JavaScript los
+   rellena después de la primera pintada. Cada relleno empujaba hacia
+   abajo todo lo que venía detrás: el desplazamiento de diseño medido
+   era de 0,787, casi ocho veces el máximo que admite Google.
+
+   Las alturas de aquí abajo no están puestas a ojo: son las que miden
+   esos bloques ya rellenos, en móvil y en escritorio. Reservando ese
+   sitio desde el principio, el contenido aparece donde ya estaba su
+   hueco y no se mueve nada. */
+.pdp__main {
+  aspect-ratio: 4 / 3;
+}
+.pdp__main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.pdp__thumbs { min-height: 130px; }
+.pdp__type { min-height: 18px; display: block; }
+.pdp__name { min-height: 67px; }
+.pdp__desc { min-height: 245px; }
+.pdp__price-row { min-height: 76px; }
+.pdp__compare-note { min-height: 19px; }
+.pdp__pernight { min-height: 20px; }
+.pdp__swatches { min-height: 37px; }
+
+@media (min-width: 901px) {
+  .pdp__thumbs { min-height: 199px; }
+  .pdp__name { min-height: 97px; }
+  .pdp__desc { min-height: 190px; }
+}
+
+/* En los accesorios la descripción es mucho más corta y reservar 245 px
+   dejaría un hueco visible */
+.pdp--soon .pdp__desc { min-height: 0; }

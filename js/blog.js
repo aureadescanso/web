@@ -66,6 +66,11 @@
     var fig = document.createElement('div');
     fig.className = 'article-hero__cover';
     var img = document.createElement('img');
+    /* Las portadas son todas de 1200×630. Declararlo evita que el
+       artículo entero baje de golpe cuando la imagen termina de cargar:
+       eso es desplazamiento de diseño y Google lo mide. */
+    img.width = 1200;
+    img.height = 630;
     img.src = '../images/blog/' + slug + '.svg';
     img.alt = '';
     img.setAttribute('aria-hidden', 'true');
