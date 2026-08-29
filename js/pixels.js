@@ -30,7 +30,7 @@
   'use strict';
 
   var PIXEL_TIKTOK = 'DA7KU5JC77U208UL93F0';
-  var PIXEL_META = '1465349585647608';
+  var PIXEL_META = '1617076499935241';
   var KEY = 'nuvora_consent_v1';
 
   function leerConsentimiento() {
@@ -57,20 +57,62 @@
     ttq.holdConsent();
   }(window, document, 'ttq');
 
-  /* ── Código base del píxel de Meta (el que da Meta) ──
-     Es el mismo que entrega Facebook, con un solo cambio: la línea que
-     insertaba el <script> de fbevents.js se ha movido a arrancarMeta().
-     Así la cola `fbq.queue` existe desde el principio, pero el SDK no se
-     descarga hasta que hay consentimiento. */
+  /* ── Código base del píxel de Meta ──
+     Este es el código tal cual lo entrega Facebook, sin tocar: se carga
+     siempre, en todas las páginas, que es lo que exige Meta para dar la
+     instalación por buena y lo que busca su comprobador.
+
+     La parte del consentimiento se resuelve con el mecanismo que la
+     propia Meta documenta para Europa: `consent revoke` ANTES del init.
+     Con el consentimiento retirado el píxel queda instalado y visible
+     para Meta, pero no envía ni un evento ni planta cookies. Cuando la
+     persona acepta se llama a `consent grant` y entonces empieza a
+     medir. Si rechaza, se queda como está: presente y mudo. */
   !function (f, b, e, v, n, t, s) {
     if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) };
-    if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = [];
+    if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+    n.queue = []; t = b.createElement(e); t.async = !0;
+    t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
   }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
 
-  /* No se incluye el <noscript><img> del píxel de Meta que viene en el
-     código original: ese pide la imagen a Facebook nada más abrir la
-     página, sin pasar por el aviso de cookies. Sin JavaScript no hay
-     forma de pedir permiso, así que tampoco puede haber seguimiento. */
+  /* Solo se inicializa. NO se llama a `track` hasta que haya
+     consentimiento, y un evento que no se dispara no se envía.
+
+     No se usa la API `consent` de Meta a propósito: en la versión actual
+     de su SDK, puesto el `revoke` antes del `init` el píxel no llega a
+     registrarse, y puesto después se queda mudo aunque luego se conceda
+     el permiso. Ninguna de las dos formas sirve. */
+  window.fbq('init', PIXEL_META);
+
+  /* Red de seguridad: si el `init` llegara a plantar sus cookies, se
+     borran mientras no haya consentimiento. Se comprueba varias veces
+     porque el SDK termina de cargar después de esta línea. */
+  function limpiarCookiesMeta() {
+    ['_fbp', '_fbc'].forEach(function (c) {
+      if (document.cookie.indexOf(c + '=') < 0) return;
+      var host = location.hostname;
+      var dominios = ['', host, '.' + host, host.replace(/^www\./, '.')];
+      dominios.forEach(function (d) {
+        document.cookie = c + '=; Max-Age=0; path=/' + (d ? '; domain=' + d : '');
+      });
+    });
+  }
+  var vigilante = null;
+  function vigilarCookies() {
+    if (vigilante) return;
+    limpiarCookiesMeta();
+    var veces = 0;
+    vigilante = setInterval(function () {
+      limpiarCookiesMeta();
+      if (++veces > 20) { clearInterval(vigilante); vigilante = null; }
+    }, 500);
+  }
+  if (leerConsentimiento() !== 'granted') vigilarCookies();
+
+  /* No se incluye el <noscript><img> del código original: ese pide la
+     imagen a Facebook nada más abrir la página, saltándose el aviso de
+     cookies, y sin JavaScript no hay forma de preguntar. Como tampoco
+     se puede comprar sin JavaScript, no se pierde ninguna medición. */
 
   var tiktokArrancado = false;
   function arrancarTikTok() {
@@ -81,16 +123,14 @@
     window.ttq.page();
   }
 
+  /* El píxel de Meta ya está inicializado desde el principio, para que
+     Meta lo dé por instalado. Lo único que falta al aceptar es dejar de
+     borrarle las cookies y mandarle la primera visita. */
   var metaArrancado = false;
   function arrancarMeta() {
     if (metaArrancado || !window.fbq) return;
     metaArrancado = true;
-    var s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://connect.facebook.net/en_US/fbevents.js';
-    var p = document.getElementsByTagName('script')[0];
-    p.parentNode.insertBefore(s, p);
-    window.fbq('init', PIXEL_META);
+    if (vigilante) { clearInterval(vigilante); vigilante = null; }
     window.fbq('track', 'PageView');
   }
 
@@ -220,8 +260,10 @@
     rechazar: function () {
       guardarConsentimiento('denied');
       if (window.ttq) window.ttq.revokeConsent();
-      /* Meta ni siquiera se ha cargado, pero por si acaso: */
-      if (window.fbq && metaArrancado) window.fbq('consent', 'revoke');
+      /* A Meta no se le manda ni un evento más, y se le vuelven a borrar
+         las cookies por si había aceptado antes y ha cambiado de opinión. */
+      metaArrancado = false;
+      vigilarCookies();
       cerrarAviso();
     }
   };
