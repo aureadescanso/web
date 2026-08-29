@@ -50,7 +50,7 @@
      Mientras esté vacío no se carga nada de Google: ni script, ni
      cookies, ni peticiones. Todo lo demás ya está montado, así que en
      cuanto se rellene empieza a medir. */
-  var GA4 = '';
+  var GA4 = 'G-NHHPXZE6CG';
 
   var KEY = 'nuvora_consent_v1';
 
@@ -194,7 +194,16 @@
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () { window.dataLayer.push(arguments); };
     window.gtag('js', new Date());
-    /* Sin anuncios personalizados: esto es para medir, no para segmentar */
+    /* Sin anuncios personalizados: esto es para medir, no para segmentar.
+
+       Aun con estas tres opciones, Analytics intenta contactar con
+       stats.g.doubleclick.net y con google.es/ads/ga-audiences, que son
+       de remarketing publicitario, no de medición. La política de
+       seguridad del sitio NO los permite, y se deja así a propósito: la
+       medición funciona igual y esos avisos en la consola son la prueba
+       de que no se está compartiendo nada con la parte publicitaria de
+       Google. Para que dejen de intentarlo, hay que apagar «Google
+       Signals» en la configuración de la propiedad. */
     window.gtag('config', GA4, {
       anonymize_ip: true,
       allow_google_signals: false,
