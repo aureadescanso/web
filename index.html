@@ -134,8 +134,14 @@
 
     <div class="hero__content" id="heroContent">
       <!-- Typewriter: JS rellena el texto letra a letra -->
+      <!-- El titular va escrito aquí, no vacío. Antes lo rellenaba entero
+           el efecto de máquina de escribir, así que el HTML que recibe
+           Google llegaba con un <h1> sin una sola palabra: en la página
+           más importante de la web y siendo el encabezado la señal más
+           fuerte que lee un buscador. js/main.js lo vacía y lo reescribe
+           para la animación. -->
       <h1 class="hero__title">
-        <span id="heroTypeText"></span><span class="hero__type-cursor" aria-hidden="true"></span>
+        <span id="heroTypeText">Duerme como nunca.</span><span class="hero__type-cursor" aria-hidden="true"></span>
       </h1>
       <p class="hero__sub hero__entrance" id="heroSub" data-i18n="hero.sub">Colchones diseñados para transformar tu descanso</p>
       <div class="hero__buttons hero__entrance" id="heroButtons">

@@ -262,8 +262,29 @@ document.addEventListener('DOMContentLoaded', function () {
       }, 180);
     }
   }
-  // Arrancar el typewriter 300ms después de que carga la página
-  setTimeout(typeNext, 300);
+  /* El titular ya viene escrito en el HTML, para que Google y quien
+     navegue sin JavaScript lo lean. Aquí se vacía justo antes de empezar
+     a teclearlo, así que la animación es la misma de antes.
+
+     Si alguien tiene el movimiento reducido en su sistema, se queda el
+     texto tal cual y no se anima nada. */
+  if (typeTextEl) {
+    /* El idioma manda sobre lo escrito en el HTML: si alguien navega en
+       inglés, se teclea el titular en inglés, no el castellano de la
+       plantilla. */
+    FULL_TEXT = heroTitle();
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      typeTextEl.textContent = FULL_TEXT;
+      typeIdx = FULL_TEXT.length;
+      if (typeCursor) typeCursor.classList.add('is-done');
+      if (heroSub) heroSub.classList.add('is-visible');
+      if (heroButtons) heroButtons.classList.add('is-visible');
+    } else {
+      typeTextEl.textContent = '';
+      setTimeout(typeNext, 300);
+    }
+  }
 
 
   /* ══════════════════════════════════════════════
