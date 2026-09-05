@@ -149,6 +149,10 @@ document.addEventListener('DOMContentLoaded', function () {
         etiqueta: 'Carbono activo',
         nombre: 'Almohada viscoelástica Nuvora · Carbono activo',
         foto: 'almohada-carbono',
+        /* La segunda es la almohada puesta en una cama de verdad: la de
+           estudio se ve mejor, pero esta es la que deja juzgar el tamaño
+           y la altura, que es lo que no se puede saber por internet. */
+        masFotos: ['almohada-carbono-cama'],
         desc: 'La funda lleva carbono activo, que absorbe los olores en vez de taparlos y descarga la electricidad estática que acumula el pelo al rozar. Dentro, viscoelástica perforada que se amolda al cuello en segundos y vuelve a su sitio cada noche. Si eres de los que da la vuelta a la almohada buscando el lado limpio, esta es la tuya.',
         caracteristicas: '<li>Funda con <strong>carbono activo</strong>: absorbe los olores que se quedan en la almohada noche tras noche.</li>' +
           '<li><strong>Antiestática</strong>: el carbono descarga la electricidad que acumula el pelo al rozar el tejido.</li>' +
@@ -180,7 +184,9 @@ document.addEventListener('DOMContentLoaded', function () {
         typeLabel: 'Almohada viscoelástica',
         name: t.nombre,
         desc: t.desc,
-        images: ['/images/' + t.foto + '.webp'],
+        images: [t.foto].concat(t.masFotos || []).map(function (f) {
+          return '/images/' + f + '.webp';
+        }),
         compare: false,
         sizes: MEDIDAS_ALM.slice(),
         defaultSize: 1,
