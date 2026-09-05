@@ -149,10 +149,12 @@ document.addEventListener('DOMContentLoaded', function () {
         etiqueta: 'Carbono activo',
         nombre: 'Almohada viscoelástica Nuvora · Carbono activo',
         foto: 'almohada-carbono',
-        /* La segunda es la almohada puesta en una cama de verdad: la de
-           estudio se ve mejor, pero esta es la que deja juzgar el tamaño
-           y la altura, que es lo que no se puede saber por internet. */
-        masFotos: ['almohada-carbono-cama'],
+        /* Orden pensado: primero el producto entero sobre fondo blanco,
+           luego el otro ángulo, el primer plano del acolchado y la
+           cremallera, el ambiente y, al final, la almohada en una cama
+           de verdad, que es la única que deja juzgar el tamaño. */
+        masFotos: ['almohada-carbono-angulo', 'almohada-carbono-detalle',
+                   'almohada-carbono-ambiente', 'almohada-carbono-cama'],
         desc: 'La funda lleva carbono activo, que absorbe los olores en vez de taparlos y descarga la electricidad estática que acumula el pelo al rozar. Dentro, viscoelástica perforada que se amolda al cuello en segundos y vuelve a su sitio cada noche. Si eres de los que da la vuelta a la almohada buscando el lado limpio, esta es la tuya.',
         caracteristicas: '<li>Funda con <strong>carbono activo</strong>: absorbe los olores que se quedan en la almohada noche tras noche.</li>' +
           '<li><strong>Antiestática</strong>: el carbono descarga la electricidad que acumula el pelo al rozar el tejido.</li>' +
@@ -167,6 +169,8 @@ document.addEventListener('DOMContentLoaded', function () {
         etiqueta: 'Tencel',
         nombre: 'Almohada viscoelástica Nuvora · Tencel',
         foto: 'almohada-tencel',
+        masFotos: ['almohada-tencel-angulo', 'almohada-tencel-detalle',
+                   'almohada-tencel-ambiente'],
         desc: 'La funda es de Tencel, una fibra de origen vegetal que absorbe la humedad mucho antes que el algodón y se mantiene fresca al tacto. Dentro, la misma viscoelástica perforada que se amolda al cuello y recupera la forma cada mañana. Si sudas por la noche o tienes la piel sensible, empieza por esta.',
         caracteristicas: '<li>Funda de <strong>Tencel</strong>: absorbe la humedad y la evapora, así que la almohada no se queda húmeda.</li>' +
           '<li><strong>Regula la temperatura</strong>: al tacto se nota fresca, y lo sigue estando a mitad de la noche.</li>' +
