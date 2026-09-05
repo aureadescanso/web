@@ -517,7 +517,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var articles = [
       {
         href: '/blog/viscoelastico-o-muelles',
-        img: 'images/blog/viscoelastico-o-muelles.svg',
+        img: '/images/blog/viscoelastico-o-muelles.svg',
         time: '9 min',
         tag: 'Guía de compra',
         title: '¿Viscoelástico o muelles ensacados?',
@@ -525,7 +525,7 @@ document.addEventListener('DOMContentLoaded', function () {
       },
       {
         href: '/blog/mejores-colchones-calidad-precio',
-        img: 'images/blog/mejores-colchones-calidad-precio.svg',
+        img: '/images/blog/mejores-colchones-calidad-precio.svg',
         time: '9 min',
         tag: 'Colchones',
         title: 'Mejores colchones calidad-precio',
@@ -533,7 +533,7 @@ document.addEventListener('DOMContentLoaded', function () {
       },
       {
         href: '/blog/cada-cuanto-cambiar-colchon',
-        img: 'images/blog/cada-cuanto-cambiar-colchon.svg',
+        img: '/images/blog/cada-cuanto-cambiar-colchon.svg',
         time: '7 min',
         tag: 'Consejos',
         title: '¿Cada cuánto se cambia el colchón?',
@@ -541,7 +541,7 @@ document.addEventListener('DOMContentLoaded', function () {
       },
       {
         href: '/blog/como-elegir-canape-abatible',
-        img: 'images/blog/como-elegir-canape-abatible.svg',
+        img: '/images/blog/como-elegir-canape-abatible.svg',
         time: '8 min',
         tag: 'Canapés',
         title: 'Cómo elegir un canapé abatible',

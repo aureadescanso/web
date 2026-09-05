@@ -71,7 +71,7 @@
        eso es desplazamiento de diseño y Google lo mide. */
     img.width = 1200;
     img.height = 630;
-    img.src = '../images/blog/' + slug + '.svg';
+    img.src = '/images/blog/' + slug + '.svg';
     img.alt = '';
     img.setAttribute('aria-hidden', 'true');
     /* si no existe portada para este artículo, no se muestra nada */

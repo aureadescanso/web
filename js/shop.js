@@ -15,11 +15,11 @@ document.addEventListener('DOMContentLoaded', function () {
       name: 'Nuvora Aurea Viscoelástico',
       desc: 'La versión viscoelástica del Aurea: 2 cm de viscoelástica que se adaptan a tu cuerpo y alivian los puntos de presión, sobre un núcleo de espuma HR de 28 kg/m³ que sujeta sin hundir. Acolchado tapa a tapa, 30 cm de altura y tejido transpirable para dormir fresco. Es la que te acoge; si prefieres un soporte más firme y aireado, el Aurea también se fabrica con núcleo de muelles ensacados.',
       images: [
-        'images/aurea-frontal.webp',
-        'images/aurea-perspectiva.webp',
-        'images/aurea-lateral.webp',
-        'images/aurea-asas.webp',
-        'images/aurea-capas.webp'
+        '/images/aurea-frontal.webp',
+        '/images/aurea-perspectiva.webp',
+        '/images/aurea-lateral.webp',
+        '/images/aurea-asas.webp',
+        '/images/aurea-capas.webp'
       ],
       sizes: [
         { label: '75 × 190 cm',  price: 205.34 },
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
       experience: {
         scenes: [
           {
-            img: 'images/aurea-frontal.webp',
+            img: '/images/aurea-frontal.webp',
             alt: 'Colchón Nuvora Aurea viscoelástico de frente en un dormitorio cálido',
             kicker: 'Experiencia Aurea',
             title: 'Diseñado para presidir tu dormitorio',
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
             ]
           },
           {
-            img: 'images/aurea-perspectiva.webp',
+            img: '/images/aurea-perspectiva.webp',
             alt: 'Colchón Nuvora Aurea viscoelástico en perspectiva mostrando su altura',
             kicker: 'Presencia real',
             title: '30 centímetros que <em>se notan</em>',
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
             ]
           },
           {
-            img: 'images/aurea-asas.webp',
+            img: '/images/aurea-asas.webp',
             alt: 'Detalle de las asas verticales del colchón Nuvora Aurea viscoelástico',
             kicker: 'Los detalles',
             title: 'Lo que otras marcas <em>no enseñan</em>',
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
       typeLabel: 'Almohada viscoelástica',
       name: 'Almohada viscoelástica Nuvora',
       desc: 'La pieza que le falta a tu descanso. Núcleo de viscoelástica perforada que se amolda a tu cuello en segundos y vuelve a su sitio cada noche, con funda de tejido técnico transpirable, desenfundable y lavable. Si te levantas con el cuello cargado, empieza por aquí.',
-      images: ['images/almohada-nuvora.webp'],
+      images: ['/images/almohada-nuvora.webp'],
       compare: false,
       sizes: [
         { label: '70 × 40 cm',  price: 44.90 },
@@ -284,8 +284,8 @@ document.addEventListener('DOMContentLoaded', function () {
         model: 'canape-nuvora',
         desc: c.desc,
         images: [
-          'images/canape-' + c.file + '.webp',
-          'images/canape-' + c.file + '-detalle.webp'
+          '/images/canape-' + c.file + '.webp',
+          '/images/canape-' + c.file + '-detalle.webp'
         ],
         compare: false,
         sizes: SIZES.slice(),
@@ -377,7 +377,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var COMPARATIVA = {
       title: '¿Viscoelástico o muelles?',
       html: '<ul>' +
-        '<li><strong>La diferencia está en el núcleo.</strong> El <a href="producto.html?m=aurea">viscoelástico</a> lleva 2 cm de viscoelástica sobre un bloque de espuma HR de 28 kg/m³. El de <a href="producto.html?m=aurea-muelles">muelles ensacados</a> lleva acolchado de fibra hueca sobre muelles ensacados, cada uno en su funda. Todo lo demás —tejido, acolchado tapa a tapa, platabanda, asas y medidas— es igual.</li>' +
+        '<li><strong>La diferencia está en el núcleo.</strong> El <a href="/colchones/nuvora-aurea">viscoelástico</a> lleva 2 cm de viscoelástica sobre un bloque de espuma HR de 28 kg/m³. El de <a href="/colchones/nuvora-aurea-muelles">muelles ensacados</a> lleva acolchado de fibra hueca sobre muelles ensacados, cada uno en su funda. Todo lo demás —tejido, acolchado tapa a tapa, platabanda, asas y medidas— es igual.</li>' +
         '<li><strong>Elige viscoelástico</strong> si duermes de lado y quieres que el colchón te acoja aliviando hombros y caderas, o si buscas el precio más ajustado.</li>' +
         '<li><strong>Elige muelles ensacados</strong> si dormís dos y os molestan los movimientos del otro, si duermes caluroso o si prefieres un soporte más firme y aireado.</li>' +
         '<li>Las dos versiones comparten garantía y las 30 noches de prueba. Si te equivocas, lo recogemos gratis.</li>' +
@@ -391,10 +391,10 @@ document.addEventListener('DOMContentLoaded', function () {
       name: 'Nuvora Aurea Muelles Ensacados',
       desc: 'La versión del Aurea con núcleo de muelles ensacados individualmente. Cada muelle va en su propia funda y se hunde solo donde recibe peso, así que si tu pareja se mueve tú no te enteras, y el aire circula entre ellos en vez de quedarse debajo del cuerpo. Acolchado de fibra hueca tapa a tapa, con el mismo tejido stretch y los mismos acabados que el resto de la gama. Firmeza media-firme.',
       images: [
-        'images/aurea-frontal.webp',
-        'images/aurea-perspectiva.webp',
-        'images/aurea-lateral.webp',
-        'images/aurea-asas.webp'
+        '/images/aurea-frontal.webp',
+        '/images/aurea-perspectiva.webp',
+        '/images/aurea-lateral.webp',
+        '/images/aurea-asas.webp'
       ],
       /* Mismas medidas que el viscoelástico, 39,33 € más cada una */
       sizes: visco.sizes.map(function (s) {
@@ -420,7 +420,7 @@ document.addEventListener('DOMContentLoaded', function () {
       experience: {
         scenes: [
           {
-            img: 'images/aurea-frontal.webp',
+            img: '/images/aurea-frontal.webp',
             alt: 'Colchón Nuvora Aurea de muelles ensacados de frente en un dormitorio cálido',
             kicker: 'Experiencia Aurea',
             title: 'El mismo acabado, otro carácter',
@@ -431,7 +431,7 @@ document.addEventListener('DOMContentLoaded', function () {
             ]
           },
           {
-            img: 'images/aurea-perspectiva.webp',
+            img: '/images/aurea-perspectiva.webp',
             alt: 'Colchón Nuvora Aurea de muelles ensacados en perspectiva mostrando su altura',
             kicker: 'Independencia de lechos',
             title: 'Que se mueva, <em>tú sigue durmiendo</em>',
@@ -442,7 +442,7 @@ document.addEventListener('DOMContentLoaded', function () {
             ]
           },
           {
-            img: 'images/aurea-asas.webp',
+            img: '/images/aurea-asas.webp',
             alt: 'Detalle de las asas verticales del colchón Nuvora Aurea de muelles ensacados',
             kicker: 'Los detalles',
             title: 'Lo que otras marcas <em>no enseñan</em>',
@@ -516,14 +516,14 @@ document.addEventListener('DOMContentLoaded', function () {
       name: 'Nuvora Supreme',
       desc: 'Nuestro colchón más completo. Once capas repartidas en dos caras: en invierno duermes sobre pura lana; cuando aprieta el calor le das la vuelta y duermes sobre algodón natural. Debajo, una carcasa de muelles ensacados de 18 cm con viscogel y ElioSupport® que reparte el peso y aísla los movimientos del otro lado de la cama.',
       images: [
-        'images/supreme-frontal.webp',
-        'images/supreme-ambiente.webp',
-        'images/supreme-lateral.webp',
-        'images/supreme-esquina.webp',
-        'images/supreme-tacto.webp',
+        '/images/supreme-frontal.webp',
+        '/images/supreme-ambiente.webp',
+        '/images/supreme-lateral.webp',
+        '/images/supreme-esquina.webp',
+        '/images/supreme-tacto.webp',
         /* Despiece fotográfico. Va aquí y no junto al esquema de capas
            porque su numeración es la de la foto, no la de nuestra lista. */
-        'images/supreme-capas.webp'
+        '/images/supreme-capas.webp'
       ],
       sizes: visco.sizes.map(function (s) {
         return { label: s.label, price: s.price + SUPREME_EXTRA };
@@ -626,6 +626,33 @@ document.addEventListener('DOMContentLoaded', function () {
      producto y, sobre todo, se declara la URL canónica con su ?m=: sin
      ella Google puede tratar todas las fichas como la misma página. */
   var URL_BASE = 'https://nuvoradescanso.com/';
+
+  /* Dirección propia de cada producto.
+     Antes todas las fichas eran producto.html?m=algo: una sola plantilla
+     que rellenaba el JavaScript. Un rastreador veía 155 palabras, sin
+     título ni datos estructurados, justo en las páginas donde se vende.
+     Ahora cada producto tiene su página escrita en el HTML.
+
+     Si algún día se añade un producto al catálogo y todavía no se ha
+     generado su página, sigue funcionando con la dirección antigua en
+     vez de quedarse sin enlace. */
+  var RUTAS = {
+    'supreme':                '/colchones/nuvora-supreme',
+    'aurea':                  '/colchones/nuvora-aurea',
+    'aurea-muelles':          '/colchones/nuvora-aurea-muelles',
+    'canape-nuvora-blanco':   '/canapes/canape-nuvora-blanco',
+    'canape-nuvora-cambrian': '/canapes/canape-nuvora-cambrian',
+    'canape-nuvora-wengue':   '/canapes/canape-nuvora-wengue',
+    'almohada-nuvora':        '/almohadas/almohada-nuvora'
+  };
+  function rutaProducto(id, medida) {
+    var r = RUTAS[id] || ('/producto.html?m=' + encodeURIComponent(id));
+    if (medida != null && medida !== '') {
+      r += (r.indexOf('?') < 0 ? '?' : '&') + 'size=' + medida;
+    }
+    return r;
+  }
+  window.NuvoraRuta = rutaProducto;
   function metaTag(sel, attr, valor, crear) {
     var el = document.head.querySelector(sel);
     if (!el) {
@@ -637,8 +664,9 @@ document.addEventListener('DOMContentLoaded', function () {
     el.setAttribute(attr, valor);
   }
   function setSeo(product, id) {
-    var url = URL_BASE + 'producto.html?m=' + encodeURIComponent(id);
-    var img = product.images && product.images[0] ? URL_BASE + product.images[0] : '';
+    var url = URL_BASE.replace(/\/$/, '') + rutaProducto(id);
+    var img = product.images && product.images[0]
+      ? URL_BASE + String(product.images[0]).replace(/^\//, '') : '';
     var desc = String(product.desc || '').replace(/\s+/g, ' ').trim().slice(0, 155);
 
     metaTag('link[rel="canonical"]', 'href', url,
@@ -685,7 +713,7 @@ document.addEventListener('DOMContentLoaded', function () {
         '@id': url + '#producto',
         name: product.name,
         description: desc,
-        image: (product.images || []).map(function (i) { return URL_BASE + i; }),
+        image: (product.images || []).map(function (i) { return URL_BASE + String(i).replace(/^\//, ''); }),
         brand: { '@type': 'Brand', name: 'Nuvora Descanso' },
         category: etiquetaCat || 'Descanso',
         /* Fabricación propia: no hay código de barras, así que se
@@ -721,7 +749,7 @@ document.addEventListener('DOMContentLoaded', function () {
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'Inicio', item: URL_BASE },
           categoria
-            ? { '@type': 'ListItem', position: 2, name: etiquetaCat, item: URL_BASE + categoria + '.html' }
+            ? { '@type': 'ListItem', position: 2, name: etiquetaCat, item: URL_BASE + categoria }
             : null,
           { '@type': 'ListItem', position: categoria ? 3 : 2, name: product.name, item: url }
         ].filter(Boolean)
@@ -796,7 +824,10 @@ document.addEventListener('DOMContentLoaded', function () {
     var root = document.getElementById('pdpRoot');
     if (!root) return;
 
-    var id = getParam('m');
+    /* En las páginas propias de cada producto el identificador viene
+       escrito en el HTML; el ?m= se mantiene para que sigan valiendo los
+       enlaces antiguos que ya estén por ahí compartidos. */
+    var id = getParam('m') || root.getAttribute('data-producto');
     var product = CATALOG[id];
 
     /* Producto inexistente, o categoría desactivada temporalmente
@@ -895,6 +926,7 @@ document.addEventListener('DOMContentLoaded', function () {
     mainImg.setAttribute('fetchpriority', 'high');
 
     var thumbsEl = document.getElementById('pdpThumbs');
+    thumbsEl.innerHTML = '';
     product.images.forEach(function (src, i) {
       var b = document.createElement('button');
       b.className = 'pdp__thumb' + (i === 0 ? ' is-active' : '');
@@ -949,6 +981,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /* — Medidas + precio — */
     var priceEl = document.getElementById('pdpPrice');
     var sizesEl = document.getElementById('pdpSizes');
+    sizesEl.innerHTML = '';
 
     var shownPrice = product.sizes[selectedSize].price;
     function renderPrice(animate) {
@@ -1010,11 +1043,12 @@ document.addEventListener('DOMContentLoaded', function () {
       var nameEl = document.getElementById('pdpVariantName');
       if (nameEl) nameEl.textContent = product.variantName || product.color || '';
       var box = document.getElementById('pdpSwatches');
+      box.innerHTML = '';
       product.variants.forEach(function (v) {
         var current = v.id === id;
         var el = document.createElement(current ? 'span' : 'a');
         el.className = 'swatch' + (current ? ' is-active' : '') + (v.swatch ? '' : ' swatch--text');
-        if (!current) el.setAttribute('href', 'producto.html?m=' + encodeURIComponent(v.id));
+        if (!current) el.setAttribute('href', rutaProducto(v.id));
         el.setAttribute('title', v.label);
         el.setAttribute('aria-label', rotulo + ': ' + v.label);
         if (current) el.setAttribute('aria-current', 'true');
@@ -1124,7 +1158,12 @@ document.addEventListener('DOMContentLoaded', function () {
     if (product.type === 'colchon' || product.type === 'canape' || product.type === 'almohada') {
       var buyWrap = document.querySelector('.pdp__buy');
       if (buyWrap) {
-        var packNote = document.createElement('div');
+        /* En las páginas propias del producto este aviso ya viene
+           escrito en el HTML. Si se creara otro, saldría el mismo
+           mensaje dos veces seguidas. */
+        var packNote = document.querySelector('.pdp__gift');
+        var yaEstaba = !!packNote;
+        if (!packNote) packNote = document.createElement('div');
         packNote.className = 'pdp__gift';
         packNote.innerHTML =
           '<svg class="pdp__gift-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' +
@@ -1133,7 +1172,7 @@ document.addEventListener('DOMContentLoaded', function () {
           '<span class="pdp__gift-text"><strong>Combina y ahorra un 12 %:</strong> ' +
           'llévate este producto dentro de un <a href="/packs">pack de descanso</a> ' +
           '(colchón + canapé + almohada) y paga menos que comprándolos por separado.</span>';
-        buyWrap.parentNode.insertBefore(packNote, buyWrap.nextSibling);
+        if (!yaEstaba) buyWrap.parentNode.insertBefore(packNote, buyWrap.nextSibling);
       }
     }
 
@@ -1185,6 +1224,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* — Acordeón de detalles — */
     var accEl = document.getElementById('pdpAccordion');
+    accEl.innerHTML = '';
     product.details.forEach(function (d, i) {
       var item = document.createElement('div');
       item.className = 'accordion__item' + (i === 0 ? ' is-open' : '');
@@ -1214,33 +1254,6 @@ document.addEventListener('DOMContentLoaded', function () {
         setPanelHeight(item);
       });
     });
-
-    /* — JSON-LD de producto (precio y estrellas en Google) — */
-    (function () {
-      var prices = product.sizes.map(function (s) { return s.price; });
-      var img = product.images[0];
-      if (img.indexOf('http') !== 0) img = 'https://nuvoradescanso.com/' + img;
-      var ld = {
-        '@context': 'https://schema.org',
-        '@type': 'Product',
-        'name': product.name,
-        'description': product.desc,
-        'image': img,
-        'brand': { '@type': 'Brand', 'name': 'Nuvora Descanso' },
-        'offers': {
-          '@type': 'AggregateOffer',
-          'priceCurrency': 'EUR',
-          'lowPrice': String(Math.min.apply(null, prices)),
-          'highPrice': String(Math.max.apply(null, prices)),
-          'availability': 'https://schema.org/InStock',
-          'url': 'https://nuvoradescanso.com/producto.html?m=' + id
-        }
-      };
-      var tag = document.createElement('script');
-      tag.type = 'application/ld+json';
-      tag.textContent = JSON.stringify(ld);
-      document.head.appendChild(tag);
-    })();
 
     /* — Corte por capas (solo productos con cutaway) — */
     (function () {

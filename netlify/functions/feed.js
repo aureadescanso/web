@@ -24,6 +24,19 @@ const TIENDA = 'Nuvora Descanso';
 const DOMINIO = process.env.URL || process.env.DEPLOY_PRIME_URL || 'https://nuvoradescanso.com';
 
 /* Categoría de Google por tipo de producto */
+/* Dirección propia de cada producto. Tiene que coincidir con el mapa
+   RUTAS de js/shop.js: si aquí apuntara a otro sitio, Merchant Center
+   mandaría a los compradores a una página que no existe. */
+const RUTAS = {
+  'supreme':                '/colchones/nuvora-supreme',
+  'aurea':                  '/colchones/nuvora-aurea',
+  'aurea-muelles':          '/colchones/nuvora-aurea-muelles',
+  'canape-nuvora-blanco':   '/canapes/canape-nuvora-blanco',
+  'canape-nuvora-cambrian': '/canapes/canape-nuvora-cambrian',
+  'canape-nuvora-wengue':   '/canapes/canape-nuvora-wengue',
+  'almohada-nuvora':        '/almohadas/almohada-nuvora'
+};
+
 const CATEGORIA = {
   colchon:  '4437',  /* Muebles > Dormitorio > Colchones */
   canape:   '505764', /* Muebles > Dormitorio > Bases y somieres */
@@ -70,7 +83,7 @@ function items() {
         titulo: p.nombre + ' ' + m.label,
         descripcion: desc + ' Medida ' + m.label + '.',
         /* El enlace abre la ficha con la medida anunciada ya elegida */
-        enlace: DOMINIO + '/producto.html?m=' + encodeURIComponent(id) + '&size=' + i,
+        enlace: DOMINIO + RUTAS[id] + '?size=' + i,
         /* Merchant Center no admite WebP: se sirve la copia JPEG */
         imagen: DOMINIO + '/images/feed/' + p.imagen.replace(/^images\//, '').replace(/\.webp$/, '.jpg'),
         precio: m.precio.toFixed(2) + ' EUR',

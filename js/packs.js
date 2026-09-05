@@ -206,13 +206,13 @@ document.addEventListener('DOMContentLoaded', function () {
     paintItem(itemAlmohada, CATALOG[PILLOW], state.pillow);
 
     /* El colchón cambia de nombre y de enlace según el núcleo */
-    var hrefColchon = 'producto.html?m=' + CORES[state.core].id;
+    var hrefColchon = window.NuvoraRuta(CORES[state.core].id);
     itemColchon.querySelectorAll('[data-link]').forEach(function (a) { a.setAttribute('href', hrefColchon); });
     var nombreColchon = itemColchon.querySelector('[data-name]');
     if (nombreColchon) nombreColchon.textContent = colchon.name;
 
     /* El canapé cambia de nombre, foto y enlace según el acabado */
-    var href = 'producto.html?m=' + COLORS[state.color];
+    var href = window.NuvoraRuta(COLORS[state.color]);
     itemCanape.querySelectorAll('[data-link]').forEach(function (a) { a.setAttribute('href', href); });
     itemCanape.querySelector('[data-name]').textContent = base.name;
     var img = itemCanape.querySelector('[data-img]');

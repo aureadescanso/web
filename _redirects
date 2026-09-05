@@ -37,6 +37,15 @@
   /blog/mejores-colchones-calidad-precio.html /blog/mejores-colchones-calidad-precio  301!
   /blog/viscoelastico-o-muelles.html          /blog/viscoelastico-o-muelles           301!
 
+# Fichas de producto, que antes eran una plantilla con ?m=
+  /producto.html      m=supreme                 /colchones/nuvora-supreme               301!
+  /producto.html      m=aurea                   /colchones/nuvora-aurea                 301!
+  /producto.html      m=aurea-muelles           /colchones/nuvora-aurea-muelles         301!
+  /producto.html      m=canape-nuvora-blanco    /canapes/canape-nuvora-blanco           301!
+  /producto.html      m=canape-nuvora-cambrian  /canapes/canape-nuvora-cambrian         301!
+  /producto.html      m=canape-nuvora-wengue    /canapes/canape-nuvora-wengue           301!
+  /producto.html      m=almohada-nuvora         /almohadas/almohada-nuvora              301!
+
 # Página retirada: en vez de un 404, al sitio que más se le parece.
   /complementos.html                          /almohadas                              301!
   /complementos                               /almohadas                              301!
