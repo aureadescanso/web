@@ -48,7 +48,7 @@ const CATALOGO = {
   'almohada-nuvora': {
     nombre: 'Almohada viscoelástica Nuvora · Carbono activo',
     tipo: 'almohada',
-    imagen: 'images/almohada-carbono.webp',
+    imagen: 'images/almohada-carbono-estudio.webp',
     medidas: [
       { label: '70 × 40 cm', precio: 44.90 },
       { label: '90 × 40 cm', precio: 54.90 },
@@ -59,7 +59,7 @@ const CATALOGO = {
   'almohada-nuvora-tencel': {
     nombre: 'Almohada viscoelástica Nuvora · Tencel',
     tipo: 'almohada',
-    imagen: 'images/almohada-tencel.webp',
+    imagen: 'images/almohada-tencel-estudio.webp',
     medidas: [
       { label: '70 × 40 cm', precio: 44.90 },
       { label: '90 × 40 cm', precio: 54.90 },

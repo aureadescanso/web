@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
         id: 'almohada-nuvora',
         etiqueta: 'Carbono activo',
         nombre: 'Almohada viscoelástica Nuvora · Carbono activo',
-        foto: 'almohada-carbono',
+        foto: 'almohada-carbono-estudio',
         /* Orden pensado: primero el producto entero sobre fondo blanco,
            luego el otro ángulo, el primer plano del acolchado y la
            cremallera, el ambiente y, al final, la almohada en una cama
@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
         id: 'almohada-nuvora-tencel',
         etiqueta: 'Tencel',
         nombre: 'Almohada viscoelástica Nuvora · Tencel',
-        foto: 'almohada-tencel',
+        foto: 'almohada-tencel-estudio',
         masFotos: ['almohada-tencel-angulo', 'almohada-tencel-detalle',
                    'almohada-tencel-ambiente'],
         desc: 'La funda es de Tencel, una fibra de origen vegetal que absorbe la humedad mucho antes que el algodón y se mantiene fresca al tacto. Dentro, la misma viscoelástica perforada que se amolda al cuello y recupera la forma cada mañana. Si sudas por la noche o tienes la piel sensible, empieza por esta.',
