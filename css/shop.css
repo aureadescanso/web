@@ -3268,3 +3268,72 @@
 /* En los accesorios la descripción es mucho más corta y reservar 245 px
    dejaría un hueco visible */
 .pdp--soon .pdp__desc { min-height: 0; }
+
+/* ══════════════════════════════════════════════
+   GUÍA DE COMPRA  (páginas de categoría)
+   ══════════════════════════════════════════════
+   Las páginas de categoría eran solo el escaparate: título, fichas de
+   producto y a comprar. Rondaban las 380 palabras, y contra las webs
+   grandes de colchones eso es poco para que Google entienda de qué van
+   y para que quien llega dudando resuelva la duda sin irse.
+
+   Este bloque va debajo del catálogo, para no estorbar a quien ya sabe
+   lo que quiere, y enlaza a los artículos del blog que desarrollan cada
+   punto. */
+.guia {
+  max-width: 1080px;
+  margin: 72px auto 0;
+  padding: 0 24px;
+}
+.guia__title {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 3vw, 2.05rem);
+  font-weight: 500;
+  color: var(--navy);
+  text-align: center;
+  margin-bottom: 12px;
+}
+.guia__intro {
+  max-width: 660px;
+  margin: 0 auto 34px;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-2);
+}
+.guia__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 22px;
+}
+.guia__item {
+  background: var(--white);
+  border: 1px solid rgba(27, 45, 91, 0.1);
+  border-radius: 16px;
+  padding: 26px 24px;
+}
+.guia__item h3 {
+  font-size: 1.03rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 9px;
+  line-height: 1.35;
+}
+.guia__item p {
+  font-size: 0.93rem;
+  line-height: 1.72;
+  color: var(--text-2);
+  margin-bottom: 12px;
+}
+.guia__item p:last-child { margin-bottom: 0; }
+.guia__link {
+  display: inline-block;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #A98A2C;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(169, 138, 44, 0.35);
+  padding-bottom: 1px;
+  transition: border-color 0.2s var(--ease);
+}
+.guia__link:hover { border-bottom-color: #A98A2C; }
