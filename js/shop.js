@@ -14,8 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
       typeLabel: 'Colchón viscoelástico',
       name: 'Nuvora Aurea Viscoelástico',
       desc: 'La versión viscoelástica del Aurea: 2 cm de viscoelástica que se adaptan a tu cuerpo y alivian los puntos de presión, sobre un núcleo de espuma HR de 28 kg/m³ que sujeta sin hundir. Acolchado tapa a tapa, 30 cm de altura y tejido transpirable para dormir fresco. Es la que te acoge; si prefieres un soporte más firme y aireado, el Aurea también se fabrica con núcleo de muelles ensacados.',
-      rating: '4,8',
-      reviews: 412,
       images: [
         'images/aurea-frontal.webp',
         'images/aurea-perspectiva.webp',
