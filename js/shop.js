@@ -903,6 +903,17 @@ document.addEventListener('DOMContentLoaded', function () {
     var sizeParam = parseInt(getParam('size'), 10);
     if (!isNaN(sizeParam) && product.sizes[sizeParam]) selectedSize = sizeParam;
 
+    /* Quien llega por un enlace antiguo acaba en la dirección nueva pero
+       con el ?m= pegado detrás, porque Netlify arrastra los parámetros
+       al destino. Funciona, pero es una dirección fea que luego la gente
+       copia y comparte. Se limpia la barra sin recargar ni añadir una
+       entrada al historial; la medida sí se conserva, que para eso la
+       ponen los anuncios de Shopping. */
+    if (RUTAS[id] && getParam('m') && window.history && window.history.replaceState) {
+      window.history.replaceState(null, '',
+        rutaProducto(id, getParam('size') != null ? selectedSize : null));
+    }
+
     document.title = product.name + ' | Nuvora Descanso';
     setSeo(product, id);
 
