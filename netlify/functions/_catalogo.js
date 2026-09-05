@@ -41,10 +41,25 @@ const CATALOGO = {
       { label: '200 × 200 cm', precio: 485.66 }
     ]
   },
+  /* Las dos almohadas comparten núcleo, medidas y precio: solo cambia
+     el tejido de la funda. Se dejan escritas por separado en vez de
+     derivar una de otra porque este fichero es el que valida lo que se
+     cobra, y aquí conviene que no haya nada calculado. */
   'almohada-nuvora': {
-    nombre: 'Almohada viscoelástica Nuvora',
+    nombre: 'Almohada viscoelástica Nuvora · Carbono activo',
     tipo: 'almohada',
-    imagen: 'images/almohada-nuvora.webp',
+    imagen: 'images/almohada-carbono.webp',
+    medidas: [
+      { label: '70 × 40 cm', precio: 44.90 },
+      { label: '90 × 40 cm', precio: 54.90 },
+      { label: '135 × 40 cm', precio: 64.90 },
+      { label: '150 × 40 cm', precio: 69.90 }
+    ]
+  },
+  'almohada-nuvora-tencel': {
+    nombre: 'Almohada viscoelástica Nuvora · Tencel',
+    tipo: 'almohada',
+    imagen: 'images/almohada-tencel.webp',
     medidas: [
       { label: '70 × 40 cm', precio: 44.90 },
       { label: '90 × 40 cm', precio: 54.90 },

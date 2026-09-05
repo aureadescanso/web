@@ -126,82 +126,148 @@ document.addEventListener('DOMContentLoaded', function () {
           '</ul>'
         }
       ]
-    },
-
-    'almohada-nuvora': {
-      type: 'almohada',
-      typeLabel: 'Almohada viscoelástica',
-      name: 'Almohada viscoelástica Nuvora',
-      desc: 'La pieza que le falta a tu descanso. Núcleo de viscoelástica perforada que se amolda a tu cuello en segundos y vuelve a su sitio cada noche, con funda de tejido técnico transpirable, desenfundable y lavable. Si te levantas con el cuello cargado, empieza por aquí.',
-      images: ['/images/almohada-nuvora.webp'],
-      compare: false,
-      sizes: [
-        { label: '70 × 40 cm',  price: 44.90 },
-        { label: '90 × 40 cm',  price: 54.90 },
-        { label: '135 × 40 cm', price: 64.90 },
-        { label: '150 × 40 cm', price: 69.90 }
-      ],
-      defaultSize: 1,
-      details: [
-        {
-          title: 'Características principales',
-          html: '<ul>' +
-            '<li>Núcleo de <strong>viscoelástica perforada</strong> de 50 kg/m³: se adapta al peso de la cabeza y recupera la forma al levantarte.</li>' +
-            '<li><strong>Altura de 12 cm</strong> con perfil ergonómico: mantiene el cuello alineado con la columna.</li>' +
-            '<li>Canales de ventilación que evacúan el calor y la humedad durante la noche.</li>' +
-            '<li>Funda exterior <strong>desenfundable con cremallera</strong> y lavable a 30 °C.</li>' +
-            '<li>Funda tratada contra los ácaros, apta para pieles sensibles y alérgicos.</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Materiales',
-          html: '<ul>' +
-            '<li><strong>Núcleo:</strong> espuma viscoelástica de 50 kg/m³ con perforación vertical.</li>' +
-            '<li><strong>Funda:</strong> tejido técnico transpirable con cremallera perimetral.</li>' +
-            '<li><strong>Certificación:</strong> OEKO-TEX® Standard 100, libre de sustancias nocivas.</li>' +
-            '<li>Fabricada en España, en nuestra propia fábrica.</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Medidas disponibles',
-          html: '<ul>' +
-            '<li><strong>70 × 40 cm</strong> — camas de 70, 80 y 90 cm</li>' +
-            '<li><strong>90 × 40 cm</strong> — camas de 90 y 105 cm</li>' +
-            '<li><strong>135 × 40 cm</strong> — camas de 135 y 140 cm</li>' +
-            '<li><strong>150 × 40 cm</strong> — camas de 150 y 160 cm</li>' +
-            '<li>Altura: 12 cm · Peso aproximado: 1,2 kg (70 cm)</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Nivel de firmeza',
-          html: '<ul>' +
-            '<li><strong>Firmeza media (6/10).</strong> El punto medio que funciona para la mayoría.</li>' +
-            '<li><strong>Recomendada si duermes de lado o boca arriba:</strong> rellena el hueco del hombro sin empujar la cabeza hacia delante.</li>' +
-            '<li>Si duermes boca abajo, elige la medida más ancha y colócala baja: notarás menos tensión cervical.</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Beneficios principales',
-          html: '<ul>' +
-            '<li>Alivia la presión en cuello y hombros desde la primera noche.</li>' +
-            '<li>Mantiene la alineación cervical y reduce los despertares por mala postura.</li>' +
-            '<li>Transpirable: menos calor acumulado bajo la cabeza.</li>' +
-            '<li>Higiénica: funda lavable y tratada contra los ácaros.</li>' +
-            '<li>Sin deformaciones: la viscoelástica de 50 kg/m³ no se apelmaza.</li>' +
-          '</ul>'
-        },
-        {
-          title: 'Envío, prueba y cuidados',
-          html: '<ul>' +
-            '<li>Envío gratuito a toda España peninsular en 3–5 días laborables.</li>' +
-            '<li><strong>30 noches de prueba:</strong> si no es la tuya, la recogemos y te devolvemos el importe.</li>' +
-            '<li>Airea el núcleo 24 h al recibirla. No lavar el núcleo: solo la funda, a 30 °C.</li>' +
-            '<li>Secar al aire, sin secadora ni lavado en seco.</li>' +
-          '</ul>'
-        }
-      ]
     }
   };
+
+  /* ══════════════════════════════════════════════
+     ALMOHADA NUVORA — dos fundas, mismo núcleo.
+     Carbono activo y Tencel comparten núcleo, medidas y precio;
+     cambia el tejido de la funda, que es lo que las diferencia.
+     ══════════════════════════════════════════════ */
+  (function () {
+    var MEDIDAS_ALM = [
+      { label: '70 × 40 cm',  price: 44.90 },
+      { label: '90 × 40 cm',  price: 54.90 },
+      { label: '135 × 40 cm', price: 64.90 },
+      { label: '150 × 40 cm', price: 69.90 }
+    ];
+
+    /* Lo que cambia de una a otra */
+    var TEJIDO = {
+      carbono: {
+        id: 'almohada-nuvora',
+        etiqueta: 'Carbono activo',
+        nombre: 'Almohada viscoelástica Nuvora · Carbono activo',
+        foto: 'almohada-carbono',
+        desc: 'La funda lleva carbono activo, que absorbe los olores en vez de taparlos y descarga la electricidad estática que acumula el pelo al rozar. Dentro, viscoelástica perforada que se amolda al cuello en segundos y vuelve a su sitio cada noche. Si eres de los que da la vuelta a la almohada buscando el lado limpio, esta es la tuya.',
+        caracteristicas: '<li>Funda con <strong>carbono activo</strong>: absorbe los olores que se quedan en la almohada noche tras noche.</li>' +
+          '<li><strong>Antiestática</strong>: el carbono descarga la electricidad que acumula el pelo al rozar el tejido.</li>' +
+          '<li>Tejido <strong>tratado contra los ácaros</strong>.</li>',
+        material: '<li><strong>Funda:</strong> tejido con carbono activo, transpirable, con cremallera perimetral.</li>',
+        beneficios: '<li>Sin olores acumulados: el carbono los absorbe en lugar de enmascararlos.</li>' +
+          '<li>Menos electricidad estática, sobre todo en invierno y con el pelo largo.</li>',
+        paraQuien: 'si te preocupan los olores y los ácaros'
+      },
+      tencel: {
+        id: 'almohada-nuvora-tencel',
+        etiqueta: 'Tencel',
+        nombre: 'Almohada viscoelástica Nuvora · Tencel',
+        foto: 'almohada-tencel',
+        desc: 'La funda es de Tencel, una fibra de origen vegetal que absorbe la humedad mucho antes que el algodón y se mantiene fresca al tacto. Dentro, la misma viscoelástica perforada que se amolda al cuello y recupera la forma cada mañana. Si sudas por la noche o tienes la piel sensible, empieza por esta.',
+        caracteristicas: '<li>Funda de <strong>Tencel</strong>: absorbe la humedad y la evapora, así que la almohada no se queda húmeda.</li>' +
+          '<li><strong>Regula la temperatura</strong>: al tacto se nota fresca, y lo sigue estando a mitad de la noche.</li>' +
+          '<li>Fibra <strong>hipoalergénica</strong> y de tacto suave, pensada para pieles sensibles.</li>',
+        material: '<li><strong>Funda:</strong> tejido Tencel de origen vegetal, transpirable, con cremallera perimetral.</li>',
+        beneficios: '<li>Menos calor y menos humedad bajo la cabeza en las noches de verano.</li>' +
+          '<li>Tacto suave: no raspa aunque duermas con la cara pegada a la almohada.</li>',
+        paraQuien: 'si pasas calor o tienes la piel sensible'
+      }
+    };
+
+    function construir(t) {
+      return {
+        type: 'almohada',
+        typeLabel: 'Almohada viscoelástica',
+        name: t.nombre,
+        desc: t.desc,
+        images: ['/images/' + t.foto + '.webp'],
+        compare: false,
+        sizes: MEDIDAS_ALM.slice(),
+        defaultSize: 1,
+        details: [
+          {
+            title: 'Características principales',
+            html: '<ul>' +
+              '<li>Núcleo de <strong>viscoelástica perforada</strong> de 50 kg/m³: se adapta al peso de la cabeza y recupera la forma al levantarte.</li>' +
+              '<li><strong>Altura de 12 cm</strong> con perfil ergonómico: mantiene el cuello alineado con la columna.</li>' +
+              '<li>Canales de ventilación que evacúan el calor y la humedad durante la noche.</li>' +
+              '<li>Funda exterior <strong>desenfundable con cremallera</strong> y lavable a 30 °C.</li>' +
+              t.caracteristicas +
+            '</ul>'
+          },
+          {
+            title: 'Carbono activo o Tencel: cuál te conviene',
+            html: '<ul>' +
+              '<li><strong>El núcleo es el mismo en las dos.</strong> Viscoelástica perforada de 50 kg/m³, 12 cm de altura, mismo perfil ergonómico, mismas medidas y mismo precio. Solo cambia la funda.</li>' +
+              '<li><strong>Carbono activo</strong> si te preocupan los olores y los ácaros, o si notas que el pelo se te electriza contra la almohada.</li>' +
+              '<li><strong>Tencel</strong> si pasas calor por la noche, si sudas o si tienes la piel sensible y buscas un tacto más suave.</li>' +
+              '<li>Con las <strong>30 noches de prueba</strong>, si te equivocas de tejido la recogemos gratis.</li>' +
+            '</ul>'
+          },
+          {
+            title: 'Materiales',
+            html: '<ul>' +
+              '<li><strong>Núcleo:</strong> espuma viscoelástica de 50 kg/m³ con perforación vertical.</li>' +
+              t.material +
+              '<li><strong>Certificación:</strong> OEKO-TEX® Standard 100, libre de sustancias nocivas.</li>' +
+              '<li>Fabricada en España, en nuestra propia fábrica.</li>' +
+            '</ul>'
+          },
+          {
+            title: 'Medidas disponibles',
+            html: '<ul>' +
+              '<li><strong>70 × 40 cm</strong> — camas de 70, 80 y 90 cm</li>' +
+              '<li><strong>90 × 40 cm</strong> — camas de 90 y 105 cm</li>' +
+              '<li><strong>135 × 40 cm</strong> — camas de 135 y 140 cm</li>' +
+              '<li><strong>150 × 40 cm</strong> — camas de 150 y 160 cm</li>' +
+              '<li>En cama de matrimonio puedes poner una larga para los dos o dos de 70. Separadas suelen ir mejor si tenéis posturas distintas.</li>' +
+              '<li>Altura: 12 cm · Peso aproximado: 1,2 kg (70 cm)</li>' +
+            '</ul>'
+          },
+          {
+            title: 'Nivel de firmeza',
+            html: '<ul>' +
+              '<li><strong>Firmeza media (6/10).</strong> El punto medio que funciona para la mayoría.</li>' +
+              '<li><strong>Recomendada si duermes de lado o boca arriba:</strong> rellena el hueco del hombro sin empujar la cabeza hacia delante.</li>' +
+              '<li>Si duermes boca abajo, elige la medida más ancha y colócala baja: notarás menos tensión cervical.</li>' +
+            '</ul>'
+          },
+          {
+            title: 'Beneficios principales',
+            html: '<ul>' +
+              '<li>Alivia la presión en cuello y hombros desde la primera noche.</li>' +
+              '<li>Mantiene la alineación cervical y reduce los despertares por mala postura.</li>' +
+              t.beneficios +
+              '<li>Sin deformaciones: la viscoelástica de 50 kg/m³ no se apelmaza.</li>' +
+            '</ul>'
+          },
+          {
+            title: 'Envío, prueba y cuidados',
+            html: '<ul>' +
+              '<li>Envío gratuito a toda España peninsular en 3–5 días laborables.</li>' +
+              '<li><strong>30 noches de prueba:</strong> si no es la tuya, la recogemos y te devolvemos el importe.</li>' +
+              '<li>Airea el núcleo 24 h al recibirla. No lavar el núcleo: solo la funda, a 30 °C.</li>' +
+              '<li>Secar al aire, sin secadora ni lavado en seco.</li>' +
+            '</ul>'
+          }
+        ]
+      };
+    }
+
+    var TEJIDOS = [
+      { id: TEJIDO.carbono.id, label: TEJIDO.carbono.etiqueta, swatch: '#4A4E57' },
+      { id: TEJIDO.tencel.id,  label: TEJIDO.tencel.etiqueta,  swatch: '#F2F1EC' }
+    ];
+
+    Object.keys(TEJIDO).forEach(function (k) {
+      var t = TEJIDO[k];
+      CATALOG[t.id] = construir(t);
+      CATALOG[t.id].variantLabel = 'Elige el tejido';
+      CATALOG[t.id].variantName = t.etiqueta;
+      CATALOG[t.id].variants = TEJIDOS;
+    });
+  })();
+
 
   /* ══════════════════════════════════════════════
      CANAPÉ ABATIBLE NUVORA — un mismo modelo, tres acabados.
@@ -643,7 +709,8 @@ document.addEventListener('DOMContentLoaded', function () {
     'canape-nuvora-blanco':   '/canapes/canape-nuvora-blanco',
     'canape-nuvora-cambrian': '/canapes/canape-nuvora-cambrian',
     'canape-nuvora-wengue':   '/canapes/canape-nuvora-wengue',
-    'almohada-nuvora':        '/almohadas/almohada-nuvora'
+    'almohada-nuvora':        '/almohadas/almohada-nuvora',
+    'almohada-nuvora-tencel': '/almohadas/almohada-nuvora-tencel'
   };
   function rutaProducto(id, medida) {
     var r = RUTAS[id] || ('/producto.html?m=' + encodeURIComponent(id));

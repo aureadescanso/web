@@ -27,7 +27,8 @@ const RUTAS = {
   'canape-nuvora-blanco':   '/canapes/canape-nuvora-blanco',
   'canape-nuvora-cambrian': '/canapes/canape-nuvora-cambrian',
   'canape-nuvora-wengue':   '/canapes/canape-nuvora-wengue',
-  'almohada-nuvora':        '/almohadas/almohada-nuvora'
+  'almohada-nuvora':        '/almohadas/almohada-nuvora',
+  'almohada-nuvora-tencel': '/almohadas/almohada-nuvora-tencel'
 };
 
 /* La plantilla vive en la raíz y las fichas cuelgan de /colchones/,

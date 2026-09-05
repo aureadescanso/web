@@ -45,6 +45,7 @@
   /producto.html      m=canape-nuvora-cambrian  /canapes/canape-nuvora-cambrian         301!
   /producto.html      m=canape-nuvora-wengue    /canapes/canape-nuvora-wengue           301!
   /producto.html      m=almohada-nuvora         /almohadas/almohada-nuvora              301!
+  /producto.html      m=almohada-nuvora-tencel  /almohadas/almohada-nuvora-tencel       301!
 
 # Página retirada: en vez de un 404, al sitio que más se le parece.
   /complementos.html                          /almohadas                              301!
