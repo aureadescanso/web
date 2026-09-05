@@ -351,7 +351,7 @@ document.addEventListener('DOMContentLoaded', function () {
             title: 'Combina con tu colchón',
             html: '<ul>' +
               '<li>Elige el canapé en la misma medida que tu colchón: si tu colchón es de 150 × 190 cm, tu canapé también.</li>' +
-              '<li>¿Aún no tienes colchón? Mira <a href="colchones.html">nuestros colchones</a> o llévate los dos en un <a href="packs.html">pack de descanso</a> y ahorra un 12 %.</li>' +
+              '<li>¿Aún no tienes colchón? Mira <a href="/colchones">nuestros colchones</a> o llévate los dos en un <a href="/packs">pack de descanso</a> y ahorra un 12 %.</li>' +
             '</ul>'
           }
         ]
@@ -383,7 +383,7 @@ document.addEventListener('DOMContentLoaded', function () {
         '<li><strong>Elige viscoelástico</strong> si duermes de lado y quieres que el colchón te acoja aliviando hombros y caderas, o si buscas el precio más ajustado.</li>' +
         '<li><strong>Elige muelles ensacados</strong> si dormís dos y os molestan los movimientos del otro, si duermes caluroso o si prefieres un soporte más firme y aireado.</li>' +
         '<li>Las dos versiones comparten garantía y las 30 noches de prueba. Si te equivocas, lo recogemos gratis.</li>' +
-        '<li>¿Sigues con dudas? Lo desarrollamos en la <a href="blog/viscoelastico-o-muelles.html">guía de viscoelástico o muelles</a>.</li>' +
+        '<li>¿Sigues con dudas? Lo desarrollamos en la <a href="/blog/viscoelastico-o-muelles">guía de viscoelástico o muelles</a>.</li>' +
       '</ul>'
     };
 
@@ -804,7 +804,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /* Producto inexistente, o categoría desactivada temporalmente
        (hidden: true → Complementos), → volver al catálogo */
     if (!product || product.hidden) {
-      window.location.replace('colchones.html');
+      window.location.replace('/colchones');
       return;
     }
 
@@ -837,7 +837,7 @@ document.addEventListener('DOMContentLoaded', function () {
             '</form>' +
             '<p class="soonx__note" data-i18n="soon.note">Sé el primero en saberlo. Sin spam, solo el aviso de lanzamiento.</p>' +
             '<p class="soonx__ok" id="soonOk" hidden data-i18n="soon.ok">¡Estás en la lista! Te avisaremos el día del lanzamiento.</p>' +
-            '<a class="soonx__back" href="colchones.html" data-i18n="nav.colchones">Colchones</a>' +
+            '<a class="soonx__back" href="/colchones" data-i18n="nav.colchones">Colchones</a>' +
           '</div>' +
         '</section>';
 
@@ -860,9 +860,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     var CATEGORY = {
-      colchon:  { page: 'colchones.html', label: 'Colchones' },
-      canape:   { page: 'canapes.html',   label: 'Canapés' },
-      almohada: { page: 'almohadas.html', label: 'Almohadas' }
+      colchon:  { page: '/colchones', label: 'Colchones' },
+      canape:   { page: '/canapes',   label: 'Canapés' },
+      almohada: { page: '/almohadas', label: 'Almohadas' }
     };
     var cat = CATEGORY[product.type] || CATEGORY.colchon;
     var catalogPage  = cat.page;
@@ -1133,7 +1133,7 @@ document.addEventListener('DOMContentLoaded', function () {
             '<path d="M21 8H3v12h18zM3 8l2-4h14l2 4M12 4v16"/>' +
           '</svg>' +
           '<span class="pdp__gift-text"><strong>Combina y ahorra un 12 %:</strong> ' +
-          'llévate este producto dentro de un <a href="packs.html">pack de descanso</a> ' +
+          'llévate este producto dentro de un <a href="/packs">pack de descanso</a> ' +
           '(colchón + canapé + almohada) y paga menos que comprándolos por separado.</span>';
         buyWrap.parentNode.insertBefore(packNote, buyWrap.nextSibling);
       }
@@ -1692,7 +1692,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
       });
     } else {
-      window.location.replace('colchones.html');
+      window.location.replace('/colchones');
       return;
     }
 

@@ -1,0 +1,42 @@
+# Direcciones sin .html
+#
+# Netlify ya servía las dos formas (/colchones y /colchones.html) con
+# un 200 cada una: la misma página en dos direcciones, que para Google
+# es contenido duplicado. Estas reglas dejan una sola dirección buena
+# y mandan la antigua a la nueva con un 301, que traspasa el valor que
+# ya tuviera acumulada.
+#
+# El 301! lleva admiración a propósito. Netlify mira primero si existe
+# el fichero y, como colchones.html existe, sin la admiración la regla
+# no se aplicaría jamás.
+
+  /index.html                                 /                                       301!
+
+  /colchones.html                             /colchones                              301!
+  /canapes.html                               /canapes                                301!
+  /almohadas.html                             /almohadas                              301!
+  /packs.html                                 /packs                                  301!
+  /blog.html                                  /blog                                   301!
+  /aviso-legal.html                           /aviso-legal                            301!
+  /privacidad.html                            /privacidad                             301!
+  /cookies.html                               /cookies                                301!
+  /condiciones-venta.html                     /condiciones-venta                      301!
+
+  /blog/cada-cuanto-cambiar-colchon.html      /blog/cada-cuanto-cambiar-colchon       301!
+  /blog/canape-somier-o-base-tapizada.html    /blog/canape-somier-o-base-tapizada     301!
+  /blog/colchon-mejora-tu-salud.html          /blog/colchon-mejora-tu-salud           301!
+  /blog/colchones-gama-media.html             /blog/colchones-gama-media              301!
+  /blog/como-elegir-almohada.html             /blog/como-elegir-almohada              301!
+  /blog/como-elegir-canape-abatible.html      /blog/como-elegir-canape-abatible       301!
+  /blog/como-elegir-mejor-colchon.html        /blog/como-elegir-mejor-colchon         301!
+  /blog/cuidar-y-limpiar-el-colchon.html      /blog/cuidar-y-limpiar-el-colchon       301!
+  /blog/elegir-colchon-sin-gastar-de-mas.html /blog/elegir-colchon-sin-gastar-de-mas  301!
+  /blog/errores-que-arruinan-tu-sueno.html    /blog/errores-que-arruinan-tu-sueno     301!
+  /blog/firmeza-colchon-peso-postura.html     /blog/firmeza-colchon-peso-postura      301!
+  /blog/medidas-de-colchones.html             /blog/medidas-de-colchones              301!
+  /blog/mejores-colchones-calidad-precio.html /blog/mejores-colchones-calidad-precio  301!
+  /blog/viscoelastico-o-muelles.html          /blog/viscoelastico-o-muelles           301!
+
+# Página retirada: en vez de un 404, al sitio que más se le parece.
+  /complementos.html                          /almohadas                              301!
+  /complementos                               /almohadas                              301!

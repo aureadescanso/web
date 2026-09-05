@@ -516,7 +516,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var articles = [
       {
-        href: 'blog/viscoelastico-o-muelles.html',
+        href: '/blog/viscoelastico-o-muelles',
         img: 'images/blog/viscoelastico-o-muelles.svg',
         time: '9 min',
         tag: 'Guía de compra',
@@ -524,7 +524,7 @@ document.addEventListener('DOMContentLoaded', function () {
         desc: 'La comparativa honesta'
       },
       {
-        href: 'blog/mejores-colchones-calidad-precio.html',
+        href: '/blog/mejores-colchones-calidad-precio',
         img: 'images/blog/mejores-colchones-calidad-precio.svg',
         time: '9 min',
         tag: 'Colchones',
@@ -532,7 +532,7 @@ document.addEventListener('DOMContentLoaded', function () {
         desc: 'Guía para no pagar de más'
       },
       {
-        href: 'blog/cada-cuanto-cambiar-colchon.html',
+        href: '/blog/cada-cuanto-cambiar-colchon',
         img: 'images/blog/cada-cuanto-cambiar-colchon.svg',
         time: '7 min',
         tag: 'Consejos',
@@ -540,7 +540,7 @@ document.addEventListener('DOMContentLoaded', function () {
         desc: 'Las 7 señales claras'
       },
       {
-        href: 'blog/como-elegir-canape-abatible.html',
+        href: '/blog/como-elegir-canape-abatible',
         img: 'images/blog/como-elegir-canape-abatible.svg',
         time: '8 min',
         tag: 'Canapés',

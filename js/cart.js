@@ -143,7 +143,7 @@
     if (!Cart.items.length) {
       body.innerHTML = '<p class="cart__empty">' + T('cart.empty', 'Tu cesta está vacía.') +
         '<br>' + T('cart.emptysub', 'El buen descanso te espera.') + '</p>';
-      foot.innerHTML = '<a class="cart__shop" href="' + BASE + 'colchones.html">' +
+      foot.innerHTML = '<a class="cart__shop" href="/colchones">' +
         T('cart.shop', 'Ver colchones') + ' &rarr;</a>';
       return;
     }

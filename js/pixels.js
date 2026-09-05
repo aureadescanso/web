@@ -431,7 +431,6 @@
     if (aviso) return;
     if (!forzar && leerConsentimiento() !== null) return;
     ocultarGalleta();
-    var base = /\/blog\//.test(window.location.pathname) ? '../' : '';
 
     aviso = document.createElement('div');
     aviso.className = 'ckbar';
@@ -444,7 +443,7 @@
           T('ck.text',
             'Usamos cookies de <strong>TikTok</strong> y <strong>Meta</strong> para medir la publicidad y ' +
             'saber qué anuncios funcionan. Sin ellas la web va igual de bien. Puedes cambiar de opinión ' +
-            'cuando quieras en la <a href="' + base + 'cookies.html">política de cookies</a>.') +
+            'cuando quieras en la <a href="/cookies">política de cookies</a>.') +
         '</p>' +
         '<div class="ckbar__btns">' +
           '<button type="button" class="ckbar__no" data-no data-i18n="ck.no">' +
