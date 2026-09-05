@@ -93,32 +93,47 @@ async function main() {
     /* Cabecera: se sustituyen los marcadores de la plantilla por lo que
        corresponde a este producto, y se añaden canonical y datos
        estructurados, que antes solo existían tras ejecutar el guion. */
-    let h = plantilla
-      .replace(/<title>[^<]*<\/title>/,
-        '<title>' + d.titulo + '</title>')
-      .replace(/(<meta name="description" content=")[^"]*(">)/,
-        '$1' + d.desc + '$2')
-      .replace(/(<meta property="og:title" content=")[^"]*(">)/,
-        '$1' + d.ogT + '$2')
-      .replace(/(<meta property="og:description" content=")[^"]*(">)/,
-        '$1' + d.ogD + '$2')
-      .replace(/(<meta property="og:image" content=")[^"]*(">)/,
-        '$1' + d.ogImg + '$2')
-      .replace(/(<meta name="description")/,
-        '<link rel="canonical" href="' + canonica + '">\n  $1')
-      .replace(/(<meta name="twitter:card")/,
-        '<meta property="og:url" content="' + canonica + '">\n  $1');
+    /* Cada sustitución tiene que encontrar su sitio. Si no lo encuentra
+       se para en seco, porque un fallo silencioso aquí es peor que uno
+       ruidoso: la página se genera igual, con buena pinta, y sin lo que
+       le falta. Pasó al cambiar las rutas de la plantilla a absolutas:
+       el ancla de los datos estructurados era href="css/styles.css",
+       dejó de encontrarse, y las siete fichas se publicaron sin ellos.
+       Nada avisó. */
+    function poner(html, re, nuevo, etiqueta) {
+      if (!re.test(html)) {
+        throw new Error(pid + ': no encuentro dónde poner ' + etiqueta +
+                        ' en producto.html (¿ha cambiado la plantilla?)');
+      }
+      return html.replace(re, nuevo);
+    }
+
+    let h = plantilla;
+    h = poner(h, /<title>[^<]*<\/title>/,
+      '<title>' + d.titulo + '</title>', 'el título');
+    h = poner(h, /(<meta name="description" content=")[^"]*(">)/,
+      '$1' + d.desc + '$2', 'la descripción');
+    h = poner(h, /(<meta property="og:title" content=")[^"]*(">)/,
+      '$1' + d.ogT + '$2', 'og:title');
+    h = poner(h, /(<meta property="og:description" content=")[^"]*(">)/,
+      '$1' + d.ogD + '$2', 'og:description');
+    h = poner(h, /(<meta property="og:image" content=")[^"]*(">)/,
+      '$1' + d.ogImg + '$2', 'og:image');
+    h = poner(h, /(<meta name="description")/,
+      '<link rel="canonical" href="' + canonica + '">\n  $1', 'el canonical');
+    h = poner(h, /(<meta name="twitter:card")/,
+      '<meta property="og:url" content="' + canonica + '">\n  $1', 'og:url');
 
     /* Datos estructurados del producto, ya escritos */
-    if (d.esquema) {
-      h = h.replace(/(<link rel="stylesheet" href="css\/styles\.css">)/,
-        '<script type="application/ld+json" id="pdpSchema">' + d.esquema + '</script>\n  $1');
-    }
+    if (!d.esquema) throw new Error(pid + ': la ficha no ha generado datos estructurados');
+    h = poner(h, /(<link rel="stylesheet" href="\/?css\/styles\.css">)/,
+      '<script type="application/ld+json" id="pdpSchema">' + d.esquema + '</script>\n  $1',
+      'los datos estructurados');
 
     /* Cuerpo de la ficha, ya montado. El identificador va en el HTML
        para que shop.js sepa qué producto es sin necesidad del ?m= */
-    h = h.replace(/(<main class="pdp" id="pdpRoot")([^>]*)>[\s\S]*?<\/main>/,
-      '$1 data-producto="' + pid + '"$2>\n' + d.cuerpo + '\n  </main>');
+    h = poner(h, /(<main class="pdp" id="pdpRoot")([^>]*)>[\s\S]*?<\/main>/,
+      '$1 data-producto="' + pid + '"$2>\n' + d.cuerpo + '\n  </main>', 'el cuerpo de la ficha');
 
     h = rutasAbsolutas(h);
 
