@@ -1838,13 +1838,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* — Descuentos: pack automático y cupón NUVORA10, no acumulables — */
     var couponApplied = false;
+    /* Lo que se va a cobrar de verdad. Lo actualiza renderTotals y lo
+       usa la medición, para no informar del importe sin descuento. */
+    var totalConDescuento = subtotal;
     function tt(k, fb) { return (window.NuvoraI18n && window.NuvoraI18n.t(k)) || fb; }
     function renderTotals() {
       var packAmount   = packOn ? subtotal * PACK_DISCOUNT : 0;
       var couponAmount = couponApplied ? subtotal * 0.10 : 0;
       /* Se aplica el mayor de los dos, nunca los dos a la vez */
-      var discount = Math.round(Math.max(packAmount, couponAmount) * 100) / 100;
-      var total = subtotal - discount;
+      var rate = packAmount >= couponAmount
+        ? (packOn ? PACK_DISCOUNT : 0)
+        : (couponApplied ? 0.10 : 0);
+
+      /* El total se calcula igual que lo calcula el servidor: el
+         descuento se aplica a cada línea y se redondea a céntimos ahí,
+         no sobre la suma.
+
+         Parece lo mismo y no lo es. Descontando sobre el total, en 28
+         de 415 cestas salía un céntimo de diferencia con lo que iba a
+         cobrar la pasarela: la página decía 256,99 € y se cobraban
+         257,00 €. Con el precio anunciado no se juega, aunque sea un
+         céntimo. */
+      var total = lines.reduce(function (a, l) {
+        var unidad = Math.round(l.price * (1 - rate) * 100) / 100;
+        return a + unidad * (l.qty || 1);
+      }, 0);
+      total = Math.round(total * 100) / 100;
+      var discount = Math.round((subtotal - total) * 100) / 100;
       document.getElementById('chkSubtotal').textContent = formatPrice(subtotal);
       var dRow = document.getElementById('chkDiscountRow');
       if (dRow) {
@@ -1864,6 +1884,7 @@ document.addEventListener('DOMContentLoaded', function () {
           document.getElementById('chkDiscount').textContent = '−' + formatPrice(discount);
         }
       }
+      totalConDescuento = total;
       document.getElementById('chkTotal').textContent = formatPrice(total);
     }
     renderTotals();
@@ -1992,7 +2013,8 @@ document.addEventListener('DOMContentLoaded', function () {
               quantity: l.qty || 1
             };
           }),
-          value: Math.round(subtotal * 100) / 100,
+          /* El importe que va a pagar, no el de antes del descuento */
+          value: Math.round(totalConDescuento * 100) / 100,
           currency: 'EUR',
           email: emailEl ? emailEl.value.trim() : ''
         });
@@ -2017,7 +2039,18 @@ document.addEventListener('DOMContentLoaded', function () {
         })
       })
       .then(function (r) {
-        return r.json().then(function (d) {
+        /* Si la respuesta no es JSON —la función caída, un 502 de la
+           plataforma, una página de error en HTML— r.json() revienta y
+           su mensaje acababa saliendo tal cual en la página de pago:
+           "Unexpected non-whitespace character after JSON at position
+           4". Al cliente hay que decirle algo que entienda. */
+        return r.text().then(function (texto) {
+          var d;
+          try { d = JSON.parse(texto); }
+          catch (e) {
+            throw new Error('No se ha podido conectar con la pasarela de pago. ' +
+                            'Inténtalo de nuevo en un momento.');
+          }
           if (!r.ok) throw new Error(d.error || 'No se ha podido iniciar el pago.');
           return d;
         });

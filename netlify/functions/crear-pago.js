@@ -58,7 +58,13 @@ exports.handler = async function (event) {
           product_data: {
             name: l.nombre,
             description: l.medida + sufijo,
-            images: [origen + '/' + l.imagen]
+            /* Se manda la copia JPEG, la misma que ya se genera para
+               Merchant Center. El catálogo guarda WebP, que la web sirve
+               perfectamente, pero en la pasarela no depende de nuestro
+               navegador: si no lo pintara, el cliente vería la ficha de
+               pago sin foto justo cuando hay que darle confianza. */
+            images: [origen + '/images/feed/' +
+                     l.imagen.replace(/^images\//, '').replace(/\.webp$/, '.jpg')]
           }
         }
       };

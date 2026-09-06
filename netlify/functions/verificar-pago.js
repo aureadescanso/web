@@ -31,6 +31,10 @@ exports.handler = async function (event) {
         pagado: pagado,
         referencia: pagado ? (s.client_reference_id || '') : '',
         total: pagado ? (s.amount_total / 100).toFixed(2).replace('.', ',') + ' €' : '',
+        /* El mismo importe en número, para medir la venta por lo que se
+           ha cobrado de verdad y no por lo que sumaba la cesta antes de
+           aplicar el descuento. */
+        importe: pagado ? s.amount_total / 100 : 0,
         email: pagado && s.customer_details ? s.customer_details.email : ''
       })
     };

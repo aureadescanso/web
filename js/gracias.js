@@ -48,7 +48,14 @@
                 quantity: l.qty || 1
               };
             }),
-            value: Math.round(window.NuvoraCart.total() * 100) / 100,
+            /* El importe que ha cobrado la pasarela, no lo que sumaba la
+               cesta: con el pack son doce puntos de diferencia. Midiendo
+               de más se le dice a Meta, TikTok y Analytics que cada
+               venta vale más de lo que vale, y con eso deciden a quién
+               enseñar los anuncios. */
+            value: typeof d.importe === 'number' && d.importe > 0
+              ? d.importe
+              : Math.round(window.NuvoraCart.total() * 100) / 100,
             currency: 'EUR',
             email: correo,
             /* La referencia del pedido evita que Analytics cuente dos
