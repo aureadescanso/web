@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
     'aurea': {
       type: 'colchon',
       typeLabel: 'Colchón viscoelástico',
-      name: 'Nuvora Aurea Viscoelástico',
+      name: 'Colchón Aurea',
       desc: 'La versión viscoelástica del Aurea: 2 cm de viscoelástica que se adaptan a tu cuerpo y alivian los puntos de presión, sobre un núcleo de espuma HR de 28 kg/m³ que sujeta sin hundir. Acolchado tapa a tapa, 30 cm de altura y tejido transpirable para dormir fresco. Es la que te acoge; si prefieres un soporte más firme y aireado, el Aurea también se fabrica con núcleo de muelles ensacados.',
       images: [
         '/images/aurea-frontal.webp',
@@ -464,7 +464,7 @@ document.addEventListener('DOMContentLoaded', function () {
     CATALOG['aurea-muelles'] = {
       type: 'colchon',
       typeLabel: 'Colchón de muelles ensacados',
-      name: 'Nuvora Aurea Muelles Ensacados',
+      name: 'Colchón Aurea Muelles Ensacados',
       desc: 'La versión del Aurea con núcleo de muelles ensacados individualmente. Cada muelle va en su propia funda y se hunde solo donde recibe peso, así que si tu pareja se mueve tú no te enteras, y el aire circula entre ellos en vez de quedarse debajo del cuerpo. Acolchado de fibra hueca tapa a tapa, con el mismo tejido stretch y los mismos acabados que el resto de la gama. Firmeza media-firme.',
       images: [
         '/images/aurea-frontal.webp',
@@ -568,17 +568,13 @@ document.addEventListener('DOMContentLoaded', function () {
        otra, así que el enlace se ajusta al montarla. */
     CATALOG['aurea'].details.splice(1, 0, COMPARATIVA);
 
-    /* Selector de núcleo en las dos fichas (etiquetas, sin muestra de color) */
-    var NUCLEOS = [
-      { id: 'aurea',         label: 'Viscoelástico' },
-      { id: 'aurea-muelles', label: 'Muelles ensacados' }
-    ];
-    CATALOG['aurea'].variantLabel = 'Elige el núcleo';
-    CATALOG['aurea'].variantName = 'Viscoelástico';
-    CATALOG['aurea'].variants = NUCLEOS;
-    CATALOG['aurea-muelles'].variantLabel = 'Elige el núcleo';
-    CATALOG['aurea-muelles'].variantName = 'Muelles ensacados';
-    CATALOG['aurea-muelles'].variants = NUCLEOS;
+    /* Aquí había un selector de núcleo que dejaba saltar de una versión
+       del Aurea a la otra. Se retira: son dos productos independientes,
+       cada uno con su nombre, su página y su precio, y presentarlos como
+       dos variantes de lo mismo confundía más que ayudaba.
+
+       La comparativa de arriba sigue explicando la diferencia y enlaza a
+       la otra ficha, que es donde tiene sentido contarlo. */
 
     /* ══════════════════════════════════════════════
        NUVORA SUPREME — gama alta, doble cara.
@@ -589,7 +585,7 @@ document.addEventListener('DOMContentLoaded', function () {
     CATALOG['supreme'] = {
       type: 'colchon',
       typeLabel: 'Colchón de muelles ensacados · doble cara',
-      name: 'Nuvora Supreme',
+      name: 'Colchón Supreme',
       desc: 'Nuestro colchón más completo. Once capas repartidas en dos caras: en invierno duermes sobre pura lana; cuando aprieta el calor le das la vuelta y duermes sobre algodón natural. Debajo, una carcasa de muelles ensacados de 18 cm con viscogel y ElioSupport® que reparte el peso y aísla los movimientos del otro lado de la cama.',
       images: [
         '/images/supreme-frontal.webp',

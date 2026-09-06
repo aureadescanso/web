@@ -11,7 +11,7 @@
 
 const CATALOGO = {
   'aurea': {
-    nombre: 'Nuvora Aurea Viscoelástico',
+    nombre: 'Colchón Aurea',
     tipo: 'colchon',
     imagen: 'images/aurea-frontal.webp',
     medidas: [
@@ -77,7 +77,7 @@ const CATALOGO = {
    desincronizar. */
 const SUPLEMENTO_MUELLES = 39.33;
 CATALOGO['aurea-muelles'] = {
-  nombre: 'Nuvora Aurea Muelles Ensacados',
+  nombre: 'Colchón Aurea Muelles Ensacados',
   tipo: 'colchon',
   imagen: 'images/aurea-frontal.webp',
   medidas: CATALOGO['aurea'].medidas.map(m => ({
@@ -86,12 +86,12 @@ CATALOGO['aurea-muelles'] = {
   }))
 };
 
-/* Nuvora Supreme (gama alta, doble cara): 280 € más que el colchón más
+/* Colchón Supreme (gama alta, doble cara): 280 € más que el colchón más
    barato —el Aurea viscoelástico— en cada medida. Debe coincidir con
    SUPREME_EXTRA en js/shop.js. */
 const SUPREME_EXTRA = 280;
 CATALOGO['supreme'] = {
-  nombre: 'Nuvora Supreme',
+  nombre: 'Colchón Supreme',
   tipo: 'colchon',
   imagen: 'images/supreme-frontal.webp',
   medidas: CATALOGO['aurea'].medidas.map(m => ({
