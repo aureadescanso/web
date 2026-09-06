@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
       type: 'colchon',
       typeLabel: 'Colchón viscoelástico',
       name: 'Colchón Aurea',
+      resumen: 'Viscoelástica de 2 cm sobre núcleo HR de 28 kg/m³. La acogida que abraza sin hundir.',
       desc: 'La versión viscoelástica del Aurea: 2 cm de viscoelástica que se adaptan a tu cuerpo y alivian los puntos de presión, sobre un núcleo de espuma HR de 28 kg/m³ que sujeta sin hundir. Acolchado tapa a tapa, 30 cm de altura y tejido transpirable para dormir fresco. Es la que te acoge; si prefieres un soporte más firme y aireado, el Aurea también se fabrica con núcleo de muelles ensacados.',
       images: [
         '/images/aurea-frontal.webp',
@@ -465,6 +466,7 @@ document.addEventListener('DOMContentLoaded', function () {
       type: 'colchon',
       typeLabel: 'Colchón de muelles ensacados',
       name: 'Colchón Aurea Muelles Ensacados',
+      resumen: 'Muelles ensacados uno a uno sobre acolchado de fibra. Más firme, más aireado y sin notar a quien duerme al lado.',
       desc: 'La versión del Aurea con núcleo de muelles ensacados individualmente. Cada muelle va en su propia funda y se hunde solo donde recibe peso, así que si tu pareja se mueve tú no te enteras, y el aire circula entre ellos en vez de quedarse debajo del cuerpo. Acolchado de fibra hueca tapa a tapa, con el mismo tejido stretch y los mismos acabados que el resto de la gama. Firmeza media-firme.',
       images: [
         '/images/aurea-frontal.webp',
@@ -586,6 +588,7 @@ document.addEventListener('DOMContentLoaded', function () {
       type: 'colchon',
       typeLabel: 'Colchón de muelles ensacados · doble cara',
       name: 'Colchón Supreme',
+      resumen: 'Once capas y dos caras: lana para el invierno, algodón para el verano y muelles ensacados de 18 cm.',
       desc: 'Nuestro colchón más completo. Once capas repartidas en dos caras: en invierno duermes sobre pura lana; cuando aprieta el calor le das la vuelta y duermes sobre algodón natural. Debajo, una carcasa de muelles ensacados de 18 cm con viscogel y ElioSupport® que reparte el peso y aísla los movimientos del otro lado de la cama.',
       images: [
         '/images/supreme-frontal.webp',

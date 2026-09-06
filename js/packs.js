@@ -197,6 +197,33 @@ document.addEventListener('DOMContentLoaded', function () {
     el.querySelector('[data-price]').textContent = fmt(size.price);
   }
 
+  /* Cambia la foto de una tarjeta del resumen.
+     Hay que tocar el srcset, no solo el src: cuando una imagen lleva
+     srcset el navegador elige de ahí y el src queda de reserva, así que
+     se podía cambiar el src y seguir viéndose la foto anterior. Es lo
+     que pasaba con el canapé: el nombre cambiaba de acabado y la foto
+     no. */
+  function pintarFoto(el, product) {
+    var img = el.querySelector('[data-img]');
+    if (!img || !product.images || !product.images[0]) return;
+    var grande = product.images[0];
+    var media = grande.replace(/\.webp$/, '-md.webp');
+    img.setAttribute('src', grande);
+    img.setAttribute('srcset', media + ' 800w, ' + grande + ' 1400w');
+    img.setAttribute('alt', product.name);
+  }
+
+  /* Si algún día un producto no tuviera copia -md, el srcset apuntaría a
+     un fichero que no existe y la tarjeta se quedaría sin foto. Con esto
+     se cae de vuelta al original en vez de dejar el hueco. */
+  [itemColchon, itemCanape, itemAlmohada].forEach(function (el) {
+    var img = el && el.querySelector('[data-img]');
+    if (!img) return;
+    img.addEventListener('error', function () {
+      if (img.getAttribute('srcset')) img.removeAttribute('srcset');
+    });
+  });
+
   function render() {
     var base = baseProduct();
     var colchon = mattressProduct();
@@ -205,19 +232,30 @@ document.addEventListener('DOMContentLoaded', function () {
     paintItem(itemCanape, base, state.base);
     paintItem(itemAlmohada, CATALOG[PILLOW], state.pillow);
 
-    /* El colchón cambia de nombre y de enlace según el núcleo */
+    /* La almohada del pack no se elige, pero su nombre y su foto salen
+       igualmente del catálogo: escritos a mano se quedaban atrás en
+       cuanto cambiaba el producto. */
+    var nombreAlmohada = itemAlmohada.querySelector('[data-name]');
+    if (nombreAlmohada) nombreAlmohada.textContent = CATALOG[PILLOW].name;
+    pintarFoto(itemAlmohada, CATALOG[PILLOW]);
+
+    /* La tarjeta del colchón entera va con el modelo elegido: nombre,
+       foto, resumen y enlace. Antes solo cambiaban el nombre y el
+       enlace, así que al elegir el Supreme seguía viéndose la foto del
+       Aurea y su descripción. */
     var hrefColchon = window.NuvoraRuta(CORES[state.core].id);
     itemColchon.querySelectorAll('[data-link]').forEach(function (a) { a.setAttribute('href', hrefColchon); });
     var nombreColchon = itemColchon.querySelector('[data-name]');
     if (nombreColchon) nombreColchon.textContent = colchon.name;
+    var descColchon = itemColchon.querySelector('[data-desc]');
+    if (descColchon && colchon.resumen) descColchon.textContent = colchon.resumen;
+    pintarFoto(itemColchon, colchon);
 
     /* El canapé cambia de nombre, foto y enlace según el acabado */
     var href = window.NuvoraRuta(COLORS[state.color]);
     itemCanape.querySelectorAll('[data-link]').forEach(function (a) { a.setAttribute('href', href); });
     itemCanape.querySelector('[data-name]').textContent = base.name;
-    var img = itemCanape.querySelector('[data-img]');
-    img.setAttribute('src', base.images[0]);
-    img.setAttribute('alt', base.name);
+    pintarFoto(itemCanape, base);
     elColor.textContent = base.color || '';
 
     /* Aviso si el colchón y el canapé no miden lo mismo */
