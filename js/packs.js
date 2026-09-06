@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
      La etiqueta es corta a propósito: en el panel no cabe el nombre
      completo de cada modelo. */
   var CORES = [
-    { id: 'aurea',         label: 'Aurea viscoelástico' },
+    { id: 'aurea',         label: 'Aurea' },
     { id: 'aurea-muelles', label: 'Aurea muelles' },
     { id: 'supreme',       label: 'Supreme doble cara' }
   ];
@@ -94,7 +94,9 @@ document.addEventListener('DOMContentLoaded', function () {
       btn.type = 'button';
       btn.className = 'swatch swatch--text' + (i === state.core ? ' is-active' : '');
       btn.setAttribute('aria-pressed', i === state.core ? 'true' : 'false');
-      btn.setAttribute('aria-label', 'Colchón ' + CATALOG[c.id].name);
+      /* El nombre ya empieza por "Colchón": anteponerlo otra vez hacía
+         que un lector de pantalla leyera "Colchón Colchón Aurea". */
+      btn.setAttribute('aria-label', CATALOG[c.id].name);
       btn.innerHTML = '<span class="swatch__label">' + esc(c.label) + '</span>';
       btn.addEventListener('click', function () {
         state.core = i;
