@@ -864,7 +864,11 @@ document.addEventListener('DOMContentLoaded', function () {
      No es acumulable con el cupón: se aplica el mayor de los dos.
      El servidor repite este mismo cálculo en netlify/functions/_catalogo.js;
      si cambias el porcentaje aquí, cámbialo también allí. */
-  var PACK_DISCOUNT = 0.12;
+  /* El porcentaje lo define js/cart.js, que se carga antes y está en
+     todas las páginas con cesta. Aquí se lee de allí para no tener el
+     mismo número escrito en dos sitios: el día que cambie, cambia una
+     vez. El respaldo es por si se cargara shop.js sin cart.js. */
+  var PACK_DISCOUNT = window.NuvoraPackRate || 0.12;
   function isPackOrder(lines) {
     var t = {};
     lines.forEach(function (l) { t[l.type] = true; });

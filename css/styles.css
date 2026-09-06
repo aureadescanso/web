@@ -1462,6 +1462,13 @@ body.cart-open { overflow: hidden; }
   margin-bottom: 14px;
 }
 .cart__total span { font-size: 0.82rem; color: var(--text-2); }
+/* Subtotal antes del descuento del pack: va discreto, encima del total,
+   para que se vea de dónde sale el ahorro sin robarle protagonismo. */
+.cart__total--was {
+  margin-bottom: 4px;
+  opacity: 0.75;
+}
+.cart__total--was span:last-child { text-decoration: line-through; }
 .cart__total strong {
   font-family: var(--serif);
   font-size: 1.3rem;

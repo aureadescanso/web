@@ -58,7 +58,8 @@
       'cart.continue': 'Seguir comprando',
       'cart.remove': 'Eliminar',
       'cart.pack': 'Pack de descanso completo',
-      'cart.packsub': 'Colchón + canapé + almohada: −12 % al tramitar el pedido'
+      'cart.subtotal': 'Subtotal',
+      'cart.packsub': 'Colchón + canapé + almohada: −12 % ya aplicado'
     },
     en: {
       'nav.colchones': 'Mattresses',
@@ -97,7 +98,8 @@
       'cart.continue': 'Continue shopping',
       'cart.remove': 'Remove',
       'cart.pack': 'Complete sleep bundle',
-      'cart.packsub': 'Mattress + storage bed + pillow: −12% at checkout'
+      'cart.subtotal': 'Subtotal',
+      'cart.packsub': 'Mattress + storage bed + pillow: −12% already applied'
     },
     it: {
       'nav.colchones': 'Materassi',
@@ -136,7 +138,8 @@
       'cart.continue': 'Continua lo shopping',
       'cart.remove': 'Rimuovi',
       'cart.pack': 'Pacchetto riposo completo',
-      'cart.packsub': 'Materasso + sommier + cuscino: −12 % alla cassa'
+      'cart.subtotal': 'Subtotale',
+      'cart.packsub': 'Materasso + sommier + cuscino: −12 % già applicato'
     },
     fr: {
       'nav.colchones': 'Matelas',
@@ -175,7 +178,8 @@
       'cart.continue': 'Continuer mes achats',
       'cart.remove': 'Retirer',
       'cart.pack': 'Pack sommeil complet',
-      'cart.packsub': 'Matelas + sommier coffre + oreiller : −12 % au paiement'
+      'cart.subtotal': 'Sous-total',
+      'cart.packsub': 'Matelas + sommier coffre + oreiller : −12 % déjà appliqué'
     },
     de: {
       'nav.colchones': 'Matratzen',
@@ -214,7 +218,8 @@
       'cart.continue': 'Weiter einkaufen',
       'cart.remove': 'Entfernen',
       'cart.pack': 'Komplettes Schlaf-Set',
-      'cart.packsub': 'Matratze + Bettkasten + Kissen: −12 % an der Kasse'
+      'cart.subtotal': 'Zwischensumme',
+      'cart.packsub': 'Matratze + Bettkasten + Kissen: −12 % bereits abgezogen'
     }
   };
 

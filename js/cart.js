@@ -5,23 +5,55 @@
 (function () {
   'use strict';
   var KEY = 'nuvora_cart_v1';
-  /* Prefijo para que los enlaces e imágenes funcionen también desde /blog/ */
-  var BASE = /\/blog\//.test(window.location.pathname) ? '../' : '';
-  function rel(src) {
-    return (BASE && src.indexOf('http') !== 0 && src.indexOf('../') !== 0) ? BASE + src : src;
-  }
+
+  /* Tope de unidades por línea. Tiene que ser el mismo que el del
+     servidor (netlify/functions/_catalogo.js), porque allí se acota sin
+     avisar: si aquí se dejaran poner quince, la cesta enseñaría quince
+     y la pasarela cobraría diez. */
+  var MAX_QTY = 10;
+
+  /* Descuento del pack. Vive aquí y no en shop.js porque hay páginas
+     —la portada, el blog, las legales— que cargan la cesta sin cargar
+     shop.js, y la cesta tiene que saber sumar en todas. shop.js lo lee
+     de aquí. El servidor guarda el suyo aparte, porque no puede fiarse
+     de lo que diga el navegador. */
+  var PACK_RATE = 0.12;
+  window.NuvoraPackRate = PACK_RATE;
   /* Traducción con texto de respaldo en español */
   function T(key, fb) {
     return (window.NuvoraI18n && window.NuvoraI18n.t(key)) || fb;
   }
 
   function load() {
-    try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; }
+    var guardadas;
+    try { guardadas = JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; }
+    /* Una cesta guardada antes de poner el tope puede traer más
+       unidades de las que acepta el servidor. Se recortan al leerla,
+       o volvería a enseñarse un total que no se va a cobrar. */
+    guardadas.forEach(function (it) {
+      if (it && it.qty > MAX_QTY) it.qty = MAX_QTY;
+    });
+    return guardadas;
   }
   function persist(items) {
     try { localStorage.setItem(KEY, JSON.stringify(items)); } catch (e) {}
   }
-  function fmt(n) { return n.toLocaleString('es-ES') + ' €'; }
+  /* Siempre con dos decimales: sin forzarlos, 335 salía como "335 €" y
+     54,90 como "54,9 €", que en una tienda queda a medio escribir. */
+  function fmt(n) {
+    return n.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+  }
+
+  /* Lo que se va a cobrar. Se calcula igual que en el checkout y que en
+     el servidor: el descuento se aplica a cada línea y se redondea
+     ahí, no sobre la suma, o no cuadran los céntimos. */
+  function totalACobrar() {
+    var rate = Cart.isPack() ? PACK_RATE : 0;
+    var t = Cart.items.reduce(function (a, it) {
+      return a + (Math.round(it.price * (1 - rate) * 100) / 100) * it.qty;
+    }, 0);
+    return Math.round(t * 100) / 100;
+  }
   /* Escapa texto antes de insertarlo como HTML (defensa frente a datos manipulados en localStorage) */
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
@@ -56,7 +88,7 @@
       this.items.forEach(function (it) {
         if (it.id === line.id && it.sizeIdx === line.sizeIdx) found = it;
       });
-      if (found) found.qty += 1;
+      if (found) found.qty = Math.min(found.qty + 1, MAX_QTY);
       else { line.qty = 1; this.items.push(line); }
       persist(this.items);
       refresh();
@@ -65,7 +97,7 @@
     },
     setQty: function (i, q) {
       if (q <= 0) this.items.splice(i, 1);
-      else this.items[i].qty = q;
+      else this.items[i].qty = Math.min(q, MAX_QTY);
       persist(this.items);
       refresh();
     },
@@ -90,7 +122,7 @@
         self.items.forEach(function (it) {
           if (it.id === line.id && it.sizeIdx === line.sizeIdx) found = it;
         });
-        if (found) found.qty += 1;
+        if (found) found.qty = Math.min(found.qty + 1, MAX_QTY);
         else { line.qty = 1; self.items.push(line); }
       });
       persist(this.items);
@@ -152,14 +184,16 @@
     Cart.items.forEach(function (it, i) {
       html +=
         '<div class="cart__item">' +
-          '<img class="cart__img" src="' + esc(rel(it.img)) + '" alt="">' +
+          '<img class="cart__img" src="' + esc(it.img) + '" alt="">' +
           '<div class="cart__info">' +
             '<span class="cart__name">' + esc(it.name) + '</span>' +
             '<span class="cart__meta">' + esc(it.sizeLabel) + '</span>' +
             '<div class="cart__qty">' +
               '<button type="button" data-act="minus" data-i="' + i + '" aria-label="Restar unidad">&minus;</button>' +
               '<span>' + it.qty + '</span>' +
-              '<button type="button" data-act="plus" data-i="' + i + '" aria-label="Sumar unidad">+</button>' +
+              '<button type="button" data-act="plus" data-i="' + i + '" aria-label="Sumar unidad"' +
+                (it.qty >= MAX_QTY ? ' disabled title="Máximo ' + MAX_QTY + ' unidades por pedido"' : '') +
+              '>+</button>' +
               '<button type="button" class="cart__del" data-act="del" data-i="' + i + '">' + T('cart.remove', 'Eliminar') + '</button>' +
             '</div>' +
           '</div>' +
@@ -178,9 +212,19 @@
     }
     body.innerHTML = html;
 
+    /* El total es el que se va a pagar. Antes salía la suma sin
+       descuento justo debajo del aviso de "−12 %", que se contradecían
+       a la vista. */
+    var aCobrar = totalACobrar();
+    var ahorro = Math.round((Cart.total() - aCobrar) * 100) / 100;
+
     foot.innerHTML =
-      '<div class="cart__total"><span>' + T('cart.total', 'Total (envío incluido)') + '</span><strong>' + fmt(Cart.total()) + '</strong></div>' +
-      '<a class="cart__checkout" href="' + BASE + 'checkout.html">' + T('cart.checkout', 'Tramitar pedido') + '</a>' +
+      (ahorro > 0
+        ? '<div class="cart__total cart__total--was"><span>' + T('cart.subtotal', 'Subtotal') + '</span>' +
+          '<span>' + fmt(Cart.total()) + '</span></div>'
+        : '') +
+      '<div class="cart__total"><span>' + T('cart.total', 'Total (envío incluido)') + '</span><strong>' + fmt(aCobrar) + '</strong></div>' +
+      '<a class="cart__checkout" href="/checkout.html">' + T('cart.checkout', 'Tramitar pedido') + '</a>' +
       '<button class="cart__continue" type="button">' + T('cart.continue', 'Seguir comprando') + '</button>';
     foot.querySelector('.cart__continue').addEventListener('click', close);
 
