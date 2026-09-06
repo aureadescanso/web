@@ -360,9 +360,16 @@ document.addEventListener('DOMContentLoaded', function () {
         color: c.color,
         model: 'canape-nuvora',
         desc: c.desc,
+        /* La de portada sigue siendo la primera. Detrás, de más útil a
+           más de detalle: el producto entero recortado, el canapé en
+           una habitación, la tapa levantada —que es donde se ve el
+           almacenaje, que es lo que se compra— y el acabado de cerca. */
         images: [
           '/images/canape-' + c.file + '.webp',
-          '/images/canape-' + c.file + '-detalle.webp'
+          '/images/canape-' + c.file + '-detalle.webp',
+          '/images/canape-' + c.file + '-perspectiva.webp',
+          '/images/canape-' + c.file + '-abierto.webp',
+          '/images/canape-' + c.file + '-esquina.webp'
         ],
         compare: false,
         sizes: SIZES.slice(),
