@@ -851,6 +851,16 @@
       stage.classList.add('is-in');
     }
 
+    /* Si alguien ya está en /asesor y pega otro enlace compartido, solo
+       cambia el #: sin esto la página no se enteraría */
+    window.addEventListener('hashchange', function () {
+      if (leerDeUrl()) {
+        paso = TOTAL + 1;
+        pintarResultado();
+        root.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      }
+    });
+
     /* Para las pruebas automáticas */
     window.__NuvoraAsesor = { recomendar: recomendar, puntuar: puntuar, REGLAS: REGLAS };
   });
