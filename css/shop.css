@@ -3337,3 +3337,32 @@
   transition: border-color 0.2s var(--ease);
 }
 .guia__link:hover { border-bottom-color: #A98A2C; }
+
+/* ── Entrada al asesor (/asesor) desde otras páginas ── */
+.as-cta {
+  max-width: 1080px; margin: 56px auto 0; padding: 0 20px;
+}
+.as-cta__box {
+  display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+  background: radial-gradient(120% 160% at 100% 0%, #26407A 0%, #1B2D5B 60%, #142247 100%);
+  color: #fff; border-radius: 24px; padding: clamp(24px, 4vw, 36px) clamp(24px, 4vw, 44px);
+  position: relative; overflow: hidden;
+}
+.as-cta__box::after {
+  content: ''; position: absolute; right: -80px; top: -100px; width: 280px; height: 280px;
+  background: radial-gradient(closest-side, rgba(201, 162, 39, 0.3), transparent); pointer-events: none;
+}
+.as-cta__eyebrow { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #C9A227; }
+.as-cta__title { font-family: var(--serif); font-weight: 500; font-size: clamp(1.35rem, 3vw, 1.8rem); margin: 6px 0 6px; line-height: 1.2; }
+.as-cta__text { color: rgba(255, 255, 255, 0.72); font-size: 0.95rem; }
+.as-cta__btn {
+  position: relative; z-index: 1;
+  background: #fff; color: #1B2D5B; text-decoration: none;
+  font-weight: 700; padding: 15px 28px; border-radius: 999px; white-space: nowrap;
+  transition: transform 0.25s var(--ease-out);
+}
+.as-cta__btn:hover { transform: translateY(-2px); }
+.as-cta__box > div { position: relative; z-index: 1; }
+@media (max-width: 600px) {
+  .as-cta__btn { width: 100%; text-align: center; }
+}

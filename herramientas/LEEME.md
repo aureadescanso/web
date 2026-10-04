@@ -24,7 +24,13 @@ llegue con el JavaScript desactivado.
 ### Cómo se ejecuta
 
 Hace falta un servidor sirviendo la web en `http://127.0.0.1:8137` y
-Chrome instalado en la ruta habitual de Windows.
+Chrome instalado en la ruta habitual de Windows. El servidor viene en
+esta misma carpeta: imita las direcciones sin `.html` y las
+redirecciones de `_redirects`, como Netlify. En una ventana:
+
+    node herramientas/servidor.js
+
+Y en otra:
 
     node herramientas/generar-fichas.js
 
