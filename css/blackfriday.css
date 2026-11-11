@@ -1,0 +1,384 @@
+/* =============================================
+   NUVORA DESCANSO — Black Friday: "apagamos la luz"
+   =============================================
+   Lo enciende js/blackfriday.js poniendo clases en <html>:
+     .bf-aviso   solo cambia la banda de arriba
+     .bf-evento  banda + portada del evento
+     .bf-noche   la web a oscuras (negro y oro)
+   Sin esas clases, nada de este fichero se aplica.
+   ============================================= */
+
+/* ── La web a oscuras: basta con cambiar los colores base ── */
+html.bf-noche {
+  --white:  #08080A;
+  --gray:   #101014;
+  --text:   #F4F1E8;
+  --text-2: #B7B3A8;
+  --text-3: #918D84;
+  --border: #2C2C33;
+  --ink:    #EBDDB0;
+  --bf-oro: #D4AF37;
+  color-scheme: dark;
+}
+html.bf-noche body { background: #08080A; }
+
+/* El cambio de luz: un círculo que se abre desde donde se pulsa */
+html.bf-vt::view-transition-old(root),
+html.bf-vt::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+html.bf-vt::view-transition-old(root) { z-index: 1; }
+html.bf-vt::view-transition-new(root) {
+  z-index: 2;
+  animation: bf-abrir 0.75s cubic-bezier(0.65, 0, 0.2, 1) both;
+}
+html.bf-vt-lento::view-transition-new(root) { animation-duration: 1.5s; }
+@keyframes bf-abrir {
+  from { clip-path: circle(0 at var(--bf-x, 50%) var(--bf-y, 0px)); }
+  to   { clip-path: circle(150vmax at var(--bf-x, 50%) var(--bf-y, 0px)); }
+}
+
+/* ══════════════════════════════════════════════
+   PANTALLA DE ENTRADA
+   Lo primero que se ve en la primera página de la visita.
+   ══════════════════════════════════════════════ */
+/* Mientras se monta, la web queda tapada y sin scroll */
+html.bf-telon { overflow: hidden; }
+html.bf-telon::before { content: ''; position: fixed; inset: 0; z-index: 99990; background: #000; }
+
+.bf-entrada {
+  position: fixed; inset: 0; z-index: 99991; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  background:
+    radial-gradient(60% 50% at 50% 46%, rgba(212, 175, 55, 0.16) 0%, rgba(212, 175, 55, 0) 70%),
+    radial-gradient(120% 90% at 50% 120%, #14224A 0%, rgba(20, 34, 74, 0) 60%),
+    #000;
+  color: #fff; text-align: center;
+  transition: opacity 0.8s ease, transform 0.9s cubic-bezier(0.6, 0, 0.2, 1), filter 0.8s ease;
+}
+.bf-entrada.is-saliendo { opacity: 0; transform: scale(1.12); filter: blur(10px); pointer-events: none; }
+
+/* Haces de luz girando muy despacio detrás de la cifra */
+.bf-entrada__rayos {
+  position: absolute; left: 50%; top: 46%; width: 190vmax; height: 190vmax;
+  margin: -95vmax 0 0 -95vmax; pointer-events: none; opacity: 0.55;
+  background: repeating-conic-gradient(from 0deg, rgba(212, 175, 55, 0) 0deg, rgba(212, 175, 55, 0.11) 4deg, rgba(212, 175, 55, 0) 9deg, rgba(212, 175, 55, 0) 22deg);
+  -webkit-mask-image: radial-gradient(closest-side, #000 0%, rgba(0, 0, 0, 0.5) 22%, transparent 52%);
+          mask-image: radial-gradient(closest-side, #000 0%, rgba(0, 0, 0, 0.5) 22%, transparent 52%);
+  animation: bf-girar 80s linear infinite;
+}
+@keyframes bf-girar { to { transform: rotate(360deg); } }
+.bf-entrada__oro { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+
+.bf-entrada__c {
+  position: relative; z-index: 1; width: 100%; max-width: 900px; padding: 20px 20px;
+  display: flex; flex-direction: column; align-items: center;
+}
+.bf-entrada__c > * { opacity: 0; transform: translateY(12px); }
+.bf-entrada.is-lista .bf-entrada__c > * { animation: bf-entrar 0.9s var(--ease-out, ease-out) both; }
+.bf-entrada.is-lista .bf-entrada__k     { animation-delay: 0.15s; }
+.bf-entrada.is-lista .bf-entrada__antes { animation-delay: 0.3s; }
+.bf-entrada.is-lista .bf-entrada__cifra { animation-delay: 0s; }
+.bf-entrada.is-lista .bf-entrada__base  { animation-delay: 1.5s; }
+.bf-entrada.is-lista .bf-entrada__extra { animation-delay: 1.7s; }
+.bf-entrada.is-lista .bf-reloj          { animation-delay: 1.95s; }
+.bf-entrada.is-lista .bf-entrada__btn   { animation-delay: 2.2s; }
+.bf-entrada.is-lista .bf-entrada__f     { animation-delay: 2.4s; }
+
+.bf-entrada__logo { height: clamp(58px, 9vh, 92px); width: auto; filter: brightness(0) invert(1); margin-bottom: 2px; }
+.bf-entrada__k {
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-size: clamp(1.5rem, 3.6vw, 2.5rem); line-height: 1.1;
+  background: linear-gradient(100deg, #9C7A22 0%, #F8ECB4 30%, #D4AF37 50%, #F8ECB4 70%, #9C7A22 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.bf-entrada.is-lista .bf-entrada__k { animation: bf-entrar 0.9s 0.15s var(--ease-out, ease-out) both, bf-brillo 6s linear infinite; }
+.bf-entrada__antes {
+  margin-top: clamp(10px, 2.4vh, 26px);
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.5em; text-indent: 0.5em; text-transform: uppercase; color: rgba(255, 255, 255, 0.78);
+}
+/* El hueco de la cifra. Con lienzo, el texto se esconde (lo dibujan las motas) */
+.bf-entrada__cifra {
+  width: 100%; height: clamp(120px, 30vh, 300px); margin: 2px 0 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-weight: 600; line-height: 1; font-size: clamp(110px, 28vh, 280px);
+  color: #D4AF37; letter-spacing: -0.02em;
+}
+.bf-entrada__cifra.is-lienzo span { opacity: 0; }
+.bf-entrada__base { font-size: clamp(0.95rem, 1.6vw, 1.15rem); color: rgba(255, 255, 255, 0.9); }
+.bf-entrada__extra {
+  margin: 10px 0 clamp(14px, 3vh, 28px);
+  font-size: 0.74rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #0B0B0E;
+  padding: 7px 16px; border-radius: 999px;
+  background: linear-gradient(135deg, #F3E3A4 0%, #D4AF37 60%, #B8922A 100%);
+}
+.bf-entrada__btn {
+  position: relative; overflow: hidden; margin-top: clamp(16px, 3vh, 30px);
+  min-width: 220px; padding: 16px 44px; border-radius: 999px; cursor: pointer;
+  border: 1px solid rgba(212, 175, 55, 0.7); background: rgba(0, 0, 0, 0.5); color: #fff;
+  font: 600 0.86rem/1 var(--sans); letter-spacing: 0.3em; text-indent: 0.3em; text-transform: uppercase;
+  transition: background 0.3s, color 0.3s, transform 0.3s var(--ease-out, ease-out);
+}
+.bf-entrada__btn span { position: relative; z-index: 1; }
+.bf-entrada__btn:hover { background: #D4AF37; color: #0B0B0E; transform: translateY(-2px); }
+.bf-entrada__btn:focus-visible { outline: 2px solid #F3E3A4; outline-offset: 4px; }
+/* La barra que se llena: cuando acaba, la pantalla se abre sola */
+.bf-entrada__btn i {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 100%;
+  background: rgba(212, 175, 55, 0.28); transform-origin: left; transform: scaleX(0);
+}
+.bf-entrada.is-lista .bf-entrada__btn i { animation: bf-llenar var(--bf-espera, 9s) linear both; }
+@keyframes bf-llenar { to { transform: scaleX(1); } }
+.bf-entrada__f { margin-top: 14px; font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(255, 255, 255, 0.5); }
+
+@media (max-height: 640px) {
+  .bf-entrada__logo { display: none; }
+  .bf-entrada__cifra { height: 26vh; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bf-entrada__rayos, .bf-entrada__btn i { animation: none !important; }
+  .bf-entrada__c > *, .bf-entrada.is-lista .bf-entrada__c > * { animation: none !important; opacity: 1; transform: none; }
+  .bf-entrada { transition: none; }
+}
+
+/* ══════════════════════════════════════════════
+   BANDA DE ARRIBA (aviso y evento)
+   ══════════════════════════════════════════════ */
+html.bf .announce {
+  background: #000;
+  box-shadow: inset 0 -1px 0 rgba(212, 175, 55, 0.4);
+}
+html.bf .announce__item { color: rgba(255, 255, 255, 0.82); }
+html.bf .announce__item.bf-oro {
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  background: linear-gradient(100deg, #A8842A 0%, #F6E7A6 35%, #D4AF37 55%, #F6E7A6 75%, #A8842A 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  animation: bf-brillo 5s linear infinite;
+}
+@keyframes bf-brillo { to { background-position: -220% 0; } }
+
+/* Reloj: una pieza, tres tamaños */
+.bf-reloj { display: inline-flex; align-items: center; gap: 6px; font-variant-numeric: tabular-nums; }
+.bf-reloj__u { display: inline-flex; align-items: baseline; gap: 2px; }
+.bf-reloj__u b { font-weight: 700; }
+.bf-reloj__u i { font-style: normal; }
+
+.bf-reloj--banda {
+  position: absolute; right: 0; top: 0; bottom: 0; z-index: 1;
+  padding: 0 16px 0 44px;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0, #000 34px);
+  color: #fff; font-size: 0.72rem; letter-spacing: 0.04em;
+}
+.bf-reloj--banda .bf-reloj__t { color: #D4AF37; text-transform: uppercase; font-weight: 600; letter-spacing: 0.1em; margin-right: 4px; }
+.bf-reloj--banda .bf-reloj__u i { color: rgba(255, 255, 255, 0.55); font-size: 0.66rem; }
+@media (max-width: 600px) {
+  .bf-reloj--banda { padding-left: 34px; padding-right: 10px; gap: 4px; }
+  .bf-reloj--banda .bf-reloj__t { display: none; }
+}
+
+/* ══════════════════════════════════════════════
+   CABECERA
+   ══════════════════════════════════════════════ */
+html.bf-noche .header { background: rgba(8, 8, 10, 0.78); }
+html.bf-noche .header.is-scrolled { box-shadow: 0 0.5px 0 0 rgba(255, 255, 255, 0.1); }
+/* El logo es azul marino sobre transparente: de noche, en claro */
+html.bf-noche .header__logo-img,
+html.bf-noche .footer__logo img { filter: brightness(0) invert(1); }
+
+.bf-interruptor {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; margin-right: 2px; flex-shrink: 0;
+  border: 0; border-radius: 50%; background: transparent; color: var(--ink);
+  cursor: pointer; transition: background 0.25s, transform 0.25s, color 0.25s;
+}
+.bf-interruptor:hover { background: rgba(127, 127, 127, 0.16); transform: rotate(-14deg); }
+.bf-interruptor:focus-visible { outline: 2px solid #D4AF37; outline-offset: 2px; }
+.bf-interruptor__sol { display: none; }
+html.bf-noche .bf-interruptor { color: #D4AF37; }
+html.bf-noche .bf-interruptor__luna { display: none; }
+html.bf-noche .bf-interruptor__sol { display: block; }
+
+/* ══════════════════════════════════════════════
+   PORTADA
+   ══════════════════════════════════════════════ */
+.bf-marca { margin: 0 0 14px; display: flex; flex-direction: column; align-items: center; gap: 8px; animation: bf-entrar 0.9s 0.15s var(--ease-out) both; }
+.bf-marca__n {
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-size: clamp(1.7rem, 4.4vw, 3rem); line-height: 1.1; letter-spacing: -0.01em;
+  background: linear-gradient(100deg, #9C7A22 0%, #F8ECB4 30%, #D4AF37 50%, #F8ECB4 70%, #9C7A22 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  animation: bf-brillo 6s linear infinite;
+  filter: drop-shadow(0 2px 18px rgba(0, 0, 0, 0.55));
+  padding: 0 0.12em;
+}
+.bf-marca__f {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.86);
+  padding: 6px 14px; border: 1px solid rgba(212, 175, 55, 0.55); border-radius: 999px;
+  background: rgba(0, 0, 0, 0.35);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+
+.bf-portada { margin: 4px auto 30px; display: flex; flex-direction: column; align-items: center; gap: 20px; animation: bf-entrar 0.9s 0.5s var(--ease-out) both; }
+.bf-portada__lema { font-size: 1rem; color: rgba(255, 255, 255, 0.86); text-shadow: 0 1px 14px rgba(0, 0, 0, 0.6); }
+@keyframes bf-entrar { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+.bf-reloj--grande { gap: 10px; color: #fff; }
+.bf-reloj--grande .bf-reloj__t {
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #D4AF37; margin-right: 6px;
+}
+.bf-reloj--grande .bf-reloj__u {
+  flex-direction: column; align-items: center; gap: 4px;
+  min-width: 68px; padding: 12px 8px 9px;
+  border: 1px solid rgba(212, 175, 55, 0.38); border-radius: 14px;
+  background: linear-gradient(180deg, rgba(20, 20, 24, 0.72), rgba(0, 0, 0, 0.72));
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  box-shadow: 0 14px 34px -18px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+.bf-reloj--grande .bf-reloj__u b { font-family: var(--serif); font-size: 1.9rem; font-weight: 500; line-height: 1; color: #F3E3A4; }
+.bf-reloj--grande .bf-reloj__u i { font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255, 255, 255, 0.6); }
+
+.bf-ofertas { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.bf-oferta {
+  display: flex; flex-direction: column; gap: 2px; text-align: left;
+  padding: 12px 18px; border-radius: 14px; color: #fff; text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(0, 0, 0, 0.42);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  transition: border-color 0.25s, transform 0.25s var(--ease-out), background 0.25s;
+}
+.bf-oferta:hover { border-color: #D4AF37; transform: translateY(-2px); background: rgba(0, 0, 0, 0.6); }
+.bf-oferta strong { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #D4AF37; }
+.bf-oferta span { font-size: 0.92rem; color: rgba(255, 255, 255, 0.9); }
+
+/* Estrellas y linterna: solo existen de noche */
+.bf-cielo, .bf-luz { display: none; }
+html.bf-noche .bf-cielo {
+  display: block; position: absolute; inset: 0; width: 100%; height: 100%;
+  z-index: 1; pointer-events: none;
+}
+html.bf-noche .hero { background: #000; }
+html.bf-noche .hero__bg img:not(.bf-luz) {
+  animation: none;
+  filter: brightness(0.2) saturate(0.6) contrast(1.05);
+  transition: filter 0.6s;
+}
+html.bf-noche .hero__bg img.bf-luz {
+  display: block; position: absolute; inset: 0;
+  animation: none; filter: brightness(1.05) saturate(1.05);
+  -webkit-mask-image: radial-gradient(circle var(--bf-r, 300px) at var(--lx, 50%) var(--ly, 62%), #000 0%, rgba(0, 0, 0, 0.55) 38%, transparent 100%);
+          mask-image: radial-gradient(circle var(--bf-r, 300px) at var(--lx, 50%) var(--ly, 62%), #000 0%, rgba(0, 0, 0, 0.55) 38%, transparent 100%);
+}
+html.bf-noche .hero__bg::after {
+  background:
+    radial-gradient(120% 90% at 50% 108%, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.3) 45%, rgba(0, 0, 0, 0) 70%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.08) 34%, rgba(0, 0, 0, 0) 55%);
+}
+html.bf-noche .hero .hero__canvas { opacity: 0.35; }
+html.bf-noche .hero::before { display: none; }
+
+@media (max-width: 700px) {
+  .bf-reloj--grande { gap: 6px; flex-wrap: wrap; justify-content: center; }
+  .bf-reloj--grande .bf-reloj__t { width: 100%; text-align: center; margin: 0 0 2px; }
+  .bf-reloj--grande .bf-reloj__u { min-width: 60px; padding: 10px 6px 8px; }
+  .bf-reloj--grande .bf-reloj__u b { font-size: 1.6rem; }
+  .bf-ofertas { width: 100%; }
+  .bf-oferta { flex: 1 1 100%; }
+  html.bf-noche .hero__bg img.bf-luz { --bf-r: 210px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bf-marca, .bf-portada, .bf-marca__n, html.bf .announce__item.bf-oro { animation: none; }
+  /* Sin movimiento no hay linterna: la foto se deja a media luz */
+  html.bf-noche .hero__bg img:not(.bf-luz) { filter: brightness(0.5) saturate(0.8); }
+  html.bf-noche .hero__bg img.bf-luz { display: none; }
+}
+
+/* ══════════════════════════════════════════════
+   DE NOCHE, EN EL RESTO DE LA WEB
+   El azul marino sobre negro no se lee: los botones de acción pasan a
+   oro, que es el otro color de la marca.
+   ══════════════════════════════════════════════ */
+html.bf-noche .btn--solid,
+html.bf-noche .header__cta,
+html.bf-noche .mobile-menu__cta,
+html.bf-noche .cart__checkout,
+html.bf-noche .pcard__btn,
+html.bf-noche .pdp__buy-btn,
+html.bf-noche .buybar__btn,
+html.bf-noche .vs__btn,
+html.bf-noche .packpanel__btn,
+html.bf-noche .stack-card__read,
+html.bf-noche .as-go,
+html.bf-noche .as-start,
+html.bf-noche .as-btn--solid,
+html.bf-noche .btn--white,
+html.bf-noche .as-cta__btn,
+html.bf-noche .as-pack__btn {
+  background: linear-gradient(135deg, #E6C65A 0%, #D4AF37 55%, #B8922A 100%);
+  color: #0B0B0E;
+  border-color: transparent;
+}
+html.bf-noche .btn--solid:hover,
+html.bf-noche .header__cta:hover,
+html.bf-noche .pcard__btn:hover,
+html.bf-noche .pdp__buy-btn:hover,
+html.bf-noche .cart__checkout:hover { background: linear-gradient(135deg, #F2D873 0%, #E0BC45 55%, #C59E30 100%); color: #0B0B0E; }
+
+/* Botones de contorno y pastillas: borde y texto claros */
+html.bf-noche .btn--outline { border-color: rgba(235, 221, 176, 0.5); color: var(--ink); }
+html.bf-noche .btn--outline:hover { background: var(--ink); color: #0B0B0E; }
+html.bf-noche .size-pill.is-active,
+html.bf-noche .blogfilter__chip.is-active { background: #D4AF37; border-color: #D4AF37; color: #0B0B0E; }
+html.bf-noche .accordion__item.is-open .accordion__icon { background: #D4AF37; color: #0B0B0E; }
+html.bf-noche .scroll-progress { background: linear-gradient(90deg, #B8922A, #F3E3A4); }
+
+/* Logo del pie, también en claro */
+html.bf-noche .footer__logo { filter: brightness(0) invert(1); }
+
+/* El gran bloque azul de cierre: negro con un resplandor de oro */
+html.bf-noche .cta {
+  background:
+    radial-gradient(60% 80% at 50% 110%, rgba(212, 175, 55, 0.22) 0%, rgba(212, 175, 55, 0) 70%),
+    #000;
+}
+
+/* Fondos claros que estaban escritos a mano en cada hoja */
+html.bf-noche .page-hero {
+  background:
+    radial-gradient(70% 120% at 50% -20%, rgba(212, 175, 55, 0.13) 0%, rgba(212, 175, 55, 0) 60%),
+    linear-gradient(180deg, #000 0%, #08080A 100%);
+}
+html.bf-noche .buybar { background: rgba(8, 8, 10, 0.94); }
+html.bf-noche .xp__card { background: rgba(16, 16, 20, 0.96); }
+html.bf-noche .tocrail { background: rgba(8, 8, 10, 0.9); }
+html.bf-noche .finishband__inner,
+html.bf-noche .article-key { background: linear-gradient(150deg, #15151A 0%, #0E0E12 100%); }
+html.bf-noche .whyband__item,
+html.bf-noche .as-info__item,
+html.bf-noche .packitem__sel,
+html.bf-noche .legal-summary,
+html.bf-noche .artshare__btn:hover { background: #121216; }
+html.bf-noche .as-opt.is-sel,
+html.bf-noche .as-size.is-sel,
+html.bf-noche .as-extra.is-sel { background: rgba(212, 175, 55, 0.1); border-color: #D4AF37; }
+html.bf-noche .as-res__badge { background: rgba(8, 8, 10, 0.86); }
+html.bf-noche .giftband__btn { background: linear-gradient(135deg, #E6C65A 0%, #D4AF37 55%, #B8922A 100%); color: #0B0B0E; }
+
+/* El interruptor va junto al logo: a la derecha no cabe sin pisar el menú */
+html.bf-evento .header__logo { margin-right: 4px; }
+html.bf-evento .bf-interruptor { margin-right: auto; }
+
+/* Asesor: sus propios colores de apoyo */
+html.bf-noche .asesor,
+html.bf-noche .as-info {
+  --as-cream: #121216;
+  --as-line: rgba(255, 255, 255, 0.13);
+  --as-gold: #D4AF37;
+}

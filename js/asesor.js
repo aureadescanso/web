@@ -669,7 +669,7 @@
 
           '<div class="as-res__foot">' +
             '<button type="button" class="as-link" data-as-restart>Volver a empezar</button>' +
-            '<span>Recomendación orientativa. Con las 30 noches de prueba, si no aciertas, lo recogemos gratis.</span>' +
+            '<span>Recomendación orientativa. Con las 30 noches de prueba, si no aciertas, te devolvemos el importe íntegro.</span>' +
           '</div>' +
         '</div>';
 

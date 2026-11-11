@@ -92,7 +92,7 @@
   font-size: 3.6rem;
   line-height: 0.82;
   font-weight: 600;
-  color: var(--navy);
+  color: var(--ink);
   padding: 6px 12px 0 0;
 }
 
@@ -337,7 +337,7 @@
   font-size: clamp(1.8rem, 3.6vw, 2.6rem);
   font-weight: 600;
   line-height: 1.15;
-  color: var(--navy);
+  color: var(--ink);
   margin-bottom: 18px;
 }
 .fabrica__title em { font-style: italic; color: #C49A2C; }
@@ -445,7 +445,7 @@
   top: calc(100% + 8px);
   right: 0;
   min-width: 168px;
-  background: #fff;
+  background: var(--white);
   border: 1px solid var(--border);
   border-radius: 14px;
   box-shadow: 0 18px 40px -14px rgba(13, 27, 62, 0.28);
@@ -478,7 +478,7 @@
   transition: background 0.18s ease;
 }
 .langpick__opt:hover { background: var(--gray); }
-.langpick__opt.is-active { font-weight: 600; color: var(--navy); }
+.langpick__opt.is-active { font-weight: 600; color: var(--ink); }
 .langpick__opt.is-active .flag { box-shadow: 0 0 0 2px #C49A2C; }
 
 /* En móvil el selector vive dentro del menú desplegable, centrado */
@@ -701,7 +701,7 @@
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--navy);
+  color: var(--ink);
   margin-bottom: 16px;
 }
 .footer__col a {
@@ -712,7 +712,7 @@
   padding: 5px 0;
   transition: color 0.25s, transform 0.3s var(--ease-out);
 }
-.footer__col a:hover { color: var(--navy); transform: translateX(4px); }
+.footer__col a:hover { color: var(--ink); transform: translateX(4px); }
 
 .footer__bar {
   border-top: 1px solid var(--border);

@@ -224,7 +224,7 @@
           '<span>' + fmt(Cart.total()) + '</span></div>'
         : '') +
       '<div class="cart__total"><span>' + T('cart.total', 'Total (envío incluido)') + '</span><strong>' + fmt(aCobrar) + '</strong></div>' +
-      '<a class="cart__checkout" href="/checkout.html">' + T('cart.checkout', 'Tramitar pedido') + '</a>' +
+      '<a class="cart__checkout" href="/checkout">' + T('cart.checkout', 'Tramitar pedido') + '</a>' +
       '<button class="cart__continue" type="button">' + T('cart.continue', 'Seguir comprando') + '</button>';
     foot.querySelector('.cart__continue').addEventListener('click', close);
 

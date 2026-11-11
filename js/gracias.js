@@ -28,6 +28,13 @@
       .then(function (d) {
         if (!d.pagado) { mostrar(sinPago); return; }
 
+        /* Qué se pagó: lo guarda el checkout al salir hacia la pasarela.
+           Con "Comprar ahora" no se paga la cesta, así que ni se mide lo
+           que hay en ella ni se vacía. */
+        var compra = null;
+        try { compra = JSON.parse(sessionStorage.getItem('nuvora_compra') || 'null'); } catch (e) {}
+        var directa = !!(compra && compra.directo);
+
         /* TikTok: compra completada. Se mide ANTES de vaciar la cesta,
            que es de donde salen las líneas y el importe. El correo lo
            confirma la pasarela, así que es el dato más fiable que
@@ -37,7 +44,7 @@
           if (!correo) {
             try { correo = sessionStorage.getItem('nuvora_email') || ''; } catch (e) {}
           }
-          var items = window.NuvoraCart.items || [];
+          var items = (compra && compra.lineas) || window.NuvoraCart.items || [];
           window.NuvoraTrack('CompletePayment', {
             contents: items.map(function (l) {
               return {
@@ -66,7 +73,8 @@
         }
 
         /* Pago confirmado: se vacía la cesta (aquí, no antes de pagar) */
-        if (window.NuvoraCart && window.NuvoraCart.clear) window.NuvoraCart.clear();
+        if (!directa && window.NuvoraCart && window.NuvoraCart.clear) window.NuvoraCart.clear();
+        try { sessionStorage.removeItem('nuvora_compra'); } catch (e) {}
 
         if (d.referencia) {
           var ref = document.getElementById('graciasRef');

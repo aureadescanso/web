@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
             alt: 'Detalle de las asas verticales del colchón Nuvora Aurea viscoelástico',
             kicker: 'Los detalles',
             title: 'Lo que otras marcas <em>no enseñan</em>',
-            text: 'Cuatro asas verticales cosidas a la platabanda para girarlo sin esfuerzo. Pruébalo 30 noches: si no te enamora, lo recogemos gratis.',
+            text: 'Cuatro asas verticales cosidas a la platabanda para girarlo sin esfuerzo. Pruébalo 30 noches: si no te enamora, te devolvemos el importe íntegro.',
             cta: 'Añadir a la cesta',
             hotspots: [
               { x: 53, y: 46, title: '4 asas verticales', text: 'Girarlo 180° cada pocos meses para repartir el desgaste deja de ser un castigo: dos personas lo hacen en menos de un minuto.' },
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
           html: '<ul>' +
             '<li>Envío gratuito a toda España peninsular en 3–5 días laborables.</li>' +
             '<li>Llega comprimido al vacío y enrollado; se expande en 24 horas.</li>' +
-            '<li>30 noches de prueba: si no te convence, lo recogemos gratis y te devolvemos el importe íntegro.</li>' +
+            '<li>30 noches de prueba: si no te convence, te devolvemos el importe íntegro.</li>' +
           '</ul>'
         },
         {
@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
               '<li><strong>El núcleo es el mismo en las dos.</strong> Viscoelástica perforada de 50 kg/m³, 12 cm de altura, mismo perfil ergonómico, mismas medidas y mismo precio. Solo cambia la funda.</li>' +
               '<li><strong>Carbono activo</strong> si te preocupan los olores y los ácaros, o si notas que el pelo se te electriza contra la almohada.</li>' +
               '<li><strong>Tencel</strong> si pasas calor por la noche, si sudas o si tienes la piel sensible y buscas un tacto más suave.</li>' +
-              '<li>Con las <strong>30 noches de prueba</strong>, si te equivocas de tejido la recogemos gratis.</li>' +
+              '<li>Con las <strong>30 noches de prueba</strong>, si te equivocas de tejido, te devolvemos el importe.</li>' +
             '</ul>'
           },
           {
@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function () {
             title: 'Envío, prueba y cuidados',
             html: '<ul>' +
               '<li>Envío gratuito a toda España peninsular en 3–5 días laborables.</li>' +
-              '<li><strong>30 noches de prueba:</strong> si no es la tuya, la recogemos y te devolvemos el importe.</li>' +
+              '<li><strong>30 noches de prueba:</strong> si no es la tuya, te devolvemos el importe.</li>' +
               '<li>Airea el núcleo 24 h al recibirla. No lavar el núcleo: solo la funda, a 30 °C.</li>' +
               '<li>Secar al aire, sin secadora ni lavado en seco.</li>' +
             '</ul>'
@@ -467,7 +467,7 @@ document.addEventListener('DOMContentLoaded', function () {
         '<li><strong>La diferencia está en el núcleo.</strong> El <a href="/colchones/nuvora-aurea">viscoelástico</a> lleva 2 cm de viscoelástica sobre un bloque de espuma HR de 28 kg/m³. El de <a href="/colchones/nuvora-aurea-muelles">muelles ensacados</a> lleva acolchado de fibra hueca sobre muelles ensacados, cada uno en su funda. Todo lo demás —tejido, acolchado tapa a tapa, platabanda, asas y medidas— es igual.</li>' +
         '<li><strong>Elige viscoelástico</strong> si duermes de lado y quieres que el colchón te acoja aliviando hombros y caderas, o si buscas el precio más ajustado.</li>' +
         '<li><strong>Elige muelles ensacados</strong> si dormís dos y os molestan los movimientos del otro, si duermes caluroso o si prefieres un soporte más firme y aireado.</li>' +
-        '<li>Las dos versiones comparten garantía y las 30 noches de prueba. Si te equivocas, lo recogemos gratis.</li>' +
+        '<li>Las dos versiones comparten garantía y las 30 noches de prueba. Si te equivocas, te devolvemos el importe íntegro.</li>' +
         '<li>¿Sigues con dudas? Lo desarrollamos en la <a href="/blog/viscoelastico-o-muelles">guía de viscoelástico o muelles</a>.</li>' +
       '</ul>'
     };
@@ -534,7 +534,7 @@ document.addEventListener('DOMContentLoaded', function () {
             alt: 'Detalle de las asas verticales del colchón Nuvora Aurea de muelles ensacados',
             kicker: 'Los detalles',
             title: 'Lo que otras marcas <em>no enseñan</em>',
-            text: 'Cuatro asas verticales cosidas a la platabanda para girarlo sin esfuerzo. Pruébalo 30 noches: si no te enamora, lo recogemos gratis.',
+            text: 'Cuatro asas verticales cosidas a la platabanda para girarlo sin esfuerzo. Pruébalo 30 noches: si no te enamora, te devolvemos el importe íntegro.',
             cta: 'Añadir a la cesta',
             hotspots: [
               { x: 53, y: 46, title: '4 asas verticales', text: 'Girarlo 180° cada pocos meses para repartir el desgaste deja de ser un castigo: dos personas lo hacen en menos de un minuto.' },
@@ -561,7 +561,7 @@ document.addEventListener('DOMContentLoaded', function () {
           title: 'Envío y devoluciones',
           html: '<ul>' +
             '<li>Envío gratuito a toda España peninsular en 3–5 días laborables.</li>' +
-            '<li>30 noches de prueba: si no te convence, lo recogemos gratis y te devolvemos el importe íntegro.</li>' +
+            '<li>30 noches de prueba: si no te convence, te devolvemos el importe íntegro.</li>' +
           '</ul>'
         },
         {
@@ -682,7 +682,7 @@ document.addEventListener('DOMContentLoaded', function () {
           title: 'Envío y devoluciones',
           html: '<ul>' +
             '<li>Envío gratuito a toda España peninsular.</li>' +
-            '<li><strong>30 noches de prueba:</strong> si no te convence, lo recogemos gratis y te devolvemos el importe íntegro.</li>' +
+            '<li><strong>30 noches de prueba:</strong> si no te convence, te devolvemos el importe íntegro.</li>' +
             '<li>Al ser un colchón de muelles, llega en plano: no se comprime ni se enrolla.</li>' +
           '</ul>'
         },
@@ -1115,7 +1115,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var perEl = document.getElementById('pdpPerNight');
       if (perEl) {
         if (product.type === 'almohada') {
-          perEl.innerHTML = 'Con <strong>30 noches de prueba</strong>: si no es la tuya, la recogemos gratis';
+          perEl.innerHTML = 'Con <strong>30 noches de prueba</strong>: si no es la tuya, te devolvemos el importe';
         } else if (product.type === 'canape') {
           perEl.innerHTML = 'Hasta <strong>1.000 litros de almacenaje</strong> bajo la cama';
         } else {
@@ -1218,7 +1218,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /* — Comprar ahora → checkout directo — */
     function goCheckout() {
       window.location.href =
-        'checkout.html?m=' + encodeURIComponent(id) + '&size=' + selectedSize;
+        '/checkout?m=' + encodeURIComponent(id) + '&size=' + selectedSize;
     }
     document.getElementById('pdpBuy').addEventListener('click', goCheckout);
 
@@ -1285,7 +1285,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (j3) {
         j3.querySelector('.journey__when').textContent = 'Primeros 30 días';
         j3.querySelector('.journey__what').textContent = 'Devolución gratuita';
-        j3.querySelector('.journey__how').textContent  = 'Si no encaja en tu dormitorio, lo recogemos sin coste.';
+        j3.querySelector('.journey__how').textContent  = 'Si no encaja en tu dormitorio, te devolvemos el importe íntegro.';
       }
       var j4 = document.getElementById('journeyStep4');
       if (j4) {
@@ -1783,10 +1783,27 @@ document.addEventListener('DOMContentLoaded', function () {
     var lines = [];
     var fromCart = false;
     var directId = getParam('m');
+    var directSize = getParam('size');
+
+    /* Vuelta desde Stripe tras cancelar: la URL de vuelta no lleva el
+       producto, así que una compra directa ("Comprar ahora") se
+       recupera de lo que se guardó al salir hacia la pasarela. Sin
+       esto, el cliente volvía a una página de pago vacía y acababa en
+       /colchones, sin su producto. */
+    var cancelado = getParam('cancelado') === '1';
+    if (!directId && cancelado) {
+      try {
+        var salida = JSON.parse(sessionStorage.getItem('nuvora_compra') || 'null');
+        if (salida && salida.directo && salida.lineas && salida.lineas[0]) {
+          directId = salida.lineas[0].id;
+          directSize = String(salida.lineas[0].sizeIdx || 0);
+        }
+      } catch (e) {}
+    }
 
     if (directId && CATALOG[directId]) {
       var p = CATALOG[directId];
-      var sIdx = parseInt(getParam('size') || String(p.defaultSize || 0), 10);
+      var sIdx = parseInt(directSize || String(p.defaultSize || 0), 10);
       if (isNaN(sIdx) || sIdx < 0 || sIdx >= p.sizes.length) sIdx = 0;
       lines.push({
         id: directId, name: p.name, type: p.type,
@@ -1987,6 +2004,10 @@ document.addEventListener('DOMContentLoaded', function () {
       caja.hidden = false;
     }
 
+    if (cancelado) {
+      mostrarErrorPago('Has cancelado el pago y no se te ha cobrado nada. Tu pedido sigue aquí por si quieres terminarlo.');
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (!validate()) {
@@ -2030,6 +2051,19 @@ document.addEventListener('DOMContentLoaded', function () {
           }
         } catch (e) {}
       }
+
+      /* Qué se está pagando y de dónde viene. Lo leen la vuelta por
+         cancelación (arriba) y gracias.html, que solo vacía la cesta si
+         lo pagado ERA la cesta: una compra directa no debe borrar lo
+         que el cliente tenga guardado para otro día. */
+      try {
+        sessionStorage.setItem('nuvora_compra', JSON.stringify({
+          directo: !fromCart,
+          lineas: lines.map(function (l) {
+            return { id: l.id, name: l.name, sizeIdx: l.sizeIdx || 0, price: l.price, qty: l.qty || 1 };
+          })
+        }));
+      } catch (e) {}
 
       fetch('/.netlify/functions/crear-pago', {
         method: 'POST',
