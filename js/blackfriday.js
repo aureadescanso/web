@@ -191,6 +191,160 @@
     '</span>';
   }
 
+  /* ── Fechas: salen de CONFIG.inicio y CONFIG.fin, no se escriben a mano ── */
+  var DIAS = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+  var MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+  function dias() {
+    var lista = [], HORA = 3600000, DIA = 86400000;
+    /* +1 h: la hora peninsular de invierno, para leer el día con getUTC* */
+    var hoy = Math.floor((Date.now() + HORA) / DIA);
+    for (var t = tInicio; t < tFin && lista.length < 10; t += DIA) {
+      var d = new Date(t + HORA);
+      lista.push({ dia: DIAS[d.getUTCDay()], n: d.getUTCDate(), mes: MESES[d.getUTCMonth()],
+                   hoy: Math.floor((t + HORA) / DIA) === hoy });
+    }
+    return lista;
+  }
+
+  /* Tira de entradas, una por día; la de hoy va encendida */
+  function entradasHtml() {
+    return '<span class="bf-dias" aria-label="' + esc(CONFIG.fechas) + '">' +
+      dias().map(function (d) {
+        return '<span class="bf-dia' + (d.hoy ? ' is-hoy' : '') + '" aria-hidden="true">' +
+                 '<i>' + d.dia + '</i><b>' + d.n + '</b><i>' + d.mes + '</i>' +
+               '</span>';
+      }).join('') +
+    '</span>';
+  }
+
+  /* Dos cintas cruzadas que corren en sentidos contrarios */
+  function cintasHtml(clase) {
+    var d = dias();
+    var trozo = '<b>Black Friday</b><i>✦</i>' +
+      d.map(function (x) { return '<span>' + x.dia + ' ' + x.n + ' ' + x.mes + '</span><i>✦</i>'; }).join('') +
+      '<span>' + d.length + ' noches</span><i>✦</i>';
+    var pista = '';
+    for (var k = 0; k < 6; k++) pista += trozo;
+    return '<div class="bf-cintas ' + (clase || '') + '" aria-hidden="true">' +
+      '<div class="bf-cinta bf-cinta--oro"><div class="bf-cinta__p">' + pista + '</div></div>' +
+      '<div class="bf-cinta bf-cinta--negra"><div class="bf-cinta__p">' + pista + '</div></div>' +
+    '</div>';
+  }
+
+  /* ── Firmamento: el cielo estrellado que hay detrás de toda la web ── */
+  function firmamento() {
+    if (!puedeNoche) return;
+    var capa = document.createElement('div');
+    capa.className = 'bf-firmamento';
+    capa.setAttribute('aria-hidden', 'true');
+    capa.innerHTML = '<div class="bf-firmamento__via"></div><div class="bf-firmamento__luna"></div><canvas></canvas>';
+    document.body.insertBefore(capa, document.body.firstChild);
+    var lienzo = capa.querySelector('canvas');
+    var ctx = lienzo.getContext && lienzo.getContext('2d');
+    if (!ctx) return;
+    pintarCielo(lienzo, ctx, { densidad: 2400, paralaje: true, quien: function () { return html.classList.contains('bf-noche'); } });
+  }
+
+  /* Motor de estrellas, compartido por el firmamento y la pantalla de
+     entrada: tres profundidades, titilar, destellos en cruz en las más
+     grandes y alguna fugaz. Devuelve una función para pararlo. */
+  function pintarCielo(lienzo, ctx, op) {
+    var W = 0, H = 0, dpr = 1, estrellas = [], fugaz = null, raf = null, parado = false;
+    var COLORES = ['#FFFFFF', '#FFFFFF', '#DCE6FF', '#BFD0FF', '#FFE9B0', '#E9C85A'];
+
+    function medir() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = lienzo.clientWidth; H = lienzo.clientHeight;
+      if (!W || !H) return;
+      lienzo.width = Math.round(W * dpr); lienzo.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var n = Math.min(620, Math.round(W * H / op.densidad));
+      estrellas = [];
+      for (var i = 0; i < n; i++) {
+        var z = Math.random();              /* 0 lejos · 1 cerca */
+        var grande = Math.random() < 0.035;
+        estrellas.push({
+          x: Math.random() * W, y: Math.random() * H, z: z,
+          r: grande ? 1.3 + Math.random() * 0.9 : 0.25 + z * 0.75 + Math.random() * 0.3,
+          a: grande ? 1 : 0.35 + z * 0.55,
+          f: Math.random() * 6.283, v: 0.5 + Math.random() * 1.8,
+          c: COLORES[Math.floor(Math.random() * COLORES.length)],
+          grande: grande
+        });
+      }
+    }
+
+    function cuadro(t) {
+      ctx.clearRect(0, 0, W, H);
+      var sy = op.paralaje ? (window.pageYOffset || 0) : 0;
+      for (var i = 0; i < estrellas.length; i++) {
+        var e = estrellas[i];
+        /* Al bajar por la página, las cercanas se mueven más que las lejanas */
+        var y = e.y - sy * (0.02 + e.z * 0.1);
+        y = ((y % H) + H) % H;
+        var tw = 0.55 + 0.45 * Math.sin(e.f + t * 0.001 * e.v);
+        ctx.globalAlpha = e.a * tw;
+        ctx.fillStyle = e.c;
+        ctx.beginPath(); ctx.arc(e.x, y, e.r, 0, 6.283); ctx.fill();
+        if (e.grande) {
+          /* Destello en cruz */
+          var l = e.r * (3.5 + 2.5 * tw);
+          ctx.globalAlpha = 0.5 * tw;
+          ctx.strokeStyle = e.c; ctx.lineWidth = 0.6;
+          ctx.beginPath();
+          ctx.moveTo(e.x - l, y); ctx.lineTo(e.x + l, y);
+          ctx.moveTo(e.x, y - l); ctx.lineTo(e.x, y + l);
+          ctx.stroke();
+          var g = ctx.createRadialGradient(e.x, y, 0, e.x, y, e.r * 6);
+          g.addColorStop(0, 'rgba(255,240,200,0.35)'); g.addColorStop(1, 'rgba(255,240,200,0)');
+          ctx.globalAlpha = tw; ctx.fillStyle = g;
+          ctx.beginPath(); ctx.arc(e.x, y, e.r * 6, 0, 6.283); ctx.fill();
+        }
+      }
+      if (fugaz) {
+        fugaz.p += 0.02;
+        var x = fugaz.x + fugaz.dx * fugaz.p, fy = fugaz.y + fugaz.dy * fugaz.p;
+        var cola = ctx.createLinearGradient(x, fy, x - fugaz.dx * 0.25, fy - fugaz.dy * 0.25);
+        cola.addColorStop(0, 'rgba(255,246,220,0.95)'); cola.addColorStop(1, 'rgba(255,246,220,0)');
+        ctx.globalAlpha = Math.sin(Math.min(1, fugaz.p) * 3.1416);
+        ctx.strokeStyle = cola; ctx.lineWidth = 1.5; ctx.lineCap = 'round';
+        ctx.beginPath(); ctx.moveTo(x, fy); ctx.lineTo(x - fugaz.dx * 0.25, fy - fugaz.dy * 0.25); ctx.stroke();
+        if (fugaz.p >= 1) fugaz = null;
+      } else if (!sinMovimiento && Math.random() < 0.0035) {
+        fugaz = { x: W * (0.1 + Math.random() * 0.6), y: H * Math.random() * 0.4,
+                  dx: W * (0.22 + Math.random() * 0.2), dy: H * (0.1 + Math.random() * 0.14), p: 0 };
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    function bucle(t) { cuadro(t); raf = requestAnimationFrame(bucle); }
+    function arrancar() {
+      if (parado || raf || document.hidden || (op.quien && !op.quien())) return;
+      if (sinMovimiento) { cuadro(0); return; }
+      raf = requestAnimationFrame(bucle);
+    }
+    function parar() { if (raf) { cancelAnimationFrame(raf); raf = null; } }
+
+    medir();
+    var re;
+    function alMedir() { clearTimeout(re); re = setTimeout(function () { medir(); if (sinMovimiento) cuadro(0); }, 150); }
+    window.addEventListener('resize', alMedir, { passive: true });
+    function alVer() { document.hidden ? parar() : arrancar(); }
+    document.addEventListener('visibilitychange', alVer);
+    var ojo = null;
+    if (op.quien) {
+      ojo = new MutationObserver(function () { op.quien() ? arrancar() : parar(); });
+      ojo.observe(html, { attributes: true, attributeFilter: ['class'] });
+    }
+    arrancar();
+    return function () {
+      parado = true; parar();
+      window.removeEventListener('resize', alMedir);
+      document.removeEventListener('visibilitychange', alVer);
+      if (ojo) ojo.disconnect();
+    };
+  }
+
   /* ── Banda de arriba ── */
   function banda() {
     var caja = document.querySelector('.announce');
@@ -247,7 +401,7 @@
     if (titulo) {
       titulo.insertAdjacentHTML('beforebegin',
         '<p class="bf-marca"><span class="bf-marca__n">Black Friday</span>' +
-        '<span class="bf-marca__f">' + esc(CONFIG.fechas) + '</span></p>');
+        entradasHtml() + '</p>');
     }
 
     var bloque = document.createElement('div');
@@ -266,6 +420,7 @@
     else contenido.appendChild(bloque);
     relojes.push(bloque.querySelector('.bf-reloj'));
 
+    hero.insertAdjacentHTML('afterend', cintasHtml('bf-cintas--portada'));
     cielo(hero);
     linterna(hero);
   }
@@ -416,6 +571,7 @@
     caja.setAttribute('aria-label', 'Black Friday Nuvora: ' + T.antes + ' ' + T.cifra + ' ' + T.base);
     caja.innerHTML =
       '<div class="bf-entrada__rayos" aria-hidden="true"></div>' +
+      '<canvas class="bf-entrada__cielo" aria-hidden="true"></canvas>' +
       '<canvas class="bf-entrada__oro" aria-hidden="true"></canvas>' +
       '<div class="bf-entrada__c">' +
         '<img class="bf-entrada__logo" src="/images/nuvoradescanso-sm.webp" alt="Nuvora Descanso">' +
@@ -428,12 +584,14 @@
         '<p class="bf-entrada__extra">' + esc(T.extra) + '</p>' +
         relojHtml('bf-reloj--grande') +
         '<button type="button" class="bf-entrada__btn"><span>' + esc(T.boton) + '</span><i aria-hidden="true"></i></button>' +
-        '<p class="bf-entrada__f">' + esc(CONFIG.fechas) + '</p>' +
-      '</div>';
+      '</div>' +
+      cintasHtml('bf-cintas--entrada');
     document.body.appendChild(caja);
     var relojEntrada = caja.querySelector('.bf-reloj');
     relojes.push(relojEntrada);
 
+    var lienzoCielo = caja.querySelector('.bf-entrada__cielo');
+    var pararCielo = lienzoCielo.getContext ? pintarCielo(lienzoCielo, lienzoCielo.getContext('2d'), { densidad: 1900 }) : null;
     var boton = caja.querySelector('.bf-entrada__btn');
     var lienzo = caja.querySelector('.bf-entrada__oro');
     var hueco = caja.querySelector('.bf-entrada__cifra');
@@ -593,6 +751,7 @@
       html.classList.remove('bf-telon');
       setTimeout(function () {
         if (raf) cancelAnimationFrame(raf);
+        if (typeof pararCielo === 'function') pararCielo();
         var n = relojes.indexOf(relojEntrada);
         if (n >= 0) relojes.splice(n, 1);
         if (caja.parentNode) caja.parentNode.removeChild(caja);
@@ -609,6 +768,7 @@
 
   /* ── Montaje ── */
   function montar() {
+    firmamento();
     banda();
     interruptor();
     portada();
