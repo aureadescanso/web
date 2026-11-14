@@ -237,20 +237,23 @@
     var capa = document.createElement('div');
     capa.className = 'bf-firmamento';
     capa.setAttribute('aria-hidden', 'true');
-    capa.innerHTML = '<div class="bf-firmamento__via"></div><div class="bf-firmamento__luna"></div><canvas></canvas>';
+    capa.innerHTML = '<canvas></canvas>';
     document.body.insertBefore(capa, document.body.firstChild);
     var lienzo = capa.querySelector('canvas');
     var ctx = lienzo.getContext && lienzo.getContext('2d');
     if (!ctx) return;
-    pintarCielo(lienzo, ctx, { densidad: 2400, paralaje: true, quien: function () { return html.classList.contains('bf-noche'); } });
+    pintarCielo(lienzo, ctx, { densidad: 4200, paralaje: true, quien: function () { return html.classList.contains('bf-noche'); } });
   }
 
   /* Motor de estrellas, compartido por el firmamento y la pantalla de
-     entrada: tres profundidades, titilar, destellos en cruz en las más
-     grandes y alguna fugaz. Devuelve una función para pararlo. */
+     entrada. Inspirado en los techos de estrellas de los coches de lujo:
+     puntos de luz muy finos, de un blanco cálido, que titilan despacio y
+     sin estridencias. De tarde en tarde, una fugaz. Devuelve una función
+     para pararlo. */
   function pintarCielo(lienzo, ctx, op) {
     var W = 0, H = 0, dpr = 1, estrellas = [], fugaz = null, raf = null, parado = false;
-    var COLORES = ['#FFFFFF', '#FFFFFF', '#DCE6FF', '#BFD0FF', '#FFE9B0', '#E9C85A'];
+    /* Solo blancos cálidos: ningún azul */
+    var COLORES = ['#FFFFFF', '#FFF9EF', '#FFF3DE', '#FFEBC8'];
 
     function medir() {
       dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -258,18 +261,18 @@
       if (!W || !H) return;
       lienzo.width = Math.round(W * dpr); lienzo.height = Math.round(H * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      var n = Math.min(620, Math.round(W * H / op.densidad));
+      var n = Math.min(340, Math.round(W * H / op.densidad));
       estrellas = [];
       for (var i = 0; i < n; i++) {
         var z = Math.random();              /* 0 lejos · 1 cerca */
-        var grande = Math.random() < 0.035;
+        var viva = Math.random() < 0.06;    /* unas pocas, algo más brillantes */
         estrellas.push({
           x: Math.random() * W, y: Math.random() * H, z: z,
-          r: grande ? 1.3 + Math.random() * 0.9 : 0.25 + z * 0.75 + Math.random() * 0.3,
-          a: grande ? 1 : 0.35 + z * 0.55,
-          f: Math.random() * 6.283, v: 0.5 + Math.random() * 1.8,
+          r: viva ? 0.85 + Math.random() * 0.35 : 0.35 + z * 0.4,
+          a: viva ? 0.95 : 0.22 + z * 0.45,
+          f: Math.random() * 6.283, v: 0.15 + Math.random() * 0.55,
           c: COLORES[Math.floor(Math.random() * COLORES.length)],
-          grande: grande
+          viva: viva
         });
       }
     }
@@ -279,40 +282,33 @@
       var sy = op.paralaje ? (window.pageYOffset || 0) : 0;
       for (var i = 0; i < estrellas.length; i++) {
         var e = estrellas[i];
-        /* Al bajar por la página, las cercanas se mueven más que las lejanas */
-        var y = e.y - sy * (0.02 + e.z * 0.1);
+        /* Al bajar por la página, apenas se desplazan: un techo, no un viaje */
+        var y = e.y - sy * (0.01 + e.z * 0.03);
         y = ((y % H) + H) % H;
-        var tw = 0.55 + 0.45 * Math.sin(e.f + t * 0.001 * e.v);
+        var tw = 0.62 + 0.38 * Math.sin(e.f + t * 0.001 * e.v);
+        if (e.viva) {
+          /* Halo muy suave, como la fibra óptica tras la tapicería */
+          var g = ctx.createRadialGradient(e.x, y, 0, e.x, y, e.r * 4.5);
+          g.addColorStop(0, 'rgba(255,244,222,0.22)'); g.addColorStop(1, 'rgba(255,244,222,0)');
+          ctx.globalAlpha = tw; ctx.fillStyle = g;
+          ctx.beginPath(); ctx.arc(e.x, y, e.r * 4.5, 0, 6.283); ctx.fill();
+        }
         ctx.globalAlpha = e.a * tw;
         ctx.fillStyle = e.c;
         ctx.beginPath(); ctx.arc(e.x, y, e.r, 0, 6.283); ctx.fill();
-        if (e.grande) {
-          /* Destello en cruz */
-          var l = e.r * (3.5 + 2.5 * tw);
-          ctx.globalAlpha = 0.5 * tw;
-          ctx.strokeStyle = e.c; ctx.lineWidth = 0.6;
-          ctx.beginPath();
-          ctx.moveTo(e.x - l, y); ctx.lineTo(e.x + l, y);
-          ctx.moveTo(e.x, y - l); ctx.lineTo(e.x, y + l);
-          ctx.stroke();
-          var g = ctx.createRadialGradient(e.x, y, 0, e.x, y, e.r * 6);
-          g.addColorStop(0, 'rgba(255,240,200,0.35)'); g.addColorStop(1, 'rgba(255,240,200,0)');
-          ctx.globalAlpha = tw; ctx.fillStyle = g;
-          ctx.beginPath(); ctx.arc(e.x, y, e.r * 6, 0, 6.283); ctx.fill();
-        }
       }
       if (fugaz) {
-        fugaz.p += 0.02;
+        fugaz.p += 0.016;
         var x = fugaz.x + fugaz.dx * fugaz.p, fy = fugaz.y + fugaz.dy * fugaz.p;
-        var cola = ctx.createLinearGradient(x, fy, x - fugaz.dx * 0.25, fy - fugaz.dy * 0.25);
-        cola.addColorStop(0, 'rgba(255,246,220,0.95)'); cola.addColorStop(1, 'rgba(255,246,220,0)');
+        var cola = ctx.createLinearGradient(x, fy, x - fugaz.dx * 0.18, fy - fugaz.dy * 0.18);
+        cola.addColorStop(0, 'rgba(255,246,228,0.7)'); cola.addColorStop(1, 'rgba(255,246,228,0)');
         ctx.globalAlpha = Math.sin(Math.min(1, fugaz.p) * 3.1416);
-        ctx.strokeStyle = cola; ctx.lineWidth = 1.5; ctx.lineCap = 'round';
-        ctx.beginPath(); ctx.moveTo(x, fy); ctx.lineTo(x - fugaz.dx * 0.25, fy - fugaz.dy * 0.25); ctx.stroke();
+        ctx.strokeStyle = cola; ctx.lineWidth = 0.9; ctx.lineCap = 'round';
+        ctx.beginPath(); ctx.moveTo(x, fy); ctx.lineTo(x - fugaz.dx * 0.18, fy - fugaz.dy * 0.18); ctx.stroke();
         if (fugaz.p >= 1) fugaz = null;
-      } else if (!sinMovimiento && Math.random() < 0.0035) {
+      } else if (!sinMovimiento && Math.random() < 0.0012) {
         fugaz = { x: W * (0.1 + Math.random() * 0.6), y: H * Math.random() * 0.4,
-                  dx: W * (0.22 + Math.random() * 0.2), dy: H * (0.1 + Math.random() * 0.14), p: 0 };
+                  dx: W * (0.16 + Math.random() * 0.12), dy: H * (0.06 + Math.random() * 0.08), p: 0 };
       }
       ctx.globalAlpha = 1;
     }
@@ -442,17 +438,17 @@
       W = lienzo.offsetWidth; H = lienzo.offsetHeight;
       lienzo.width = Math.round(W * dpr); lienzo.height = Math.round(H * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      var n = Math.min(190, Math.round(W * H / 6500));
+      var n = Math.min(110, Math.round(W * H / 11000));
       estrellas = [];
       for (var i = 0; i < n; i++) {
         estrellas.push({
           x: Math.random() * W,
           /* Más estrellas arriba: abajo está el colchón */
           y: Math.pow(Math.random(), 1.7) * H,
-          r: Math.random() < 0.08 ? 1.5 + Math.random() : 0.4 + Math.random() * 0.8,
+          r: Math.random() < 0.06 ? 0.9 + Math.random() * 0.3 : 0.35 + Math.random() * 0.45,
           fase: Math.random() * 6.283,
-          vel: 0.6 + Math.random() * 1.6,
-          oro: Math.random() < 0.16
+          vel: 0.15 + Math.random() * 0.5,
+          oro: Math.random() < 0.1
         });
       }
     }
@@ -461,9 +457,9 @@
       ctx.clearRect(0, 0, W, H);
       for (var i = 0; i < estrellas.length; i++) {
         var e = estrellas[i];
-        var brillo = 0.35 + 0.65 * (0.5 + 0.5 * Math.sin(e.fase + t * 0.001 * e.vel));
+        var brillo = 0.45 + 0.4 * (0.5 + 0.5 * Math.sin(e.fase + t * 0.001 * e.vel));
         ctx.globalAlpha = brillo * (1 - e.y / H * 0.75);
-        ctx.fillStyle = e.oro ? '#E9C85A' : '#FFFFFF';
+        ctx.fillStyle = e.oro ? '#FFEBC8' : '#FFFFFF';
         ctx.beginPath();
         ctx.arc(e.x, e.y, e.r, 0, 6.283);
         ctx.fill();
@@ -591,7 +587,7 @@
     relojes.push(relojEntrada);
 
     var lienzoCielo = caja.querySelector('.bf-entrada__cielo');
-    var pararCielo = lienzoCielo.getContext ? pintarCielo(lienzoCielo, lienzoCielo.getContext('2d'), { densidad: 1900 }) : null;
+    var pararCielo = lienzoCielo.getContext ? pintarCielo(lienzoCielo, lienzoCielo.getContext('2d'), { densidad: 3400 }) : null;
     var boton = caja.querySelector('.bf-entrada__btn');
     var lienzo = caja.querySelector('.bf-entrada__oro');
     var hueco = caja.querySelector('.bf-entrada__cifra');
@@ -622,7 +618,7 @@
       a.textAlign = 'center'; a.textBaseline = 'middle'; a.fillStyle = '#fff';
       a.fillText(T.cifra, aw / 2, ah / 2);
       var px;
-      try { px = a.getImageData(0, 0, aw, ah).data; } catch (e) { return; }
+      try { px = a.getImageData(0, 0, aw, ah).data; } catch (e) { hueco.classList.remove('is-lienzo'); return; }
 
       var tope = W < 700 ? 2600 : 5200, paso = 2, puntos;
       do {
@@ -632,6 +628,8 @@
         }
         paso++;
       } while (puntos.length / 2 > tope);
+      /* Lectura en blanco o con ruido: no hay cifra que formar */
+      if (puntos.length / 2 < 300) { motas = []; hueco.classList.remove('is-lienzo'); return; }
 
       var ox = r.left - c0.left, oy = r.top - c0.top, viejas = motas;
       motas = [];
