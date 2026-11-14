@@ -1221,3 +1221,27 @@ body:has(.buybar.is-visible) .ckdot { bottom: 84px; }
   .ayuda__panel, .ayuda__btn svg { transition: none; }
   .ayuda__msg { animation: none; }
 }
+
+/* ==============================================
+   DÓNDE COMPRAR — Amazon, Miravia y la web (portada)
+   ============================================== */
+.canales {
+  display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 12px 22px;
+  padding: 22px 24px; background: var(--white);
+  border-bottom: 1px solid rgba(127, 127, 127, 0.16);
+}
+.canales__label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-3); }
+.canales__list { display: flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.canales__item {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--serif); font-weight: 600; font-size: 1.02rem; letter-spacing: -0.01em; color: var(--ink);
+  padding: 9px 20px; border-radius: 999px; border: 1.5px solid var(--border); background: var(--white);
+  text-decoration: none; transition: border-color 0.25s, transform 0.25s var(--ease-out);
+}
+a.canales__item:hover { border-color: #C9A227; transform: translateY(-1px); }
+.canales__item--web { border-color: #C9A227; }
+.canales__item--web::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #C9A227; }
+@media (max-width: 600px) {
+  .canales { flex-direction: column; gap: 10px; padding: 18px 16px; }
+  .canales__item { font-size: 0.95rem; padding: 8px 16px; }
+}
