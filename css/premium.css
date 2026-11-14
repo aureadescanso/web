@@ -1223,7 +1223,7 @@ body:has(.buybar.is-visible) .ckdot { bottom: 84px; }
 }
 
 /* ==============================================
-   DÓNDE COMPRAR — Amazon, Miravia y la web (portada)
+   DÓNDE COMPRAR — Amazon y la web (portada)
    ============================================== */
 .canales {
   display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 12px 22px;
@@ -1239,6 +1239,9 @@ body:has(.buybar.is-visible) .ckdot { bottom: 84px; }
   text-decoration: none; transition: border-color 0.25s, transform 0.25s var(--ease-out);
 }
 a.canales__item:hover { border-color: #C9A227; transform: translateY(-1px); }
+/* Logo de terceros: siempre sobre blanco, con sus colores */
+.canales__item--logo { background: #fff; border-color: #E2E2E7; padding: 7px 22px 5px; }
+.canales__item--logo img { height: 30px; width: auto; display: block; }
 .canales__item--web { border-color: #C9A227; }
 .canales__item--web::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #C9A227; }
 @media (max-width: 600px) {
