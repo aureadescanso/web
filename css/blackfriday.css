@@ -568,3 +568,26 @@ html.bf-noche .related-card__name { color: var(--ink); }
 /* Respaldo si las animaciones no arrancan: todo visible, sin efectos */
 .bf-entrada.sin-anim .bf-entrada__c > *,
 .bf-entrada.sin-anim .bf-cintas--entrada { animation: none !important; opacity: 1; transform: none; }
+
+/* Portada: la escena con puntos, la fábrica y la ayuda, en negro y oro */
+html.bf-noche .fabrica { background: #000; }
+html.bf-noche .fabrica::before {
+  background:
+    radial-gradient(90% 70% at 20% 50%, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.9) 75%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 30%, rgba(0, 0, 0, 0.85) 100%);
+}
+html.bf-noche .fabrica__ambiente { filter: blur(54px) saturate(0.7) sepia(0.4); opacity: 0.4; }
+html.bf-noche .look__pack,
+html.bf-noche .ayuda__cab {
+  background:
+    radial-gradient(120% 160% at 100% 0%, rgba(212, 175, 55, 0.16) 0%, rgba(212, 175, 55, 0) 55%),
+    #060606;
+  box-shadow: inset 0 0 0 1px rgba(212, 175, 55, 0.32);
+}
+html.bf-noche .look__thumb { background: #101010; }
+html.bf-noche .ayuda__btn { background: #0B0B0E; }
+html.bf-noche .ayuda__panel { background: #0A0A0C; box-shadow: 0 34px 80px -24px #000, 0 0 0 1px rgba(212, 175, 55, 0.3); }
+html.bf-noche .ayuda__charla, html.bf-noche .ayuda__ops { background: #0A0A0C; }
+html.bf-noche .ayuda__msg { background: #17171B; }
+html.bf-noche .ayuda__msg--yo { background: linear-gradient(135deg, #E6C65A 0%, #D4AF37 55%, #B8922A 100%); color: #0B0B0E; }
+html.bf-noche .ayuda__op { background: #121216; }
