@@ -55,13 +55,8 @@
       segundos: 9          /* se abre sola pasado este tiempo */
     },
 
-    /* Lo que se anuncia. Solo ofertas que existen de verdad y que el
-       servidor aplica al cobrar: si aquí se promete algo que el pago no
-       hace, el cliente lo descubre en el peor momento. */
-    ofertas: [
-      { titulo: 'Pack de descanso', texto: '−12 % en colchón + canapé + almohada', enlace: '/packs' },
-      { titulo: 'Código NUVORA10',  texto: '−10 % en tu primera compra',           enlace: '/colchones' }
-    ],
+    /* Solo se anuncian ofertas que existen de verdad y que el servidor
+       aplica al cobrar. */
     banda: [
       'Black Friday Nuvora',
       'Apagamos la luz',
@@ -211,17 +206,6 @@
                    hoy: Math.floor((t + HORA) / DIA) === hoy });
     }
     return lista;
-  }
-
-  /* Tira de entradas, una por día; la de hoy va encendida */
-  function entradasHtml() {
-    return '<span class="bf-dias" aria-label="' + esc(CONFIG.fechas) + '">' +
-      dias().map(function (d) {
-        return '<span class="bf-dia' + (d.hoy ? ' is-hoy' : '') + '" aria-hidden="true">' +
-                 '<i>' + d.dia + '</i><b>' + d.n + '</b><i>' + d.mes + '</i>' +
-               '</span>';
-      }).join('') +
-    '</span>';
   }
 
   /* Dos cintas cruzadas que corren en sentidos contrarios */
@@ -393,35 +377,20 @@
     rotular(html.classList.contains('bf-noche'));
   }
 
-  /* ── Portada: titular, reloj grande y ofertas ── */
+  /* ── Portada: solo una firma sobre el titular. La cuenta atrás ya va
+        en la banda de arriba y las ofertas en la pantalla de entrada:
+        repetirlas aquí dejaba la portada demasiado cargada. ── */
   function portada() {
     var hero = document.getElementById('hero');
     var contenido = document.getElementById('heroContent');
-    var botones = document.getElementById('heroButtons');
     if (!hero || !contenido || fase !== 'evento') return;
 
     var titulo = contenido.querySelector('.hero__title');
     if (titulo) {
       titulo.insertAdjacentHTML('beforebegin',
         '<p class="bf-marca"><span class="bf-marca__n">Black Friday</span>' +
-        entradasHtml() + '</p>');
+        '<span class="bf-marca__f">' + esc(CONFIG.fechas) + '</span></p>');
     }
-
-    var bloque = document.createElement('div');
-    bloque.className = 'bf-portada';
-    bloque.innerHTML =
-      '<p class="bf-portada__lema">' + (anticipado ? 'Apagamos la luz antes que nadie. Las cuatro noches grandes empiezan el viernes 27.' : 'Apagamos la luz. Cuatro noches para estrenar descanso.') + '</p>' +
-      relojHtml('bf-reloj--grande') +
-      '<div class="bf-ofertas">' +
-        CONFIG.ofertas.map(function (o) {
-          return '<a class="bf-oferta" href="' + esc(o.enlace) + '">' +
-                   '<strong>' + esc(o.titulo) + '</strong><span>' + esc(o.texto) + '</span>' +
-                 '</a>';
-        }).join('') +
-      '</div>';
-    if (botones) contenido.insertBefore(bloque, botones);
-    else contenido.appendChild(bloque);
-    relojes.push(bloque.querySelector('.bf-reloj'));
 
     hero.insertAdjacentHTML('afterend', cintasHtml('bf-cintas--portada'));
     cielo(hero);
