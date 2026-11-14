@@ -30,11 +30,15 @@
     /* INTERRUPTOR GENERAL. Con false, el público no ve nada aunque
        lleguen las fechas: solo se ve con ?bf=evento (vista previa).
        Ponerlo a true cuando la oferta y las fechas estén confirmadas. */
-    publico: false,
+    publico: true,
 
     /* Hora peninsular. En noviembre España va una hora por delante de UTC. */
-    aviso:  '2026-11-20T00:00:00+01:00',
-    inicio: '2026-11-27T00:00:00+01:00',   /* viernes */
+    aviso:  '2026-11-14T00:00:00+01:00',
+    /* La web se apaga desde ya (acceso anticipado) y el Black Friday
+       propiamente dicho son las noches de 'semana': hasta entonces la
+       cuenta atrás va hacia su comienzo. */
+    inicio: '2026-11-14T00:00:00+01:00',
+    semana: '2026-11-27T00:00:00+01:00',   /* viernes */
     fin:    '2026-12-01T00:00:00+01:00',   /* acaba el lunes 30 a medianoche */
 
     fechas: 'Del 27 al 30 de noviembre',
@@ -88,6 +92,7 @@
 
   var ahora = Date.now();
   var tAviso = Date.parse(CONFIG.aviso), tInicio = Date.parse(CONFIG.inicio), tFin = Date.parse(CONFIG.fin);
+  var tSemana = Date.parse(CONFIG.semana || CONFIG.inicio);
   var fase = prueba || !CONFIG.publico ? (prueba || '') :
     (ahora >= tInicio && ahora < tFin ? 'evento' :
      ahora >= tAviso && ahora < tInicio ? 'aviso' : '');
@@ -95,7 +100,9 @@
 
   /* En una prueba la cuenta atrás no tiene fecha real a la que ir: se
      le da una de mentira para poder ver el reloj andando. */
-  var meta = fase === 'evento' ? tFin : tInicio;
+  /* Antes de la semana grande se cuenta hacia ella; durante, hacia el final */
+  var anticipado = fase === 'evento' && ahora < tSemana && !prueba;
+  var meta = fase === 'evento' ? (anticipado ? tSemana : tFin) : tInicio;
   if (prueba && meta <= ahora) meta = ahora + 3 * 86400000 + 7 * 3600000 + 42 * 60000;
 
   var sinMovimiento = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -185,8 +192,8 @@
       return '<span class="bf-reloj__u"><b data-bf="' + k + '">00</b><i>' + rotulo + '</i></span>';
     }
     return '<span class="bf-reloj ' + clase + '" role="timer" aria-label="' +
-        (fase === 'evento' ? 'Tiempo que queda de Black Friday' : 'Tiempo que falta para el Black Friday') + '">' +
-      '<span class="bf-reloj__t">' + (fase === 'evento' ? 'Termina en' : 'Empieza en') + '</span>' +
+        (fase === 'evento' && !anticipado ? 'Tiempo que queda de Black Friday' : 'Tiempo que falta para el Black Friday') + '">' +
+      '<span class="bf-reloj__t">' + (fase === 'evento' && !anticipado ? 'Termina en' : 'Empieza en') + '</span>' +
       caja('d', 'días') + caja('h', 'h') + caja('m', 'min') + caja('s', 's') +
     '</span>';
   }
@@ -198,7 +205,7 @@
     var lista = [], HORA = 3600000, DIA = 86400000;
     /* +1 h: la hora peninsular de invierno, para leer el día con getUTC* */
     var hoy = Math.floor((Date.now() + HORA) / DIA);
-    for (var t = tInicio; t < tFin && lista.length < 10; t += DIA) {
+    for (var t = tSemana; t < tFin && lista.length < 10; t += DIA) {
       var d = new Date(t + HORA);
       lista.push({ dia: DIAS[d.getUTCDay()], n: d.getUTCDate(), mes: MESES[d.getUTCMonth()],
                    hoy: Math.floor((t + HORA) / DIA) === hoy });
@@ -403,7 +410,7 @@
     var bloque = document.createElement('div');
     bloque.className = 'bf-portada';
     bloque.innerHTML =
-      '<p class="bf-portada__lema">Apagamos la luz. Cuatro noches para estrenar descanso.</p>' +
+      '<p class="bf-portada__lema">' + (anticipado ? 'Apagamos la luz antes que nadie. Las cuatro noches grandes empiezan el viernes 27.' : 'Apagamos la luz. Cuatro noches para estrenar descanso.') + '</p>' +
       relojHtml('bf-reloj--grande') +
       '<div class="bf-ofertas">' +
         CONFIG.ofertas.map(function (o) {
