@@ -659,8 +659,11 @@
 
     var TONOS = ['#FFF6D2', '#F3DC8A', '#E3C155', '#D4AF37', '#B8922A'];
     function pintar(t) {
-      if (!t0) t0 = t;
-      var dt = t - t0, i, m;
+      /* Reloj propio: algunos navegadores congelan el tiempo de los
+         fotogramas mientras la pestaña no se pinta */
+      var ahora = performance.now();
+      if (!t0) t0 = ahora;
+      var dt = ahora - t0, i, m;
       ctx.clearRect(0, 0, W, H);
 
       /* Polvo de oro subiendo despacio */
@@ -719,7 +722,16 @@
     }
     /* Se espera a la tipografía de la marca para que la cifra salga con ella */
     var listo = false;
-    function unaVez() { if (!listo) { listo = true; arrancar(); caja.classList.add('is-lista'); } }
+    function unaVez() {
+      if (listo) return;
+      listo = true; arrancar(); caja.classList.add('is-lista');
+      /* Si las animaciones CSS no arrancan (pestaña sin pintar, ahorro de
+         energía), los textos se quedarían invisibles: se enseñan sin más */
+      setTimeout(function () {
+        var k = caja.querySelector('.bf-entrada__k');
+        if (k && getComputedStyle(k).opacity === '0') caja.classList.add('sin-anim');
+      }, 3400);
+    }
     if (document.fonts && document.fonts.load) {
       document.fonts.load('600 80px "Playfair Display"').then(unaVez, unaVez);
       setTimeout(unaVez, 1500);

@@ -564,3 +564,7 @@ html.bf-noche .article-page { background: transparent; }
 html.bf-noche .bcard__media,
 html.bf-noche .journey__dot { background: #060606; }
 html.bf-noche .related-card__name { color: var(--ink); }
+
+/* Respaldo si las animaciones no arrancan: todo visible, sin efectos */
+.bf-entrada.sin-anim .bf-entrada__c > *,
+.bf-entrada.sin-anim .bf-cintas--entrada { animation: none !important; opacity: 1; transform: none; }
