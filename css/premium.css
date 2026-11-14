@@ -1223,28 +1223,26 @@ body:has(.buybar.is-visible) .ckdot { bottom: 84px; }
 }
 
 /* ==============================================
-   DÓNDE COMPRAR — Amazon y la web (portada)
+   TAMBIÉN EN AMAZON — pieza enlazada (portada)
    ============================================== */
-.canales {
-  display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 12px 22px;
-  padding: 22px 24px; background: var(--white);
-  border-bottom: 1px solid rgba(127, 127, 127, 0.16);
+.canales { display: flex; justify-content: center; padding: 26px 20px; background: var(--white); }
+.canales__pieza {
+  position: relative; display: inline-flex; align-items: center; gap: 18px; flex-wrap: wrap; justify-content: center;
+  padding: 12px 14px 12px 26px; border-radius: 999px; text-decoration: none; color: var(--ink);
+  background: var(--white); border: 1.5px solid var(--border);
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s, border-color 0.3s;
 }
-.canales__label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-3); }
-.canales__list { display: flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 10px; }
-.canales__item {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--serif); font-weight: 600; font-size: 1.02rem; letter-spacing: -0.01em; color: var(--ink);
-  padding: 9px 20px; border-radius: 999px; border: 1.5px solid var(--border); background: var(--white);
-  text-decoration: none; transition: border-color 0.25s, transform 0.25s var(--ease-out);
+.canales__pieza:hover { transform: translateY(-2px); border-color: #C9A227; box-shadow: 0 20px 44px -24px rgba(13, 27, 62, 0.45); }
+.canales__label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-3); }
+.canales__logo { height: 30px; width: auto; display: block; margin-top: 6px; }
+.canales__ir {
+  font: 600 0.82rem/1 var(--sans); white-space: nowrap; color: #14203F;
+  padding: 11px 18px; border-radius: 999px;
+  background: linear-gradient(120deg, #F0DC9A 0%, #D4AF37 55%, #B98F22 100%);
 }
-a.canales__item:hover { border-color: #C9A227; transform: translateY(-1px); }
-/* Logo de terceros: siempre sobre blanco, con sus colores */
-.canales__item--logo { background: #fff; border-color: #E2E2E7; padding: 7px 22px 5px; }
-.canales__item--logo img { height: 30px; width: auto; display: block; }
-.canales__item--web { border-color: #C9A227; }
-.canales__item--web::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #C9A227; }
+.canales__ir span { display: inline-block; transition: transform 0.3s var(--ease-out); }
+.canales__pieza:hover .canales__ir span { transform: translateX(4px); }
 @media (max-width: 600px) {
-  .canales { flex-direction: column; gap: 10px; padding: 18px 16px; }
-  .canales__item { font-size: 0.95rem; padding: 8px 16px; }
+  .canales { padding: 20px 16px; }
+  .canales__pieza { flex-direction: column; gap: 10px; border-radius: 26px; padding: 18px 26px 16px; }
 }

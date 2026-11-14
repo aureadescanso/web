@@ -189,16 +189,17 @@
     </div>
   </section>
 
-  <!-- ========== DÓNDE COMPRAR ==========
-       El logo de Amazon va siempre sobre blanco (también de noche), que
-       es como se lee. El enlace es la ficha del producto, sin los
-       parámetros de búsqueda. -->
-  <section class="canales" aria-label="Dónde comprar Nuvora">
-    <span class="canales__label">Disponible en</span>
-    <ul class="canales__list">
-      <li><a class="canales__item canales__item--logo" href="https://www.amazon.es/dp/B0HNPY8Y7X" target="_blank" rel="noopener" aria-label="Ver Nuvora en Amazon (se abre en otra pestaña)"><img src="images/amazon-logo.png" alt="Amazon" width="128" height="44" loading="lazy" decoding="async"></a></li>
-      <li><a class="canales__item canales__item--web" href="/colchones">Web Nuvora</a></li>
-    </ul>
+  <!-- ========== TAMBIÉN EN AMAZON ==========
+       Toda la pieza es un enlace a la ficha del producto (dirección
+       limpia, sin parámetros de búsqueda). De noche el logo se pasa a su
+       versión para fondo oscuro —letras blancas, sonrisa naranja— con un
+       filtro en css/blackfriday.css. -->
+  <section class="canales" aria-label="Nuvora en Amazon">
+    <a class="canales__pieza" href="https://www.amazon.es/dp/B0HNPY8Y7X" target="_blank" rel="noopener" aria-label="Ver Nuvora en Amazon (se abre en otra pestaña)">
+      <span class="canales__label">También disponible en</span>
+      <img class="canales__logo" src="images/amazon-logo.png" alt="Amazon" width="128" height="44" loading="lazy" decoding="async">
+      <span class="canales__ir">Ver en Amazon <span aria-hidden="true">&rarr;</span></span>
+    </a>
   </section>
 
   <!-- ========== 5. PRODUCTOS — ESCENA 5 ========== -->

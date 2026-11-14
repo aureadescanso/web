@@ -556,3 +556,22 @@ html.bf-noche .ayuda__charla, html.bf-noche .ayuda__ops { background: #0A0A0C; }
 html.bf-noche .ayuda__msg { background: #17171B; }
 html.bf-noche .ayuda__msg--yo { background: linear-gradient(135deg, #E6C65A 0%, #D4AF37 55%, #B8922A 100%); color: #0B0B0E; }
 html.bf-noche .ayuda__op { background: #121216; }
+
+/* También en Amazon, de noche: cápsula negra con el filo de oro en
+   movimiento, y el logo en su versión para fondo oscuro (invertir y
+   girar el tono 180° deja las letras blancas y la sonrisa naranja) */
+html.bf-noche .canales { background: transparent; padding-top: 30px; }
+html.bf-noche .canales__pieza {
+  border-color: transparent; color: #fff;
+  background:
+    linear-gradient(#050505, #050505) padding-box,
+    linear-gradient(100deg, #7A5E18 0%, #F6E7A6 30%, #D4AF37 50%, #F6E7A6 70%, #7A5E18 100%) border-box;
+  background-size: auto, 220% 100%;
+  animation: bf-brillo 6s linear infinite;
+  box-shadow: 0 0 44px -12px rgba(212, 175, 55, 0.45);
+}
+html.bf-noche .canales__pieza:hover { box-shadow: 0 0 60px -10px rgba(212, 175, 55, 0.7); }
+html.bf-noche .canales__label { color: #E3C155; }
+html.bf-noche .canales__logo { filter: invert(1) hue-rotate(180deg) saturate(1.25); }
+html.bf-noche .canales__ir { color: #0B0B0E; }
+@media (prefers-reduced-motion: reduce) { html.bf-noche .canales__pieza { animation: none; } }
